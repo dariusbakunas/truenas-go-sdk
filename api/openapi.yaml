@@ -69,6 +69,7 @@ components:
       example:
         path: path
         healthy: true
+        encryptkey_path: encryptkey_path
         name: name
         guid: guid
         id: 0.8008281904610115
@@ -89,6 +90,8 @@ components:
           type: boolean
         is_decrypted:
           type: boolean
+        encryptkey_path:
+          type: string
       required:
       - id
       - name

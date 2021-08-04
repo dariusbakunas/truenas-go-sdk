@@ -16,13 +16,14 @@ import (
 
 // Pool struct for Pool
 type Pool struct {
-	Id float32 `json:"id"`
-	Name string `json:"name"`
-	Guid *string `json:"guid,omitempty"`
-	Path string `json:"path"`
-	Status *string `json:"status,omitempty"`
-	Healthy *bool `json:"healthy,omitempty"`
-	IsDecrypted *bool `json:"is_decrypted,omitempty"`
+	Id                   float32 `json:"id"`
+	Name                 string  `json:"name"`
+	Guid                 *string `json:"guid,omitempty"`
+	Path                 string  `json:"path"`
+	Status               *string `json:"status,omitempty"`
+	Healthy              *bool   `json:"healthy,omitempty"`
+	IsDecrypted          *bool   `json:"is_decrypted,omitempty"`
+	EncryptkeyPath       *string `json:"encryptkey_path,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -61,7 +62,7 @@ func (o *Pool) GetId() float32 {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *Pool) GetIdOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -85,7 +86,7 @@ func (o *Pool) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Pool) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -141,7 +142,7 @@ func (o *Pool) GetPath() string {
 // GetPathOk returns a tuple with the Path field value
 // and a boolean to check if the value has been set.
 func (o *Pool) GetPathOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Path, true
@@ -248,6 +249,38 @@ func (o *Pool) SetIsDecrypted(v bool) {
 	o.IsDecrypted = &v
 }
 
+// GetEncryptkeyPath returns the EncryptkeyPath field value if set, zero value otherwise.
+func (o *Pool) GetEncryptkeyPath() string {
+	if o == nil || o.EncryptkeyPath == nil {
+		var ret string
+		return ret
+	}
+	return *o.EncryptkeyPath
+}
+
+// GetEncryptkeyPathOk returns a tuple with the EncryptkeyPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Pool) GetEncryptkeyPathOk() (*string, bool) {
+	if o == nil || o.EncryptkeyPath == nil {
+		return nil, false
+	}
+	return o.EncryptkeyPath, true
+}
+
+// HasEncryptkeyPath returns a boolean if a field has been set.
+func (o *Pool) HasEncryptkeyPath() bool {
+	if o != nil && o.EncryptkeyPath != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEncryptkeyPath gets a reference to the given string and assigns it to the EncryptkeyPath field.
+func (o *Pool) SetEncryptkeyPath(v string) {
+	o.EncryptkeyPath = &v
+}
+
 func (o Pool) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -270,6 +303,9 @@ func (o Pool) MarshalJSON() ([]byte, error) {
 	}
 	if o.IsDecrypted != nil {
 		toSerialize["is_decrypted"] = o.IsDecrypted
+	}
+	if o.EncryptkeyPath != nil {
+		toSerialize["encryptkey_path"] = o.EncryptkeyPath
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -296,6 +332,7 @@ func (o *Pool) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "healthy")
 		delete(additionalProperties, "is_decrypted")
+		delete(additionalProperties, "encryptkey_path")
 		o.AdditionalProperties = additionalProperties
 	}
 
@@ -337,5 +374,3 @@ func (v *NullablePool) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** |  | [optional] 
 **Healthy** | Pointer to **bool** |  | [optional] 
 **IsDecrypted** | Pointer to **bool** |  | [optional] 
+**EncryptkeyPath** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -190,6 +191,31 @@ SetIsDecrypted sets IsDecrypted field to given value.
 `func (o *Pool) HasIsDecrypted() bool`
 
 HasIsDecrypted returns a boolean if a field has been set.
+
+### GetEncryptkeyPath
+
+`func (o *Pool) GetEncryptkeyPath() string`
+
+GetEncryptkeyPath returns the EncryptkeyPath field if non-nil, zero value otherwise.
+
+### GetEncryptkeyPathOk
+
+`func (o *Pool) GetEncryptkeyPathOk() (*string, bool)`
+
+GetEncryptkeyPathOk returns a tuple with the EncryptkeyPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEncryptkeyPath
+
+`func (o *Pool) SetEncryptkeyPath(v string)`
+
+SetEncryptkeyPath sets EncryptkeyPath field to given value.
+
+### HasEncryptkeyPath
+
+`func (o *Pool) HasEncryptkeyPath() bool`
+
+HasEncryptkeyPath returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

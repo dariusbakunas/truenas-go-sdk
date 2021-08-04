@@ -27,12 +27,12 @@ var (
 type PoolApiService service
 
 type ApiListPoolsRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *PoolApiService
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiListPoolsRequest) Limit(limit int32) ApiListPoolsRequest {
@@ -64,7 +64,7 @@ func (r ApiListPoolsRequest) Execute() ([]Pool, *_nethttp.Response, error) {
 func (a *PoolApiService) ListPools(ctx _context.Context) ApiListPoolsRequest {
 	return ApiListPoolsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
