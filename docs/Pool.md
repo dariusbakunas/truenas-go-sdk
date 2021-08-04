@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **Guid** | Pointer to **string** |  | [optional] 
 **Path** | **string** |  | 
 **Status** | Pointer to **string** |  | [optional] 
+**Healthy** | Pointer to **bool** |  | [optional] 
+**IsDecrypted** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -138,6 +140,56 @@ SetStatus sets Status field to given value.
 `func (o *Pool) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetHealthy
+
+`func (o *Pool) GetHealthy() bool`
+
+GetHealthy returns the Healthy field if non-nil, zero value otherwise.
+
+### GetHealthyOk
+
+`func (o *Pool) GetHealthyOk() (*bool, bool)`
+
+GetHealthyOk returns a tuple with the Healthy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHealthy
+
+`func (o *Pool) SetHealthy(v bool)`
+
+SetHealthy sets Healthy field to given value.
+
+### HasHealthy
+
+`func (o *Pool) HasHealthy() bool`
+
+HasHealthy returns a boolean if a field has been set.
+
+### GetIsDecrypted
+
+`func (o *Pool) GetIsDecrypted() bool`
+
+GetIsDecrypted returns the IsDecrypted field if non-nil, zero value otherwise.
+
+### GetIsDecryptedOk
+
+`func (o *Pool) GetIsDecryptedOk() (*bool, bool)`
+
+GetIsDecryptedOk returns a tuple with the IsDecrypted field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDecrypted
+
+`func (o *Pool) SetIsDecrypted(v bool)`
+
+SetIsDecrypted sets IsDecrypted field to given value.
+
+### HasIsDecrypted
+
+`func (o *Pool) HasIsDecrypted() bool`
+
+HasIsDecrypted returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

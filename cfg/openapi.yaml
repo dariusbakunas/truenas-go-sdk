@@ -69,6 +69,10 @@ components:
           type: string
         status:
           type: string
+        healthy:
+          type: boolean
+        is_decrypted:
+          type: boolean
   responses:
     NotFound:
       description: Endpoint not found

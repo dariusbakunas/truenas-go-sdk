@@ -21,6 +21,8 @@ type Pool struct {
 	Guid *string `json:"guid,omitempty"`
 	Path string `json:"path"`
 	Status *string `json:"status,omitempty"`
+	Healthy *bool `json:"healthy,omitempty"`
+	IsDecrypted *bool `json:"is_decrypted,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -182,6 +184,70 @@ func (o *Pool) SetStatus(v string) {
 	o.Status = &v
 }
 
+// GetHealthy returns the Healthy field value if set, zero value otherwise.
+func (o *Pool) GetHealthy() bool {
+	if o == nil || o.Healthy == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Healthy
+}
+
+// GetHealthyOk returns a tuple with the Healthy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Pool) GetHealthyOk() (*bool, bool) {
+	if o == nil || o.Healthy == nil {
+		return nil, false
+	}
+	return o.Healthy, true
+}
+
+// HasHealthy returns a boolean if a field has been set.
+func (o *Pool) HasHealthy() bool {
+	if o != nil && o.Healthy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHealthy gets a reference to the given bool and assigns it to the Healthy field.
+func (o *Pool) SetHealthy(v bool) {
+	o.Healthy = &v
+}
+
+// GetIsDecrypted returns the IsDecrypted field value if set, zero value otherwise.
+func (o *Pool) GetIsDecrypted() bool {
+	if o == nil || o.IsDecrypted == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsDecrypted
+}
+
+// GetIsDecryptedOk returns a tuple with the IsDecrypted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Pool) GetIsDecryptedOk() (*bool, bool) {
+	if o == nil || o.IsDecrypted == nil {
+		return nil, false
+	}
+	return o.IsDecrypted, true
+}
+
+// HasIsDecrypted returns a boolean if a field has been set.
+func (o *Pool) HasIsDecrypted() bool {
+	if o != nil && o.IsDecrypted != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDecrypted gets a reference to the given bool and assigns it to the IsDecrypted field.
+func (o *Pool) SetIsDecrypted(v bool) {
+	o.IsDecrypted = &v
+}
+
 func (o Pool) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -198,6 +264,12 @@ func (o Pool) MarshalJSON() ([]byte, error) {
 	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status
+	}
+	if o.Healthy != nil {
+		toSerialize["healthy"] = o.Healthy
+	}
+	if o.IsDecrypted != nil {
+		toSerialize["is_decrypted"] = o.IsDecrypted
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -222,6 +294,8 @@ func (o *Pool) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "guid")
 		delete(additionalProperties, "path")
 		delete(additionalProperties, "status")
+		delete(additionalProperties, "healthy")
+		delete(additionalProperties, "is_decrypted")
 		o.AdditionalProperties = additionalProperties
 	}
 
