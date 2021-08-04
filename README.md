@@ -78,7 +78,7 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*PoolApi* | [**PoolGet**](docs/PoolApi.md#poolget) | **Get** /pool | 
+*PoolApi* | [**ListPools**](docs/PoolApi.md#listpools) | **Get** /pool | 
 
 
 ## Documentation For Models

@@ -9,6 +9,7 @@ servers:
 paths:
   /pool:
     get:
+      operationId: listPools
       parameters:
       - explode: true
         in: query

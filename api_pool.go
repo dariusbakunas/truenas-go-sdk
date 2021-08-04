@@ -26,7 +26,7 @@ var (
 // PoolApiService PoolApi service
 type PoolApiService service
 
-type ApiPoolGetRequest struct {
+type ApiListPoolsRequest struct {
 	ctx _context.Context
 	ApiService *PoolApiService
 	limit *int32
@@ -35,34 +35,34 @@ type ApiPoolGetRequest struct {
 	sort *string
 }
 
-func (r ApiPoolGetRequest) Limit(limit int32) ApiPoolGetRequest {
+func (r ApiListPoolsRequest) Limit(limit int32) ApiListPoolsRequest {
 	r.limit = &limit
 	return r
 }
-func (r ApiPoolGetRequest) Offset(offset int32) ApiPoolGetRequest {
+func (r ApiListPoolsRequest) Offset(offset int32) ApiListPoolsRequest {
 	r.offset = &offset
 	return r
 }
-func (r ApiPoolGetRequest) Count(count bool) ApiPoolGetRequest {
+func (r ApiListPoolsRequest) Count(count bool) ApiListPoolsRequest {
 	r.count = &count
 	return r
 }
-func (r ApiPoolGetRequest) Sort(sort string) ApiPoolGetRequest {
+func (r ApiListPoolsRequest) Sort(sort string) ApiListPoolsRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiPoolGetRequest) Execute() ([]Pool, *_nethttp.Response, error) {
-	return r.ApiService.PoolGetExecute(r)
+func (r ApiListPoolsRequest) Execute() ([]Pool, *_nethttp.Response, error) {
+	return r.ApiService.ListPoolsExecute(r)
 }
 
 /*
- * PoolGet Method for PoolGet
+ * ListPools Method for ListPools
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiPoolGetRequest
+ * @return ApiListPoolsRequest
  */
-func (a *PoolApiService) PoolGet(ctx _context.Context) ApiPoolGetRequest {
-	return ApiPoolGetRequest{
+func (a *PoolApiService) ListPools(ctx _context.Context) ApiListPoolsRequest {
+	return ApiListPoolsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -72,7 +72,7 @@ func (a *PoolApiService) PoolGet(ctx _context.Context) ApiPoolGetRequest {
  * Execute executes the request
  * @return []Pool
  */
-func (a *PoolApiService) PoolGetExecute(r ApiPoolGetRequest) ([]Pool, *_nethttp.Response, error) {
+func (a *PoolApiService) ListPoolsExecute(r ApiListPoolsRequest) ([]Pool, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -82,7 +82,7 @@ func (a *PoolApiService) PoolGetExecute(r ApiPoolGetRequest) ([]Pool, *_nethttp.
 		localVarReturnValue  []Pool
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoolApiService.PoolGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoolApiService.ListPools")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}

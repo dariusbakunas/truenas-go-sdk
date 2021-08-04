@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PoolGet**](PoolApi.md#PoolGet) | **Get** /pool | 
+[**ListPools**](PoolApi.md#ListPools) | **Get** /pool | 
 
 
 
-## PoolGet
+## ListPools
 
-> []Pool PoolGet(ctx).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
+> []Pool ListPools(ctx).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
 
 
 
@@ -34,13 +34,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PoolApi.PoolGet(context.Background()).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
+    resp, r, err := api_client.PoolApi.ListPools(context.Background()).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PoolApi.PoolGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PoolApi.ListPools``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PoolGet`: []Pool
-    fmt.Fprintf(os.Stdout, "Response from `PoolApi.PoolGet`: %v\n", resp)
+    // response from `ListPools`: []Pool
+    fmt.Fprintf(os.Stdout, "Response from `PoolApi.ListPools`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPoolGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListPoolsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

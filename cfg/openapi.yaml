@@ -6,6 +6,7 @@ info:
 paths:
   /pool:
     get:
+      operationId: 'listPools'
       security:
         - bearerAuth: [ ]
       tags:
