@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **float32** |  | 
+**Id** | **int32** |  | 
 **Name** | **string** |  | 
 **Guid** | Pointer to **string** |  | [optional] 
 **Path** | **string** |  | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewPool
 
-`func NewPool(id float32, name string, path string, ) *Pool`
+`func NewPool(id int32, name string, path string, ) *Pool`
 
 NewPool instantiates a new Pool object
 This constructor will assign default values to properties that have it defined,
@@ -34,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *Pool) GetId() float32`
+`func (o *Pool) GetId() int32`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *Pool) GetIdOk() (*float32, bool)`
+`func (o *Pool) GetIdOk() (*int32, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *Pool) SetId(v float32)`
+`func (o *Pool) SetId(v int32)`
 
 SetId sets Id field to given value.
 

@@ -60,7 +60,7 @@ components:
         - path
       properties:
         id:
-          type: number
+          type: integer
         name:
           type: string
         guid:
