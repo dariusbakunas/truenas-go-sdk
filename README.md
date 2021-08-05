@@ -78,11 +78,14 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*CronjobApi* | [**GetCronJob**](docs/CronjobApi.md#getcronjob) | **Get** /cronjob/id/{id} | 
 *PoolApi* | [**ListPools**](docs/PoolApi.md#listpools) | **Get** /pool | 
 
 
 ## Documentation For Models
 
+ - [CronJob](docs/CronJob.md)
+ - [CronJobSchedule](docs/CronJobSchedule.md)
  - [Pool](docs/Pool.md)
 
 

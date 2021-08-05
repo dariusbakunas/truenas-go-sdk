@@ -41,6 +41,49 @@ paths:
           required: false
           schema:
             type: string
+  /cronjob/id/{id}:
+    get:
+      tags:
+        - cronjob
+      operationId: getCronJob
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - name: id
+          in: path
+          description: ID of the cronjob
+          required: true
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: count
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'CronJob details'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CronJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
 components:
   securitySchemes:
     bearerAuth:
@@ -48,6 +91,36 @@ components:
       scheme: bearer
       bearerFormat: APIKey
   schemas:
+    CronJob:
+      type: object
+      properties:
+        id:
+          type: integer
+        user:
+          type: string
+        command:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        stdout:
+          type: boolean
+        stderr:
+          type: boolean
+        schedule:
+          type: object
+          properties:
+            minute:
+              type: string
+            hour:
+              type: string
+            dom:
+              type: string
+            month:
+              type: string
+            dow:
+              type: string
     PoolsResponse:
       type: array
       items:

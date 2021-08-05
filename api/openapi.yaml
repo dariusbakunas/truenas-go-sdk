@@ -52,6 +52,59 @@ paths:
       - bearerAuth: []
       tags:
       - pool
+  /cronjob/id/{id}:
+    get:
+      operationId: getCronJob
+      parameters:
+      - description: ID of the cronjob
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CronJob'
+          description: CronJob details
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - cronjob
 components:
   responses:
     NotFound:
@@ -61,6 +114,39 @@ components:
     Success:
       description: Operation succeeded
   schemas:
+    CronJob:
+      example:
+        schedule:
+          dom: dom
+          hour: hour
+          month: month
+          dow: dow
+          minute: minute
+        stdout: true
+        description: description
+        id: 0
+        stderr: true
+        user: user
+        command: command
+        enabled: true
+      properties:
+        id:
+          type: integer
+        user:
+          type: string
+        command:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        stdout:
+          type: boolean
+        stderr:
+          type: boolean
+        schedule:
+          $ref: '#/components/schemas/CronJob_schedule'
+      type: object
     PoolsResponse:
       items:
         $ref: '#/components/schemas/Pool'
@@ -96,6 +182,25 @@ components:
       - id
       - name
       - path
+      type: object
+    CronJob_schedule:
+      example:
+        dom: dom
+        hour: hour
+        month: month
+        dow: dow
+        minute: minute
+      properties:
+        minute:
+          type: string
+        hour:
+          type: string
+        dom:
+          type: string
+        month:
+          type: string
+        dow:
+          type: string
       type: object
   securitySchemes:
     bearerAuth:

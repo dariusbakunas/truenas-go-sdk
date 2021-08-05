@@ -49,6 +49,8 @@ type APIClient struct {
 
 	// API Services
 
+	CronjobApi *CronjobApiService
+
 	PoolApi *PoolApiService
 }
 
@@ -68,6 +70,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.CronjobApi = (*CronjobApiService)(&c.common)
 	c.PoolApi = (*PoolApiService)(&c.common)
 
 	return c
