@@ -52,6 +52,68 @@ paths:
       - bearerAuth: []
       tags:
       - pool
+  /pool/dataset/id/{id}:
+    get:
+      description: |-
+        Query Pool Datasets with `query-filters` and `query-options`.
+
+        We provide two ways to retrieve datasets. The first is a flat structure (default), where
+        all datasets in the system are returned as separate objects which contain all data
+        there is for their children. This retrieval type is slightly slower because of duplicates in each object.
+        The second type is hierarchical, where only top level datasets are returned in the list. They contain all the
+        children in the `children` key. This retrieval type is slightly faster.
+        These options are controlled by the `query-options.extra.flat` attribute (default true).
+      operationId: getDataset
+      parameters:
+      - description: ID of the dataset
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: Dataset details
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - dataset
   /cronjob/id/{id}:
     get:
       operationId: getCronJob
@@ -114,6 +176,21 @@ components:
     Success:
       description: Operation succeeded
   schemas:
+    CompositeValue:
+      example:
+        rawvalue: rawvalue
+        source: source
+        value: value
+      properties:
+        value:
+          type: string
+        rawvalue:
+          type: string
+        source:
+          type: string
+      required:
+      - rawvalue
+      type: object
     CronJob:
       example:
         schedule:
@@ -146,6 +223,204 @@ components:
           type: boolean
         schedule:
           $ref: '#/components/schemas/CronJob_schedule'
+      type: object
+    Dataset:
+      example:
+        key_loaded: true
+        quota_critical:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        origin:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        recordsize:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        deduplication:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        refreservation:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        type: type
+        mountpoint: mountpoint
+        acltype:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        copies:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        readonly:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        casesensitivity:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        quota:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        reservation:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        id: id
+        locked: true
+        refquota:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        xattr:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        atime:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        comments:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        pbkdf2iters:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        key_format:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        pool: pool
+        encryption_root: encryption_root
+        sync:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        snapdir:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        quota_warning:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        encrypted: true
+        managedby:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        name: name
+        refquota_critical:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        encryption_algorithm:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        aclmode:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        compression:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        refquota_warning:
+          rawvalue: rawvalue
+          source: source
+          value: value
+        exec:
+          rawvalue: rawvalue
+          source: source
+          value: value
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        pool:
+          type: string
+        type:
+          type: string
+        mountpoint:
+          type: string
+        encrypted:
+          type: boolean
+        encryption_root:
+          type: string
+        key_loaded:
+          type: boolean
+        locked:
+          type: boolean
+        encryption_algorithm:
+          $ref: '#/components/schemas/CompositeValue'
+        aclmode:
+          $ref: '#/components/schemas/CompositeValue'
+        acltype:
+          $ref: '#/components/schemas/CompositeValue'
+        atime:
+          $ref: '#/components/schemas/CompositeValue'
+        casesensitivity:
+          $ref: '#/components/schemas/CompositeValue'
+        comments:
+          $ref: '#/components/schemas/CompositeValue'
+        compression:
+          $ref: '#/components/schemas/CompositeValue'
+        deduplication:
+          $ref: '#/components/schemas/CompositeValue'
+        exec:
+          $ref: '#/components/schemas/CompositeValue'
+        key_format:
+          $ref: '#/components/schemas/CompositeValue'
+        managedby:
+          $ref: '#/components/schemas/CompositeValue'
+        copies:
+          $ref: '#/components/schemas/CompositeValue'
+        quota:
+          $ref: '#/components/schemas/CompositeValue'
+        quota_critical:
+          $ref: '#/components/schemas/CompositeValue'
+        quota_warning:
+          $ref: '#/components/schemas/CompositeValue'
+        reservation:
+          $ref: '#/components/schemas/CompositeValue'
+        refreservation:
+          $ref: '#/components/schemas/CompositeValue'
+        refquota:
+          $ref: '#/components/schemas/CompositeValue'
+        refquota_critical:
+          $ref: '#/components/schemas/CompositeValue'
+        refquota_warning:
+          $ref: '#/components/schemas/CompositeValue'
+        readonly:
+          $ref: '#/components/schemas/CompositeValue'
+        recordsize:
+          $ref: '#/components/schemas/CompositeValue'
+        sync:
+          $ref: '#/components/schemas/CompositeValue'
+        snapdir:
+          $ref: '#/components/schemas/CompositeValue'
+        pbkdf2iters:
+          $ref: '#/components/schemas/CompositeValue'
+        origin:
+          $ref: '#/components/schemas/CompositeValue'
+        xattr:
+          $ref: '#/components/schemas/CompositeValue'
+      required:
+      - id
+      - name
+      - pool
+      - type
       type: object
     PoolsResponse:
       items:

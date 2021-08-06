@@ -41,6 +41,58 @@ paths:
           required: false
           schema:
             type: string
+  /pool/dataset/id/{id}:
+    get:
+      tags:
+        - dataset
+      operationId: getDataset
+      security:
+        - bearerAuth: [ ]
+      description: |-
+        Query Pool Datasets with `query-filters` and `query-options`.
+
+        We provide two ways to retrieve datasets. The first is a flat structure (default), where
+        all datasets in the system are returned as separate objects which contain all data
+        there is for their children. This retrieval type is slightly slower because of duplicates in each object.
+        The second type is hierarchical, where only top level datasets are returned in the list. They contain all the
+        children in the `children` key. This retrieval type is slightly faster.
+        These options are controlled by the `query-options.extra.flat` attribute (default true).
+      parameters:
+        - name: id
+          in: path
+          description: ID of the dataset
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: count
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Dataset details'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
   /cronjob/id/{id}:
     get:
       tags:
@@ -91,6 +143,22 @@ components:
       scheme: bearer
       bearerFormat: APIKey
   schemas:
+    CompositeValue:
+      type: object
+      required:
+        - rawvalue
+      properties:
+        value:
+          type: string
+        rawvalue:
+          type: string
+#        Does not seem to work yet:
+#        parsed:
+#          anyOf:
+#            - type: string
+#            - type: number
+        source:
+          type: string
     CronJob:
       type: object
       properties:
@@ -121,6 +189,86 @@ components:
               type: string
             dow:
               type: string
+    Dataset:
+      type: object
+      required:
+        - id
+        - name
+        - pool
+        - type
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        pool:
+          type: string
+        type:
+          type: string
+        mountpoint:
+          type: string
+        encrypted:
+          type: boolean
+        encryption_root:
+          type: string
+        key_loaded:
+          type: boolean
+        locked:
+          type: boolean
+        encryption_algorithm:
+          $ref: '#/components/schemas/CompositeValue'
+        aclmode:
+          $ref: '#/components/schemas/CompositeValue'
+        acltype:
+          $ref: '#/components/schemas/CompositeValue'
+        atime:
+          $ref: '#/components/schemas/CompositeValue'
+        casesensitivity:
+          $ref: '#/components/schemas/CompositeValue'
+        comments:
+          $ref: '#/components/schemas/CompositeValue'
+        compression:
+          $ref: '#/components/schemas/CompositeValue'
+        deduplication:
+          $ref: '#/components/schemas/CompositeValue'
+        exec:
+          $ref: '#/components/schemas/CompositeValue'
+        key_format:
+          $ref: '#/components/schemas/CompositeValue'
+        managedby:
+          $ref: '#/components/schemas/CompositeValue'
+        copies:
+          $ref: '#/components/schemas/CompositeValue'
+        quota:
+          $ref: '#/components/schemas/CompositeValue'
+        quota_critical:
+          $ref: '#/components/schemas/CompositeValue'
+        quota_warning:
+          $ref: '#/components/schemas/CompositeValue'
+        reservation:
+          $ref: '#/components/schemas/CompositeValue'
+        refreservation:
+          $ref: '#/components/schemas/CompositeValue'
+        refquota:
+          $ref: '#/components/schemas/CompositeValue'
+        refquota_critical:
+          $ref: '#/components/schemas/CompositeValue'
+        refquota_warning:
+          $ref: '#/components/schemas/CompositeValue'
+        readonly:
+          $ref: '#/components/schemas/CompositeValue'
+        recordsize:
+          $ref: '#/components/schemas/CompositeValue'
+        sync:
+          $ref: '#/components/schemas/CompositeValue'
+        snapdir:
+          $ref: '#/components/schemas/CompositeValue'
+        pbkdf2iters:
+          $ref: '#/components/schemas/CompositeValue'
+        origin:
+          $ref: '#/components/schemas/CompositeValue'
+        xattr:
+          $ref: '#/components/schemas/CompositeValue'
     PoolsResponse:
       type: array
       items:
