@@ -312,6 +312,8 @@ components:
           $ref: '#/components/schemas/CompositeValue'
         xattr:
           $ref: '#/components/schemas/CompositeValue'
+        volsize:
+          $ref: '#/components/schemas/CompositeValue'
     PoolsResponse:
       type: array
       items:

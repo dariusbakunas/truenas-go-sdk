@@ -40,6 +40,7 @@ Name | Type | Description | Notes
 **Pbkdf2iters** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 **Origin** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 **Xattr** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
+**Volsize** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 
 ## Methods
 
@@ -939,6 +940,31 @@ SetXattr sets Xattr field to given value.
 `func (o *Dataset) HasXattr() bool`
 
 HasXattr returns a boolean if a field has been set.
+
+### GetVolsize
+
+`func (o *Dataset) GetVolsize() CompositeValue`
+
+GetVolsize returns the Volsize field if non-nil, zero value otherwise.
+
+### GetVolsizeOk
+
+`func (o *Dataset) GetVolsizeOk() (*CompositeValue, bool)`
+
+GetVolsizeOk returns a tuple with the Volsize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVolsize
+
+`func (o *Dataset) SetVolsize(v CompositeValue)`
+
+SetVolsize sets Volsize field to given value.
+
+### HasVolsize
+
+`func (o *Dataset) HasVolsize() bool`
+
+HasVolsize returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

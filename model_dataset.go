@@ -52,6 +52,7 @@ type Dataset struct {
 	Pbkdf2iters          *CompositeValue `json:"pbkdf2iters,omitempty"`
 	Origin               *CompositeValue `json:"origin,omitempty"`
 	Xattr                *CompositeValue `json:"xattr,omitempty"`
+	Volsize              *CompositeValue `json:"volsize,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -1198,6 +1199,38 @@ func (o *Dataset) SetXattr(v CompositeValue) {
 	o.Xattr = &v
 }
 
+// GetVolsize returns the Volsize field value if set, zero value otherwise.
+func (o *Dataset) GetVolsize() CompositeValue {
+	if o == nil || o.Volsize == nil {
+		var ret CompositeValue
+		return ret
+	}
+	return *o.Volsize
+}
+
+// GetVolsizeOk returns a tuple with the Volsize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Dataset) GetVolsizeOk() (*CompositeValue, bool) {
+	if o == nil || o.Volsize == nil {
+		return nil, false
+	}
+	return o.Volsize, true
+}
+
+// HasVolsize returns a boolean if a field has been set.
+func (o *Dataset) HasVolsize() bool {
+	if o != nil && o.Volsize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVolsize gets a reference to the given CompositeValue and assigns it to the Volsize field.
+func (o *Dataset) SetVolsize(v CompositeValue) {
+	o.Volsize = &v
+}
+
 func (o Dataset) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -1308,6 +1341,9 @@ func (o Dataset) MarshalJSON() ([]byte, error) {
 	if o.Xattr != nil {
 		toSerialize["xattr"] = o.Xattr
 	}
+	if o.Volsize != nil {
+		toSerialize["volsize"] = o.Volsize
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1362,6 +1398,7 @@ func (o *Dataset) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "pbkdf2iters")
 		delete(additionalProperties, "origin")
 		delete(additionalProperties, "xattr")
+		delete(additionalProperties, "volsize")
 		o.AdditionalProperties = additionalProperties
 	}
 

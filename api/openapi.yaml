@@ -348,6 +348,10 @@ components:
           rawvalue: rawvalue
           source: source
           value: value
+        volsize:
+          rawvalue: rawvalue
+          source: source
+          value: value
         key_format:
           rawvalue: rawvalue
           source: source
@@ -468,6 +472,8 @@ components:
         origin:
           $ref: '#/components/schemas/CompositeValue'
         xattr:
+          $ref: '#/components/schemas/CompositeValue'
+        volsize:
           $ref: '#/components/schemas/CompositeValue'
       required:
       - id
