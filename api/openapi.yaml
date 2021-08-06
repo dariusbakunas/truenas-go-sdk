@@ -167,6 +167,59 @@ paths:
       - bearerAuth: []
       tags:
       - cronjob
+  /service/id/{id}:
+    get:
+      operationId: getService
+      parameters:
+      - description: ID of the cronjob
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+          description: Service details
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - service
 components:
   responses:
     NotFound:
@@ -457,6 +510,32 @@ components:
       - id
       - name
       - path
+      type: object
+    Service:
+      example:
+        service: service
+        enable: true
+        id: 0
+        state: state
+        pids:
+        - pids
+        - pids
+      properties:
+        id:
+          type: integer
+        service:
+          type: string
+        enable:
+          type: boolean
+        state:
+          type: string
+        pids:
+          items:
+            type: string
+          type: array
+      required:
+      - id
+      - service
       type: object
     CronJob_schedule:
       example:

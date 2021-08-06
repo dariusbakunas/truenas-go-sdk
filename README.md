@@ -81,6 +81,7 @@ Class | Method | HTTP request | Description
 *CronjobApi* | [**GetCronJob**](docs/CronjobApi.md#getcronjob) | **Get** /cronjob/id/{id} | 
 *DatasetApi* | [**GetDataset**](docs/DatasetApi.md#getdataset) | **Get** /pool/dataset/id/{id} | 
 *PoolApi* | [**ListPools**](docs/PoolApi.md#listpools) | **Get** /pool | 
+*ServiceApi* | [**GetService**](docs/ServiceApi.md#getservice) | **Get** /service/id/{id} | 
 
 
 ## Documentation For Models
@@ -90,6 +91,7 @@ Class | Method | HTTP request | Description
  - [CronJobSchedule](docs/CronJobSchedule.md)
  - [Dataset](docs/Dataset.md)
  - [Pool](docs/Pool.md)
+ - [Service](docs/Service.md)
 
 
 ## Documentation For Authorization

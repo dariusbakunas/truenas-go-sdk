@@ -4,6 +4,7 @@ api/openapi.yaml
 api_cronjob.go
 api_dataset.go
 api_pool.go
+api_service.go
 client.go
 configuration.go
 docs/CompositeValue.md
@@ -14,6 +15,8 @@ docs/Dataset.md
 docs/DatasetApi.md
 docs/Pool.md
 docs/PoolApi.md
+docs/Service.md
+docs/ServiceApi.md
 git_push.sh
 go.mod
 go.sum
@@ -22,5 +25,6 @@ model_cron_job.go
 model_cron_job_schedule.go
 model_dataset.go
 model_pool.go
+model_service.go
 response.go
 utils.go

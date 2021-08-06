@@ -136,6 +136,49 @@ paths:
                 $ref: '#/components/schemas/CronJob'
         '401':
           $ref: '#/components/responses/Unauthorized'
+  /service/id/{id}:
+    get:
+      tags:
+        - service
+      operationId: getService
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - name: id
+          in: path
+          description: ID of the cronjob
+          required: true
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: count
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Service details'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
 components:
   securitySchemes:
     bearerAuth:
@@ -296,6 +339,24 @@ components:
           type: boolean
         encryptkey_path:
           type: string
+    Service:
+      type: object
+      required:
+        - id
+        - service
+      properties:
+        id:
+          type: integer
+        service:
+          type: string
+        enable:
+          type: boolean
+        state:
+          type: string
+        pids:
+          type: array
+          items:
+            type: string
   responses:
     NotFound:
       description: Endpoint not found
