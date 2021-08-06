@@ -16,11 +16,11 @@ import (
 
 // Service struct for Service
 type Service struct {
-	Id                   int32     `json:"id"`
-	Service              string    `json:"service"`
-	Enable               *bool     `json:"enable,omitempty"`
-	State                *string   `json:"state,omitempty"`
-	Pids                 *[]string `json:"pids,omitempty"`
+	Id                   int32    `json:"id"`
+	Service              string   `json:"service"`
+	Enable               *bool    `json:"enable,omitempty"`
+	State                *string  `json:"state,omitempty"`
+	Pids                 *[]int32 `json:"pids,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -158,9 +158,9 @@ func (o *Service) SetState(v string) {
 }
 
 // GetPids returns the Pids field value if set, zero value otherwise.
-func (o *Service) GetPids() []string {
+func (o *Service) GetPids() []int32 {
 	if o == nil || o.Pids == nil {
-		var ret []string
+		var ret []int32
 		return ret
 	}
 	return *o.Pids
@@ -168,7 +168,7 @@ func (o *Service) GetPids() []string {
 
 // GetPidsOk returns a tuple with the Pids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Service) GetPidsOk() (*[]string, bool) {
+func (o *Service) GetPidsOk() (*[]int32, bool) {
 	if o == nil || o.Pids == nil {
 		return nil, false
 	}
@@ -184,8 +184,8 @@ func (o *Service) HasPids() bool {
 	return false
 }
 
-// SetPids gets a reference to the given []string and assigns it to the Pids field.
-func (o *Service) SetPids(v []string) {
+// SetPids gets a reference to the given []int32 and assigns it to the Pids field.
+func (o *Service) SetPids(v []int32) {
 	o.Pids = &v
 }
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Service** | **string** |  | 
 **Enable** | Pointer to **bool** |  | [optional] 
 **State** | Pointer to **string** |  | [optional] 
-**Pids** | Pointer to **[]string** |  | [optional] 
+**Pids** | Pointer to **[]int32** |  | [optional] 
 
 ## Methods
 
@@ -121,20 +121,20 @@ HasState returns a boolean if a field has been set.
 
 ### GetPids
 
-`func (o *Service) GetPids() []string`
+`func (o *Service) GetPids() []int32`
 
 GetPids returns the Pids field if non-nil, zero value otherwise.
 
 ### GetPidsOk
 
-`func (o *Service) GetPidsOk() (*[]string, bool)`
+`func (o *Service) GetPidsOk() (*[]int32, bool)`
 
 GetPidsOk returns a tuple with the Pids field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPids
 
-`func (o *Service) SetPids(v []string)`
+`func (o *Service) SetPids(v []int32)`
 
 SetPids sets Pids field to given value.
 

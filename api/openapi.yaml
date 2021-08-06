@@ -518,8 +518,8 @@ components:
         id: 0
         state: state
         pids:
-        - pids
-        - pids
+        - 6
+        - 6
       properties:
         id:
           type: integer
@@ -531,7 +531,7 @@ components:
           type: string
         pids:
           items:
-            type: string
+            type: integer
           type: array
       required:
       - id

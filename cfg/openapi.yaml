@@ -356,7 +356,7 @@ components:
         pids:
           type: array
           items:
-            type: string
+            type: integer
   responses:
     NotFound:
       description: Endpoint not found
