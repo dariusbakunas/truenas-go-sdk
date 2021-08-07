@@ -8,8 +8,9 @@ api_service.go
 client.go
 configuration.go
 docs/CompositeValue.md
+docs/CreateCronjobParams.md
+docs/CreateCronjobParamsSchedule.md
 docs/CronJob.md
-docs/CronJobSchedule.md
 docs/CronjobApi.md
 docs/Dataset.md
 docs/DatasetApi.md
@@ -21,8 +22,9 @@ git_push.sh
 go.mod
 go.sum
 model_composite_value.go
+model_create_cronjob_params.go
+model_create_cronjob_params_schedule.go
 model_cron_job.go
-model_cron_job_schedule.go
 model_dataset.go
 model_pool.go
 model_service.go

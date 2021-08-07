@@ -167,6 +167,31 @@ paths:
       - bearerAuth: []
       tags:
       - cronjob
+  /cronjob:
+    post:
+      description: |-
+        Create a new cron job.
+        `stderr` and `stdout` are boolean values which if `true`, represent that we would like to suppress standard error / standard output respectively.
+      operationId: createCronJob
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCronjobParams'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CronJob'
+          description: CronJob details
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - cronjob
   /service/id/{id}:
     get:
       operationId: getService
@@ -229,6 +254,39 @@ components:
     Success:
       description: Operation succeeded
   schemas:
+    CreateCronjobParams:
+      example:
+        schedule:
+          dom: dom
+          hour: hour
+          month: month
+          dow: dow
+          minute: minute
+        stdout: true
+        description: description
+        stderr: true
+        user: user
+        command: command
+        enabled: true
+      properties:
+        user:
+          type: string
+        command:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        stdout:
+          type: boolean
+        stderr:
+          type: boolean
+        schedule:
+          $ref: '#/components/schemas/CreateCronjobParams_schedule'
+      required:
+      - command
+      - user
+      type: object
     CompositeValue:
       example:
         rawvalue: rawvalue
@@ -275,7 +333,7 @@ components:
         stderr:
           type: boolean
         schedule:
-          $ref: '#/components/schemas/CronJob_schedule'
+          $ref: '#/components/schemas/CreateCronjobParams_schedule'
       type: object
     Dataset:
       example:
@@ -543,7 +601,7 @@ components:
       - id
       - service
       type: object
-    CronJob_schedule:
+    CreateCronjobParams_schedule:
       example:
         dom: dom
         hour: hour

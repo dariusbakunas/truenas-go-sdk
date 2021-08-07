@@ -136,6 +136,33 @@ paths:
                 $ref: '#/components/schemas/CronJob'
         '401':
           $ref: '#/components/responses/Unauthorized'
+  /cronjob:
+    post:
+      tags:
+       - cronjob
+      operationId: createCronJob
+      security:
+        - bearerAuth: [ ]
+      description:
+        Create a new cron job.
+
+        `stderr` and `stdout` are boolean values which if `true`, represent that we would like to suppress
+        standard error / standard output respectively.
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCronjobParams'
+      responses:
+        '200':
+          description: 'CronJob details'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CronJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
   /service/id/{id}:
     get:
       tags:
@@ -186,6 +213,37 @@ components:
       scheme: bearer
       bearerFormat: APIKey
   schemas:
+    CreateCronjobParams:
+      type: object
+      required:
+        - user
+        - command
+      properties:
+        user:
+          type: string
+        command:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        stdout:
+          type: boolean
+        stderr:
+          type: boolean
+        schedule:
+          type: object
+          properties:
+            minute:
+              type: string
+            hour:
+              type: string
+            dom:
+              type: string
+            month:
+              type: string
+            dow:
+              type: string
     CompositeValue:
       type: object
       required:

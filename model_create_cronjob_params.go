@@ -14,11 +14,10 @@ import (
 	"encoding/json"
 )
 
-// CronJob struct for CronJob
-type CronJob struct {
-	Id                   *int32                       `json:"id,omitempty"`
-	User                 *string                      `json:"user,omitempty"`
-	Command              *string                      `json:"command,omitempty"`
+// CreateCronjobParams struct for CreateCronjobParams
+type CreateCronjobParams struct {
+	User                 string                       `json:"user"`
+	Command              string                       `json:"command"`
 	Description          *string                      `json:"description,omitempty"`
 	Enabled              *bool                        `json:"enabled,omitempty"`
 	Stdout               *bool                        `json:"stdout,omitempty"`
@@ -27,123 +26,77 @@ type CronJob struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _CronJob CronJob
+type _CreateCronjobParams CreateCronjobParams
 
-// NewCronJob instantiates a new CronJob object
+// NewCreateCronjobParams instantiates a new CreateCronjobParams object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCronJob() *CronJob {
-	this := CronJob{}
+func NewCreateCronjobParams(user string, command string) *CreateCronjobParams {
+	this := CreateCronjobParams{}
+	this.User = user
+	this.Command = command
 	return &this
 }
 
-// NewCronJobWithDefaults instantiates a new CronJob object
+// NewCreateCronjobParamsWithDefaults instantiates a new CreateCronjobParams object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCronJobWithDefaults() *CronJob {
-	this := CronJob{}
+func NewCreateCronjobParamsWithDefaults() *CreateCronjobParams {
+	this := CreateCronjobParams{}
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *CronJob) GetId() int32 {
-	if o == nil || o.Id == nil {
-		var ret int32
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CronJob) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *CronJob) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *CronJob) SetId(v int32) {
-	o.Id = &v
-}
-
-// GetUser returns the User field value if set, zero value otherwise.
-func (o *CronJob) GetUser() string {
-	if o == nil || o.User == nil {
+// GetUser returns the User field value
+func (o *CreateCronjobParams) GetUser() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.User
+
+	return o.User
 }
 
-// GetUserOk returns a tuple with the User field value if set, nil otherwise
+// GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *CronJob) GetUserOk() (*string, bool) {
-	if o == nil || o.User == nil {
+func (o *CreateCronjobParams) GetUserOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.User, true
+	return &o.User, true
 }
 
-// HasUser returns a boolean if a field has been set.
-func (o *CronJob) HasUser() bool {
-	if o != nil && o.User != nil {
-		return true
-	}
-
-	return false
+// SetUser sets field value
+func (o *CreateCronjobParams) SetUser(v string) {
+	o.User = v
 }
 
-// SetUser gets a reference to the given string and assigns it to the User field.
-func (o *CronJob) SetUser(v string) {
-	o.User = &v
-}
-
-// GetCommand returns the Command field value if set, zero value otherwise.
-func (o *CronJob) GetCommand() string {
-	if o == nil || o.Command == nil {
+// GetCommand returns the Command field value
+func (o *CreateCronjobParams) GetCommand() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Command
+
+	return o.Command
 }
 
-// GetCommandOk returns a tuple with the Command field value if set, nil otherwise
+// GetCommandOk returns a tuple with the Command field value
 // and a boolean to check if the value has been set.
-func (o *CronJob) GetCommandOk() (*string, bool) {
-	if o == nil || o.Command == nil {
+func (o *CreateCronjobParams) GetCommandOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Command, true
+	return &o.Command, true
 }
 
-// HasCommand returns a boolean if a field has been set.
-func (o *CronJob) HasCommand() bool {
-	if o != nil && o.Command != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCommand gets a reference to the given string and assigns it to the Command field.
-func (o *CronJob) SetCommand(v string) {
-	o.Command = &v
+// SetCommand sets field value
+func (o *CreateCronjobParams) SetCommand(v string) {
+	o.Command = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *CronJob) GetDescription() string {
+func (o *CreateCronjobParams) GetDescription() string {
 	if o == nil || o.Description == nil {
 		var ret string
 		return ret
@@ -153,7 +106,7 @@ func (o *CronJob) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CronJob) GetDescriptionOk() (*string, bool) {
+func (o *CreateCronjobParams) GetDescriptionOk() (*string, bool) {
 	if o == nil || o.Description == nil {
 		return nil, false
 	}
@@ -161,7 +114,7 @@ func (o *CronJob) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *CronJob) HasDescription() bool {
+func (o *CreateCronjobParams) HasDescription() bool {
 	if o != nil && o.Description != nil {
 		return true
 	}
@@ -170,12 +123,12 @@ func (o *CronJob) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *CronJob) SetDescription(v string) {
+func (o *CreateCronjobParams) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
-func (o *CronJob) GetEnabled() bool {
+func (o *CreateCronjobParams) GetEnabled() bool {
 	if o == nil || o.Enabled == nil {
 		var ret bool
 		return ret
@@ -185,7 +138,7 @@ func (o *CronJob) GetEnabled() bool {
 
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CronJob) GetEnabledOk() (*bool, bool) {
+func (o *CreateCronjobParams) GetEnabledOk() (*bool, bool) {
 	if o == nil || o.Enabled == nil {
 		return nil, false
 	}
@@ -193,7 +146,7 @@ func (o *CronJob) GetEnabledOk() (*bool, bool) {
 }
 
 // HasEnabled returns a boolean if a field has been set.
-func (o *CronJob) HasEnabled() bool {
+func (o *CreateCronjobParams) HasEnabled() bool {
 	if o != nil && o.Enabled != nil {
 		return true
 	}
@@ -202,12 +155,12 @@ func (o *CronJob) HasEnabled() bool {
 }
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
-func (o *CronJob) SetEnabled(v bool) {
+func (o *CreateCronjobParams) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
 // GetStdout returns the Stdout field value if set, zero value otherwise.
-func (o *CronJob) GetStdout() bool {
+func (o *CreateCronjobParams) GetStdout() bool {
 	if o == nil || o.Stdout == nil {
 		var ret bool
 		return ret
@@ -217,7 +170,7 @@ func (o *CronJob) GetStdout() bool {
 
 // GetStdoutOk returns a tuple with the Stdout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CronJob) GetStdoutOk() (*bool, bool) {
+func (o *CreateCronjobParams) GetStdoutOk() (*bool, bool) {
 	if o == nil || o.Stdout == nil {
 		return nil, false
 	}
@@ -225,7 +178,7 @@ func (o *CronJob) GetStdoutOk() (*bool, bool) {
 }
 
 // HasStdout returns a boolean if a field has been set.
-func (o *CronJob) HasStdout() bool {
+func (o *CreateCronjobParams) HasStdout() bool {
 	if o != nil && o.Stdout != nil {
 		return true
 	}
@@ -234,12 +187,12 @@ func (o *CronJob) HasStdout() bool {
 }
 
 // SetStdout gets a reference to the given bool and assigns it to the Stdout field.
-func (o *CronJob) SetStdout(v bool) {
+func (o *CreateCronjobParams) SetStdout(v bool) {
 	o.Stdout = &v
 }
 
 // GetStderr returns the Stderr field value if set, zero value otherwise.
-func (o *CronJob) GetStderr() bool {
+func (o *CreateCronjobParams) GetStderr() bool {
 	if o == nil || o.Stderr == nil {
 		var ret bool
 		return ret
@@ -249,7 +202,7 @@ func (o *CronJob) GetStderr() bool {
 
 // GetStderrOk returns a tuple with the Stderr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CronJob) GetStderrOk() (*bool, bool) {
+func (o *CreateCronjobParams) GetStderrOk() (*bool, bool) {
 	if o == nil || o.Stderr == nil {
 		return nil, false
 	}
@@ -257,7 +210,7 @@ func (o *CronJob) GetStderrOk() (*bool, bool) {
 }
 
 // HasStderr returns a boolean if a field has been set.
-func (o *CronJob) HasStderr() bool {
+func (o *CreateCronjobParams) HasStderr() bool {
 	if o != nil && o.Stderr != nil {
 		return true
 	}
@@ -266,12 +219,12 @@ func (o *CronJob) HasStderr() bool {
 }
 
 // SetStderr gets a reference to the given bool and assigns it to the Stderr field.
-func (o *CronJob) SetStderr(v bool) {
+func (o *CreateCronjobParams) SetStderr(v bool) {
 	o.Stderr = &v
 }
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
-func (o *CronJob) GetSchedule() CreateCronjobParamsSchedule {
+func (o *CreateCronjobParams) GetSchedule() CreateCronjobParamsSchedule {
 	if o == nil || o.Schedule == nil {
 		var ret CreateCronjobParamsSchedule
 		return ret
@@ -281,7 +234,7 @@ func (o *CronJob) GetSchedule() CreateCronjobParamsSchedule {
 
 // GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CronJob) GetScheduleOk() (*CreateCronjobParamsSchedule, bool) {
+func (o *CreateCronjobParams) GetScheduleOk() (*CreateCronjobParamsSchedule, bool) {
 	if o == nil || o.Schedule == nil {
 		return nil, false
 	}
@@ -289,7 +242,7 @@ func (o *CronJob) GetScheduleOk() (*CreateCronjobParamsSchedule, bool) {
 }
 
 // HasSchedule returns a boolean if a field has been set.
-func (o *CronJob) HasSchedule() bool {
+func (o *CreateCronjobParams) HasSchedule() bool {
 	if o != nil && o.Schedule != nil {
 		return true
 	}
@@ -298,19 +251,16 @@ func (o *CronJob) HasSchedule() bool {
 }
 
 // SetSchedule gets a reference to the given CreateCronjobParamsSchedule and assigns it to the Schedule field.
-func (o *CronJob) SetSchedule(v CreateCronjobParamsSchedule) {
+func (o *CreateCronjobParams) SetSchedule(v CreateCronjobParamsSchedule) {
 	o.Schedule = &v
 }
 
-func (o CronJob) MarshalJSON() ([]byte, error) {
+func (o CreateCronjobParams) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.User != nil {
+	if true {
 		toSerialize["user"] = o.User
 	}
-	if o.Command != nil {
+	if true {
 		toSerialize["command"] = o.Command
 	}
 	if o.Description != nil {
@@ -336,17 +286,16 @@ func (o CronJob) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o *CronJob) UnmarshalJSON(bytes []byte) (err error) {
-	varCronJob := _CronJob{}
+func (o *CreateCronjobParams) UnmarshalJSON(bytes []byte) (err error) {
+	varCreateCronjobParams := _CreateCronjobParams{}
 
-	if err = json.Unmarshal(bytes, &varCronJob); err == nil {
-		*o = CronJob(varCronJob)
+	if err = json.Unmarshal(bytes, &varCreateCronjobParams); err == nil {
+		*o = CreateCronjobParams(varCreateCronjobParams)
 	}
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
 		delete(additionalProperties, "user")
 		delete(additionalProperties, "command")
 		delete(additionalProperties, "description")
@@ -360,38 +309,38 @@ func (o *CronJob) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableCronJob struct {
-	value *CronJob
+type NullableCreateCronjobParams struct {
+	value *CreateCronjobParams
 	isSet bool
 }
 
-func (v NullableCronJob) Get() *CronJob {
+func (v NullableCreateCronjobParams) Get() *CreateCronjobParams {
 	return v.value
 }
 
-func (v *NullableCronJob) Set(val *CronJob) {
+func (v *NullableCreateCronjobParams) Set(val *CreateCronjobParams) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCronJob) IsSet() bool {
+func (v NullableCreateCronjobParams) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCronJob) Unset() {
+func (v *NullableCreateCronjobParams) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCronJob(val *CronJob) *NullableCronJob {
-	return &NullableCronJob{value: val, isSet: true}
+func NewNullableCreateCronjobParams(val *CreateCronjobParams) *NullableCreateCronjobParams {
+	return &NullableCreateCronjobParams{value: val, isSet: true}
 }
 
-func (v NullableCronJob) MarshalJSON() ([]byte, error) {
+func (v NullableCreateCronjobParams) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCronJob) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateCronjobParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
