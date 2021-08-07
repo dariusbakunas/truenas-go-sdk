@@ -136,6 +136,25 @@ paths:
                 $ref: '#/components/schemas/CronJob'
         '401':
           $ref: '#/components/responses/Unauthorized'
+    delete:
+      tags:
+        - cronjob
+      operationId: deleteCronJob
+      security:
+        - bearerAuth: [ ]
+      parameters:
+      - name: id
+        in: path
+        description: ID of the cronjob
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+
+        '401':
+          $ref: '#/components/responses/Unauthorized'
   /cronjob:
     post:
       tags:

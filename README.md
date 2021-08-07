@@ -79,6 +79,7 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *CronjobApi* | [**CreateCronJob**](docs/CronjobApi.md#createcronjob) | **Post** /cronjob | 
+*CronjobApi* | [**DeleteCronJob**](docs/CronjobApi.md#deletecronjob) | **Delete** /cronjob/id/{id} | 
 *CronjobApi* | [**GetCronJob**](docs/CronjobApi.md#getcronjob) | **Get** /cronjob/id/{id} | 
 *DatasetApi* | [**GetDataset**](docs/DatasetApi.md#getdataset) | **Get** /pool/dataset/id/{id} | 
 *PoolApi* | [**ListPools**](docs/PoolApi.md#listpools) | **Get** /pool | 
