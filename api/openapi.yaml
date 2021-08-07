@@ -97,6 +97,30 @@ paths:
       tags:
       - dataset
   /pool/dataset/id/{id}:
+    delete:
+      description: |
+        Delete dataset/zvol
+
+        `recursive` will also delete/destroy all children datasets.
+        `force` will force delete busy datasets.
+      operationId: deleteDataset
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Operation succeeded
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - dataset
     get:
       description: |-
         Query Pool Datasets with `query-filters` and `query-options`.

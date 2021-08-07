@@ -164,6 +164,28 @@ paths:
                 $ref: '#/components/schemas/Dataset'
         '401':
           $ref: '#/components/responses/Unauthorized'
+    delete:
+      tags:
+      - dataset
+      operationId: deleteDataset
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      description: |+
+        Delete dataset/zvol
+
+        `recursive` will also delete/destroy all children datasets.
+        `force` will force delete busy datasets.
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
   /cronjob/id/{id}:
     get:
       tags:

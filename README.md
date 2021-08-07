@@ -83,6 +83,7 @@ Class | Method | HTTP request | Description
 *CronjobApi* | [**GetCronJob**](docs/CronjobApi.md#getcronjob) | **Get** /cronjob/id/{id} | 
 *CronjobApi* | [**UpdateCronJob**](docs/CronjobApi.md#updatecronjob) | **Put** /cronjob/id/{id} | 
 *DatasetApi* | [**CreateDataset**](docs/DatasetApi.md#createdataset) | **Post** /pool/dataset | 
+*DatasetApi* | [**DeleteDataset**](docs/DatasetApi.md#deletedataset) | **Delete** /pool/dataset/id/{id} | 
 *DatasetApi* | [**GetDataset**](docs/DatasetApi.md#getdataset) | **Get** /pool/dataset/id/{id} | 
 *DatasetApi* | [**UpdateDataset**](docs/DatasetApi.md#updatedataset) | **Put** /pool/dataset/id/{id} | 
 *PoolApi* | [**ListPools**](docs/PoolApi.md#listpools) | **Get** /pool | 
