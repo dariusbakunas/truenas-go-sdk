@@ -27,6 +27,136 @@ var (
 // DatasetApiService DatasetApi service
 type DatasetApiService service
 
+type ApiCreateDatasetRequest struct {
+	ctx                 _context.Context
+	ApiService          *DatasetApiService
+	createDatasetParams *CreateDatasetParams
+}
+
+func (r ApiCreateDatasetRequest) CreateDatasetParams(createDatasetParams CreateDatasetParams) ApiCreateDatasetRequest {
+	r.createDatasetParams = &createDatasetParams
+	return r
+}
+
+func (r ApiCreateDatasetRequest) Execute() (Dataset, *_nethttp.Response, error) {
+	return r.ApiService.CreateDatasetExecute(r)
+}
+
+/*
+ * CreateDataset Method for CreateDataset
+ * Creates a dataset/zvol.
+
+`volsize` is required for type=VOLUME and is supposed to be a multiple of the block size.
+`sparse` and `volblocksize` are only used for type=VOLUME.
+
+`encryption` when enabled will create an ZFS encrypted root dataset for `name` pool.
+There are 2 cases where ZFS encryption is not allowed for a dataset:
+1) Pool in question is GELI encrypted.
+2) If the parent dataset is encrypted with a passphrase and `name` is being created
+  with a key for encrypting the dataset.
+
+`encryption_options` specifies configuration for encryption of dataset for `name` pool.
+`encryption_options.passphrase` must be specified if encryption for dataset is desired with a passphrase
+as a key.
+Otherwise a hex encoded key can be specified by providing `encryption_options.key`.
+`encryption_options.generate_key` when enabled automatically generates the key to be used
+for dataset encryption.
+
+It should be noted that keys are stored by the system for automatic locking/unlocking
+on import/export of encrypted datasets. If that is not desired, dataset should be created
+with a passphrase as a key.
+
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiCreateDatasetRequest
+*/
+func (a *DatasetApiService) CreateDataset(ctx _context.Context) ApiCreateDatasetRequest {
+	return ApiCreateDatasetRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return Dataset
+ */
+func (a *DatasetApiService) CreateDatasetExecute(r ApiCreateDatasetRequest) (Dataset, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  Dataset
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatasetApiService.CreateDataset")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/pool/dataset"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.createDatasetParams
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetDatasetRequest struct {
 	ctx        _context.Context
 	ApiService *DatasetApiService

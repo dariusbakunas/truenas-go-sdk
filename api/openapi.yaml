@@ -52,6 +52,50 @@ paths:
       - bearerAuth: []
       tags:
       - pool
+  /pool/dataset:
+    post:
+      description: |
+        Creates a dataset/zvol.
+
+        `volsize` is required for type=VOLUME and is supposed to be a multiple of the block size.
+        `sparse` and `volblocksize` are only used for type=VOLUME.
+
+        `encryption` when enabled will create an ZFS encrypted root dataset for `name` pool.
+        There are 2 cases where ZFS encryption is not allowed for a dataset:
+        1) Pool in question is GELI encrypted.
+        2) If the parent dataset is encrypted with a passphrase and `name` is being created
+          with a key for encrypting the dataset.
+
+        `encryption_options` specifies configuration for encryption of dataset for `name` pool.
+        `encryption_options.passphrase` must be specified if encryption for dataset is desired with a passphrase
+        as a key.
+        Otherwise a hex encoded key can be specified by providing `encryption_options.key`.
+        `encryption_options.generate_key` when enabled automatically generates the key to be used
+        for dataset encryption.
+
+        It should be noted that keys are stored by the system for automatic locking/unlocking
+        on import/export of encrypted datasets. If that is not desired, dataset should be created
+        with a passphrase as a key.
+      operationId: createDataset
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDatasetParams'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: Dataset details
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - dataset
   /pool/dataset/id/{id}:
     get:
       description: |-
@@ -335,6 +379,94 @@ components:
       required:
       - command
       - user
+      type: object
+    CreateDatasetParams:
+      example:
+        quota_critical: 1
+        recordsize: recordsize
+        deduplication: deduplication
+        refreservation: 9
+        type: type
+        encryption_options:
+          generate_key: true
+          passphrase: passphrase
+          key: key
+          algorithm: algorithm
+        copies: 0
+        encryption: true
+        readonly: readonly
+        casesensitivity: casesensitivity
+        quota: 6
+        reservation: 3
+        inherit_encryption: true
+        refquota: 5
+        atime: atime
+        comments: comments
+        sync: sync
+        snapdir: snapdir
+        quota_warning: 5
+        share_type: share_type
+        name: name
+        refquota_critical: 2
+        aclmode: aclmode
+        compression: compression
+        refquota_warning: 7
+        exec: exec
+      properties:
+        atime:
+          type: string
+        aclmode:
+          type: string
+        name:
+          type: string
+        comments:
+          type: string
+        compression:
+          type: string
+        casesensitivity:
+          type: string
+        copies:
+          type: integer
+        deduplication:
+          type: string
+        encryption:
+          type: boolean
+        encryption_options:
+          $ref: '#/components/schemas/CreateDatasetParams_encryption_options'
+        exec:
+          type: string
+        inherit_encryption:
+          type: boolean
+        quota:
+          type: integer
+        quota_critical:
+          type: integer
+        quota_warning:
+          type: integer
+        readonly:
+          type: string
+        recordsize:
+          type: string
+        refquota:
+          type: integer
+        refquota_critical:
+          type: integer
+        refquota_warning:
+          type: integer
+        refreservation:
+          type: integer
+        reservation:
+          type: integer
+        share_type:
+          type: string
+        snapdir:
+          type: string
+        sync:
+          type: string
+        type:
+          type: string
+      required:
+      - name
       type: object
     CompositeValue:
       example:
@@ -668,6 +800,22 @@ components:
       required:
       - id
       - service
+      type: object
+    CreateDatasetParams_encryption_options:
+      example:
+        generate_key: true
+        passphrase: passphrase
+        key: key
+        algorithm: algorithm
+      properties:
+        algorithm:
+          type: string
+        generate_key:
+          type: boolean
+        passphrase:
+          type: string
+        key:
+          type: string
       type: object
   securitySchemes:
     bearerAuth:

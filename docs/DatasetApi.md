@@ -4,8 +4,75 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateDataset**](DatasetApi.md#CreateDataset) | **Post** /pool/dataset | 
 [**GetDataset**](DatasetApi.md#GetDataset) | **Get** /pool/dataset/id/{id} | 
 
+
+
+## CreateDataset
+
+> Dataset CreateDataset(ctx).CreateDatasetParams(createDatasetParams).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    createDatasetParams := *openapiclient.NewCreateDatasetParams("Name_example") // CreateDatasetParams |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatasetApi.CreateDataset(context.Background()).CreateDatasetParams(createDatasetParams).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DatasetApi.CreateDataset``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateDataset`: Dataset
+    fmt.Fprintf(os.Stdout, "Response from `DatasetApi.CreateDataset`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateDatasetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createDatasetParams** | [**CreateDatasetParams**](CreateDatasetParams.md) |  | 
+
+### Return type
+
+[**Dataset**](Dataset.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetDataset

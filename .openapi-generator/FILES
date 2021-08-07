@@ -9,6 +9,8 @@ client.go
 configuration.go
 docs/CompositeValue.md
 docs/CreateCronjobParams.md
+docs/CreateDatasetParams.md
+docs/CreateDatasetParamsEncryptionOptions.md
 docs/CronJob.md
 docs/CronJobSchedule.md
 docs/CronjobApi.md
@@ -23,6 +25,8 @@ go.mod
 go.sum
 model_composite_value.go
 model_create_cronjob_params.go
+model_create_dataset_params.go
+model_create_dataset_params_encryption_options.go
 model_cron_job.go
 model_cron_job_schedule.go
 model_dataset.go
