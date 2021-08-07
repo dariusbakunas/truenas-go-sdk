@@ -158,6 +158,35 @@ paths:
       - bearerAuth: []
       tags:
       - dataset
+    put:
+      description: Update dataset
+      operationId: updateDataset
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDatasetParams'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: Dataset details
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - dataset
   /cronjob/id/{id}:
     delete:
       operationId: deleteCronJob
@@ -467,6 +496,52 @@ components:
           type: string
       required:
       - name
+      type: object
+    UpdateDatasetParams:
+      example:
+        atime: atime
+        comments: comments
+        recordsize: recordsize
+        deduplication: deduplication
+        refreservation: 1
+        sync: sync
+        snapdir: snapdir
+        copies: 0
+        readonly: readonly
+        quota: quota
+        aclmode: aclmode
+        compression: compression
+        refquota: 6
+        exec: exec
+      properties:
+        atime:
+          type: string
+        aclmode:
+          type: string
+        comments:
+          type: string
+        compression:
+          type: string
+        copies:
+          type: integer
+        deduplication:
+          type: string
+        exec:
+          type: string
+        quota:
+          type: string
+        readonly:
+          type: string
+        recordsize:
+          type: string
+        refquota:
+          type: integer
+        refreservation:
+          type: integer
+        snapdir:
+          type: string
+        sync:
+          type: string
       type: object
     CompositeValue:
       example:

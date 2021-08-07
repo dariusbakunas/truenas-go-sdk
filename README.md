@@ -84,6 +84,7 @@ Class | Method | HTTP request | Description
 *CronjobApi* | [**UpdateCronJob**](docs/CronjobApi.md#updatecronjob) | **Put** /cronjob/id/{id} | 
 *DatasetApi* | [**CreateDataset**](docs/DatasetApi.md#createdataset) | **Post** /pool/dataset | 
 *DatasetApi* | [**GetDataset**](docs/DatasetApi.md#getdataset) | **Get** /pool/dataset/id/{id} | 
+*DatasetApi* | [**UpdateDataset**](docs/DatasetApi.md#updatedataset) | **Put** /pool/dataset/id/{id} | 
 *PoolApi* | [**ListPools**](docs/PoolApi.md#listpools) | **Get** /pool | 
 *ServiceApi* | [**GetService**](docs/ServiceApi.md#getservice) | **Get** /service/id/{id} | 
 
@@ -99,6 +100,7 @@ Class | Method | HTTP request | Description
  - [Dataset](docs/Dataset.md)
  - [Pool](docs/Pool.md)
  - [Service](docs/Service.md)
+ - [UpdateDatasetParams](docs/UpdateDatasetParams.md)
 
 
 ## Documentation For Authorization

@@ -20,6 +20,7 @@ docs/Pool.md
 docs/PoolApi.md
 docs/Service.md
 docs/ServiceApi.md
+docs/UpdateDatasetParams.md
 git_push.sh
 go.mod
 go.sum
@@ -32,5 +33,6 @@ model_cron_job_schedule.go
 model_dataset.go
 model_pool.go
 model_service.go
+model_update_dataset_params.go
 response.go
 utils.go

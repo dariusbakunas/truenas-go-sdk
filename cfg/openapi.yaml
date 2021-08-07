@@ -137,6 +137,33 @@ paths:
                 $ref: '#/components/schemas/Dataset'
         '401':
           $ref: '#/components/responses/Unauthorized'
+    put:
+      tags:
+        - dataset
+      operationId: updateDataset
+      security:
+        - bearerAuth: [ ]
+      description: Update dataset
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDatasetParams'
+      responses:
+        '200':
+          description: 'Dataset details'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
   /cronjob/id/{id}:
     get:
       tags:
@@ -388,6 +415,37 @@ components:
         sync:
           type: string
         type:
+          type: string
+    UpdateDatasetParams:
+      type: object
+      properties:
+        atime:
+          type: string
+        aclmode:
+          type: string
+        comments:
+          type: string
+        compression:
+          type: string
+        copies:
+          type: integer
+        deduplication:
+          type: string
+        exec:
+          type: string
+        quota:
+          type: string
+        readonly:
+          type: string
+        recordsize:
+          type: string
+        refquota:
+          type: integer
+        refreservation:
+          type: integer
+        snapdir:
+          type: string
+        sync:
           type: string
     CompositeValue:
       type: object
