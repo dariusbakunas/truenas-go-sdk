@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Copies** | Pointer to **int32** |  | [optional] 
 **Deduplication** | Pointer to **string** |  | [optional] 
 **Exec** | Pointer to **string** |  | [optional] 
-**Quota** | Pointer to **string** |  | [optional] 
+**Quota** | Pointer to **int32** |  | [optional] 
 **Readonly** | Pointer to **string** |  | [optional] 
 **Recordsize** | Pointer to **string** |  | [optional] 
 **Refquota** | Pointer to **int32** |  | [optional] 
@@ -215,20 +215,20 @@ HasExec returns a boolean if a field has been set.
 
 ### GetQuota
 
-`func (o *UpdateDatasetParams) GetQuota() string`
+`func (o *UpdateDatasetParams) GetQuota() int32`
 
 GetQuota returns the Quota field if non-nil, zero value otherwise.
 
 ### GetQuotaOk
 
-`func (o *UpdateDatasetParams) GetQuotaOk() (*string, bool)`
+`func (o *UpdateDatasetParams) GetQuotaOk() (*int32, bool)`
 
 GetQuotaOk returns a tuple with the Quota field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuota
 
-`func (o *UpdateDatasetParams) SetQuota(v string)`
+`func (o *UpdateDatasetParams) SetQuota(v int32)`
 
 SetQuota sets Quota field to given value.
 

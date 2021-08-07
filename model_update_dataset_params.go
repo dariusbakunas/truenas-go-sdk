@@ -23,7 +23,7 @@ type UpdateDatasetParams struct {
 	Copies               *int32  `json:"copies,omitempty"`
 	Deduplication        *string `json:"deduplication,omitempty"`
 	Exec                 *string `json:"exec,omitempty"`
-	Quota                *string `json:"quota,omitempty"`
+	Quota                *int32  `json:"quota,omitempty"`
 	Readonly             *string `json:"readonly,omitempty"`
 	Recordsize           *string `json:"recordsize,omitempty"`
 	Refquota             *int32  `json:"refquota,omitempty"`
@@ -277,9 +277,9 @@ func (o *UpdateDatasetParams) SetExec(v string) {
 }
 
 // GetQuota returns the Quota field value if set, zero value otherwise.
-func (o *UpdateDatasetParams) GetQuota() string {
+func (o *UpdateDatasetParams) GetQuota() int32 {
 	if o == nil || o.Quota == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.Quota
@@ -287,7 +287,7 @@ func (o *UpdateDatasetParams) GetQuota() string {
 
 // GetQuotaOk returns a tuple with the Quota field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateDatasetParams) GetQuotaOk() (*string, bool) {
+func (o *UpdateDatasetParams) GetQuotaOk() (*int32, bool) {
 	if o == nil || o.Quota == nil {
 		return nil, false
 	}
@@ -303,8 +303,8 @@ func (o *UpdateDatasetParams) HasQuota() bool {
 	return false
 }
 
-// SetQuota gets a reference to the given string and assigns it to the Quota field.
-func (o *UpdateDatasetParams) SetQuota(v string) {
+// SetQuota gets a reference to the given int32 and assigns it to the Quota field.
+func (o *UpdateDatasetParams) SetQuota(v int32) {
 	o.Quota = &v
 }
 

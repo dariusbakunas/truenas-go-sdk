@@ -503,15 +503,15 @@ components:
         comments: comments
         recordsize: recordsize
         deduplication: deduplication
-        refreservation: 1
+        refreservation: 5
         sync: sync
         snapdir: snapdir
         copies: 0
         readonly: readonly
-        quota: quota
+        quota: 6
         aclmode: aclmode
         compression: compression
-        refquota: 6
+        refquota: 1
         exec: exec
       properties:
         atime:
@@ -529,7 +529,7 @@ components:
         exec:
           type: string
         quota:
-          type: string
+          type: integer
         readonly:
           type: string
         recordsize:

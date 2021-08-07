@@ -434,7 +434,7 @@ components:
         exec:
           type: string
         quota:
-          type: string
+          type: integer
         readonly:
           type: string
         recordsize:
