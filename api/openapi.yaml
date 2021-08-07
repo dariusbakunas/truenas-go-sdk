@@ -282,7 +282,7 @@ components:
         stderr:
           type: boolean
         schedule:
-          $ref: '#/components/schemas/CreateCronjobParams_schedule'
+          $ref: '#/components/schemas/CronJobSchedule'
       required:
       - command
       - user
@@ -333,7 +333,26 @@ components:
         stderr:
           type: boolean
         schedule:
-          $ref: '#/components/schemas/CreateCronjobParams_schedule'
+          $ref: '#/components/schemas/CronJobSchedule'
+      type: object
+    CronJobSchedule:
+      example:
+        dom: dom
+        hour: hour
+        month: month
+        dow: dow
+        minute: minute
+      properties:
+        minute:
+          type: string
+        hour:
+          type: string
+        dom:
+          type: string
+        month:
+          type: string
+        dow:
+          type: string
       type: object
     Dataset:
       example:
@@ -600,25 +619,6 @@ components:
       required:
       - id
       - service
-      type: object
-    CreateCronjobParams_schedule:
-      example:
-        dom: dom
-        hour: hour
-        month: month
-        dow: dow
-        minute: minute
-      properties:
-        minute:
-          type: string
-        hour:
-          type: string
-        dom:
-          type: string
-        month:
-          type: string
-        dow:
-          type: string
       type: object
   securitySchemes:
     bearerAuth:

@@ -16,14 +16,14 @@ import (
 
 // CronJob struct for CronJob
 type CronJob struct {
-	Id                   *int32                       `json:"id,omitempty"`
-	User                 *string                      `json:"user,omitempty"`
-	Command              *string                      `json:"command,omitempty"`
-	Description          *string                      `json:"description,omitempty"`
-	Enabled              *bool                        `json:"enabled,omitempty"`
-	Stdout               *bool                        `json:"stdout,omitempty"`
-	Stderr               *bool                        `json:"stderr,omitempty"`
-	Schedule             *CreateCronjobParamsSchedule `json:"schedule,omitempty"`
+	Id                   *int32           `json:"id,omitempty"`
+	User                 *string          `json:"user,omitempty"`
+	Command              *string          `json:"command,omitempty"`
+	Description          *string          `json:"description,omitempty"`
+	Enabled              *bool            `json:"enabled,omitempty"`
+	Stdout               *bool            `json:"stdout,omitempty"`
+	Stderr               *bool            `json:"stderr,omitempty"`
+	Schedule             *CronJobSchedule `json:"schedule,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -271,9 +271,9 @@ func (o *CronJob) SetStderr(v bool) {
 }
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
-func (o *CronJob) GetSchedule() CreateCronjobParamsSchedule {
+func (o *CronJob) GetSchedule() CronJobSchedule {
 	if o == nil || o.Schedule == nil {
-		var ret CreateCronjobParamsSchedule
+		var ret CronJobSchedule
 		return ret
 	}
 	return *o.Schedule
@@ -281,7 +281,7 @@ func (o *CronJob) GetSchedule() CreateCronjobParamsSchedule {
 
 // GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CronJob) GetScheduleOk() (*CreateCronjobParamsSchedule, bool) {
+func (o *CronJob) GetScheduleOk() (*CronJobSchedule, bool) {
 	if o == nil || o.Schedule == nil {
 		return nil, false
 	}
@@ -297,8 +297,8 @@ func (o *CronJob) HasSchedule() bool {
 	return false
 }
 
-// SetSchedule gets a reference to the given CreateCronjobParamsSchedule and assigns it to the Schedule field.
-func (o *CronJob) SetSchedule(v CreateCronjobParamsSchedule) {
+// SetSchedule gets a reference to the given CronJobSchedule and assigns it to the Schedule field.
+func (o *CronJob) SetSchedule(v CronJobSchedule) {
 	o.Schedule = &v
 }
 

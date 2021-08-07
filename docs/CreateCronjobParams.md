@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** |  | [optional] 
 **Stdout** | Pointer to **bool** |  | [optional] 
 **Stderr** | Pointer to **bool** |  | [optional] 
-**Schedule** | Pointer to [**CreateCronjobParamsSchedule**](CreateCronjobParamsSchedule.md) |  | [optional] 
+**Schedule** | Pointer to [**CronJobSchedule**](CronJobSchedule.md) |  | [optional] 
 
 ## Methods
 
@@ -173,20 +173,20 @@ HasStderr returns a boolean if a field has been set.
 
 ### GetSchedule
 
-`func (o *CreateCronjobParams) GetSchedule() CreateCronjobParamsSchedule`
+`func (o *CreateCronjobParams) GetSchedule() CronJobSchedule`
 
 GetSchedule returns the Schedule field if non-nil, zero value otherwise.
 
 ### GetScheduleOk
 
-`func (o *CreateCronjobParams) GetScheduleOk() (*CreateCronjobParamsSchedule, bool)`
+`func (o *CreateCronjobParams) GetScheduleOk() (*CronJobSchedule, bool)`
 
 GetScheduleOk returns a tuple with the Schedule field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSchedule
 
-`func (o *CreateCronjobParams) SetSchedule(v CreateCronjobParamsSchedule)`
+`func (o *CreateCronjobParams) SetSchedule(v CronJobSchedule)`
 
 SetSchedule sets Schedule field to given value.
 

@@ -89,8 +89,8 @@ Class | Method | HTTP request | Description
 
  - [CompositeValue](docs/CompositeValue.md)
  - [CreateCronjobParams](docs/CreateCronjobParams.md)
- - [CreateCronjobParamsSchedule](docs/CreateCronjobParamsSchedule.md)
  - [CronJob](docs/CronJob.md)
+ - [CronJobSchedule](docs/CronJobSchedule.md)
  - [Dataset](docs/Dataset.md)
  - [Pool](docs/Pool.md)
  - [Service](docs/Service.md)

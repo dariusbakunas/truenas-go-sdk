@@ -232,18 +232,7 @@ components:
         stderr:
           type: boolean
         schedule:
-          type: object
-          properties:
-            minute:
-              type: string
-            hour:
-              type: string
-            dom:
-              type: string
-            month:
-              type: string
-            dow:
-              type: string
+          $ref: '#/components/schemas/CronJobSchedule'
     CompositeValue:
       type: object
       required:
@@ -278,18 +267,20 @@ components:
         stderr:
           type: boolean
         schedule:
-          type: object
-          properties:
-            minute:
-              type: string
-            hour:
-              type: string
-            dom:
-              type: string
-            month:
-              type: string
-            dow:
-              type: string
+          $ref: '#/components/schemas/CronJobSchedule'
+    CronJobSchedule:
+      type: object
+      properties:
+        minute:
+          type: string
+        hour:
+          type: string
+        dom:
+          type: string
+        month:
+          type: string
+        dow:
+          type: string
     Dataset:
       type: object
       required:
