@@ -187,6 +187,35 @@ paths:
       - bearerAuth: []
       tags:
       - cronjob
+    put:
+      description: Update cronjob
+      operationId: updateCronJob
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCronjobParams'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CronJob'
+          description: CronJob details
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - cronjob
   /cronjob:
     post:
       description: |-

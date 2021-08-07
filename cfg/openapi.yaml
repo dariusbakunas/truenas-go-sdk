@@ -155,6 +155,33 @@ paths:
 
         '401':
           $ref: '#/components/responses/Unauthorized'
+    put:
+      tags:
+        - cronjob
+      operationId: updateCronJob
+      description: Update cronjob
+      security:
+        - bearerAuth: [ ]
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCronjobParams'
+      responses:
+        '200':
+          description: 'CronJob details'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CronJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
   /cronjob:
     post:
       tags:
