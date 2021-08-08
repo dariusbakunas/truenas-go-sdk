@@ -412,24 +412,32 @@ components:
           type: boolean
         quota:
           type: integer
+          format: int64
         quota_critical:
           type: integer
+          format: int64
         quota_warning:
           type: integer
+          format: int64
         readonly:
           type: string
         recordsize:
           type: string
         refquota:
           type: integer
+          format: int64
         refquota_critical:
           type: integer
+          format: int64
         refquota_warning:
           type: integer
+          format: int64
         refreservation:
           type: integer
+          format: int64
         reservation:
           type: integer
+          format: int64
         share_type:
           type: string
         snapdir:
@@ -457,14 +465,17 @@ components:
           type: string
         quota:
           type: integer
+          format: int64
         readonly:
           type: string
         recordsize:
           type: string
         refquota:
           type: integer
+          format: int64
         refreservation:
           type: integer
+          format: int64
         snapdir:
           type: string
         sync:

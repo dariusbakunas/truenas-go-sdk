@@ -28,16 +28,16 @@ type CreateDatasetParams struct {
 	EncryptionOptions    *CreateDatasetParamsEncryptionOptions `json:"encryption_options,omitempty"`
 	Exec                 *string                               `json:"exec,omitempty"`
 	InheritEncryption    *bool                                 `json:"inherit_encryption,omitempty"`
-	Quota                *int32                                `json:"quota,omitempty"`
-	QuotaCritical        *int32                                `json:"quota_critical,omitempty"`
-	QuotaWarning         *int32                                `json:"quota_warning,omitempty"`
+	Quota                *int64                                `json:"quota,omitempty"`
+	QuotaCritical        *int64                                `json:"quota_critical,omitempty"`
+	QuotaWarning         *int64                                `json:"quota_warning,omitempty"`
 	Readonly             *string                               `json:"readonly,omitempty"`
 	Recordsize           *string                               `json:"recordsize,omitempty"`
-	Refquota             *int32                                `json:"refquota,omitempty"`
-	RefquotaCritical     *int32                                `json:"refquota_critical,omitempty"`
-	RefquotaWarning      *int32                                `json:"refquota_warning,omitempty"`
-	Refreservation       *int32                                `json:"refreservation,omitempty"`
-	Reservation          *int32                                `json:"reservation,omitempty"`
+	Refquota             *int64                                `json:"refquota,omitempty"`
+	RefquotaCritical     *int64                                `json:"refquota_critical,omitempty"`
+	RefquotaWarning      *int64                                `json:"refquota_warning,omitempty"`
+	Refreservation       *int64                                `json:"refreservation,omitempty"`
+	Reservation          *int64                                `json:"reservation,omitempty"`
 	ShareType            *string                               `json:"share_type,omitempty"`
 	Snapdir              *string                               `json:"snapdir,omitempty"`
 	Sync                 *string                               `json:"sync,omitempty"`
@@ -442,9 +442,9 @@ func (o *CreateDatasetParams) SetInheritEncryption(v bool) {
 }
 
 // GetQuota returns the Quota field value if set, zero value otherwise.
-func (o *CreateDatasetParams) GetQuota() int32 {
+func (o *CreateDatasetParams) GetQuota() int64 {
 	if o == nil || o.Quota == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Quota
@@ -452,7 +452,7 @@ func (o *CreateDatasetParams) GetQuota() int32 {
 
 // GetQuotaOk returns a tuple with the Quota field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDatasetParams) GetQuotaOk() (*int32, bool) {
+func (o *CreateDatasetParams) GetQuotaOk() (*int64, bool) {
 	if o == nil || o.Quota == nil {
 		return nil, false
 	}
@@ -468,15 +468,15 @@ func (o *CreateDatasetParams) HasQuota() bool {
 	return false
 }
 
-// SetQuota gets a reference to the given int32 and assigns it to the Quota field.
-func (o *CreateDatasetParams) SetQuota(v int32) {
+// SetQuota gets a reference to the given int64 and assigns it to the Quota field.
+func (o *CreateDatasetParams) SetQuota(v int64) {
 	o.Quota = &v
 }
 
 // GetQuotaCritical returns the QuotaCritical field value if set, zero value otherwise.
-func (o *CreateDatasetParams) GetQuotaCritical() int32 {
+func (o *CreateDatasetParams) GetQuotaCritical() int64 {
 	if o == nil || o.QuotaCritical == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.QuotaCritical
@@ -484,7 +484,7 @@ func (o *CreateDatasetParams) GetQuotaCritical() int32 {
 
 // GetQuotaCriticalOk returns a tuple with the QuotaCritical field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDatasetParams) GetQuotaCriticalOk() (*int32, bool) {
+func (o *CreateDatasetParams) GetQuotaCriticalOk() (*int64, bool) {
 	if o == nil || o.QuotaCritical == nil {
 		return nil, false
 	}
@@ -500,15 +500,15 @@ func (o *CreateDatasetParams) HasQuotaCritical() bool {
 	return false
 }
 
-// SetQuotaCritical gets a reference to the given int32 and assigns it to the QuotaCritical field.
-func (o *CreateDatasetParams) SetQuotaCritical(v int32) {
+// SetQuotaCritical gets a reference to the given int64 and assigns it to the QuotaCritical field.
+func (o *CreateDatasetParams) SetQuotaCritical(v int64) {
 	o.QuotaCritical = &v
 }
 
 // GetQuotaWarning returns the QuotaWarning field value if set, zero value otherwise.
-func (o *CreateDatasetParams) GetQuotaWarning() int32 {
+func (o *CreateDatasetParams) GetQuotaWarning() int64 {
 	if o == nil || o.QuotaWarning == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.QuotaWarning
@@ -516,7 +516,7 @@ func (o *CreateDatasetParams) GetQuotaWarning() int32 {
 
 // GetQuotaWarningOk returns a tuple with the QuotaWarning field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDatasetParams) GetQuotaWarningOk() (*int32, bool) {
+func (o *CreateDatasetParams) GetQuotaWarningOk() (*int64, bool) {
 	if o == nil || o.QuotaWarning == nil {
 		return nil, false
 	}
@@ -532,8 +532,8 @@ func (o *CreateDatasetParams) HasQuotaWarning() bool {
 	return false
 }
 
-// SetQuotaWarning gets a reference to the given int32 and assigns it to the QuotaWarning field.
-func (o *CreateDatasetParams) SetQuotaWarning(v int32) {
+// SetQuotaWarning gets a reference to the given int64 and assigns it to the QuotaWarning field.
+func (o *CreateDatasetParams) SetQuotaWarning(v int64) {
 	o.QuotaWarning = &v
 }
 
@@ -602,9 +602,9 @@ func (o *CreateDatasetParams) SetRecordsize(v string) {
 }
 
 // GetRefquota returns the Refquota field value if set, zero value otherwise.
-func (o *CreateDatasetParams) GetRefquota() int32 {
+func (o *CreateDatasetParams) GetRefquota() int64 {
 	if o == nil || o.Refquota == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Refquota
@@ -612,7 +612,7 @@ func (o *CreateDatasetParams) GetRefquota() int32 {
 
 // GetRefquotaOk returns a tuple with the Refquota field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDatasetParams) GetRefquotaOk() (*int32, bool) {
+func (o *CreateDatasetParams) GetRefquotaOk() (*int64, bool) {
 	if o == nil || o.Refquota == nil {
 		return nil, false
 	}
@@ -628,15 +628,15 @@ func (o *CreateDatasetParams) HasRefquota() bool {
 	return false
 }
 
-// SetRefquota gets a reference to the given int32 and assigns it to the Refquota field.
-func (o *CreateDatasetParams) SetRefquota(v int32) {
+// SetRefquota gets a reference to the given int64 and assigns it to the Refquota field.
+func (o *CreateDatasetParams) SetRefquota(v int64) {
 	o.Refquota = &v
 }
 
 // GetRefquotaCritical returns the RefquotaCritical field value if set, zero value otherwise.
-func (o *CreateDatasetParams) GetRefquotaCritical() int32 {
+func (o *CreateDatasetParams) GetRefquotaCritical() int64 {
 	if o == nil || o.RefquotaCritical == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.RefquotaCritical
@@ -644,7 +644,7 @@ func (o *CreateDatasetParams) GetRefquotaCritical() int32 {
 
 // GetRefquotaCriticalOk returns a tuple with the RefquotaCritical field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDatasetParams) GetRefquotaCriticalOk() (*int32, bool) {
+func (o *CreateDatasetParams) GetRefquotaCriticalOk() (*int64, bool) {
 	if o == nil || o.RefquotaCritical == nil {
 		return nil, false
 	}
@@ -660,15 +660,15 @@ func (o *CreateDatasetParams) HasRefquotaCritical() bool {
 	return false
 }
 
-// SetRefquotaCritical gets a reference to the given int32 and assigns it to the RefquotaCritical field.
-func (o *CreateDatasetParams) SetRefquotaCritical(v int32) {
+// SetRefquotaCritical gets a reference to the given int64 and assigns it to the RefquotaCritical field.
+func (o *CreateDatasetParams) SetRefquotaCritical(v int64) {
 	o.RefquotaCritical = &v
 }
 
 // GetRefquotaWarning returns the RefquotaWarning field value if set, zero value otherwise.
-func (o *CreateDatasetParams) GetRefquotaWarning() int32 {
+func (o *CreateDatasetParams) GetRefquotaWarning() int64 {
 	if o == nil || o.RefquotaWarning == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.RefquotaWarning
@@ -676,7 +676,7 @@ func (o *CreateDatasetParams) GetRefquotaWarning() int32 {
 
 // GetRefquotaWarningOk returns a tuple with the RefquotaWarning field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDatasetParams) GetRefquotaWarningOk() (*int32, bool) {
+func (o *CreateDatasetParams) GetRefquotaWarningOk() (*int64, bool) {
 	if o == nil || o.RefquotaWarning == nil {
 		return nil, false
 	}
@@ -692,15 +692,15 @@ func (o *CreateDatasetParams) HasRefquotaWarning() bool {
 	return false
 }
 
-// SetRefquotaWarning gets a reference to the given int32 and assigns it to the RefquotaWarning field.
-func (o *CreateDatasetParams) SetRefquotaWarning(v int32) {
+// SetRefquotaWarning gets a reference to the given int64 and assigns it to the RefquotaWarning field.
+func (o *CreateDatasetParams) SetRefquotaWarning(v int64) {
 	o.RefquotaWarning = &v
 }
 
 // GetRefreservation returns the Refreservation field value if set, zero value otherwise.
-func (o *CreateDatasetParams) GetRefreservation() int32 {
+func (o *CreateDatasetParams) GetRefreservation() int64 {
 	if o == nil || o.Refreservation == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Refreservation
@@ -708,7 +708,7 @@ func (o *CreateDatasetParams) GetRefreservation() int32 {
 
 // GetRefreservationOk returns a tuple with the Refreservation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDatasetParams) GetRefreservationOk() (*int32, bool) {
+func (o *CreateDatasetParams) GetRefreservationOk() (*int64, bool) {
 	if o == nil || o.Refreservation == nil {
 		return nil, false
 	}
@@ -724,15 +724,15 @@ func (o *CreateDatasetParams) HasRefreservation() bool {
 	return false
 }
 
-// SetRefreservation gets a reference to the given int32 and assigns it to the Refreservation field.
-func (o *CreateDatasetParams) SetRefreservation(v int32) {
+// SetRefreservation gets a reference to the given int64 and assigns it to the Refreservation field.
+func (o *CreateDatasetParams) SetRefreservation(v int64) {
 	o.Refreservation = &v
 }
 
 // GetReservation returns the Reservation field value if set, zero value otherwise.
-func (o *CreateDatasetParams) GetReservation() int32 {
+func (o *CreateDatasetParams) GetReservation() int64 {
 	if o == nil || o.Reservation == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Reservation
@@ -740,7 +740,7 @@ func (o *CreateDatasetParams) GetReservation() int32 {
 
 // GetReservationOk returns a tuple with the Reservation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDatasetParams) GetReservationOk() (*int32, bool) {
+func (o *CreateDatasetParams) GetReservationOk() (*int64, bool) {
 	if o == nil || o.Reservation == nil {
 		return nil, false
 	}
@@ -756,8 +756,8 @@ func (o *CreateDatasetParams) HasReservation() bool {
 	return false
 }
 
-// SetReservation gets a reference to the given int32 and assigns it to the Reservation field.
-func (o *CreateDatasetParams) SetReservation(v int32) {
+// SetReservation gets a reference to the given int64 and assigns it to the Reservation field.
+func (o *CreateDatasetParams) SetReservation(v int64) {
 	o.Reservation = &v
 }
 

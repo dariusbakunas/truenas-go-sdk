@@ -491,24 +491,32 @@ components:
         inherit_encryption:
           type: boolean
         quota:
+          format: int64
           type: integer
         quota_critical:
+          format: int64
           type: integer
         quota_warning:
+          format: int64
           type: integer
         readonly:
           type: string
         recordsize:
           type: string
         refquota:
+          format: int64
           type: integer
         refquota_critical:
+          format: int64
           type: integer
         refquota_warning:
+          format: int64
           type: integer
         refreservation:
+          format: int64
           type: integer
         reservation:
+          format: int64
           type: integer
         share_type:
           type: string
@@ -553,14 +561,17 @@ components:
         exec:
           type: string
         quota:
+          format: int64
           type: integer
         readonly:
           type: string
         recordsize:
           type: string
         refquota:
+          format: int64
           type: integer
         refreservation:
+          format: int64
           type: integer
         snapdir:
           type: string

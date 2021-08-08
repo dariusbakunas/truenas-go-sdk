@@ -23,11 +23,11 @@ type UpdateDatasetParams struct {
 	Copies               *int32  `json:"copies,omitempty"`
 	Deduplication        *string `json:"deduplication,omitempty"`
 	Exec                 *string `json:"exec,omitempty"`
-	Quota                *int32  `json:"quota,omitempty"`
+	Quota                *int64  `json:"quota,omitempty"`
 	Readonly             *string `json:"readonly,omitempty"`
 	Recordsize           *string `json:"recordsize,omitempty"`
-	Refquota             *int32  `json:"refquota,omitempty"`
-	Refreservation       *int32  `json:"refreservation,omitempty"`
+	Refquota             *int64  `json:"refquota,omitempty"`
+	Refreservation       *int64  `json:"refreservation,omitempty"`
 	Snapdir              *string `json:"snapdir,omitempty"`
 	Sync                 *string `json:"sync,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -277,9 +277,9 @@ func (o *UpdateDatasetParams) SetExec(v string) {
 }
 
 // GetQuota returns the Quota field value if set, zero value otherwise.
-func (o *UpdateDatasetParams) GetQuota() int32 {
+func (o *UpdateDatasetParams) GetQuota() int64 {
 	if o == nil || o.Quota == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Quota
@@ -287,7 +287,7 @@ func (o *UpdateDatasetParams) GetQuota() int32 {
 
 // GetQuotaOk returns a tuple with the Quota field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateDatasetParams) GetQuotaOk() (*int32, bool) {
+func (o *UpdateDatasetParams) GetQuotaOk() (*int64, bool) {
 	if o == nil || o.Quota == nil {
 		return nil, false
 	}
@@ -303,8 +303,8 @@ func (o *UpdateDatasetParams) HasQuota() bool {
 	return false
 }
 
-// SetQuota gets a reference to the given int32 and assigns it to the Quota field.
-func (o *UpdateDatasetParams) SetQuota(v int32) {
+// SetQuota gets a reference to the given int64 and assigns it to the Quota field.
+func (o *UpdateDatasetParams) SetQuota(v int64) {
 	o.Quota = &v
 }
 
@@ -373,9 +373,9 @@ func (o *UpdateDatasetParams) SetRecordsize(v string) {
 }
 
 // GetRefquota returns the Refquota field value if set, zero value otherwise.
-func (o *UpdateDatasetParams) GetRefquota() int32 {
+func (o *UpdateDatasetParams) GetRefquota() int64 {
 	if o == nil || o.Refquota == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Refquota
@@ -383,7 +383,7 @@ func (o *UpdateDatasetParams) GetRefquota() int32 {
 
 // GetRefquotaOk returns a tuple with the Refquota field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateDatasetParams) GetRefquotaOk() (*int32, bool) {
+func (o *UpdateDatasetParams) GetRefquotaOk() (*int64, bool) {
 	if o == nil || o.Refquota == nil {
 		return nil, false
 	}
@@ -399,15 +399,15 @@ func (o *UpdateDatasetParams) HasRefquota() bool {
 	return false
 }
 
-// SetRefquota gets a reference to the given int32 and assigns it to the Refquota field.
-func (o *UpdateDatasetParams) SetRefquota(v int32) {
+// SetRefquota gets a reference to the given int64 and assigns it to the Refquota field.
+func (o *UpdateDatasetParams) SetRefquota(v int64) {
 	o.Refquota = &v
 }
 
 // GetRefreservation returns the Refreservation field value if set, zero value otherwise.
-func (o *UpdateDatasetParams) GetRefreservation() int32 {
+func (o *UpdateDatasetParams) GetRefreservation() int64 {
 	if o == nil || o.Refreservation == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Refreservation
@@ -415,7 +415,7 @@ func (o *UpdateDatasetParams) GetRefreservation() int32 {
 
 // GetRefreservationOk returns a tuple with the Refreservation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateDatasetParams) GetRefreservationOk() (*int32, bool) {
+func (o *UpdateDatasetParams) GetRefreservationOk() (*int64, bool) {
 	if o == nil || o.Refreservation == nil {
 		return nil, false
 	}
@@ -431,8 +431,8 @@ func (o *UpdateDatasetParams) HasRefreservation() bool {
 	return false
 }
 
-// SetRefreservation gets a reference to the given int32 and assigns it to the Refreservation field.
-func (o *UpdateDatasetParams) SetRefreservation(v int32) {
+// SetRefreservation gets a reference to the given int64 and assigns it to the Refreservation field.
+func (o *UpdateDatasetParams) SetRefreservation(v int64) {
 	o.Refreservation = &v
 }
 

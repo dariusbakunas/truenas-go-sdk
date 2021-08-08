@@ -16,16 +16,16 @@ Name | Type | Description | Notes
 **EncryptionOptions** | Pointer to [**CreateDatasetParamsEncryptionOptions**](CreateDatasetParamsEncryptionOptions.md) |  | [optional] 
 **Exec** | Pointer to **string** |  | [optional] 
 **InheritEncryption** | Pointer to **bool** |  | [optional] 
-**Quota** | Pointer to **int32** |  | [optional] 
-**QuotaCritical** | Pointer to **int32** |  | [optional] 
-**QuotaWarning** | Pointer to **int32** |  | [optional] 
+**Quota** | Pointer to **int64** |  | [optional] 
+**QuotaCritical** | Pointer to **int64** |  | [optional] 
+**QuotaWarning** | Pointer to **int64** |  | [optional] 
 **Readonly** | Pointer to **string** |  | [optional] 
 **Recordsize** | Pointer to **string** |  | [optional] 
-**Refquota** | Pointer to **int32** |  | [optional] 
-**RefquotaCritical** | Pointer to **int32** |  | [optional] 
-**RefquotaWarning** | Pointer to **int32** |  | [optional] 
-**Refreservation** | Pointer to **int32** |  | [optional] 
-**Reservation** | Pointer to **int32** |  | [optional] 
+**Refquota** | Pointer to **int64** |  | [optional] 
+**RefquotaCritical** | Pointer to **int64** |  | [optional] 
+**RefquotaWarning** | Pointer to **int64** |  | [optional] 
+**Refreservation** | Pointer to **int64** |  | [optional] 
+**Reservation** | Pointer to **int64** |  | [optional] 
 **ShareType** | Pointer to **string** |  | [optional] 
 **Snapdir** | Pointer to **string** |  | [optional] 
 **Sync** | Pointer to **string** |  | [optional] 
@@ -347,20 +347,20 @@ HasInheritEncryption returns a boolean if a field has been set.
 
 ### GetQuota
 
-`func (o *CreateDatasetParams) GetQuota() int32`
+`func (o *CreateDatasetParams) GetQuota() int64`
 
 GetQuota returns the Quota field if non-nil, zero value otherwise.
 
 ### GetQuotaOk
 
-`func (o *CreateDatasetParams) GetQuotaOk() (*int32, bool)`
+`func (o *CreateDatasetParams) GetQuotaOk() (*int64, bool)`
 
 GetQuotaOk returns a tuple with the Quota field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuota
 
-`func (o *CreateDatasetParams) SetQuota(v int32)`
+`func (o *CreateDatasetParams) SetQuota(v int64)`
 
 SetQuota sets Quota field to given value.
 
@@ -372,20 +372,20 @@ HasQuota returns a boolean if a field has been set.
 
 ### GetQuotaCritical
 
-`func (o *CreateDatasetParams) GetQuotaCritical() int32`
+`func (o *CreateDatasetParams) GetQuotaCritical() int64`
 
 GetQuotaCritical returns the QuotaCritical field if non-nil, zero value otherwise.
 
 ### GetQuotaCriticalOk
 
-`func (o *CreateDatasetParams) GetQuotaCriticalOk() (*int32, bool)`
+`func (o *CreateDatasetParams) GetQuotaCriticalOk() (*int64, bool)`
 
 GetQuotaCriticalOk returns a tuple with the QuotaCritical field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuotaCritical
 
-`func (o *CreateDatasetParams) SetQuotaCritical(v int32)`
+`func (o *CreateDatasetParams) SetQuotaCritical(v int64)`
 
 SetQuotaCritical sets QuotaCritical field to given value.
 
@@ -397,20 +397,20 @@ HasQuotaCritical returns a boolean if a field has been set.
 
 ### GetQuotaWarning
 
-`func (o *CreateDatasetParams) GetQuotaWarning() int32`
+`func (o *CreateDatasetParams) GetQuotaWarning() int64`
 
 GetQuotaWarning returns the QuotaWarning field if non-nil, zero value otherwise.
 
 ### GetQuotaWarningOk
 
-`func (o *CreateDatasetParams) GetQuotaWarningOk() (*int32, bool)`
+`func (o *CreateDatasetParams) GetQuotaWarningOk() (*int64, bool)`
 
 GetQuotaWarningOk returns a tuple with the QuotaWarning field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuotaWarning
 
-`func (o *CreateDatasetParams) SetQuotaWarning(v int32)`
+`func (o *CreateDatasetParams) SetQuotaWarning(v int64)`
 
 SetQuotaWarning sets QuotaWarning field to given value.
 
@@ -472,20 +472,20 @@ HasRecordsize returns a boolean if a field has been set.
 
 ### GetRefquota
 
-`func (o *CreateDatasetParams) GetRefquota() int32`
+`func (o *CreateDatasetParams) GetRefquota() int64`
 
 GetRefquota returns the Refquota field if non-nil, zero value otherwise.
 
 ### GetRefquotaOk
 
-`func (o *CreateDatasetParams) GetRefquotaOk() (*int32, bool)`
+`func (o *CreateDatasetParams) GetRefquotaOk() (*int64, bool)`
 
 GetRefquotaOk returns a tuple with the Refquota field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefquota
 
-`func (o *CreateDatasetParams) SetRefquota(v int32)`
+`func (o *CreateDatasetParams) SetRefquota(v int64)`
 
 SetRefquota sets Refquota field to given value.
 
@@ -497,20 +497,20 @@ HasRefquota returns a boolean if a field has been set.
 
 ### GetRefquotaCritical
 
-`func (o *CreateDatasetParams) GetRefquotaCritical() int32`
+`func (o *CreateDatasetParams) GetRefquotaCritical() int64`
 
 GetRefquotaCritical returns the RefquotaCritical field if non-nil, zero value otherwise.
 
 ### GetRefquotaCriticalOk
 
-`func (o *CreateDatasetParams) GetRefquotaCriticalOk() (*int32, bool)`
+`func (o *CreateDatasetParams) GetRefquotaCriticalOk() (*int64, bool)`
 
 GetRefquotaCriticalOk returns a tuple with the RefquotaCritical field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefquotaCritical
 
-`func (o *CreateDatasetParams) SetRefquotaCritical(v int32)`
+`func (o *CreateDatasetParams) SetRefquotaCritical(v int64)`
 
 SetRefquotaCritical sets RefquotaCritical field to given value.
 
@@ -522,20 +522,20 @@ HasRefquotaCritical returns a boolean if a field has been set.
 
 ### GetRefquotaWarning
 
-`func (o *CreateDatasetParams) GetRefquotaWarning() int32`
+`func (o *CreateDatasetParams) GetRefquotaWarning() int64`
 
 GetRefquotaWarning returns the RefquotaWarning field if non-nil, zero value otherwise.
 
 ### GetRefquotaWarningOk
 
-`func (o *CreateDatasetParams) GetRefquotaWarningOk() (*int32, bool)`
+`func (o *CreateDatasetParams) GetRefquotaWarningOk() (*int64, bool)`
 
 GetRefquotaWarningOk returns a tuple with the RefquotaWarning field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefquotaWarning
 
-`func (o *CreateDatasetParams) SetRefquotaWarning(v int32)`
+`func (o *CreateDatasetParams) SetRefquotaWarning(v int64)`
 
 SetRefquotaWarning sets RefquotaWarning field to given value.
 
@@ -547,20 +547,20 @@ HasRefquotaWarning returns a boolean if a field has been set.
 
 ### GetRefreservation
 
-`func (o *CreateDatasetParams) GetRefreservation() int32`
+`func (o *CreateDatasetParams) GetRefreservation() int64`
 
 GetRefreservation returns the Refreservation field if non-nil, zero value otherwise.
 
 ### GetRefreservationOk
 
-`func (o *CreateDatasetParams) GetRefreservationOk() (*int32, bool)`
+`func (o *CreateDatasetParams) GetRefreservationOk() (*int64, bool)`
 
 GetRefreservationOk returns a tuple with the Refreservation field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefreservation
 
-`func (o *CreateDatasetParams) SetRefreservation(v int32)`
+`func (o *CreateDatasetParams) SetRefreservation(v int64)`
 
 SetRefreservation sets Refreservation field to given value.
 
@@ -572,20 +572,20 @@ HasRefreservation returns a boolean if a field has been set.
 
 ### GetReservation
 
-`func (o *CreateDatasetParams) GetReservation() int32`
+`func (o *CreateDatasetParams) GetReservation() int64`
 
 GetReservation returns the Reservation field if non-nil, zero value otherwise.
 
 ### GetReservationOk
 
-`func (o *CreateDatasetParams) GetReservationOk() (*int32, bool)`
+`func (o *CreateDatasetParams) GetReservationOk() (*int64, bool)`
 
 GetReservationOk returns a tuple with the Reservation field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReservation
 
-`func (o *CreateDatasetParams) SetReservation(v int32)`
+`func (o *CreateDatasetParams) SetReservation(v int64)`
 
 SetReservation sets Reservation field to given value.
 

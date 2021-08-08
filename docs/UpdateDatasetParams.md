@@ -11,11 +11,11 @@ Name | Type | Description | Notes
 **Copies** | Pointer to **int32** |  | [optional] 
 **Deduplication** | Pointer to **string** |  | [optional] 
 **Exec** | Pointer to **string** |  | [optional] 
-**Quota** | Pointer to **int32** |  | [optional] 
+**Quota** | Pointer to **int64** |  | [optional] 
 **Readonly** | Pointer to **string** |  | [optional] 
 **Recordsize** | Pointer to **string** |  | [optional] 
-**Refquota** | Pointer to **int32** |  | [optional] 
-**Refreservation** | Pointer to **int32** |  | [optional] 
+**Refquota** | Pointer to **int64** |  | [optional] 
+**Refreservation** | Pointer to **int64** |  | [optional] 
 **Snapdir** | Pointer to **string** |  | [optional] 
 **Sync** | Pointer to **string** |  | [optional] 
 
@@ -215,20 +215,20 @@ HasExec returns a boolean if a field has been set.
 
 ### GetQuota
 
-`func (o *UpdateDatasetParams) GetQuota() int32`
+`func (o *UpdateDatasetParams) GetQuota() int64`
 
 GetQuota returns the Quota field if non-nil, zero value otherwise.
 
 ### GetQuotaOk
 
-`func (o *UpdateDatasetParams) GetQuotaOk() (*int32, bool)`
+`func (o *UpdateDatasetParams) GetQuotaOk() (*int64, bool)`
 
 GetQuotaOk returns a tuple with the Quota field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuota
 
-`func (o *UpdateDatasetParams) SetQuota(v int32)`
+`func (o *UpdateDatasetParams) SetQuota(v int64)`
 
 SetQuota sets Quota field to given value.
 
@@ -290,20 +290,20 @@ HasRecordsize returns a boolean if a field has been set.
 
 ### GetRefquota
 
-`func (o *UpdateDatasetParams) GetRefquota() int32`
+`func (o *UpdateDatasetParams) GetRefquota() int64`
 
 GetRefquota returns the Refquota field if non-nil, zero value otherwise.
 
 ### GetRefquotaOk
 
-`func (o *UpdateDatasetParams) GetRefquotaOk() (*int32, bool)`
+`func (o *UpdateDatasetParams) GetRefquotaOk() (*int64, bool)`
 
 GetRefquotaOk returns a tuple with the Refquota field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefquota
 
-`func (o *UpdateDatasetParams) SetRefquota(v int32)`
+`func (o *UpdateDatasetParams) SetRefquota(v int64)`
 
 SetRefquota sets Refquota field to given value.
 
@@ -315,20 +315,20 @@ HasRefquota returns a boolean if a field has been set.
 
 ### GetRefreservation
 
-`func (o *UpdateDatasetParams) GetRefreservation() int32`
+`func (o *UpdateDatasetParams) GetRefreservation() int64`
 
 GetRefreservation returns the Refreservation field if non-nil, zero value otherwise.
 
 ### GetRefreservationOk
 
-`func (o *UpdateDatasetParams) GetRefreservationOk() (*int32, bool)`
+`func (o *UpdateDatasetParams) GetRefreservationOk() (*int64, bool)`
 
 GetRefreservationOk returns a tuple with the Refreservation field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefreservation
 
-`func (o *UpdateDatasetParams) SetRefreservation(v int32)`
+`func (o *UpdateDatasetParams) SetRefreservation(v int64)`
 
 SetRefreservation sets Refreservation field to given value.
 
