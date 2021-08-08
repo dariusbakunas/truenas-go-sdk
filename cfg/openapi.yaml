@@ -302,6 +302,23 @@ paths:
                 $ref: '#/components/schemas/CronJob'
         '401':
           $ref: '#/components/responses/Unauthorized'
+  /network/configuration:
+    get:
+      tags:
+        - network
+      operationId: getNetworkConfiguration
+      security:
+        - bearerAuth: [ ]
+      parameters: []
+      responses:
+        '200':
+          description: 'General network configuration'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkConfig'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
   /service/id/{id}:
     get:
       tags:
@@ -691,6 +708,43 @@ components:
           $ref: '#/components/schemas/CompositeValue'
         volsize:
           $ref: '#/components/schemas/CompositeValue'
+    NetworkConfig:
+      type: object
+      properties:
+        id:
+          type: integer
+        hostname:
+          type: string
+        domain:
+          type: string
+        ipv4gateway:
+          type: string
+        ipv6gateway:
+          type: string
+        nameserver1:
+          type: string
+        nameserver2:
+          type: string
+        nameserver3:
+          type: string
+        httpproxy:
+          type: string
+        netwait_enabled:
+          type: boolean
+        netwait_ip:
+          type: array
+          items:
+            type: string
+        hosts:
+          type: string
+        domains:
+          type: array
+          items:
+            type: string
+        service_announcement:
+          type: object
+        hostname_local:
+          type: string
     PoolsResponse:
       type: array
       items:

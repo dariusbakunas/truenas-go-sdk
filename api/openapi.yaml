@@ -338,6 +338,23 @@ paths:
       - bearerAuth: []
       tags:
       - cronjob
+  /network/configuration:
+    get:
+      operationId: getNetworkConfiguration
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkConfig'
+          description: General network configuration
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - network
   /service/id/{id}:
     get:
       operationId: getService
@@ -947,6 +964,63 @@ components:
       - name
       - pool
       - type
+      type: object
+    NetworkConfig:
+      example:
+        httpproxy: httpproxy
+        service_announcement: '{}'
+        hosts: hosts
+        domains:
+        - domains
+        - domains
+        ipv4gateway: ipv4gateway
+        ipv6gateway: ipv6gateway
+        hostname: hostname
+        nameserver2: nameserver2
+        nameserver3: nameserver3
+        hostname_local: hostname_local
+        netwait_ip:
+        - netwait_ip
+        - netwait_ip
+        nameserver1: nameserver1
+        domain: domain
+        netwait_enabled: true
+        id: 0
+      properties:
+        id:
+          type: integer
+        hostname:
+          type: string
+        domain:
+          type: string
+        ipv4gateway:
+          type: string
+        ipv6gateway:
+          type: string
+        nameserver1:
+          type: string
+        nameserver2:
+          type: string
+        nameserver3:
+          type: string
+        httpproxy:
+          type: string
+        netwait_enabled:
+          type: boolean
+        netwait_ip:
+          items:
+            type: string
+          type: array
+        hosts:
+          type: string
+        domains:
+          items:
+            type: string
+          type: array
+        service_announcement:
+          type: object
+        hostname_local:
+          type: string
       type: object
     PoolsResponse:
       items:

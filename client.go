@@ -53,6 +53,8 @@ type APIClient struct {
 
 	DatasetApi *DatasetApiService
 
+	NetworkApi *NetworkApiService
+
 	PoolApi *PoolApiService
 
 	ServiceApi *ServiceApiService
@@ -78,6 +80,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.CronjobApi = (*CronjobApiService)(&c.common)
 	c.DatasetApi = (*DatasetApiService)(&c.common)
+	c.NetworkApi = (*NetworkApiService)(&c.common)
 	c.PoolApi = (*PoolApiService)(&c.common)
 	c.ServiceApi = (*ServiceApiService)(&c.common)
 	c.VmApi = (*VmApiService)(&c.common)
