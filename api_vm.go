@@ -16,6 +16,7 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
+	"strings"
 )
 
 // Linger please
@@ -25,6 +26,144 @@ var (
 
 // VmApiService VmApi service
 type VmApiService service
+
+type ApiGetVMRequest struct {
+	ctx        _context.Context
+	ApiService *VmApiService
+	id         int32
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
+}
+
+func (r ApiGetVMRequest) Limit(limit int32) ApiGetVMRequest {
+	r.limit = &limit
+	return r
+}
+func (r ApiGetVMRequest) Offset(offset int32) ApiGetVMRequest {
+	r.offset = &offset
+	return r
+}
+func (r ApiGetVMRequest) Count(count bool) ApiGetVMRequest {
+	r.count = &count
+	return r
+}
+func (r ApiGetVMRequest) Sort(sort string) ApiGetVMRequest {
+	r.sort = &sort
+	return r
+}
+
+func (r ApiGetVMRequest) Execute() (VM, *_nethttp.Response, error) {
+	return r.ApiService.GetVMExecute(r)
+}
+
+/*
+ * GetVM Method for GetVM
+ * Get VM details
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param id
+ * @return ApiGetVMRequest
+ */
+func (a *VmApiService) GetVM(ctx _context.Context, id int32) ApiGetVMRequest {
+	return ApiGetVMRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return VM
+ */
+func (a *VmApiService) GetVMExecute(r ApiGetVMRequest) (VM, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  VM
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VmApiService.GetVM")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/vm/id/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
+	if r.offset != nil {
+		localVarQueryParams.Add("offset", parameterToString(*r.offset, ""))
+	}
+	if r.count != nil {
+		localVarQueryParams.Add("count", parameterToString(*r.count, ""))
+	}
+	if r.sort != nil {
+		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type ApiListVMSRequest struct {
 	ctx        _context.Context
@@ -52,7 +191,7 @@ func (r ApiListVMSRequest) Sort(sort string) ApiListVMSRequest {
 	return r
 }
 
-func (r ApiListVMSRequest) Execute() ([]map[string]interface{}, *_nethttp.Response, error) {
+func (r ApiListVMSRequest) Execute() ([]VM, *_nethttp.Response, error) {
 	return r.ApiService.ListVMSExecute(r)
 }
 
@@ -71,16 +210,16 @@ func (a *VmApiService) ListVMS(ctx _context.Context) ApiListVMSRequest {
 
 /*
  * Execute executes the request
- * @return []map[string]interface{}
+ * @return []VM
  */
-func (a *VmApiService) ListVMSExecute(r ApiListVMSRequest) ([]map[string]interface{}, *_nethttp.Response, error) {
+func (a *VmApiService) ListVMSExecute(r ApiListVMSRequest) ([]VM, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []map[string]interface{}
+		localVarReturnValue  []VM
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VmApiService.ListVMS")

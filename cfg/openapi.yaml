@@ -383,6 +383,49 @@ paths:
           required: false
           schema:
             type: string
+  /vm/id/{id}:
+    get:
+      tags:
+        - vm
+      operationId: getVM
+      security:
+        - bearerAuth: [ ]
+      description: Get VM details
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: count
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'VM details'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VM'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
 components:
   securitySchemes:
     bearerAuth:
@@ -693,84 +736,65 @@ components:
           type: array
           items:
             type: integer
+    VM:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        vcpus:
+          type: integer
+        memory:
+          type: integer
+        autostart:
+          type: boolean
+        time:
+          type: string
+        bootloader:
+          type: string
+        cores:
+          type: integer
+        threads:
+          type: integer
+        shutdown_timeout:
+          type: integer
+        devices:
+          type: array
+          items:
+            type: object
+            required:
+              - id
+              - dtype
+            properties:
+              id:
+                type: integer
+              dtype:
+                type: string
+              order:
+                type: integer
+              vm:
+                type: integer
+              attributes:
+                type: object
+        status:
+          type: object
+          properties:
+            state:
+              type: string
+            pid:
+              type: integer
+            domain_state:
+              type: string
     VMSResponse:
       type: array
       items:
-        type: object
-        required:
-          - id
-          - name
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          description:
-            type: string
-          vcpus:
-            type: integer
-          memory:
-            type: integer
-          autostart:
-            type: boolean
-          time:
-            type: string
-          bootloader:
-            type: string
-          cores:
-            type: integer
-          threads:
-            type: integer
-          shutdown_timeout:
-            type: integer
-          devices:
-            type: array
-            items:
-              type: object
-              required:
-                - id
-                - dtype
-              properties:
-                id:
-                  type: integer
-                dtype:
-                  type: string
-                order:
-                  type: integer
-                vm:
-                  type: integer
-                attributes:
-                  type: object
-                  properties:
-                    type:
-                      type: string
-                    mac:
-                      type: string
-                    nic_attach:
-                      type: string
-                    path:
-                      type: string
-                    wait:
-                      type: boolean
-                    vnc_port:
-                      type: integer
-                    vnc_resolution:
-                      type: string
-                    vnc_bind:
-                      type: string
-                    vnc_password:
-                      type: string
-                    vnc_web:
-                      type: boolean
-          status:
-            type: object
-            properties:
-              state:
-                type: string
-              pid:
-                type: integer
-              domain_state:
-                type: string
+        $ref: '#/components/schemas/VM'
   responses:
     NotFound:
       description: Endpoint not found

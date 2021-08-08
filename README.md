@@ -88,6 +88,7 @@ Class | Method | HTTP request | Description
 *DatasetApi* | [**UpdateDataset**](docs/DatasetApi.md#updatedataset) | **Put** /pool/dataset/id/{id} | 
 *PoolApi* | [**ListPools**](docs/PoolApi.md#listpools) | **Get** /pool | 
 *ServiceApi* | [**GetService**](docs/ServiceApi.md#getservice) | **Get** /service/id/{id} | 
+*VmApi* | [**GetVM**](docs/VmApi.md#getvm) | **Get** /vm/id/{id} | 
 *VmApi* | [**ListVMS**](docs/VmApi.md#listvms) | **Get** /vm | 
 
 
@@ -103,6 +104,9 @@ Class | Method | HTTP request | Description
  - [Pool](docs/Pool.md)
  - [Service](docs/Service.md)
  - [UpdateDatasetParams](docs/UpdateDatasetParams.md)
+ - [VM](docs/VM.md)
+ - [VMDevices](docs/VMDevices.md)
+ - [VMStatus](docs/VMStatus.md)
 
 
 ## Documentation For Authorization
