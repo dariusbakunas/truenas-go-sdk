@@ -1,0 +1,11 @@
+--- client_original.go	2021-08-08 08:48:32.000000000 -0400
++++ client.go	2021-08-08 08:45:43.000000000 -0400
+@@ -37,7 +37,7 @@
+ )
+ 
+ var (
+-	jsonCheck = regexp.MustCompile(`(?i:(?:application|text)/(?:vnd\.[^;]+\+)?json)`)
++	jsonCheck = regexp.MustCompile(`(?i:(?:application|text)/(?:vnd\.[^;]+\+)?(json|plain))`)
+ 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
+ )
+ 
