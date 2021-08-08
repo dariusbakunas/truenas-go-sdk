@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetNetworkConfiguration**](NetworkApi.md#GetNetworkConfiguration) | **Get** /network/configuration | 
+[**GetNetworkSummary**](NetworkApi.md#GetNetworkSummary) | **Get** /network/general/summary | 
 
 
 
@@ -52,6 +53,65 @@ Other parameters are passed through a pointer to a apiGetNetworkConfigurationReq
 ### Return type
 
 [**NetworkConfig**](NetworkConfig.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetNetworkSummary
+
+> NetworkSummary GetNetworkSummary(ctx).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NetworkApi.GetNetworkSummary(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NetworkApi.GetNetworkSummary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetNetworkSummary`: NetworkSummary
+    fmt.Fprintf(os.Stdout, "Response from `NetworkApi.GetNetworkSummary`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetNetworkSummaryRequest struct via the builder pattern
+
+
+### Return type
+
+[**NetworkSummary**](NetworkSummary.md)
 
 ### Authorization
 

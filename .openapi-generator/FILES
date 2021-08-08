@@ -20,6 +20,8 @@ docs/Dataset.md
 docs/DatasetApi.md
 docs/NetworkApi.md
 docs/NetworkConfig.md
+docs/NetworkSummary.md
+docs/NetworkSummaryIps.md
 docs/Pool.md
 docs/PoolApi.md
 docs/Service.md
@@ -40,6 +42,8 @@ model_cron_job.go
 model_cron_job_schedule.go
 model_dataset.go
 model_network_config.go
+model_network_summary.go
+model_network_summary_ips.go
 model_pool.go
 model_service.go
 model_update_dataset_params.go

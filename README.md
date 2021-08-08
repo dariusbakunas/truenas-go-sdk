@@ -87,6 +87,7 @@ Class | Method | HTTP request | Description
 *DatasetApi* | [**GetDataset**](docs/DatasetApi.md#getdataset) | **Get** /pool/dataset/id/{id} | 
 *DatasetApi* | [**UpdateDataset**](docs/DatasetApi.md#updatedataset) | **Put** /pool/dataset/id/{id} | 
 *NetworkApi* | [**GetNetworkConfiguration**](docs/NetworkApi.md#getnetworkconfiguration) | **Get** /network/configuration | 
+*NetworkApi* | [**GetNetworkSummary**](docs/NetworkApi.md#getnetworksummary) | **Get** /network/general/summary | 
 *PoolApi* | [**ListPools**](docs/PoolApi.md#listpools) | **Get** /pool | 
 *ServiceApi* | [**GetService**](docs/ServiceApi.md#getservice) | **Get** /service/id/{id} | 
 *VmApi* | [**GetVM**](docs/VmApi.md#getvm) | **Get** /vm/id/{id} | 
@@ -103,6 +104,8 @@ Class | Method | HTTP request | Description
  - [CronJobSchedule](docs/CronJobSchedule.md)
  - [Dataset](docs/Dataset.md)
  - [NetworkConfig](docs/NetworkConfig.md)
+ - [NetworkSummary](docs/NetworkSummary.md)
+ - [NetworkSummaryIps](docs/NetworkSummaryIps.md)
  - [Pool](docs/Pool.md)
  - [Service](docs/Service.md)
  - [UpdateDatasetParams](docs/UpdateDatasetParams.md)

@@ -355,6 +355,23 @@ paths:
       - bearerAuth: []
       tags:
       - network
+  /network/general/summary:
+    get:
+      operationId: getNetworkSummary
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkSummary'
+          description: General network summary
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - network
   /service/id/{id}:
     get:
       operationId: getService
@@ -1022,6 +1039,36 @@ components:
         hostname_local:
           type: string
       type: object
+    NetworkSummary:
+      example:
+        nameservers:
+        - nameservers
+        - nameservers
+        ips:
+          key:
+            IPV6:
+            - IPV6
+            - IPV6
+            IPV4:
+            - IPV4
+            - IPV4
+        default_routes:
+        - default_routes
+        - default_routes
+      properties:
+        ips:
+          additionalProperties:
+            $ref: '#/components/schemas/NetworkSummary_ips'
+          type: object
+        default_routes:
+          items:
+            type: string
+          type: array
+        nameservers:
+          items:
+            type: string
+          type: array
+      type: object
     PoolsResponse:
       items:
         $ref: '#/components/schemas/Pool'
@@ -1164,6 +1211,24 @@ components:
           type: string
         key:
           type: string
+      type: object
+    NetworkSummary_ips:
+      example:
+        IPV6:
+        - IPV6
+        - IPV6
+        IPV4:
+        - IPV4
+        - IPV4
+      properties:
+        IPV4:
+          items:
+            type: string
+          type: array
+        IPV6:
+          items:
+            type: string
+          type: array
       type: object
     VM_devices:
       example:

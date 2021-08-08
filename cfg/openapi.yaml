@@ -319,6 +319,23 @@ paths:
                 $ref: '#/components/schemas/NetworkConfig'
         '401':
           $ref: '#/components/responses/Unauthorized'
+  /network/general/summary:
+    get:
+      tags:
+        - network
+      operationId: getNetworkSummary
+      security:
+        - bearerAuth: [ ]
+      parameters: [ ]
+      responses:
+        '200':
+          description: 'General network summary'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkSummary'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
   /service/id/{id}:
     get:
       tags:
@@ -745,6 +762,30 @@ components:
           type: object
         hostname_local:
           type: string
+    NetworkSummary:
+      type: object
+      properties:
+        ips:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              IPV4:
+                type: array
+                items:
+                  type: string
+              IPV6:
+                type: array
+                items:
+                  type: string
+        default_routes:
+          type: array
+          items:
+            type: string
+        nameservers:
+          type: array
+          items:
+            type: string
     PoolsResponse:
       type: array
       items:
