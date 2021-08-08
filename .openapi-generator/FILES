@@ -5,6 +5,7 @@ api_cronjob.go
 api_dataset.go
 api_pool.go
 api_service.go
+api_vm.go
 client.go
 configuration.go
 docs/CompositeValue.md
@@ -21,6 +22,7 @@ docs/PoolApi.md
 docs/Service.md
 docs/ServiceApi.md
 docs/UpdateDatasetParams.md
+docs/VmApi.md
 git_push.sh
 go.mod
 go.sum

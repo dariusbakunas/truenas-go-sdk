@@ -391,6 +391,52 @@ paths:
       - bearerAuth: []
       tags:
       - service
+  /vm:
+    get:
+      description: Get a list of VMs
+      operationId: listVMS
+      parameters:
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMSResponse'
+          description: List of VMs
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - vm
 components:
   responses:
     NotFound:
@@ -911,6 +957,84 @@ components:
       - id
       - service
       type: object
+    VMSResponse:
+      items:
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          description:
+            type: string
+          vcpus:
+            type: integer
+          memory:
+            type: integer
+          autostart:
+            type: boolean
+          time:
+            type: string
+          bootloader:
+            type: string
+          cores:
+            type: integer
+          threads:
+            type: integer
+          shutdown_timeout:
+            type: integer
+          devices:
+            items:
+              properties:
+                id:
+                  type: integer
+                dtype:
+                  type: string
+                order:
+                  type: integer
+                vm:
+                  type: integer
+                attributes:
+                  properties:
+                    type:
+                      type: string
+                    mac:
+                      type: string
+                    nic_attach:
+                      type: string
+                    path:
+                      type: string
+                    wait:
+                      type: boolean
+                    vnc_port:
+                      type: integer
+                    vnc_resolution:
+                      type: string
+                    vnc_bind:
+                      type: string
+                    vnc_password:
+                      type: string
+                    vnc_web:
+                      type: boolean
+                  type: object
+              required:
+              - dtype
+              - id
+              type: object
+            type: array
+          status:
+            properties:
+              state:
+                type: string
+              pid:
+                type: integer
+              domain_state:
+                type: string
+            type: object
+        required:
+        - id
+        - name
+        type: object
+      type: array
     CreateDatasetParams_encryption_options:
       example:
         generate_key: true

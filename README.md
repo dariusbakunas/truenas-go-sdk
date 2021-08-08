@@ -88,6 +88,7 @@ Class | Method | HTTP request | Description
 *DatasetApi* | [**UpdateDataset**](docs/DatasetApi.md#updatedataset) | **Put** /pool/dataset/id/{id} | 
 *PoolApi* | [**ListPools**](docs/PoolApi.md#listpools) | **Get** /pool | 
 *ServiceApi* | [**GetService**](docs/ServiceApi.md#getservice) | **Get** /service/id/{id} | 
+*VmApi* | [**ListVMS**](docs/VmApi.md#listvms) | **Get** /vm | 
 
 
 ## Documentation For Models
