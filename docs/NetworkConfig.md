@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **NetwaitIp** | Pointer to **[]string** |  | [optional] 
 **Hosts** | Pointer to **string** |  | [optional] 
 **Domains** | Pointer to **[]string** |  | [optional] 
-**ServiceAnnouncement** | Pointer to **map[string]interface{}** |  | [optional] 
+**ServiceAnnouncement** | Pointer to [**NetworkConfigServiceAnnouncement**](NetworkConfigServiceAnnouncement.md) |  | [optional] 
 **HostnameLocal** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -366,20 +366,20 @@ HasDomains returns a boolean if a field has been set.
 
 ### GetServiceAnnouncement
 
-`func (o *NetworkConfig) GetServiceAnnouncement() map[string]interface{}`
+`func (o *NetworkConfig) GetServiceAnnouncement() NetworkConfigServiceAnnouncement`
 
 GetServiceAnnouncement returns the ServiceAnnouncement field if non-nil, zero value otherwise.
 
 ### GetServiceAnnouncementOk
 
-`func (o *NetworkConfig) GetServiceAnnouncementOk() (*map[string]interface{}, bool)`
+`func (o *NetworkConfig) GetServiceAnnouncementOk() (*NetworkConfigServiceAnnouncement, bool)`
 
 GetServiceAnnouncementOk returns a tuple with the ServiceAnnouncement field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceAnnouncement
 
-`func (o *NetworkConfig) SetServiceAnnouncement(v map[string]interface{})`
+`func (o *NetworkConfig) SetServiceAnnouncement(v NetworkConfigServiceAnnouncement)`
 
 SetServiceAnnouncement sets ServiceAnnouncement field to given value.
 

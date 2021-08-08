@@ -16,21 +16,21 @@ import (
 
 // NetworkConfig struct for NetworkConfig
 type NetworkConfig struct {
-	Id                   *int32                  `json:"id,omitempty"`
-	Hostname             *string                 `json:"hostname,omitempty"`
-	Domain               *string                 `json:"domain,omitempty"`
-	Ipv4gateway          *string                 `json:"ipv4gateway,omitempty"`
-	Ipv6gateway          *string                 `json:"ipv6gateway,omitempty"`
-	Nameserver1          *string                 `json:"nameserver1,omitempty"`
-	Nameserver2          *string                 `json:"nameserver2,omitempty"`
-	Nameserver3          *string                 `json:"nameserver3,omitempty"`
-	Httpproxy            *string                 `json:"httpproxy,omitempty"`
-	NetwaitEnabled       *bool                   `json:"netwait_enabled,omitempty"`
-	NetwaitIp            *[]string               `json:"netwait_ip,omitempty"`
-	Hosts                *string                 `json:"hosts,omitempty"`
-	Domains              *[]string               `json:"domains,omitempty"`
-	ServiceAnnouncement  *map[string]interface{} `json:"service_announcement,omitempty"`
-	HostnameLocal        *string                 `json:"hostname_local,omitempty"`
+	Id                   *int32                            `json:"id,omitempty"`
+	Hostname             *string                           `json:"hostname,omitempty"`
+	Domain               *string                           `json:"domain,omitempty"`
+	Ipv4gateway          *string                           `json:"ipv4gateway,omitempty"`
+	Ipv6gateway          *string                           `json:"ipv6gateway,omitempty"`
+	Nameserver1          *string                           `json:"nameserver1,omitempty"`
+	Nameserver2          *string                           `json:"nameserver2,omitempty"`
+	Nameserver3          *string                           `json:"nameserver3,omitempty"`
+	Httpproxy            *string                           `json:"httpproxy,omitempty"`
+	NetwaitEnabled       *bool                             `json:"netwait_enabled,omitempty"`
+	NetwaitIp            *[]string                         `json:"netwait_ip,omitempty"`
+	Hosts                *string                           `json:"hosts,omitempty"`
+	Domains              *[]string                         `json:"domains,omitempty"`
+	ServiceAnnouncement  *NetworkConfigServiceAnnouncement `json:"service_announcement,omitempty"`
+	HostnameLocal        *string                           `json:"hostname_local,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -470,9 +470,9 @@ func (o *NetworkConfig) SetDomains(v []string) {
 }
 
 // GetServiceAnnouncement returns the ServiceAnnouncement field value if set, zero value otherwise.
-func (o *NetworkConfig) GetServiceAnnouncement() map[string]interface{} {
+func (o *NetworkConfig) GetServiceAnnouncement() NetworkConfigServiceAnnouncement {
 	if o == nil || o.ServiceAnnouncement == nil {
-		var ret map[string]interface{}
+		var ret NetworkConfigServiceAnnouncement
 		return ret
 	}
 	return *o.ServiceAnnouncement
@@ -480,7 +480,7 @@ func (o *NetworkConfig) GetServiceAnnouncement() map[string]interface{} {
 
 // GetServiceAnnouncementOk returns a tuple with the ServiceAnnouncement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NetworkConfig) GetServiceAnnouncementOk() (*map[string]interface{}, bool) {
+func (o *NetworkConfig) GetServiceAnnouncementOk() (*NetworkConfigServiceAnnouncement, bool) {
 	if o == nil || o.ServiceAnnouncement == nil {
 		return nil, false
 	}
@@ -496,8 +496,8 @@ func (o *NetworkConfig) HasServiceAnnouncement() bool {
 	return false
 }
 
-// SetServiceAnnouncement gets a reference to the given map[string]interface{} and assigns it to the ServiceAnnouncement field.
-func (o *NetworkConfig) SetServiceAnnouncement(v map[string]interface{}) {
+// SetServiceAnnouncement gets a reference to the given NetworkConfigServiceAnnouncement and assigns it to the ServiceAnnouncement field.
+func (o *NetworkConfig) SetServiceAnnouncement(v NetworkConfigServiceAnnouncement) {
 	o.ServiceAnnouncement = &v
 }
 

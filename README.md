@@ -104,6 +104,7 @@ Class | Method | HTTP request | Description
  - [CronJobSchedule](docs/CronJobSchedule.md)
  - [Dataset](docs/Dataset.md)
  - [NetworkConfig](docs/NetworkConfig.md)
+ - [NetworkConfigServiceAnnouncement](docs/NetworkConfigServiceAnnouncement.md)
  - [NetworkSummary](docs/NetworkSummary.md)
  - [NetworkSummaryIps](docs/NetworkSummaryIps.md)
  - [Pool](docs/Pool.md)

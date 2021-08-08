@@ -760,6 +760,13 @@ components:
             type: string
         service_announcement:
           type: object
+          properties:
+            netbios:
+              type: boolean
+            mdns:
+              type: boolean
+            wsd:
+              type: boolean
         hostname_local:
           type: string
     NetworkSummary:

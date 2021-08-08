@@ -985,7 +985,10 @@ components:
     NetworkConfig:
       example:
         httpproxy: httpproxy
-        service_announcement: '{}'
+        service_announcement:
+          wsd: true
+          netbios: true
+          mdns: true
         hosts: hosts
         domains:
         - domains
@@ -1035,7 +1038,7 @@ components:
             type: string
           type: array
         service_announcement:
-          type: object
+          $ref: '#/components/schemas/NetworkConfig_service_announcement'
         hostname_local:
           type: string
       type: object
@@ -1211,6 +1214,19 @@ components:
           type: string
         key:
           type: string
+      type: object
+    NetworkConfig_service_announcement:
+      example:
+        wsd: true
+        netbios: true
+        mdns: true
+      properties:
+        netbios:
+          type: boolean
+        mdns:
+          type: boolean
+        wsd:
+          type: boolean
       type: object
     NetworkSummary_ips:
       example:
