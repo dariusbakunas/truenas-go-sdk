@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Copies** | Pointer to **int32** |  | [optional] 
 **Deduplication** | Pointer to **string** |  | [optional] 
 **Exec** | Pointer to **string** |  | [optional] 
+**ForceSize** | Pointer to **bool** |  | [optional] 
 **Quota** | Pointer to **int64** |  | [optional] 
 **Readonly** | Pointer to **string** |  | [optional] 
 **Recordsize** | Pointer to **string** |  | [optional] 
@@ -213,6 +214,31 @@ SetExec sets Exec field to given value.
 `func (o *UpdateDatasetParams) HasExec() bool`
 
 HasExec returns a boolean if a field has been set.
+
+### GetForceSize
+
+`func (o *UpdateDatasetParams) GetForceSize() bool`
+
+GetForceSize returns the ForceSize field if non-nil, zero value otherwise.
+
+### GetForceSizeOk
+
+`func (o *UpdateDatasetParams) GetForceSizeOk() (*bool, bool)`
+
+GetForceSizeOk returns a tuple with the ForceSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForceSize
+
+`func (o *UpdateDatasetParams) SetForceSize(v bool)`
+
+SetForceSize sets ForceSize field to given value.
+
+### HasForceSize
+
+`func (o *UpdateDatasetParams) HasForceSize() bool`
+
+HasForceSize returns a boolean if a field has been set.
 
 ### GetQuota
 

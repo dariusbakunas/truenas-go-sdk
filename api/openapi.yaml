@@ -687,6 +687,7 @@ components:
         quota: 6
         aclmode: aclmode
         compression: compression
+        force_size: true
         refquota: 1
         exec: exec
       properties:
@@ -704,6 +705,8 @@ components:
           type: string
         exec:
           type: string
+        force_size:
+          type: boolean
         quota:
           format: int64
           type: integer

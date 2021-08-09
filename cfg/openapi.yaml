@@ -585,6 +585,8 @@ components:
           type: string
         exec:
           type: string
+        force_size:
+          type: boolean
         quota:
           type: integer
           format: int64

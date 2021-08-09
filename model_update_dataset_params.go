@@ -23,6 +23,7 @@ type UpdateDatasetParams struct {
 	Copies               *int32  `json:"copies,omitempty"`
 	Deduplication        *string `json:"deduplication,omitempty"`
 	Exec                 *string `json:"exec,omitempty"`
+	ForceSize            *bool   `json:"force_size,omitempty"`
 	Quota                *int64  `json:"quota,omitempty"`
 	Readonly             *string `json:"readonly,omitempty"`
 	Recordsize           *string `json:"recordsize,omitempty"`
@@ -275,6 +276,38 @@ func (o *UpdateDatasetParams) HasExec() bool {
 // SetExec gets a reference to the given string and assigns it to the Exec field.
 func (o *UpdateDatasetParams) SetExec(v string) {
 	o.Exec = &v
+}
+
+// GetForceSize returns the ForceSize field value if set, zero value otherwise.
+func (o *UpdateDatasetParams) GetForceSize() bool {
+	if o == nil || o.ForceSize == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ForceSize
+}
+
+// GetForceSizeOk returns a tuple with the ForceSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDatasetParams) GetForceSizeOk() (*bool, bool) {
+	if o == nil || o.ForceSize == nil {
+		return nil, false
+	}
+	return o.ForceSize, true
+}
+
+// HasForceSize returns a boolean if a field has been set.
+func (o *UpdateDatasetParams) HasForceSize() bool {
+	if o != nil && o.ForceSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetForceSize gets a reference to the given bool and assigns it to the ForceSize field.
+func (o *UpdateDatasetParams) SetForceSize(v bool) {
+	o.ForceSize = &v
 }
 
 // GetQuota returns the Quota field value if set, zero value otherwise.
@@ -556,6 +589,9 @@ func (o UpdateDatasetParams) MarshalJSON() ([]byte, error) {
 	if o.Exec != nil {
 		toSerialize["exec"] = o.Exec
 	}
+	if o.ForceSize != nil {
+		toSerialize["force_size"] = o.ForceSize
+	}
 	if o.Quota != nil {
 		toSerialize["quota"] = o.Quota
 	}
@@ -605,6 +641,7 @@ func (o *UpdateDatasetParams) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "copies")
 		delete(additionalProperties, "deduplication")
 		delete(additionalProperties, "exec")
+		delete(additionalProperties, "force_size")
 		delete(additionalProperties, "quota")
 		delete(additionalProperties, "readonly")
 		delete(additionalProperties, "recordsize")
