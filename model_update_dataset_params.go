@@ -28,6 +28,7 @@ type UpdateDatasetParams struct {
 	Recordsize           *string `json:"recordsize,omitempty"`
 	Refquota             *int64  `json:"refquota,omitempty"`
 	Refreservation       *int64  `json:"refreservation,omitempty"`
+	Volsize              *int64  `json:"volsize,omitempty"`
 	Snapdir              *string `json:"snapdir,omitempty"`
 	Sync                 *string `json:"sync,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -436,6 +437,38 @@ func (o *UpdateDatasetParams) SetRefreservation(v int64) {
 	o.Refreservation = &v
 }
 
+// GetVolsize returns the Volsize field value if set, zero value otherwise.
+func (o *UpdateDatasetParams) GetVolsize() int64 {
+	if o == nil || o.Volsize == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Volsize
+}
+
+// GetVolsizeOk returns a tuple with the Volsize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDatasetParams) GetVolsizeOk() (*int64, bool) {
+	if o == nil || o.Volsize == nil {
+		return nil, false
+	}
+	return o.Volsize, true
+}
+
+// HasVolsize returns a boolean if a field has been set.
+func (o *UpdateDatasetParams) HasVolsize() bool {
+	if o != nil && o.Volsize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVolsize gets a reference to the given int64 and assigns it to the Volsize field.
+func (o *UpdateDatasetParams) SetVolsize(v int64) {
+	o.Volsize = &v
+}
+
 // GetSnapdir returns the Snapdir field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetSnapdir() string {
 	if o == nil || o.Snapdir == nil {
@@ -538,6 +571,9 @@ func (o UpdateDatasetParams) MarshalJSON() ([]byte, error) {
 	if o.Refreservation != nil {
 		toSerialize["refreservation"] = o.Refreservation
 	}
+	if o.Volsize != nil {
+		toSerialize["volsize"] = o.Volsize
+	}
 	if o.Snapdir != nil {
 		toSerialize["snapdir"] = o.Snapdir
 	}
@@ -574,6 +610,7 @@ func (o *UpdateDatasetParams) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "recordsize")
 		delete(additionalProperties, "refquota")
 		delete(additionalProperties, "refreservation")
+		delete(additionalProperties, "volsize")
 		delete(additionalProperties, "snapdir")
 		delete(additionalProperties, "sync")
 		o.AdditionalProperties = additionalProperties

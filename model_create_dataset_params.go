@@ -27,10 +27,13 @@ type CreateDatasetParams struct {
 	Encryption           *bool                                 `json:"encryption,omitempty"`
 	EncryptionOptions    *CreateDatasetParamsEncryptionOptions `json:"encryption_options,omitempty"`
 	Exec                 *string                               `json:"exec,omitempty"`
+	ForceSize            *bool                                 `json:"force_size,omitempty"`
 	InheritEncryption    *bool                                 `json:"inherit_encryption,omitempty"`
 	Quota                *int64                                `json:"quota,omitempty"`
 	QuotaCritical        *int64                                `json:"quota_critical,omitempty"`
 	QuotaWarning         *int64                                `json:"quota_warning,omitempty"`
+	Volsize              *int64                                `json:"volsize,omitempty"`
+	Volblocksize         *int64                                `json:"volblocksize,omitempty"`
 	Readonly             *string                               `json:"readonly,omitempty"`
 	Recordsize           *string                               `json:"recordsize,omitempty"`
 	Refquota             *int64                                `json:"refquota,omitempty"`
@@ -409,6 +412,38 @@ func (o *CreateDatasetParams) SetExec(v string) {
 	o.Exec = &v
 }
 
+// GetForceSize returns the ForceSize field value if set, zero value otherwise.
+func (o *CreateDatasetParams) GetForceSize() bool {
+	if o == nil || o.ForceSize == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ForceSize
+}
+
+// GetForceSizeOk returns a tuple with the ForceSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDatasetParams) GetForceSizeOk() (*bool, bool) {
+	if o == nil || o.ForceSize == nil {
+		return nil, false
+	}
+	return o.ForceSize, true
+}
+
+// HasForceSize returns a boolean if a field has been set.
+func (o *CreateDatasetParams) HasForceSize() bool {
+	if o != nil && o.ForceSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetForceSize gets a reference to the given bool and assigns it to the ForceSize field.
+func (o *CreateDatasetParams) SetForceSize(v bool) {
+	o.ForceSize = &v
+}
+
 // GetInheritEncryption returns the InheritEncryption field value if set, zero value otherwise.
 func (o *CreateDatasetParams) GetInheritEncryption() bool {
 	if o == nil || o.InheritEncryption == nil {
@@ -535,6 +570,70 @@ func (o *CreateDatasetParams) HasQuotaWarning() bool {
 // SetQuotaWarning gets a reference to the given int64 and assigns it to the QuotaWarning field.
 func (o *CreateDatasetParams) SetQuotaWarning(v int64) {
 	o.QuotaWarning = &v
+}
+
+// GetVolsize returns the Volsize field value if set, zero value otherwise.
+func (o *CreateDatasetParams) GetVolsize() int64 {
+	if o == nil || o.Volsize == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Volsize
+}
+
+// GetVolsizeOk returns a tuple with the Volsize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDatasetParams) GetVolsizeOk() (*int64, bool) {
+	if o == nil || o.Volsize == nil {
+		return nil, false
+	}
+	return o.Volsize, true
+}
+
+// HasVolsize returns a boolean if a field has been set.
+func (o *CreateDatasetParams) HasVolsize() bool {
+	if o != nil && o.Volsize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVolsize gets a reference to the given int64 and assigns it to the Volsize field.
+func (o *CreateDatasetParams) SetVolsize(v int64) {
+	o.Volsize = &v
+}
+
+// GetVolblocksize returns the Volblocksize field value if set, zero value otherwise.
+func (o *CreateDatasetParams) GetVolblocksize() int64 {
+	if o == nil || o.Volblocksize == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Volblocksize
+}
+
+// GetVolblocksizeOk returns a tuple with the Volblocksize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDatasetParams) GetVolblocksizeOk() (*int64, bool) {
+	if o == nil || o.Volblocksize == nil {
+		return nil, false
+	}
+	return o.Volblocksize, true
+}
+
+// HasVolblocksize returns a boolean if a field has been set.
+func (o *CreateDatasetParams) HasVolblocksize() bool {
+	if o != nil && o.Volblocksize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVolblocksize gets a reference to the given int64 and assigns it to the Volblocksize field.
+func (o *CreateDatasetParams) SetVolblocksize(v int64) {
+	o.Volblocksize = &v
 }
 
 // GetReadonly returns the Readonly field value if set, zero value otherwise.
@@ -924,6 +1023,9 @@ func (o CreateDatasetParams) MarshalJSON() ([]byte, error) {
 	if o.Exec != nil {
 		toSerialize["exec"] = o.Exec
 	}
+	if o.ForceSize != nil {
+		toSerialize["force_size"] = o.ForceSize
+	}
 	if o.InheritEncryption != nil {
 		toSerialize["inherit_encryption"] = o.InheritEncryption
 	}
@@ -935,6 +1037,12 @@ func (o CreateDatasetParams) MarshalJSON() ([]byte, error) {
 	}
 	if o.QuotaWarning != nil {
 		toSerialize["quota_warning"] = o.QuotaWarning
+	}
+	if o.Volsize != nil {
+		toSerialize["volsize"] = o.Volsize
+	}
+	if o.Volblocksize != nil {
+		toSerialize["volblocksize"] = o.Volblocksize
 	}
 	if o.Readonly != nil {
 		toSerialize["readonly"] = o.Readonly
@@ -998,10 +1106,13 @@ func (o *CreateDatasetParams) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "encryption")
 		delete(additionalProperties, "encryption_options")
 		delete(additionalProperties, "exec")
+		delete(additionalProperties, "force_size")
 		delete(additionalProperties, "inherit_encryption")
 		delete(additionalProperties, "quota")
 		delete(additionalProperties, "quota_critical")
 		delete(additionalProperties, "quota_warning")
+		delete(additionalProperties, "volsize")
+		delete(additionalProperties, "volblocksize")
 		delete(additionalProperties, "readonly")
 		delete(additionalProperties, "recordsize")
 		delete(additionalProperties, "refquota")

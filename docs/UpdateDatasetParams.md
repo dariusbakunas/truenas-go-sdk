@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Recordsize** | Pointer to **string** |  | [optional] 
 **Refquota** | Pointer to **int64** |  | [optional] 
 **Refreservation** | Pointer to **int64** |  | [optional] 
+**Volsize** | Pointer to **int64** |  | [optional] 
 **Snapdir** | Pointer to **string** |  | [optional] 
 **Sync** | Pointer to **string** |  | [optional] 
 
@@ -337,6 +338,31 @@ SetRefreservation sets Refreservation field to given value.
 `func (o *UpdateDatasetParams) HasRefreservation() bool`
 
 HasRefreservation returns a boolean if a field has been set.
+
+### GetVolsize
+
+`func (o *UpdateDatasetParams) GetVolsize() int64`
+
+GetVolsize returns the Volsize field if non-nil, zero value otherwise.
+
+### GetVolsizeOk
+
+`func (o *UpdateDatasetParams) GetVolsizeOk() (*int64, bool)`
+
+GetVolsizeOk returns a tuple with the Volsize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVolsize
+
+`func (o *UpdateDatasetParams) SetVolsize(v int64)`
+
+SetVolsize sets Volsize field to given value.
+
+### HasVolsize
+
+`func (o *UpdateDatasetParams) HasVolsize() bool`
+
+HasVolsize returns a boolean if a field has been set.
 
 ### GetSnapdir
 

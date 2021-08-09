@@ -523,6 +523,8 @@ components:
               type: string
         exec:
           type: string
+        force_size:
+          type: boolean
         inherit_encryption:
           type: boolean
         quota:
@@ -532,6 +534,12 @@ components:
           type: integer
           format: int64
         quota_warning:
+          type: integer
+          format: int64
+        volsize:
+          type: integer
+          format: int64
+        volblocksize:
           type: integer
           format: int64
         readonly:
@@ -589,6 +597,9 @@ components:
           type: integer
           format: int64
         refreservation:
+          type: integer
+          format: int64
+        volsize:
           type: integer
           format: int64
         snapdir:

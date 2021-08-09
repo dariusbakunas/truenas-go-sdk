@@ -571,8 +571,9 @@ components:
         quota_critical: 1
         recordsize: recordsize
         deduplication: deduplication
-        refreservation: 9
+        refreservation: 2
         type: type
+        volblocksize: 2
         encryption_options:
           generate_key: true
           passphrase: passphrase
@@ -583,20 +584,22 @@ components:
         readonly: readonly
         casesensitivity: casesensitivity
         quota: 6
-        reservation: 3
+        reservation: 4
         inherit_encryption: true
-        refquota: 5
+        force_size: true
+        refquota: 7
         atime: atime
         comments: comments
+        volsize: 5
         sync: sync
         snapdir: snapdir
         quota_warning: 5
         share_type: share_type
         name: name
-        refquota_critical: 2
+        refquota_critical: 9
         aclmode: aclmode
         compression: compression
-        refquota_warning: 7
+        refquota_warning: 3
         exec: exec
       properties:
         atime:
@@ -621,6 +624,8 @@ components:
           $ref: '#/components/schemas/CreateDatasetParams_encryption_options'
         exec:
           type: string
+        force_size:
+          type: boolean
         inherit_encryption:
           type: boolean
         quota:
@@ -630,6 +635,12 @@ components:
           format: int64
           type: integer
         quota_warning:
+          format: int64
+          type: integer
+        volsize:
+          format: int64
+          type: integer
+        volblocksize:
           format: int64
           type: integer
         readonly:
@@ -666,6 +677,7 @@ components:
       example:
         atime: atime
         comments: comments
+        volsize: 5
         recordsize: recordsize
         deduplication: deduplication
         refreservation: 5
@@ -704,6 +716,9 @@ components:
           format: int64
           type: integer
         refreservation:
+          format: int64
+          type: integer
+        volsize:
           format: int64
           type: integer
         snapdir:

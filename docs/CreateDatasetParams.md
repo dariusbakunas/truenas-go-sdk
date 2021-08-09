@@ -15,10 +15,13 @@ Name | Type | Description | Notes
 **Encryption** | Pointer to **bool** |  | [optional] 
 **EncryptionOptions** | Pointer to [**CreateDatasetParamsEncryptionOptions**](CreateDatasetParamsEncryptionOptions.md) |  | [optional] 
 **Exec** | Pointer to **string** |  | [optional] 
+**ForceSize** | Pointer to **bool** |  | [optional] 
 **InheritEncryption** | Pointer to **bool** |  | [optional] 
 **Quota** | Pointer to **int64** |  | [optional] 
 **QuotaCritical** | Pointer to **int64** |  | [optional] 
 **QuotaWarning** | Pointer to **int64** |  | [optional] 
+**Volsize** | Pointer to **int64** |  | [optional] 
+**Volblocksize** | Pointer to **int64** |  | [optional] 
 **Readonly** | Pointer to **string** |  | [optional] 
 **Recordsize** | Pointer to **string** |  | [optional] 
 **Refquota** | Pointer to **int64** |  | [optional] 
@@ -320,6 +323,31 @@ SetExec sets Exec field to given value.
 
 HasExec returns a boolean if a field has been set.
 
+### GetForceSize
+
+`func (o *CreateDatasetParams) GetForceSize() bool`
+
+GetForceSize returns the ForceSize field if non-nil, zero value otherwise.
+
+### GetForceSizeOk
+
+`func (o *CreateDatasetParams) GetForceSizeOk() (*bool, bool)`
+
+GetForceSizeOk returns a tuple with the ForceSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForceSize
+
+`func (o *CreateDatasetParams) SetForceSize(v bool)`
+
+SetForceSize sets ForceSize field to given value.
+
+### HasForceSize
+
+`func (o *CreateDatasetParams) HasForceSize() bool`
+
+HasForceSize returns a boolean if a field has been set.
+
 ### GetInheritEncryption
 
 `func (o *CreateDatasetParams) GetInheritEncryption() bool`
@@ -419,6 +447,56 @@ SetQuotaWarning sets QuotaWarning field to given value.
 `func (o *CreateDatasetParams) HasQuotaWarning() bool`
 
 HasQuotaWarning returns a boolean if a field has been set.
+
+### GetVolsize
+
+`func (o *CreateDatasetParams) GetVolsize() int64`
+
+GetVolsize returns the Volsize field if non-nil, zero value otherwise.
+
+### GetVolsizeOk
+
+`func (o *CreateDatasetParams) GetVolsizeOk() (*int64, bool)`
+
+GetVolsizeOk returns a tuple with the Volsize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVolsize
+
+`func (o *CreateDatasetParams) SetVolsize(v int64)`
+
+SetVolsize sets Volsize field to given value.
+
+### HasVolsize
+
+`func (o *CreateDatasetParams) HasVolsize() bool`
+
+HasVolsize returns a boolean if a field has been set.
+
+### GetVolblocksize
+
+`func (o *CreateDatasetParams) GetVolblocksize() int64`
+
+GetVolblocksize returns the Volblocksize field if non-nil, zero value otherwise.
+
+### GetVolblocksizeOk
+
+`func (o *CreateDatasetParams) GetVolblocksizeOk() (*int64, bool)`
+
+GetVolblocksizeOk returns a tuple with the Volblocksize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVolblocksize
+
+`func (o *CreateDatasetParams) SetVolblocksize(v int64)`
+
+SetVolblocksize sets Volblocksize field to given value.
+
+### HasVolblocksize
+
+`func (o *CreateDatasetParams) HasVolblocksize() bool`
+
+HasVolblocksize returns a boolean if a field has been set.
 
 ### GetReadonly
 
