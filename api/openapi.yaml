@@ -571,9 +571,9 @@ components:
         quota_critical: 1
         recordsize: recordsize
         deduplication: deduplication
-        refreservation: 2
+        refreservation: 3
         type: type
-        volblocksize: 2
+        volblocksize: volblocksize
         encryption_options:
           generate_key: true
           passphrase: passphrase
@@ -584,10 +584,10 @@ components:
         readonly: readonly
         casesensitivity: casesensitivity
         quota: 6
-        reservation: 4
+        reservation: 2
         inherit_encryption: true
         force_size: true
-        refquota: 7
+        refquota: 2
         atime: atime
         comments: comments
         volsize: 5
@@ -596,10 +596,10 @@ components:
         quota_warning: 5
         share_type: share_type
         name: name
-        refquota_critical: 9
+        refquota_critical: 7
         aclmode: aclmode
         compression: compression
-        refquota_warning: 3
+        refquota_warning: 9
         exec: exec
       properties:
         atime:
@@ -641,8 +641,7 @@ components:
           format: int64
           type: integer
         volblocksize:
-          format: int64
-          type: integer
+          type: string
         readonly:
           type: string
         recordsize:

@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **QuotaCritical** | Pointer to **int64** |  | [optional] 
 **QuotaWarning** | Pointer to **int64** |  | [optional] 
 **Volsize** | Pointer to **int64** |  | [optional] 
-**Volblocksize** | Pointer to **int64** |  | [optional] 
+**Volblocksize** | Pointer to **string** |  | [optional] 
 **Readonly** | Pointer to **string** |  | [optional] 
 **Recordsize** | Pointer to **string** |  | [optional] 
 **Refquota** | Pointer to **int64** |  | [optional] 
@@ -475,20 +475,20 @@ HasVolsize returns a boolean if a field has been set.
 
 ### GetVolblocksize
 
-`func (o *CreateDatasetParams) GetVolblocksize() int64`
+`func (o *CreateDatasetParams) GetVolblocksize() string`
 
 GetVolblocksize returns the Volblocksize field if non-nil, zero value otherwise.
 
 ### GetVolblocksizeOk
 
-`func (o *CreateDatasetParams) GetVolblocksizeOk() (*int64, bool)`
+`func (o *CreateDatasetParams) GetVolblocksizeOk() (*string, bool)`
 
 GetVolblocksizeOk returns a tuple with the Volblocksize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVolblocksize
 
-`func (o *CreateDatasetParams) SetVolblocksize(v int64)`
+`func (o *CreateDatasetParams) SetVolblocksize(v string)`
 
 SetVolblocksize sets Volblocksize field to given value.
 

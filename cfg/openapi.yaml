@@ -540,8 +540,7 @@ components:
           type: integer
           format: int64
         volblocksize:
-          type: integer
-          format: int64
+          type: string
         readonly:
           type: string
         recordsize:

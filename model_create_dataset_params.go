@@ -33,7 +33,7 @@ type CreateDatasetParams struct {
 	QuotaCritical        *int64                                `json:"quota_critical,omitempty"`
 	QuotaWarning         *int64                                `json:"quota_warning,omitempty"`
 	Volsize              *int64                                `json:"volsize,omitempty"`
-	Volblocksize         *int64                                `json:"volblocksize,omitempty"`
+	Volblocksize         *string                               `json:"volblocksize,omitempty"`
 	Readonly             *string                               `json:"readonly,omitempty"`
 	Recordsize           *string                               `json:"recordsize,omitempty"`
 	Refquota             *int64                                `json:"refquota,omitempty"`
@@ -605,9 +605,9 @@ func (o *CreateDatasetParams) SetVolsize(v int64) {
 }
 
 // GetVolblocksize returns the Volblocksize field value if set, zero value otherwise.
-func (o *CreateDatasetParams) GetVolblocksize() int64 {
+func (o *CreateDatasetParams) GetVolblocksize() string {
 	if o == nil || o.Volblocksize == nil {
-		var ret int64
+		var ret string
 		return ret
 	}
 	return *o.Volblocksize
@@ -615,7 +615,7 @@ func (o *CreateDatasetParams) GetVolblocksize() int64 {
 
 // GetVolblocksizeOk returns a tuple with the Volblocksize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDatasetParams) GetVolblocksizeOk() (*int64, bool) {
+func (o *CreateDatasetParams) GetVolblocksizeOk() (*string, bool) {
 	if o == nil || o.Volblocksize == nil {
 		return nil, false
 	}
@@ -631,8 +631,8 @@ func (o *CreateDatasetParams) HasVolblocksize() bool {
 	return false
 }
 
-// SetVolblocksize gets a reference to the given int64 and assigns it to the Volblocksize field.
-func (o *CreateDatasetParams) SetVolblocksize(v int64) {
+// SetVolblocksize gets a reference to the given string and assigns it to the Volblocksize field.
+func (o *CreateDatasetParams) SetVolblocksize(v string) {
 	o.Volblocksize = &v
 }
 
