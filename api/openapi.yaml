@@ -819,6 +819,10 @@ components:
           source: source
           value: value
         type: type
+        volblocksize:
+          rawvalue: rawvalue
+          source: source
+          value: value
         mountpoint: mountpoint
         acltype:
           rawvalue: rawvalue
@@ -992,6 +996,8 @@ components:
         xattr:
           $ref: '#/components/schemas/CompositeValue'
         volsize:
+          $ref: '#/components/schemas/CompositeValue'
+        volblocksize:
           $ref: '#/components/schemas/CompositeValue'
       required:
       - id

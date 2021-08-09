@@ -41,6 +41,7 @@ Name | Type | Description | Notes
 **Origin** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 **Xattr** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 **Volsize** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
+**Volblocksize** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 
 ## Methods
 
@@ -965,6 +966,31 @@ SetVolsize sets Volsize field to given value.
 `func (o *Dataset) HasVolsize() bool`
 
 HasVolsize returns a boolean if a field has been set.
+
+### GetVolblocksize
+
+`func (o *Dataset) GetVolblocksize() CompositeValue`
+
+GetVolblocksize returns the Volblocksize field if non-nil, zero value otherwise.
+
+### GetVolblocksizeOk
+
+`func (o *Dataset) GetVolblocksizeOk() (*CompositeValue, bool)`
+
+GetVolblocksizeOk returns a tuple with the Volblocksize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVolblocksize
+
+`func (o *Dataset) SetVolblocksize(v CompositeValue)`
+
+SetVolblocksize sets Volblocksize field to given value.
+
+### HasVolblocksize
+
+`func (o *Dataset) HasVolblocksize() bool`
+
+HasVolblocksize returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -737,6 +737,8 @@ components:
           $ref: '#/components/schemas/CompositeValue'
         volsize:
           $ref: '#/components/schemas/CompositeValue'
+        volblocksize:
+          $ref: '#/components/schemas/CompositeValue'
     NetworkConfig:
       type: object
       properties:
