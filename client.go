@@ -59,6 +59,8 @@ type APIClient struct {
 
 	ServiceApi *ServiceApiService
 
+	SharingApi *SharingApiService
+
 	VmApi *VmApiService
 }
 
@@ -83,6 +85,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.NetworkApi = (*NetworkApiService)(&c.common)
 	c.PoolApi = (*PoolApiService)(&c.common)
 	c.ServiceApi = (*ServiceApiService)(&c.common)
+	c.SharingApi = (*SharingApiService)(&c.common)
 	c.VmApi = (*VmApiService)(&c.common)
 
 	return c
