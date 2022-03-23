@@ -379,6 +379,344 @@ paths:
                 $ref: '#/components/schemas/Service'
         '401':
           $ref: '#/components/responses/Unauthorized'
+  /sharing/nfs:
+    get:
+      tags:
+        - sharing
+      operationId: listSharesNFS
+      description: Get a list of NFS shares
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          description: 'List of NFS shares'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SharesNFSResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: count
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+    post:
+      tags:
+        - sharing
+      operationId: createShareNFS
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          description: 'NFS share details'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShareNFS'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      parameters: []
+      description: |-
+        Create a new NFS Share.
+
+        `paths` is a list of valid paths which are configured to be shared on this share.
+
+        `networks` is a list of authorized networks that are allowed to access the share having format
+        "network/mask" CIDR notation. If empty, all networks are allowed.
+
+        `hosts` is a list of IP's/hostnames which are allowed to access the share. If empty, all IP's/hostnames are
+        allowed.
+
+        `alldirs` is a boolean value which when set indicates that the client can mount any subdirectories of the
+        selected pool or dataset.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateShareNFSParams'
+  '/sharing/nfs/id/{id}':
+    delete:
+      tags:
+        - sharing
+      operationId: removeShareNFS
+      description: Delete NFS Share of `id`.
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+    get:
+      tags:
+        - sharing
+      operationId: getShareNFS
+      description: Get NFS Share of `id`.
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          description: 'NFS Share details'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShareNFS'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: count
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+    put:
+      tags:
+        - sharing
+      operationId: updateShareNFS
+      description: Update NFS Share of `id`.
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          description: 'NFS Share details'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShareNFS'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              # using CreateShareNFSParams since it's the same payload as UpdateShareNFSParams
+              $ref: '#/components/schemas/CreateShareNFSParams'
+  /sharing/smb:
+    get:
+      tags:
+        - sharing
+      operationId: listSharesSMB
+      description: Get a list of SMB shares
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          description: 'List of SMB shares'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SharesSMBResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: count
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+    post:
+      tags:
+        - sharing
+      operationId: createShareSMB
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          description: 'SMB Share details'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShareSMB'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      parameters: []
+      description: |-
+        Create an SMB Share.
+
+        `purpose` applies common configuration presets depending on intended purpose.
+
+        `timemachine` when set, enables Time Machine backups for this share.
+
+        `ro` when enabled, prohibits write access to the share.
+
+        `guestok` when enabled, allows access to this share without a password.
+
+        `hostsallow` is a list of hostnames / IP addresses which have access to this share.
+
+        `hostsdeny` is a list of hostnames / IP addresses which are not allowed access to this share. If a handful
+        of hostnames are to be only allowed access, `hostsdeny` can be passed "ALL" which means that it will deny
+        access to ALL hostnames except for the ones which have been listed in `hostsallow`.
+
+        `acl` enables support for storing the SMB Security Descriptor as a Filesystem ACL.
+
+        `streams` enables support for storing alternate datastreams as filesystem extended attributes.
+
+        `fsrvp` enables support for the filesystem remote VSS protocol. This allows clients to create
+        ZFS snapshots through RPC.
+
+        `shadowcopy` enables support for the volume shadow copy service.
+
+        `auxsmbconf` is a string of additional smb4.conf parameters not covered by the system's API.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateShareSMBParams'
+  '/sharing/smb/id/{id}':
+    delete:
+      tags:
+        - sharing
+      operationId: removeShareSMB
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      description: |-
+        Delete SMB Share of `id`. This will forcibly disconnect SMB clients
+        that are accessing the share.
+    get:
+      tags:
+        - sharing
+      operationId: getShareSMB
+      description: Get SMB Share of `id`.
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          description: 'SMB Share details'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShareSMB'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: count
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+    put:
+      tags:
+        - sharing
+      operationId: updateShareSMB
+      description: Update SMB Share of `id`.
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          description: 'SMB Share details'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShareSMB'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              # using CreateShareSMBParams because it is the same payload as Update
+              $ref: '#/components/schemas/CreateShareSMBParams'
   /vm:
     get:
       tags:
@@ -607,6 +945,186 @@ components:
           type: string
         sync:
           type: string
+    CreateShareNFSParams:
+      type: object
+      required:
+        - paths
+      properties:
+        paths:
+          type: array
+          items:
+            type: string
+        comment:
+          type: string
+        networks:
+          type: array
+          items:
+            type: string
+        hosts:
+          type: array
+          items:
+            type: string
+        alldirs:
+          type: boolean
+        ro:
+          type: boolean
+        quiet:
+          type: boolean
+        maproot_user:
+          type: string
+        maproot_group:
+          type: string
+        mapall_user:
+          type: string
+        mapall_group:
+          type: string
+        security:
+          type: array
+          items:
+            type: string
+        enabled:
+          type: boolean
+    # UpdateShareNFSParams:
+    #   type: object
+    #   properties:
+    #     paths:
+    #       type: array
+    #       items:
+    #         type: string
+    #     comment:
+    #       type: string
+    #     networks:
+    #       type: array
+    #       items:
+    #         type: string
+    #     hosts:
+    #       type: array
+    #       items:
+    #         type: string
+    #     alldirs:
+    #       type: boolean
+    #     ro:
+    #       type: boolean
+    #     quiet:
+    #       type: boolean
+    #     maproot_user:
+    #       type: string
+    #     maproot_group:
+    #       type: string
+    #     mapall_user:
+    #       type: string
+    #     mapall_group:
+    #       type: string
+    #     security:
+    #       type: array
+    #       items:
+    #         type: string
+    #     enabled:
+    #       type: boolean
+    CreateShareSMBParams:
+      type: object
+      required:
+        - path
+      properties:
+        purpose:
+          type: string
+        path:
+          type: string
+        path_suffix:
+          type: string
+        home:
+          type: boolean
+        name:
+          type: string
+        comment:
+          type: string
+        ro:
+          type: boolean
+        browsable:
+          type: boolean
+        timemachine:
+          type: boolean
+        recyclebin:
+          type: boolean
+        guestok:
+          type: boolean
+        abe:
+          type: boolean
+        hostsallow:
+          type: array
+          items:
+            type: string
+        hostsdeny:
+          type: array
+          items:
+            type: string
+        aapl_name_mangling:
+          type: boolean
+        acl:
+          type: boolean
+        durablehandle:
+          type: boolean
+        shadowcopy:
+          type: boolean
+        streams:
+          type: boolean
+        fsrvp:
+          type: boolean
+        auxsmbconf:
+          type: string
+        enabled:
+          type: boolean
+    # UpdateShareSMBParams:
+    #   type: object
+    #   properties:
+    #     purpose:
+    #       type: string
+    #     path:
+    #       type: string
+    #     path_suffix:
+    #       type: string
+    #     home:
+    #       type: boolean
+    #     name:
+    #       type: string
+    #     comment:
+    #       type: string
+    #     ro:
+    #       type: boolean
+    #     browsable:
+    #       type: boolean
+    #     timemachine:
+    #       type: boolean
+    #     recyclebin:
+    #       type: boolean
+    #     guestok:
+    #       type: boolean
+    #     abe:
+    #       type: boolean
+    #     hostsallow:
+    #       type: array
+    #       items:
+    #         type: string
+    #     hostsdeny:
+    #       type: array
+    #       items:
+    #         type: string
+    #     aapl_name_mangling:
+    #       type: boolean
+    #     acl:
+    #       type: boolean
+    #     durablehandle:
+    #       type: boolean
+    #     shadowcopy:
+    #       type: boolean
+    #     streams:
+    #       type: boolean
+    #     fsrvp:
+    #       type: boolean
+    #     auxsmbconf:
+    #       type: string
+    #     enabled:
+    #       type: boolean
     CompositeValue:
       type: object
       required:
@@ -852,6 +1370,118 @@ components:
           type: array
           items:
             type: integer
+    ShareNFS:
+      type: object
+      required:
+        - id
+        - paths
+      properties:
+        id:
+          type: integer
+        comment:
+          type: string
+        hosts:
+          type: array
+          items:
+            type: string
+        alldirs:
+          type: boolean
+        ro:
+          type: boolean
+        quiet:
+          type: boolean
+        maproot_user:
+          type: string
+        maproot_group:
+          type: string
+        mapall_user:
+          type: string
+        mapall_group:
+          type: string
+        security:
+          type: array
+          items:
+            type: string
+        enabled:
+          type: boolean
+        locked:
+          type: boolean
+        paths:
+          type: array
+          items:
+            type: string
+        networks:
+          type: array
+          items:
+            type: string
+    ShareSMB:
+      type: object
+      required:
+        - id
+        - path
+      properties:
+        id:
+          type: integer
+        path:
+          type: string
+        path_suffix:
+          type: string
+        purpose:
+          type: string
+        home:
+          type: boolean
+        timemachine:
+          type: boolean
+        name:
+          type: string
+        comment:
+          type: string
+        ro:
+          type: boolean
+        browsable:
+          type: boolean
+        recyclebin:
+          type: boolean
+        shadowcopy:
+          type: boolean
+        guestok:
+          type: boolean
+        abe:
+          type: boolean
+        hostsallow:
+          type: array
+          items:
+            type: string
+        hostsdeny:
+          type: array
+          items:
+            type: string
+        aapl_name_mangling:
+          type: boolean
+        acl:
+          type: boolean
+        durablehandle:
+          type: boolean
+        streams:
+          type: boolean
+        fsrvp:
+          type: boolean
+        auxsmbconf:
+          type: string
+        enabled:
+          type: boolean
+        locked:
+          type: boolean
+        vuid:
+          type: string
+    SharesNFSResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/ShareNFS'
+    SharesSMBResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/ShareSMB'
     VM:
       type: object
       required:

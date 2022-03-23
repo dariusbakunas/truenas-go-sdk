@@ -90,6 +90,16 @@ Class | Method | HTTP request | Description
 *NetworkApi* | [**GetNetworkSummary**](docs/NetworkApi.md#getnetworksummary) | **Get** /network/general/summary | 
 *PoolApi* | [**ListPools**](docs/PoolApi.md#listpools) | **Get** /pool | 
 *ServiceApi* | [**GetService**](docs/ServiceApi.md#getservice) | **Get** /service/id/{id} | 
+*SharingApi* | [**CreateShareNFS**](docs/SharingApi.md#createsharenfs) | **Post** /sharing/nfs | 
+*SharingApi* | [**CreateShareSMB**](docs/SharingApi.md#createsharesmb) | **Post** /sharing/smb | 
+*SharingApi* | [**GetShareNFS**](docs/SharingApi.md#getsharenfs) | **Get** /sharing/nfs/id/{id} | 
+*SharingApi* | [**GetShareSMB**](docs/SharingApi.md#getsharesmb) | **Get** /sharing/smb/id/{id} | 
+*SharingApi* | [**ListSharesNFS**](docs/SharingApi.md#listsharesnfs) | **Get** /sharing/nfs | 
+*SharingApi* | [**ListSharesSMB**](docs/SharingApi.md#listsharessmb) | **Get** /sharing/smb | 
+*SharingApi* | [**RemoveShareNFS**](docs/SharingApi.md#removesharenfs) | **Delete** /sharing/nfs/id/{id} | 
+*SharingApi* | [**RemoveShareSMB**](docs/SharingApi.md#removesharesmb) | **Delete** /sharing/smb/id/{id} | 
+*SharingApi* | [**UpdateShareNFS**](docs/SharingApi.md#updatesharenfs) | **Put** /sharing/nfs/id/{id} | 
+*SharingApi* | [**UpdateShareSMB**](docs/SharingApi.md#updatesharesmb) | **Put** /sharing/smb/id/{id} | 
 *VmApi* | [**GetVM**](docs/VmApi.md#getvm) | **Get** /vm/id/{id} | 
 *VmApi* | [**ListVMS**](docs/VmApi.md#listvms) | **Get** /vm | 
 
@@ -100,6 +110,8 @@ Class | Method | HTTP request | Description
  - [CreateCronjobParams](docs/CreateCronjobParams.md)
  - [CreateDatasetParams](docs/CreateDatasetParams.md)
  - [CreateDatasetParamsEncryptionOptions](docs/CreateDatasetParamsEncryptionOptions.md)
+ - [CreateShareNFSParams](docs/CreateShareNFSParams.md)
+ - [CreateShareSMBParams](docs/CreateShareSMBParams.md)
  - [CronJob](docs/CronJob.md)
  - [CronJobSchedule](docs/CronJobSchedule.md)
  - [Dataset](docs/Dataset.md)
@@ -109,6 +121,8 @@ Class | Method | HTTP request | Description
  - [NetworkSummaryIps](docs/NetworkSummaryIps.md)
  - [Pool](docs/Pool.md)
  - [Service](docs/Service.md)
+ - [ShareNFS](docs/ShareNFS.md)
+ - [ShareSMB](docs/ShareSMB.md)
  - [UpdateDatasetParams](docs/UpdateDatasetParams.md)
  - [VM](docs/VM.md)
  - [VMDevices](docs/VMDevices.md)
