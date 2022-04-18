@@ -86,6 +86,11 @@ Class | Method | HTTP request | Description
 *DatasetApi* | [**DeleteDataset**](docs/DatasetApi.md#deletedataset) | **Delete** /pool/dataset/id/{id} | 
 *DatasetApi* | [**GetDataset**](docs/DatasetApi.md#getdataset) | **Get** /pool/dataset/id/{id} | 
 *DatasetApi* | [**UpdateDataset**](docs/DatasetApi.md#updatedataset) | **Put** /pool/dataset/id/{id} | 
+*GroupApi* | [**CreateGroup**](docs/GroupApi.md#creategroup) | **Post** /group | 
+*GroupApi* | [**DeleteGroup**](docs/GroupApi.md#deletegroup) | **Delete** /group/id/{id} | 
+*GroupApi* | [**GetGroup**](docs/GroupApi.md#getgroup) | **Get** /group/id/{id} | 
+*GroupApi* | [**ListGroups**](docs/GroupApi.md#listgroups) | **Get** /group | 
+*GroupApi* | [**UpdateGroup**](docs/GroupApi.md#updategroup) | **Put** /group/id/{id} | 
 *NetworkApi* | [**GetNetworkConfiguration**](docs/NetworkApi.md#getnetworkconfiguration) | **Get** /network/configuration | 
 *NetworkApi* | [**GetNetworkSummary**](docs/NetworkApi.md#getnetworksummary) | **Get** /network/general/summary | 
 *PoolApi* | [**ListPools**](docs/PoolApi.md#listpools) | **Get** /pool | 
@@ -100,6 +105,12 @@ Class | Method | HTTP request | Description
 *SharingApi* | [**RemoveShareSMB**](docs/SharingApi.md#removesharesmb) | **Delete** /sharing/smb/id/{id} | 
 *SharingApi* | [**UpdateShareNFS**](docs/SharingApi.md#updatesharenfs) | **Put** /sharing/nfs/id/{id} | 
 *SharingApi* | [**UpdateShareSMB**](docs/SharingApi.md#updatesharesmb) | **Put** /sharing/smb/id/{id} | 
+*UserApi* | [**CreateUser**](docs/UserApi.md#createuser) | **Post** /user | 
+*UserApi* | [**DeleteUser**](docs/UserApi.md#deleteuser) | **Delete** /user/id/{id} | 
+*UserApi* | [**GetUser**](docs/UserApi.md#getuser) | **Get** /user/id/{id} | 
+*UserApi* | [**GetUserShellChoices**](docs/UserApi.md#getusershellchoices) | **Post** /user/shell_choices | 
+*UserApi* | [**ListUsers**](docs/UserApi.md#listusers) | **Get** /user | 
+*UserApi* | [**UpdateUser**](docs/UserApi.md#updateuser) | **Put** /user/id/{id} | 
 *VmApi* | [**GetVM**](docs/VmApi.md#getvm) | **Get** /vm/id/{id} | 
 *VmApi* | [**ListVMS**](docs/VmApi.md#listvms) | **Get** /vm | 
 
@@ -110,11 +121,16 @@ Class | Method | HTTP request | Description
  - [CreateCronjobParams](docs/CreateCronjobParams.md)
  - [CreateDatasetParams](docs/CreateDatasetParams.md)
  - [CreateDatasetParamsEncryptionOptions](docs/CreateDatasetParamsEncryptionOptions.md)
+ - [CreateGroupParams](docs/CreateGroupParams.md)
  - [CreateShareNFSParams](docs/CreateShareNFSParams.md)
  - [CreateShareSMBParams](docs/CreateShareSMBParams.md)
+ - [CreateUserParams](docs/CreateUserParams.md)
  - [CronJob](docs/CronJob.md)
  - [CronJobSchedule](docs/CronJobSchedule.md)
  - [Dataset](docs/Dataset.md)
+ - [DeleteGroupParams](docs/DeleteGroupParams.md)
+ - [DeleteUserParams](docs/DeleteUserParams.md)
+ - [Group](docs/Group.md)
  - [NetworkConfig](docs/NetworkConfig.md)
  - [NetworkConfigServiceAnnouncement](docs/NetworkConfigServiceAnnouncement.md)
  - [NetworkSummary](docs/NetworkSummary.md)
@@ -124,6 +140,9 @@ Class | Method | HTTP request | Description
  - [ShareNFS](docs/ShareNFS.md)
  - [ShareSMB](docs/ShareSMB.md)
  - [UpdateDatasetParams](docs/UpdateDatasetParams.md)
+ - [UpdateUserParams](docs/UpdateUserParams.md)
+ - [User](docs/User.md)
+ - [UserGroup](docs/UserGroup.md)
  - [VM](docs/VM.md)
  - [VMDevices](docs/VMDevices.md)
  - [VMStatus](docs/VMStatus.md)
