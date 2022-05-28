@@ -338,6 +338,189 @@ paths:
       - bearerAuth: []
       tags:
       - cronjob
+  /group:
+    get:
+      description: Get a list of (local) groups
+      operationId: listGroups
+      parameters:
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          $ref: '#/components/responses/GroupsResponse'
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - group
+    post:
+      description: |-
+        Create a new group.
+
+        If `gid` is not provided it is automatically filled with the next one available.
+
+        `allow_duplicate_gid` allows distinct group names to share the same gid.
+
+        `users` is a list of user ids (`id` attribute from `user.query`).
+
+        `smb` specifies whether the group should be mapped into an NT group.
+      operationId: createGroup
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroupParams'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+          description: Group details
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - group
+  /group/id/{id}:
+    delete:
+      description: |-
+        Delete group `id`.
+
+        The `delete_users` option deletes all users that have this group as their primary group.
+      operationId: deleteGroup
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteGroupParams'
+      responses:
+        "200":
+          description: Operation succeeded
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - group
+    get:
+      description: Get group of `id`.
+      operationId: getGroup
+      parameters:
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+          description: Group details
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - group
+    put:
+      description: Update attributes of an existing group.
+      operationId: updateGroup
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroupParams'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+          description: Group details
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - group
   /network/configuration:
     get:
       operationId: getNetworkConfiguration
@@ -805,6 +988,225 @@ paths:
       - bearerAuth: []
       tags:
       - sharing
+  /user:
+    get:
+      description: Get a list of (local) users.
+      operationId: listUsers
+      parameters:
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersResponse'
+          description: List of local users
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - user
+    post:
+      description: |-
+        Create a new user.
+
+        If `uid` is not provided it is automatically filled with the next one available.
+
+        `group` is required if `group_create` is false.
+
+        `password` is required if `password_disabled` is false.
+
+        Available choices for `shell` can be retrieved with `user.shell_choices`.
+
+        `attributes` is a general-purpose object for storing arbitrary user information.
+
+        `smb` specifies whether the user should be allowed access to SMB shares. User
+        willl also automatically be added to the `builtin_users` group.
+      operationId: createUser
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserParams'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+          description: User ID
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - user
+  /user/id/{id}:
+    delete:
+      description: |-
+        Delete user `id`.
+
+        The `delete_group` option deletes the user primary group if it is not being used by
+        any other user.
+      operationId: deleteUser
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteUserParams'
+      responses:
+        "200":
+          description: Operation succeeded
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - user
+    get:
+      description: Get user of `id`.
+      operationId: getUser
+      parameters:
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: User details
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - user
+    put:
+      description: Update attributes of an existing user.
+      operationId: updateUser
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserParams'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+          description: User ID
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - user
+  /user/shell_choices:
+    post:
+      description: |-
+        Return the available shell choices to be used in `user.create` and `user.update`.
+
+        If `user_id` is provided, shell choices are filtered to ensure the user can access the shell choices provided.
+      operationId: getUserShellChoices
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserShellChoicesParams'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserShellChoices'
+          description: Valid shell choices
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - user
   /vm:
     get:
       description: Get a list of VMs
@@ -1108,6 +1510,51 @@ components:
         sync:
           type: string
       type: object
+    CreateGroupParams:
+      example:
+        sudo_nopasswd: true
+        allow_duplicate_gid: true
+        gid: 0
+        name: name
+        smb: true
+        sudo: true
+        users:
+        - 6
+        - 6
+        sudo_commands:
+        - sudo_commands
+        - sudo_commands
+      properties:
+        gid:
+          type: integer
+        name:
+          type: string
+        smb:
+          type: boolean
+        sudo:
+          type: boolean
+        sudo_nopasswd:
+          type: boolean
+        sudo_commands:
+          items:
+            type: string
+          type: array
+        allow_duplicate_gid:
+          type: boolean
+        users:
+          items:
+            type: integer
+          type: array
+      required:
+      - name
+      type: object
+    DeleteGroupParams:
+      example:
+        delete_users: true
+      properties:
+        delete_users:
+          type: boolean
+      type: object
     CreateShareNFSParams:
       example:
         maproot_group: maproot_group
@@ -1249,6 +1696,171 @@ components:
       required:
       - path
       type: object
+    CreateUserParams:
+      example:
+        sshpubkey: sshpubkey
+        microsoft_account: true
+        smb: true
+        groups:
+        - 1
+        - 1
+        password_disabled: true
+        home: home
+        sudo_commands:
+        - sudo_commands
+        - sudo_commands
+        uid: 0
+        sudo_nopasswd: true
+        password: password
+        full_name: full_name
+        group_create: true
+        shell: shell
+        attributes:
+          key: '{}'
+        sudo: true
+        locked: true
+        home_mode: home_mode
+        email: email
+        username: username
+        group: 6
+      properties:
+        uid:
+          type: integer
+        username:
+          type: string
+        group:
+          type: integer
+        group_create:
+          type: boolean
+        home:
+          type: string
+        home_mode:
+          type: string
+        shell:
+          type: string
+        full_name:
+          type: string
+        email:
+          nullable: true
+          type: string
+        password:
+          type: string
+        password_disabled:
+          type: boolean
+        locked:
+          type: boolean
+        microsoft_account:
+          type: boolean
+        smb:
+          type: boolean
+        sudo:
+          type: boolean
+        sudo_nopasswd:
+          type: boolean
+        sudo_commands:
+          items:
+            type: string
+          type: array
+        sshpubkey:
+          nullable: true
+          type: string
+        groups:
+          items:
+            type: integer
+          type: array
+        attributes:
+          additionalProperties: true
+          properties: {}
+          type: object
+      required:
+      - full_name
+      - username
+      type: object
+    DeleteUserParams:
+      example:
+        delete_group: true
+      properties:
+        delete_group:
+          type: boolean
+      type: object
+    UpdateUserParams:
+      example:
+        sshpubkey: sshpubkey
+        microsoft_account: true
+        smb: true
+        groups:
+        - 1
+        - 1
+        password_disabled: true
+        home: home
+        sudo_commands:
+        - sudo_commands
+        - sudo_commands
+        uid: 0
+        sudo_nopasswd: true
+        password: password
+        full_name: full_name
+        shell: shell
+        attributes:
+          key: '{}'
+        sudo: true
+        locked: true
+        home_mode: home_mode
+        email: email
+        username: username
+        group: 6
+      properties:
+        uid:
+          type: integer
+        username:
+          type: string
+        group:
+          type: integer
+        home:
+          type: string
+        home_mode:
+          type: string
+        shell:
+          type: string
+        full_name:
+          type: string
+        email:
+          nullable: true
+          type: string
+        password:
+          type: string
+        password_disabled:
+          type: boolean
+        locked:
+          type: boolean
+        microsoft_account:
+          type: boolean
+        smb:
+          type: boolean
+        sudo:
+          type: boolean
+        sudo_nopasswd:
+          type: boolean
+        sudo_commands:
+          items:
+            type: string
+          type: array
+        sshpubkey:
+          nullable: true
+          type: string
+        groups:
+          items:
+            type: integer
+          type: array
+        attributes:
+          additionalProperties: true
+          properties: {}
+          type: object
+      type: object
+    UserShellChoicesParams:
+      nullable: true
+      title: user_id
+      type: integer
     CompositeValue:
       example:
         rawvalue: rawvalue
@@ -1525,6 +2137,61 @@ components:
       - name
       - pool
       - type
+      type: object
+    GroupsResponse:
+      items:
+        $ref: '#/components/schemas/Group'
+      type: array
+    GroupResponse:
+      title: group_id
+      type: integer
+    Group:
+      example:
+        sudo_nopasswd: true
+        id_type_both: true
+        gid: 6
+        builtin: true
+        smb: true
+        id: 0
+        sudo: true
+        users:
+        - 1
+        - 1
+        local: true
+        group: group
+        sudo_commands:
+        - sudo_commands
+        - sudo_commands
+      properties:
+        id:
+          type: integer
+        gid:
+          type: integer
+        group:
+          type: string
+        builtin:
+          type: boolean
+        sudo:
+          type: boolean
+        sudo_nopasswd:
+          type: boolean
+        sudo_commands:
+          items:
+            type: string
+          type: array
+        smb:
+          type: boolean
+        users:
+          items:
+            type: integer
+          type: array
+        local:
+          type: boolean
+        id_type_both:
+          type: boolean
+      required:
+      - group
+      - id
       type: object
     NetworkConfig:
       example:
@@ -1844,6 +2511,117 @@ components:
       items:
         $ref: '#/components/schemas/ShareSMB'
       type: array
+    User:
+      example:
+        sshpubkey: sshpubkey
+        id_type_both: ""
+        builtin: ""
+        microsoft_account: ""
+        smb: ""
+        groups:
+        - 5
+        - 5
+        password_disabled: ""
+        local: ""
+        home: home
+        sudo_commands:
+        - sudo_commands
+        - sudo_commands
+        uid: 6
+        sudo_nopasswd: ""
+        full_name: full_name
+        smbhash: smbhash
+        shell: shell
+        unixhash: unixhash
+        attributes:
+          key: '{}'
+        id: 0
+        sudo: ""
+        locked: ""
+        email: email
+        username: username
+        group:
+          bsdgrp_group: bsdgrp_group
+          bsdgrp_builtin: ""
+          bsdgrp_sudo_commands:
+          - bsdgrp_sudo_commands
+          - bsdgrp_sudo_commands
+          bsdgrp_gid: 5
+          bsdgrp_sudo_nopasswd: ""
+          bsdgrp_smb: ""
+          id: 1
+          bsdgrp_sudo: ""
+      properties:
+        id:
+          type: integer
+        uid:
+          type: integer
+        username:
+          type: string
+        unixhash:
+          type: string
+        smbhash:
+          type: string
+        home:
+          type: string
+        shell:
+          type: string
+        full_name:
+          type: string
+        builtin:
+          type: bool
+        smb:
+          type: bool
+        password_disabled:
+          type: bool
+        locked:
+          type: bool
+        sudo:
+          type: bool
+        sudo_nopasswd:
+          type: bool
+        sudo_commands:
+          items:
+            type: string
+          type: array
+        microsoft_account:
+          type: bool
+        attributes:
+          additionalProperties: true
+          properties: {}
+          type: object
+        email:
+          nullable: true
+          type: string
+        group:
+          $ref: '#/components/schemas/User_group'
+        groups:
+          items:
+            type: integer
+          type: array
+        sshpubkey:
+          nullable: true
+          type: string
+        local:
+          type: bool
+        id_type_both:
+          type: bool
+      required:
+      - full_name
+      - id
+      - username
+      type: object
+    UsersResponse:
+      items:
+        $ref: '#/components/schemas/User'
+      type: array
+    UserResponse:
+      title: user_id
+      type: integer
+    UserShellChoices:
+      additionalProperties:
+        type: string
+      type: object
     VM:
       example:
         memory: 1
@@ -1955,6 +2733,38 @@ components:
           items:
             type: string
           type: array
+      type: object
+    User_group:
+      example:
+        bsdgrp_group: bsdgrp_group
+        bsdgrp_builtin: ""
+        bsdgrp_sudo_commands:
+        - bsdgrp_sudo_commands
+        - bsdgrp_sudo_commands
+        bsdgrp_gid: 5
+        bsdgrp_sudo_nopasswd: ""
+        bsdgrp_smb: ""
+        id: 1
+        bsdgrp_sudo: ""
+      properties:
+        id:
+          type: integer
+        bsdgrp_gid:
+          type: integer
+        bsdgrp_group:
+          type: string
+        bsdgrp_builtin:
+          type: bool
+        bsdgrp_sudo:
+          type: bool
+        bsdgrp_sudo_nopasswd:
+          type: bool
+        bsdgrp_sudo_commands:
+          items:
+            type: string
+          type: array
+        bsdgrp_smb:
+          type: bool
       type: object
     VM_devices:
       example:
