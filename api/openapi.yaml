@@ -53,6 +53,50 @@ paths:
       tags:
       - pool
   /pool/dataset:
+    get:
+      operationId: listDatasets
+      parameters:
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListDatasetResponse'
+          description: A list of datasets
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - dataset
     post:
       description: "Creates a dataset/zvol.\n\n`volsize` is required for type=VOLUME\
         \ and is supposed to be a multiple of the block size.\n`sparse` and `volblocksize`\
@@ -1323,6 +1367,10 @@ components:
       - command
       - user
       type: object
+    ListDatasetResponse:
+      items:
+        $ref: '#/components/schemas/Dataset'
+      type: array
     CreateDatasetParams:
       example:
         quota_critical: 1

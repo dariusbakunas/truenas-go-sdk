@@ -42,6 +42,50 @@ paths:
           schema:
             type: string
   /pool/dataset:
+    get:
+      operationId: listDatasets
+      parameters:
+        - explode: true
+          in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+          style: form
+        - explode: true
+          in: query
+          name: offset
+          required: false
+          schema:
+            type: integer
+          style: form
+        - explode: true
+          in: query
+          name: count
+          required: false
+          schema:
+            type: boolean
+          style: form
+        - explode: true
+          in: query
+          name: sort
+          required: false
+          schema:
+            type: string
+          style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListDatasetResponse'
+          description: A list of datasets
+        "401":
+          description: No authorization for this endpoint
+      security:
+        - bearerAuth: [ ]
+      tags:
+        - dataset
     post:
       tags:
         - dataset
@@ -1208,6 +1252,10 @@ components:
           type: boolean
         schedule:
           $ref: '#/components/schemas/CronJobSchedule'
+    ListDatasetResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Dataset'
     CreateDatasetParams:
       type: object
       required:

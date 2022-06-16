@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 *DatasetApi* | [**CreateDataset**](docs/DatasetApi.md#createdataset) | **Post** /pool/dataset | 
 *DatasetApi* | [**DeleteDataset**](docs/DatasetApi.md#deletedataset) | **Delete** /pool/dataset/id/{id} | 
 *DatasetApi* | [**GetDataset**](docs/DatasetApi.md#getdataset) | **Get** /pool/dataset/id/{id} | 
+*DatasetApi* | [**ListDatasets**](docs/DatasetApi.md#listdatasets) | **Get** /pool/dataset | 
 *DatasetApi* | [**UpdateDataset**](docs/DatasetApi.md#updatedataset) | **Put** /pool/dataset/id/{id} | 
 *GroupApi* | [**CreateGroup**](docs/GroupApi.md#creategroup) | **Post** /group | 
 *GroupApi* | [**DeleteGroup**](docs/GroupApi.md#deletegroup) | **Delete** /group/id/{id} | 
