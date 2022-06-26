@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Aclmode** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 **Acltype** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 **Atime** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
+**Available** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 **Casesensitivity** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 **Comments** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 **Compression** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
@@ -37,6 +38,7 @@ Name | Type | Description | Notes
 **Recordsize** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 **Sync** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 **Snapdir** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
+**Used** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 **Pbkdf2iters** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 **Origin** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
 **Xattr** | Pointer to [**CompositeValue**](CompositeValue.md) |  | [optional] 
@@ -366,6 +368,31 @@ SetAtime sets Atime field to given value.
 `func (o *Dataset) HasAtime() bool`
 
 HasAtime returns a boolean if a field has been set.
+
+### GetAvailable
+
+`func (o *Dataset) GetAvailable() CompositeValue`
+
+GetAvailable returns the Available field if non-nil, zero value otherwise.
+
+### GetAvailableOk
+
+`func (o *Dataset) GetAvailableOk() (*CompositeValue, bool)`
+
+GetAvailableOk returns a tuple with the Available field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAvailable
+
+`func (o *Dataset) SetAvailable(v CompositeValue)`
+
+SetAvailable sets Available field to given value.
+
+### HasAvailable
+
+`func (o *Dataset) HasAvailable() bool`
+
+HasAvailable returns a boolean if a field has been set.
 
 ### GetCasesensitivity
 
@@ -866,6 +893,31 @@ SetSnapdir sets Snapdir field to given value.
 `func (o *Dataset) HasSnapdir() bool`
 
 HasSnapdir returns a boolean if a field has been set.
+
+### GetUsed
+
+`func (o *Dataset) GetUsed() CompositeValue`
+
+GetUsed returns the Used field if non-nil, zero value otherwise.
+
+### GetUsedOk
+
+`func (o *Dataset) GetUsedOk() (*CompositeValue, bool)`
+
+GetUsedOk returns a tuple with the Used field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsed
+
+`func (o *Dataset) SetUsed(v CompositeValue)`
+
+SetUsed sets Used field to given value.
+
+### HasUsed
+
+`func (o *Dataset) HasUsed() bool`
+
+HasUsed returns a boolean if a field has been set.
 
 ### GetPbkdf2iters
 

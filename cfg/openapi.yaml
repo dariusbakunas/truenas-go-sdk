@@ -1781,6 +1781,8 @@ components:
           $ref: '#/components/schemas/CompositeValue'
         atime:
           $ref: '#/components/schemas/CompositeValue'
+        available:
+          $ref: '#/components/schemas/CompositeValue'
         casesensitivity:
           $ref: '#/components/schemas/CompositeValue'
         comments:
@@ -1820,6 +1822,8 @@ components:
         sync:
           $ref: '#/components/schemas/CompositeValue'
         snapdir:
+          $ref: '#/components/schemas/CompositeValue'
+        used:
           $ref: '#/components/schemas/CompositeValue'
         pbkdf2iters:
           $ref: '#/components/schemas/CompositeValue'

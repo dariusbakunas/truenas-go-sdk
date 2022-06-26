@@ -29,6 +29,7 @@ type Dataset struct {
 	Aclmode *CompositeValue `json:"aclmode,omitempty"`
 	Acltype *CompositeValue `json:"acltype,omitempty"`
 	Atime *CompositeValue `json:"atime,omitempty"`
+	Available *CompositeValue `json:"available,omitempty"`
 	Casesensitivity *CompositeValue `json:"casesensitivity,omitempty"`
 	Comments *CompositeValue `json:"comments,omitempty"`
 	Compression *CompositeValue `json:"compression,omitempty"`
@@ -49,6 +50,7 @@ type Dataset struct {
 	Recordsize *CompositeValue `json:"recordsize,omitempty"`
 	Sync *CompositeValue `json:"sync,omitempty"`
 	Snapdir *CompositeValue `json:"snapdir,omitempty"`
+	Used *CompositeValue `json:"used,omitempty"`
 	Pbkdf2iters *CompositeValue `json:"pbkdf2iters,omitempty"`
 	Origin *CompositeValue `json:"origin,omitempty"`
 	Xattr *CompositeValue `json:"xattr,omitempty"`
@@ -462,6 +464,38 @@ func (o *Dataset) HasAtime() bool {
 // SetAtime gets a reference to the given CompositeValue and assigns it to the Atime field.
 func (o *Dataset) SetAtime(v CompositeValue) {
 	o.Atime = &v
+}
+
+// GetAvailable returns the Available field value if set, zero value otherwise.
+func (o *Dataset) GetAvailable() CompositeValue {
+	if o == nil || o.Available == nil {
+		var ret CompositeValue
+		return ret
+	}
+	return *o.Available
+}
+
+// GetAvailableOk returns a tuple with the Available field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Dataset) GetAvailableOk() (*CompositeValue, bool) {
+	if o == nil || o.Available == nil {
+		return nil, false
+	}
+	return o.Available, true
+}
+
+// HasAvailable returns a boolean if a field has been set.
+func (o *Dataset) HasAvailable() bool {
+	if o != nil && o.Available != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAvailable gets a reference to the given CompositeValue and assigns it to the Available field.
+func (o *Dataset) SetAvailable(v CompositeValue) {
+	o.Available = &v
 }
 
 // GetCasesensitivity returns the Casesensitivity field value if set, zero value otherwise.
@@ -1104,6 +1138,38 @@ func (o *Dataset) SetSnapdir(v CompositeValue) {
 	o.Snapdir = &v
 }
 
+// GetUsed returns the Used field value if set, zero value otherwise.
+func (o *Dataset) GetUsed() CompositeValue {
+	if o == nil || o.Used == nil {
+		var ret CompositeValue
+		return ret
+	}
+	return *o.Used
+}
+
+// GetUsedOk returns a tuple with the Used field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Dataset) GetUsedOk() (*CompositeValue, bool) {
+	if o == nil || o.Used == nil {
+		return nil, false
+	}
+	return o.Used, true
+}
+
+// HasUsed returns a boolean if a field has been set.
+func (o *Dataset) HasUsed() bool {
+	if o != nil && o.Used != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsed gets a reference to the given CompositeValue and assigns it to the Used field.
+func (o *Dataset) SetUsed(v CompositeValue) {
+	o.Used = &v
+}
+
 // GetPbkdf2iters returns the Pbkdf2iters field value if set, zero value otherwise.
 func (o *Dataset) GetPbkdf2iters() CompositeValue {
 	if o == nil || o.Pbkdf2iters == nil {
@@ -1305,6 +1371,9 @@ func (o Dataset) MarshalJSON() ([]byte, error) {
 	if o.Atime != nil {
 		toSerialize["atime"] = o.Atime
 	}
+	if o.Available != nil {
+		toSerialize["available"] = o.Available
+	}
 	if o.Casesensitivity != nil {
 		toSerialize["casesensitivity"] = o.Casesensitivity
 	}
@@ -1365,6 +1434,9 @@ func (o Dataset) MarshalJSON() ([]byte, error) {
 	if o.Snapdir != nil {
 		toSerialize["snapdir"] = o.Snapdir
 	}
+	if o.Used != nil {
+		toSerialize["used"] = o.Used
+	}
 	if o.Pbkdf2iters != nil {
 		toSerialize["pbkdf2iters"] = o.Pbkdf2iters
 	}
@@ -1411,6 +1483,7 @@ func (o *Dataset) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "aclmode")
 		delete(additionalProperties, "acltype")
 		delete(additionalProperties, "atime")
+		delete(additionalProperties, "available")
 		delete(additionalProperties, "casesensitivity")
 		delete(additionalProperties, "comments")
 		delete(additionalProperties, "compression")
@@ -1431,6 +1504,7 @@ func (o *Dataset) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "recordsize")
 		delete(additionalProperties, "sync")
 		delete(additionalProperties, "snapdir")
+		delete(additionalProperties, "used")
 		delete(additionalProperties, "pbkdf2iters")
 		delete(additionalProperties, "origin")
 		delete(additionalProperties, "xattr")
