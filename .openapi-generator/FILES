@@ -33,7 +33,7 @@ docs/NetworkApi.md
 docs/NetworkConfig.md
 docs/NetworkConfigServiceAnnouncement.md
 docs/NetworkSummary.md
-docs/NetworkSummaryIps.md
+docs/NetworkSummaryIpsValue.md
 docs/Pool.md
 docs/PoolApi.md
 docs/Service.md
@@ -47,7 +47,7 @@ docs/User.md
 docs/UserApi.md
 docs/UserGroup.md
 docs/VM.md
-docs/VMDevices.md
+docs/VMDevicesInner.md
 docs/VMStatus.md
 docs/VmApi.md
 git_push.sh
@@ -70,7 +70,7 @@ model_group.go
 model_network_config.go
 model_network_config_service_announcement.go
 model_network_summary.go
-model_network_summary_ips.go
+model_network_summary_ips_value.go
 model_pool.go
 model_service.go
 model_share_nfs.go
@@ -80,7 +80,7 @@ model_update_user_params.go
 model_user.go
 model_user_group.go
 model_vm.go
-model_vm_devices.go
+model_vm_devices_inner.go
 model_vm_status.go
 response.go
 utils.go

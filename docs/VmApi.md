@@ -37,8 +37,8 @@ func main() {
     sort := "sort_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.VmApi.GetVM(context.Background(), id).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VmApi.GetVM(context.Background(), id).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VmApi.GetVM``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -114,8 +114,8 @@ func main() {
     sort := "sort_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.VmApi.ListVMS(context.Background()).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VmApi.ListVMS(context.Background()).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VmApi.ListVMS``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

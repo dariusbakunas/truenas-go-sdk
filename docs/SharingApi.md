@@ -41,8 +41,8 @@ func main() {
     createShareNFSParams := *openapiclient.NewCreateShareNFSParams([]string{"Paths_example"}) // CreateShareNFSParams |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SharingApi.CreateShareNFS(context.Background()).CreateShareNFSParams(createShareNFSParams).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SharingApi.CreateShareNFS(context.Background()).CreateShareNFSParams(createShareNFSParams).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SharingApi.CreateShareNFS``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -107,8 +107,8 @@ func main() {
     createShareSMBParams := *openapiclient.NewCreateShareSMBParams("Path_example") // CreateShareSMBParams |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SharingApi.CreateShareSMB(context.Background()).CreateShareSMBParams(createShareSMBParams).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SharingApi.CreateShareSMB(context.Background()).CreateShareSMBParams(createShareSMBParams).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SharingApi.CreateShareSMB``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -177,8 +177,8 @@ func main() {
     sort := "sort_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SharingApi.GetShareNFS(context.Background(), id).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SharingApi.GetShareNFS(context.Background(), id).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SharingApi.GetShareNFS``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -255,8 +255,8 @@ func main() {
     sort := "sort_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SharingApi.GetShareSMB(context.Background(), id).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SharingApi.GetShareSMB(context.Background(), id).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SharingApi.GetShareSMB``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -332,8 +332,8 @@ func main() {
     sort := "sort_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SharingApi.ListSharesNFS(context.Background()).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SharingApi.ListSharesNFS(context.Background()).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SharingApi.ListSharesNFS``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -404,8 +404,8 @@ func main() {
     sort := "sort_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SharingApi.ListSharesSMB(context.Background()).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SharingApi.ListSharesSMB(context.Background()).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SharingApi.ListSharesSMB``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -473,8 +473,8 @@ func main() {
     id := int32(56) // int32 | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SharingApi.RemoveShareNFS(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SharingApi.RemoveShareNFS(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SharingApi.RemoveShareNFS``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -541,8 +541,8 @@ func main() {
     id := int32(56) // int32 | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SharingApi.RemoveShareSMB(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SharingApi.RemoveShareSMB(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SharingApi.RemoveShareSMB``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -610,8 +610,8 @@ func main() {
     createShareNFSParams := *openapiclient.NewCreateShareNFSParams([]string{"Paths_example"}) // CreateShareNFSParams |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SharingApi.UpdateShareNFS(context.Background(), id).CreateShareNFSParams(createShareNFSParams).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SharingApi.UpdateShareNFS(context.Background(), id).CreateShareNFSParams(createShareNFSParams).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SharingApi.UpdateShareNFS``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -682,8 +682,8 @@ func main() {
     createShareSMBParams := *openapiclient.NewCreateShareSMBParams("Path_example") // CreateShareSMBParams |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SharingApi.UpdateShareSMB(context.Background(), id).CreateShareSMBParams(createShareSMBParams).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SharingApi.UpdateShareSMB(context.Background(), id).CreateShareSMBParams(createShareSMBParams).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SharingApi.UpdateShareSMB``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

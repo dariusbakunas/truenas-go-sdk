@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **SudoCommands** | Pointer to **[]string** |  | [optional] 
 **Sshpubkey** | Pointer to **NullableString** |  | [optional] 
 **Groups** | Pointer to **[]int32** |  | [optional] 
-**Attributes** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -515,20 +515,20 @@ HasGroups returns a boolean if a field has been set.
 
 ### GetAttributes
 
-`func (o *UpdateUserParams) GetAttributes() map[string]map[string]interface{}`
+`func (o *UpdateUserParams) GetAttributes() map[string]interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *UpdateUserParams) GetAttributesOk() (*map[string]map[string]interface{}, bool)`
+`func (o *UpdateUserParams) GetAttributesOk() (*map[string]interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *UpdateUserParams) SetAttributes(v map[string]map[string]interface{})`
+`func (o *UpdateUserParams) SetAttributes(v map[string]interface{})`
 
 SetAttributes sets Attributes field to given value.
 
