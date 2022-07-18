@@ -35,8 +35,8 @@ func main() {
     createCronjobParams := *openapiclient.NewCreateCronjobParams("User_example", "Command_example") // CreateCronjobParams |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CronjobApi.CreateCronJob(context.Background()).CreateCronjobParams(createCronjobParams).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CronjobApi.CreateCronJob(context.Background()).CreateCronjobParams(createCronjobParams).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CronjobApi.CreateCronJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -99,8 +99,8 @@ func main() {
     id := int32(56) // int32 | ID of the cronjob
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CronjobApi.DeleteCronJob(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CronjobApi.DeleteCronJob(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CronjobApi.DeleteCronJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -169,8 +169,8 @@ func main() {
     sort := "sort_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CronjobApi.GetCronJob(context.Background(), id).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CronjobApi.GetCronJob(context.Background(), id).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CronjobApi.GetCronJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -244,8 +244,8 @@ func main() {
     createCronjobParams := *openapiclient.NewCreateCronjobParams("User_example", "Command_example") // CreateCronjobParams |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CronjobApi.UpdateCronJob(context.Background(), id).CreateCronjobParams(createCronjobParams).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CronjobApi.UpdateCronJob(context.Background(), id).CreateCronjobParams(createCronjobParams).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CronjobApi.UpdateCronJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

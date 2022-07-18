@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ips** | Pointer to [**map[string]NetworkSummaryIps**](NetworkSummaryIps.md) |  | [optional] 
+**Ips** | Pointer to [**map[string]NetworkSummaryIpsValue**](NetworkSummaryIpsValue.md) |  | [optional] 
 **DefaultRoutes** | Pointer to **[]string** |  | [optional] 
 **Nameservers** | Pointer to **[]string** |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetIps
 
-`func (o *NetworkSummary) GetIps() map[string]NetworkSummaryIps`
+`func (o *NetworkSummary) GetIps() map[string]NetworkSummaryIpsValue`
 
 GetIps returns the Ips field if non-nil, zero value otherwise.
 
 ### GetIpsOk
 
-`func (o *NetworkSummary) GetIpsOk() (*map[string]NetworkSummaryIps, bool)`
+`func (o *NetworkSummary) GetIpsOk() (*map[string]NetworkSummaryIpsValue, bool)`
 
 GetIpsOk returns a tuple with the Ips field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIps
 
-`func (o *NetworkSummary) SetIps(v map[string]NetworkSummaryIps)`
+`func (o *NetworkSummary) SetIps(v map[string]NetworkSummaryIpsValue)`
 
 SetIps sets Ips field to given value.
 

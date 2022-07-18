@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **SudoNopasswd** | Pointer to **bool** |  | [optional] 
 **SudoCommands** | Pointer to **[]string** |  | [optional] 
 **MicrosoftAccount** | Pointer to **bool** |  | [optional] 
-**Attributes** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
 **Email** | Pointer to **NullableString** |  | [optional] 
 **Group** | Pointer to [**UserGroup**](UserGroup.md) |  | [optional] 
 **Groups** | Pointer to **[]int32** |  | [optional] 
@@ -434,20 +434,20 @@ HasMicrosoftAccount returns a boolean if a field has been set.
 
 ### GetAttributes
 
-`func (o *User) GetAttributes() map[string]map[string]interface{}`
+`func (o *User) GetAttributes() map[string]interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *User) GetAttributesOk() (*map[string]map[string]interface{}, bool)`
+`func (o *User) GetAttributesOk() (*map[string]interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *User) SetAttributes(v map[string]map[string]interface{})`
+`func (o *User) SetAttributes(v map[string]interface{})`
 
 SetAttributes sets Attributes field to given value.
 
