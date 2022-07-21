@@ -16,17 +16,17 @@ import (
 
 // Group struct for Group
 type Group struct {
-	Id int32 `json:"id"`
-	Gid *int32 `json:"gid,omitempty"`
-	Group string `json:"group"`
-	Builtin *bool `json:"builtin,omitempty"`
-	Sudo *bool `json:"sudo,omitempty"`
-	SudoNopasswd *bool `json:"sudo_nopasswd,omitempty"`
-	SudoCommands []string `json:"sudo_commands,omitempty"`
-	Smb *bool `json:"smb,omitempty"`
-	Users []int32 `json:"users,omitempty"`
-	Local *bool `json:"local,omitempty"`
-	IdTypeBoth *bool `json:"id_type_both,omitempty"`
+	Id                   int32    `json:"id"`
+	Gid                  *int32   `json:"gid,omitempty"`
+	Group                string   `json:"group"`
+	Builtin              *bool    `json:"builtin,omitempty"`
+	Sudo                 *bool    `json:"sudo,omitempty"`
+	SudoNopasswd         *bool    `json:"sudo_nopasswd,omitempty"`
+	SudoCommands         []string `json:"sudo_commands,omitempty"`
+	Smb                  *bool    `json:"smb,omitempty"`
+	Users                []int32  `json:"users,omitempty"`
+	Local                *bool    `json:"local,omitempty"`
+	IdTypeBoth           *bool    `json:"id_type_both,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -492,5 +492,3 @@ func (v *NullableGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

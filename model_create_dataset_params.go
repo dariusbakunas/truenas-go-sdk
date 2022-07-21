@@ -16,35 +16,35 @@ import (
 
 // CreateDatasetParams struct for CreateDatasetParams
 type CreateDatasetParams struct {
-	Atime *string `json:"atime,omitempty"`
-	Aclmode *string `json:"aclmode,omitempty"`
-	Name string `json:"name"`
-	Comments *string `json:"comments,omitempty"`
-	Compression *string `json:"compression,omitempty"`
-	Casesensitivity *string `json:"casesensitivity,omitempty"`
-	Copies *int32 `json:"copies,omitempty"`
-	Deduplication *string `json:"deduplication,omitempty"`
-	Encryption *bool `json:"encryption,omitempty"`
-	EncryptionOptions *CreateDatasetParamsEncryptionOptions `json:"encryption_options,omitempty"`
-	Exec *string `json:"exec,omitempty"`
-	ForceSize *bool `json:"force_size,omitempty"`
-	InheritEncryption *bool `json:"inherit_encryption,omitempty"`
-	Quota *int64 `json:"quota,omitempty"`
-	QuotaCritical *int64 `json:"quota_critical,omitempty"`
-	QuotaWarning *int64 `json:"quota_warning,omitempty"`
-	Volsize *int64 `json:"volsize,omitempty"`
-	Volblocksize *string `json:"volblocksize,omitempty"`
-	Readonly *string `json:"readonly,omitempty"`
-	Recordsize *string `json:"recordsize,omitempty"`
-	Refquota *int64 `json:"refquota,omitempty"`
-	RefquotaCritical *int64 `json:"refquota_critical,omitempty"`
-	RefquotaWarning *int64 `json:"refquota_warning,omitempty"`
-	Refreservation *int64 `json:"refreservation,omitempty"`
-	Reservation *int64 `json:"reservation,omitempty"`
-	ShareType *string `json:"share_type,omitempty"`
-	Snapdir *string `json:"snapdir,omitempty"`
-	Sync *string `json:"sync,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Atime                *string                               `json:"atime,omitempty"`
+	Aclmode              *string                               `json:"aclmode,omitempty"`
+	Name                 string                                `json:"name"`
+	Comments             *string                               `json:"comments,omitempty"`
+	Compression          *string                               `json:"compression,omitempty"`
+	Casesensitivity      *string                               `json:"casesensitivity,omitempty"`
+	Copies               *int32                                `json:"copies,omitempty"`
+	Deduplication        *string                               `json:"deduplication,omitempty"`
+	Encryption           *bool                                 `json:"encryption,omitempty"`
+	EncryptionOptions    *CreateDatasetParamsEncryptionOptions `json:"encryption_options,omitempty"`
+	Exec                 *string                               `json:"exec,omitempty"`
+	ForceSize            *bool                                 `json:"force_size,omitempty"`
+	InheritEncryption    *bool                                 `json:"inherit_encryption,omitempty"`
+	Quota                *int64                                `json:"quota,omitempty"`
+	QuotaCritical        *int64                                `json:"quota_critical,omitempty"`
+	QuotaWarning         *int64                                `json:"quota_warning,omitempty"`
+	Volsize              *int64                                `json:"volsize,omitempty"`
+	Volblocksize         *string                               `json:"volblocksize,omitempty"`
+	Readonly             *string                               `json:"readonly,omitempty"`
+	Recordsize           *string                               `json:"recordsize,omitempty"`
+	Refquota             *int64                                `json:"refquota,omitempty"`
+	RefquotaCritical     *int64                                `json:"refquota_critical,omitempty"`
+	RefquotaWarning      *int64                                `json:"refquota_warning,omitempty"`
+	Refreservation       *int64                                `json:"refreservation,omitempty"`
+	Reservation          *int64                                `json:"reservation,omitempty"`
+	ShareType            *string                               `json:"share_type,omitempty"`
+	Snapdir              *string                               `json:"snapdir,omitempty"`
+	Sync                 *string                               `json:"sync,omitempty"`
+	Type                 *string                               `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -1165,5 +1165,3 @@ func (v *NullableCreateDatasetParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

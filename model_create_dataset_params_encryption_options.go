@@ -16,10 +16,10 @@ import (
 
 // CreateDatasetParamsEncryptionOptions struct for CreateDatasetParamsEncryptionOptions
 type CreateDatasetParamsEncryptionOptions struct {
-	Algorithm *string `json:"algorithm,omitempty"`
-	GenerateKey *bool `json:"generate_key,omitempty"`
-	Passphrase *string `json:"passphrase,omitempty"`
-	Key *string `json:"key,omitempty"`
+	Algorithm            *string `json:"algorithm,omitempty"`
+	GenerateKey          *bool   `json:"generate_key,omitempty"`
+	Passphrase           *string `json:"passphrase,omitempty"`
+	Key                  *string `json:"key,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -247,5 +247,3 @@ func (v *NullableCreateDatasetParamsEncryptionOptions) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

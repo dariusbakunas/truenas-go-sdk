@@ -16,46 +16,46 @@ import (
 
 // Dataset struct for Dataset
 type Dataset struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Pool string `json:"pool"`
-	Type string `json:"type"`
-	Mountpoint *string `json:"mountpoint,omitempty"`
-	Encrypted *bool `json:"encrypted,omitempty"`
-	EncryptionRoot *string `json:"encryption_root,omitempty"`
-	KeyLoaded *bool `json:"key_loaded,omitempty"`
-	Locked *bool `json:"locked,omitempty"`
-	EncryptionAlgorithm *CompositeValue `json:"encryption_algorithm,omitempty"`
-	Aclmode *CompositeValue `json:"aclmode,omitempty"`
-	Acltype *CompositeValue `json:"acltype,omitempty"`
-	Atime *CompositeValue `json:"atime,omitempty"`
-	Available *CompositeValue `json:"available,omitempty"`
-	Casesensitivity *CompositeValue `json:"casesensitivity,omitempty"`
-	Comments *CompositeValue `json:"comments,omitempty"`
-	Compression *CompositeValue `json:"compression,omitempty"`
-	Deduplication *CompositeValue `json:"deduplication,omitempty"`
-	Exec *CompositeValue `json:"exec,omitempty"`
-	KeyFormat *CompositeValue `json:"key_format,omitempty"`
-	Managedby *CompositeValue `json:"managedby,omitempty"`
-	Copies *CompositeValue `json:"copies,omitempty"`
-	Quota *CompositeValue `json:"quota,omitempty"`
-	QuotaCritical *CompositeValue `json:"quota_critical,omitempty"`
-	QuotaWarning *CompositeValue `json:"quota_warning,omitempty"`
-	Reservation *CompositeValue `json:"reservation,omitempty"`
-	Refreservation *CompositeValue `json:"refreservation,omitempty"`
-	Refquota *CompositeValue `json:"refquota,omitempty"`
-	RefquotaCritical *CompositeValue `json:"refquota_critical,omitempty"`
-	RefquotaWarning *CompositeValue `json:"refquota_warning,omitempty"`
-	Readonly *CompositeValue `json:"readonly,omitempty"`
-	Recordsize *CompositeValue `json:"recordsize,omitempty"`
-	Sync *CompositeValue `json:"sync,omitempty"`
-	Snapdir *CompositeValue `json:"snapdir,omitempty"`
-	Used *CompositeValue `json:"used,omitempty"`
-	Pbkdf2iters *CompositeValue `json:"pbkdf2iters,omitempty"`
-	Origin *CompositeValue `json:"origin,omitempty"`
-	Xattr *CompositeValue `json:"xattr,omitempty"`
-	Volsize *CompositeValue `json:"volsize,omitempty"`
-	Volblocksize *CompositeValue `json:"volblocksize,omitempty"`
+	Id                   string          `json:"id"`
+	Name                 string          `json:"name"`
+	Pool                 string          `json:"pool"`
+	Type                 string          `json:"type"`
+	Mountpoint           *string         `json:"mountpoint,omitempty"`
+	Encrypted            *bool           `json:"encrypted,omitempty"`
+	EncryptionRoot       *string         `json:"encryption_root,omitempty"`
+	KeyLoaded            *bool           `json:"key_loaded,omitempty"`
+	Locked               *bool           `json:"locked,omitempty"`
+	EncryptionAlgorithm  *CompositeValue `json:"encryption_algorithm,omitempty"`
+	Aclmode              *CompositeValue `json:"aclmode,omitempty"`
+	Acltype              *CompositeValue `json:"acltype,omitempty"`
+	Atime                *CompositeValue `json:"atime,omitempty"`
+	Available            *CompositeValue `json:"available,omitempty"`
+	Casesensitivity      *CompositeValue `json:"casesensitivity,omitempty"`
+	Comments             *CompositeValue `json:"comments,omitempty"`
+	Compression          *CompositeValue `json:"compression,omitempty"`
+	Deduplication        *CompositeValue `json:"deduplication,omitempty"`
+	Exec                 *CompositeValue `json:"exec,omitempty"`
+	KeyFormat            *CompositeValue `json:"key_format,omitempty"`
+	Managedby            *CompositeValue `json:"managedby,omitempty"`
+	Copies               *CompositeValue `json:"copies,omitempty"`
+	Quota                *CompositeValue `json:"quota,omitempty"`
+	QuotaCritical        *CompositeValue `json:"quota_critical,omitempty"`
+	QuotaWarning         *CompositeValue `json:"quota_warning,omitempty"`
+	Reservation          *CompositeValue `json:"reservation,omitempty"`
+	Refreservation       *CompositeValue `json:"refreservation,omitempty"`
+	Refquota             *CompositeValue `json:"refquota,omitempty"`
+	RefquotaCritical     *CompositeValue `json:"refquota_critical,omitempty"`
+	RefquotaWarning      *CompositeValue `json:"refquota_warning,omitempty"`
+	Readonly             *CompositeValue `json:"readonly,omitempty"`
+	Recordsize           *CompositeValue `json:"recordsize,omitempty"`
+	Sync                 *CompositeValue `json:"sync,omitempty"`
+	Snapdir              *CompositeValue `json:"snapdir,omitempty"`
+	Used                 *CompositeValue `json:"used,omitempty"`
+	Pbkdf2iters          *CompositeValue `json:"pbkdf2iters,omitempty"`
+	Origin               *CompositeValue `json:"origin,omitempty"`
+	Xattr                *CompositeValue `json:"xattr,omitempty"`
+	Volsize              *CompositeValue `json:"volsize,omitempty"`
+	Volblocksize         *CompositeValue `json:"volblocksize,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -1551,5 +1551,3 @@ func (v *NullableDataset) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

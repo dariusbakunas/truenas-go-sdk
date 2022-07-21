@@ -18,17 +18,16 @@ import (
 	"net/url"
 )
 
-
 // PoolApiService PoolApi service
 type PoolApiService service
 
 type ApiListPoolsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *PoolApiService
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiListPoolsRequest) Limit(limit int32) ApiListPoolsRequest {
@@ -64,7 +63,7 @@ ListPools Method for ListPools
 func (a *PoolApiService) ListPools(ctx context.Context) ApiListPoolsRequest {
 	return ApiListPoolsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -72,10 +71,10 @@ func (a *PoolApiService) ListPools(ctx context.Context) ApiListPoolsRequest {
 //  @return []Pool
 func (a *PoolApiService) ListPoolsExecute(r ApiListPoolsRequest) ([]Pool, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []Pool
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Pool
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoolApiService.ListPools")

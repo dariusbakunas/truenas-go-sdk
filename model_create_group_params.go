@@ -16,14 +16,14 @@ import (
 
 // CreateGroupParams struct for CreateGroupParams
 type CreateGroupParams struct {
-	Gid *int32 `json:"gid,omitempty"`
-	Name string `json:"name"`
-	Smb *bool `json:"smb,omitempty"`
-	Sudo *bool `json:"sudo,omitempty"`
-	SudoNopasswd *bool `json:"sudo_nopasswd,omitempty"`
-	SudoCommands []string `json:"sudo_commands,omitempty"`
-	AllowDuplicateGid *bool `json:"allow_duplicate_gid,omitempty"`
-	Users []int32 `json:"users,omitempty"`
+	Gid                  *int32   `json:"gid,omitempty"`
+	Name                 string   `json:"name"`
+	Smb                  *bool    `json:"smb,omitempty"`
+	Sudo                 *bool    `json:"sudo,omitempty"`
+	SudoNopasswd         *bool    `json:"sudo_nopasswd,omitempty"`
+	SudoCommands         []string `json:"sudo_commands,omitempty"`
+	AllowDuplicateGid    *bool    `json:"allow_duplicate_gid,omitempty"`
+	Users                []int32  `json:"users,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -388,5 +388,3 @@ func (v *NullableCreateGroupParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

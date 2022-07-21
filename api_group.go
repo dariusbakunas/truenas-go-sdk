@@ -19,13 +19,12 @@ import (
 	"strings"
 )
 
-
 // GroupApiService GroupApi service
 type GroupApiService service
 
 type ApiCreateGroupRequest struct {
-	ctx context.Context
-	ApiService *GroupApiService
+	ctx               context.Context
+	ApiService        *GroupApiService
 	createGroupParams *CreateGroupParams
 }
 
@@ -57,7 +56,7 @@ If `gid` is not provided it is automatically filled with the next one available.
 func (a *GroupApiService) CreateGroup(ctx context.Context) ApiCreateGroupRequest {
 	return ApiCreateGroupRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -65,10 +64,10 @@ func (a *GroupApiService) CreateGroup(ctx context.Context) ApiCreateGroupRequest
 //  @return int32
 func (a *GroupApiService) CreateGroupExecute(r ApiCreateGroupRequest) (int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  int32
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupApiService.CreateGroup")
@@ -139,9 +138,9 @@ func (a *GroupApiService) CreateGroupExecute(r ApiCreateGroupRequest) (int32, *h
 }
 
 type ApiDeleteGroupRequest struct {
-	ctx context.Context
-	ApiService *GroupApiService
-	id int32
+	ctx               context.Context
+	ApiService        *GroupApiService
+	id                int32
 	deleteGroupParams *DeleteGroupParams
 }
 
@@ -168,17 +167,17 @@ The `delete_users` option deletes all users that have this group as their primar
 func (a *GroupApiService) DeleteGroup(ctx context.Context, id int32) ApiDeleteGroupRequest {
 	return ApiDeleteGroupRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *GroupApiService) DeleteGroupExecute(r ApiDeleteGroupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupApiService.DeleteGroup")
@@ -241,13 +240,13 @@ func (a *GroupApiService) DeleteGroupExecute(r ApiDeleteGroupRequest) (*http.Res
 }
 
 type ApiGetGroupRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GroupApiService
-	id int32
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	id         int32
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiGetGroupRequest) Limit(limit int32) ApiGetGroupRequest {
@@ -286,8 +285,8 @@ Get group of `id`.
 func (a *GroupApiService) GetGroup(ctx context.Context, id int32) ApiGetGroupRequest {
 	return ApiGetGroupRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -295,10 +294,10 @@ func (a *GroupApiService) GetGroup(ctx context.Context, id int32) ApiGetGroupReq
 //  @return Group
 func (a *GroupApiService) GetGroupExecute(r ApiGetGroupRequest) (*Group, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Group
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Group
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupApiService.GetGroup")
@@ -380,12 +379,12 @@ func (a *GroupApiService) GetGroupExecute(r ApiGetGroupRequest) (*Group, *http.R
 }
 
 type ApiListGroupsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GroupApiService
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiListGroupsRequest) Limit(limit int32) ApiListGroupsRequest {
@@ -423,16 +422,16 @@ Get a list of (local) groups
 func (a *GroupApiService) ListGroups(ctx context.Context) ApiListGroupsRequest {
 	return ApiListGroupsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *GroupApiService) ListGroupsExecute(r ApiListGroupsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupApiService.ListGroups")
@@ -504,9 +503,9 @@ func (a *GroupApiService) ListGroupsExecute(r ApiListGroupsRequest) (*http.Respo
 }
 
 type ApiUpdateGroupRequest struct {
-	ctx context.Context
-	ApiService *GroupApiService
-	id int32
+	ctx               context.Context
+	ApiService        *GroupApiService
+	id                int32
 	createGroupParams *CreateGroupParams
 }
 
@@ -531,8 +530,8 @@ Update attributes of an existing group.
 func (a *GroupApiService) UpdateGroup(ctx context.Context, id int32) ApiUpdateGroupRequest {
 	return ApiUpdateGroupRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -540,10 +539,10 @@ func (a *GroupApiService) UpdateGroup(ctx context.Context, id int32) ApiUpdateGr
 //  @return int32
 func (a *GroupApiService) UpdateGroupExecute(r ApiUpdateGroupRequest) (int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  int32
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupApiService.UpdateGroup")

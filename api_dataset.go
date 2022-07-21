@@ -19,13 +19,12 @@ import (
 	"strings"
 )
 
-
 // DatasetApiService DatasetApi service
 type DatasetApiService service
 
 type ApiCreateDatasetRequest struct {
-	ctx context.Context
-	ApiService *DatasetApiService
+	ctx                 context.Context
+	ApiService          *DatasetApiService
 	createDatasetParams *CreateDatasetParams
 }
 
@@ -70,7 +69,7 @@ with a passphrase as a key.
 func (a *DatasetApiService) CreateDataset(ctx context.Context) ApiCreateDatasetRequest {
 	return ApiCreateDatasetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -78,10 +77,10 @@ func (a *DatasetApiService) CreateDataset(ctx context.Context) ApiCreateDatasetR
 //  @return Dataset
 func (a *DatasetApiService) CreateDatasetExecute(r ApiCreateDatasetRequest) (*Dataset, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Dataset
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Dataset
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatasetApiService.CreateDataset")
@@ -152,9 +151,9 @@ func (a *DatasetApiService) CreateDatasetExecute(r ApiCreateDatasetRequest) (*Da
 }
 
 type ApiDeleteDatasetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DatasetApiService
-	id string
+	id         string
 }
 
 func (r ApiDeleteDatasetRequest) Execute() (*http.Response, error) {
@@ -177,17 +176,17 @@ Delete dataset/zvol
 func (a *DatasetApiService) DeleteDataset(ctx context.Context, id string) ApiDeleteDatasetRequest {
 	return ApiDeleteDatasetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *DatasetApiService) DeleteDatasetExecute(r ApiDeleteDatasetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatasetApiService.DeleteDataset")
@@ -248,13 +247,13 @@ func (a *DatasetApiService) DeleteDatasetExecute(r ApiDeleteDatasetRequest) (*ht
 }
 
 type ApiGetDatasetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DatasetApiService
-	id string
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	id         string
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiGetDatasetRequest) Limit(limit int32) ApiGetDatasetRequest {
@@ -300,8 +299,8 @@ These options are controlled by the `query-options.extra.flat` attribute (defaul
 func (a *DatasetApiService) GetDataset(ctx context.Context, id string) ApiGetDatasetRequest {
 	return ApiGetDatasetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -309,10 +308,10 @@ func (a *DatasetApiService) GetDataset(ctx context.Context, id string) ApiGetDat
 //  @return Dataset
 func (a *DatasetApiService) GetDatasetExecute(r ApiGetDatasetRequest) (*Dataset, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Dataset
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Dataset
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatasetApiService.GetDataset")
@@ -394,12 +393,12 @@ func (a *DatasetApiService) GetDatasetExecute(r ApiGetDatasetRequest) (*Dataset,
 }
 
 type ApiListDatasetsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DatasetApiService
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiListDatasetsRequest) Limit(limit int32) ApiListDatasetsRequest {
@@ -435,7 +434,7 @@ ListDatasets Method for ListDatasets
 func (a *DatasetApiService) ListDatasets(ctx context.Context) ApiListDatasetsRequest {
 	return ApiListDatasetsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -443,10 +442,10 @@ func (a *DatasetApiService) ListDatasets(ctx context.Context) ApiListDatasetsReq
 //  @return []Dataset
 func (a *DatasetApiService) ListDatasetsExecute(r ApiListDatasetsRequest) ([]Dataset, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []Dataset
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Dataset
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatasetApiService.ListDatasets")
@@ -527,9 +526,9 @@ func (a *DatasetApiService) ListDatasetsExecute(r ApiListDatasetsRequest) ([]Dat
 }
 
 type ApiUpdateDatasetRequest struct {
-	ctx context.Context
-	ApiService *DatasetApiService
-	id string
+	ctx                 context.Context
+	ApiService          *DatasetApiService
+	id                  string
 	updateDatasetParams *UpdateDatasetParams
 }
 
@@ -554,8 +553,8 @@ Update dataset
 func (a *DatasetApiService) UpdateDataset(ctx context.Context, id string) ApiUpdateDatasetRequest {
 	return ApiUpdateDatasetRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -563,10 +562,10 @@ func (a *DatasetApiService) UpdateDataset(ctx context.Context, id string) ApiUpd
 //  @return Dataset
 func (a *DatasetApiService) UpdateDatasetExecute(r ApiUpdateDatasetRequest) (*Dataset, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Dataset
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Dataset
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatasetApiService.UpdateDataset")

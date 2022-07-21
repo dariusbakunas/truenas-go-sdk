@@ -19,18 +19,17 @@ import (
 	"strings"
 )
 
-
 // ServiceApiService ServiceApi service
 type ServiceApiService service
 
 type ApiGetServiceRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ServiceApiService
-	id int32
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	id         int32
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiGetServiceRequest) Limit(limit int32) ApiGetServiceRequest {
@@ -67,8 +66,8 @@ GetService Method for GetService
 func (a *ServiceApiService) GetService(ctx context.Context, id int32) ApiGetServiceRequest {
 	return ApiGetServiceRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -76,10 +75,10 @@ func (a *ServiceApiService) GetService(ctx context.Context, id int32) ApiGetServ
 //  @return Service
 func (a *ServiceApiService) GetServiceExecute(r ApiGetServiceRequest) (*Service, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Service
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Service
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceApiService.GetService")

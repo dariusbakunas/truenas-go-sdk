@@ -19,13 +19,12 @@ import (
 	"strings"
 )
 
-
 // CronjobApiService CronjobApi service
 type CronjobApiService service
 
 type ApiCreateCronJobRequest struct {
-	ctx context.Context
-	ApiService *CronjobApiService
+	ctx                 context.Context
+	ApiService          *CronjobApiService
 	createCronjobParams *CreateCronjobParams
 }
 
@@ -50,7 +49,7 @@ Create a new cron job.
 func (a *CronjobApiService) CreateCronJob(ctx context.Context) ApiCreateCronJobRequest {
 	return ApiCreateCronJobRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -58,10 +57,10 @@ func (a *CronjobApiService) CreateCronJob(ctx context.Context) ApiCreateCronJobR
 //  @return CronJob
 func (a *CronjobApiService) CreateCronJobExecute(r ApiCreateCronJobRequest) (*CronJob, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CronJob
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CronJob
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronjobApiService.CreateCronJob")
@@ -132,9 +131,9 @@ func (a *CronjobApiService) CreateCronJobExecute(r ApiCreateCronJobRequest) (*Cr
 }
 
 type ApiDeleteCronJobRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CronjobApiService
-	id int32
+	id         int32
 }
 
 func (r ApiDeleteCronJobRequest) Execute() (*http.Response, error) {
@@ -151,17 +150,17 @@ DeleteCronJob Method for DeleteCronJob
 func (a *CronjobApiService) DeleteCronJob(ctx context.Context, id int32) ApiDeleteCronJobRequest {
 	return ApiDeleteCronJobRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *CronjobApiService) DeleteCronJobExecute(r ApiDeleteCronJobRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronjobApiService.DeleteCronJob")
@@ -222,13 +221,13 @@ func (a *CronjobApiService) DeleteCronJobExecute(r ApiDeleteCronJobRequest) (*ht
 }
 
 type ApiGetCronJobRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CronjobApiService
-	id int32
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	id         int32
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiGetCronJobRequest) Limit(limit int32) ApiGetCronJobRequest {
@@ -265,8 +264,8 @@ GetCronJob Method for GetCronJob
 func (a *CronjobApiService) GetCronJob(ctx context.Context, id int32) ApiGetCronJobRequest {
 	return ApiGetCronJobRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -274,10 +273,10 @@ func (a *CronjobApiService) GetCronJob(ctx context.Context, id int32) ApiGetCron
 //  @return CronJob
 func (a *CronjobApiService) GetCronJobExecute(r ApiGetCronJobRequest) (*CronJob, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CronJob
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CronJob
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronjobApiService.GetCronJob")
@@ -359,9 +358,9 @@ func (a *CronjobApiService) GetCronJobExecute(r ApiGetCronJobRequest) (*CronJob,
 }
 
 type ApiUpdateCronJobRequest struct {
-	ctx context.Context
-	ApiService *CronjobApiService
-	id int32
+	ctx                 context.Context
+	ApiService          *CronjobApiService
+	id                  int32
 	createCronjobParams *CreateCronjobParams
 }
 
@@ -386,8 +385,8 @@ Update cronjob
 func (a *CronjobApiService) UpdateCronJob(ctx context.Context, id int32) ApiUpdateCronJobRequest {
 	return ApiUpdateCronJobRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -395,10 +394,10 @@ func (a *CronjobApiService) UpdateCronJob(ctx context.Context, id int32) ApiUpda
 //  @return CronJob
 func (a *CronjobApiService) UpdateCronJobExecute(r ApiUpdateCronJobRequest) (*CronJob, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CronJob
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CronJob
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronjobApiService.UpdateCronJob")

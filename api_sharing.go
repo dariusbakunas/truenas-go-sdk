@@ -19,13 +19,12 @@ import (
 	"strings"
 )
 
-
 // SharingApiService SharingApi service
 type SharingApiService service
 
 type ApiCreateShareNFSRequest struct {
-	ctx context.Context
-	ApiService *SharingApiService
+	ctx                  context.Context
+	ApiService           *SharingApiService
 	createShareNFSParams *CreateShareNFSParams
 }
 
@@ -60,7 +59,7 @@ selected pool or dataset.
 func (a *SharingApiService) CreateShareNFS(ctx context.Context) ApiCreateShareNFSRequest {
 	return ApiCreateShareNFSRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -68,10 +67,10 @@ func (a *SharingApiService) CreateShareNFS(ctx context.Context) ApiCreateShareNF
 //  @return ShareNFS
 func (a *SharingApiService) CreateShareNFSExecute(r ApiCreateShareNFSRequest) (*ShareNFS, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ShareNFS
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ShareNFS
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharingApiService.CreateShareNFS")
@@ -142,8 +141,8 @@ func (a *SharingApiService) CreateShareNFSExecute(r ApiCreateShareNFSRequest) (*
 }
 
 type ApiCreateShareSMBRequest struct {
-	ctx context.Context
-	ApiService *SharingApiService
+	ctx                  context.Context
+	ApiService           *SharingApiService
 	createShareSMBParams *CreateShareSMBParams
 }
 
@@ -192,7 +191,7 @@ ZFS snapshots through RPC.
 func (a *SharingApiService) CreateShareSMB(ctx context.Context) ApiCreateShareSMBRequest {
 	return ApiCreateShareSMBRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -200,10 +199,10 @@ func (a *SharingApiService) CreateShareSMB(ctx context.Context) ApiCreateShareSM
 //  @return ShareSMB
 func (a *SharingApiService) CreateShareSMBExecute(r ApiCreateShareSMBRequest) (*ShareSMB, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ShareSMB
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ShareSMB
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharingApiService.CreateShareSMB")
@@ -274,13 +273,13 @@ func (a *SharingApiService) CreateShareSMBExecute(r ApiCreateShareSMBRequest) (*
 }
 
 type ApiGetShareNFSRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *SharingApiService
-	id int32
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	id         int32
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiGetShareNFSRequest) Limit(limit int32) ApiGetShareNFSRequest {
@@ -319,8 +318,8 @@ Get NFS Share of `id`.
 func (a *SharingApiService) GetShareNFS(ctx context.Context, id int32) ApiGetShareNFSRequest {
 	return ApiGetShareNFSRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -328,10 +327,10 @@ func (a *SharingApiService) GetShareNFS(ctx context.Context, id int32) ApiGetSha
 //  @return ShareNFS
 func (a *SharingApiService) GetShareNFSExecute(r ApiGetShareNFSRequest) (*ShareNFS, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ShareNFS
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ShareNFS
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharingApiService.GetShareNFS")
@@ -413,13 +412,13 @@ func (a *SharingApiService) GetShareNFSExecute(r ApiGetShareNFSRequest) (*ShareN
 }
 
 type ApiGetShareSMBRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *SharingApiService
-	id int32
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	id         int32
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiGetShareSMBRequest) Limit(limit int32) ApiGetShareSMBRequest {
@@ -458,8 +457,8 @@ Get SMB Share of `id`.
 func (a *SharingApiService) GetShareSMB(ctx context.Context, id int32) ApiGetShareSMBRequest {
 	return ApiGetShareSMBRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -467,10 +466,10 @@ func (a *SharingApiService) GetShareSMB(ctx context.Context, id int32) ApiGetSha
 //  @return ShareSMB
 func (a *SharingApiService) GetShareSMBExecute(r ApiGetShareSMBRequest) (*ShareSMB, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ShareSMB
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ShareSMB
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharingApiService.GetShareSMB")
@@ -552,12 +551,12 @@ func (a *SharingApiService) GetShareSMBExecute(r ApiGetShareSMBRequest) (*ShareS
 }
 
 type ApiListSharesNFSRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *SharingApiService
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiListSharesNFSRequest) Limit(limit int32) ApiListSharesNFSRequest {
@@ -595,7 +594,7 @@ Get a list of NFS shares
 func (a *SharingApiService) ListSharesNFS(ctx context.Context) ApiListSharesNFSRequest {
 	return ApiListSharesNFSRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -603,10 +602,10 @@ func (a *SharingApiService) ListSharesNFS(ctx context.Context) ApiListSharesNFSR
 //  @return []ShareNFS
 func (a *SharingApiService) ListSharesNFSExecute(r ApiListSharesNFSRequest) ([]ShareNFS, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ShareNFS
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []ShareNFS
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharingApiService.ListSharesNFS")
@@ -687,12 +686,12 @@ func (a *SharingApiService) ListSharesNFSExecute(r ApiListSharesNFSRequest) ([]S
 }
 
 type ApiListSharesSMBRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *SharingApiService
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiListSharesSMBRequest) Limit(limit int32) ApiListSharesSMBRequest {
@@ -730,7 +729,7 @@ Get a list of SMB shares
 func (a *SharingApiService) ListSharesSMB(ctx context.Context) ApiListSharesSMBRequest {
 	return ApiListSharesSMBRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -738,10 +737,10 @@ func (a *SharingApiService) ListSharesSMB(ctx context.Context) ApiListSharesSMBR
 //  @return []ShareSMB
 func (a *SharingApiService) ListSharesSMBExecute(r ApiListSharesSMBRequest) ([]ShareSMB, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ShareSMB
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []ShareSMB
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharingApiService.ListSharesSMB")
@@ -822,9 +821,9 @@ func (a *SharingApiService) ListSharesSMBExecute(r ApiListSharesSMBRequest) ([]S
 }
 
 type ApiRemoveShareNFSRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *SharingApiService
-	id int32
+	id         int32
 }
 
 func (r ApiRemoveShareNFSRequest) Execute() (*http.Response, error) {
@@ -843,17 +842,17 @@ Delete NFS Share of `id`.
 func (a *SharingApiService) RemoveShareNFS(ctx context.Context, id int32) ApiRemoveShareNFSRequest {
 	return ApiRemoveShareNFSRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *SharingApiService) RemoveShareNFSExecute(r ApiRemoveShareNFSRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharingApiService.RemoveShareNFS")
@@ -914,9 +913,9 @@ func (a *SharingApiService) RemoveShareNFSExecute(r ApiRemoveShareNFSRequest) (*
 }
 
 type ApiRemoveShareSMBRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *SharingApiService
-	id int32
+	id         int32
 }
 
 func (r ApiRemoveShareSMBRequest) Execute() (*http.Response, error) {
@@ -936,17 +935,17 @@ that are accessing the share.
 func (a *SharingApiService) RemoveShareSMB(ctx context.Context, id int32) ApiRemoveShareSMBRequest {
 	return ApiRemoveShareSMBRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *SharingApiService) RemoveShareSMBExecute(r ApiRemoveShareSMBRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharingApiService.RemoveShareSMB")
@@ -1007,9 +1006,9 @@ func (a *SharingApiService) RemoveShareSMBExecute(r ApiRemoveShareSMBRequest) (*
 }
 
 type ApiUpdateShareNFSRequest struct {
-	ctx context.Context
-	ApiService *SharingApiService
-	id int32
+	ctx                  context.Context
+	ApiService           *SharingApiService
+	id                   int32
 	createShareNFSParams *CreateShareNFSParams
 }
 
@@ -1034,8 +1033,8 @@ Update NFS Share of `id`.
 func (a *SharingApiService) UpdateShareNFS(ctx context.Context, id int32) ApiUpdateShareNFSRequest {
 	return ApiUpdateShareNFSRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -1043,10 +1042,10 @@ func (a *SharingApiService) UpdateShareNFS(ctx context.Context, id int32) ApiUpd
 //  @return ShareNFS
 func (a *SharingApiService) UpdateShareNFSExecute(r ApiUpdateShareNFSRequest) (*ShareNFS, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ShareNFS
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ShareNFS
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharingApiService.UpdateShareNFS")
@@ -1118,9 +1117,9 @@ func (a *SharingApiService) UpdateShareNFSExecute(r ApiUpdateShareNFSRequest) (*
 }
 
 type ApiUpdateShareSMBRequest struct {
-	ctx context.Context
-	ApiService *SharingApiService
-	id int32
+	ctx                  context.Context
+	ApiService           *SharingApiService
+	id                   int32
 	createShareSMBParams *CreateShareSMBParams
 }
 
@@ -1145,8 +1144,8 @@ Update SMB Share of `id`.
 func (a *SharingApiService) UpdateShareSMB(ctx context.Context, id int32) ApiUpdateShareSMBRequest {
 	return ApiUpdateShareSMBRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -1154,10 +1153,10 @@ func (a *SharingApiService) UpdateShareSMB(ctx context.Context, id int32) ApiUpd
 //  @return ShareSMB
 func (a *SharingApiService) UpdateShareSMBExecute(r ApiUpdateShareSMBRequest) (*ShareSMB, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ShareSMB
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ShareSMB
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharingApiService.UpdateShareSMB")

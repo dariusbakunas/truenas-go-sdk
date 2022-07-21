@@ -19,18 +19,17 @@ import (
 	"strings"
 )
 
-
 // VmApiService VmApi service
 type VmApiService service
 
 type ApiGetVMRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *VmApiService
-	id int32
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	id         int32
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiGetVMRequest) Limit(limit int32) ApiGetVMRequest {
@@ -69,8 +68,8 @@ Get VM details
 func (a *VmApiService) GetVM(ctx context.Context, id int32) ApiGetVMRequest {
 	return ApiGetVMRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -78,10 +77,10 @@ func (a *VmApiService) GetVM(ctx context.Context, id int32) ApiGetVMRequest {
 //  @return VM
 func (a *VmApiService) GetVMExecute(r ApiGetVMRequest) (*VM, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VM
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VM
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VmApiService.GetVM")
@@ -163,12 +162,12 @@ func (a *VmApiService) GetVMExecute(r ApiGetVMRequest) (*VM, *http.Response, err
 }
 
 type ApiListVMSRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *VmApiService
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiListVMSRequest) Limit(limit int32) ApiListVMSRequest {
@@ -206,7 +205,7 @@ Get a list of VMs
 func (a *VmApiService) ListVMS(ctx context.Context) ApiListVMSRequest {
 	return ApiListVMSRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -214,10 +213,10 @@ func (a *VmApiService) ListVMS(ctx context.Context) ApiListVMSRequest {
 //  @return []VM
 func (a *VmApiService) ListVMSExecute(r ApiListVMSRequest) ([]VM, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []VM
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []VM
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VmApiService.ListVMS")

@@ -16,21 +16,21 @@ import (
 
 // NetworkConfig struct for NetworkConfig
 type NetworkConfig struct {
-	Id *int32 `json:"id,omitempty"`
-	Hostname *string `json:"hostname,omitempty"`
-	Domain *string `json:"domain,omitempty"`
-	Ipv4gateway *string `json:"ipv4gateway,omitempty"`
-	Ipv6gateway *string `json:"ipv6gateway,omitempty"`
-	Nameserver1 *string `json:"nameserver1,omitempty"`
-	Nameserver2 *string `json:"nameserver2,omitempty"`
-	Nameserver3 *string `json:"nameserver3,omitempty"`
-	Httpproxy *string `json:"httpproxy,omitempty"`
-	NetwaitEnabled *bool `json:"netwait_enabled,omitempty"`
-	NetwaitIp []string `json:"netwait_ip,omitempty"`
-	Hosts *string `json:"hosts,omitempty"`
-	Domains []string `json:"domains,omitempty"`
-	ServiceAnnouncement *NetworkConfigServiceAnnouncement `json:"service_announcement,omitempty"`
-	HostnameLocal *string `json:"hostname_local,omitempty"`
+	Id                   *int32                            `json:"id,omitempty"`
+	Hostname             *string                           `json:"hostname,omitempty"`
+	Domain               *string                           `json:"domain,omitempty"`
+	Ipv4gateway          *string                           `json:"ipv4gateway,omitempty"`
+	Ipv6gateway          *string                           `json:"ipv6gateway,omitempty"`
+	Nameserver1          *string                           `json:"nameserver1,omitempty"`
+	Nameserver2          *string                           `json:"nameserver2,omitempty"`
+	Nameserver3          *string                           `json:"nameserver3,omitempty"`
+	Httpproxy            *string                           `json:"httpproxy,omitempty"`
+	NetwaitEnabled       *bool                             `json:"netwait_enabled,omitempty"`
+	NetwaitIp            []string                          `json:"netwait_ip,omitempty"`
+	Hosts                *string                           `json:"hosts,omitempty"`
+	Domains              []string                          `json:"domains,omitempty"`
+	ServiceAnnouncement  *NetworkConfigServiceAnnouncement `json:"service_announcement,omitempty"`
+	HostnameLocal        *string                           `json:"hostname_local,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -654,5 +654,3 @@ func (v *NullableNetworkConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

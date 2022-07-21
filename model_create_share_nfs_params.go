@@ -16,19 +16,19 @@ import (
 
 // CreateShareNFSParams struct for CreateShareNFSParams
 type CreateShareNFSParams struct {
-	Paths []string `json:"paths"`
-	Comment *string `json:"comment,omitempty"`
-	Networks []string `json:"networks,omitempty"`
-	Hosts []string `json:"hosts,omitempty"`
-	Alldirs *bool `json:"alldirs,omitempty"`
-	Ro *bool `json:"ro,omitempty"`
-	Quiet *bool `json:"quiet,omitempty"`
-	MaprootUser *string `json:"maproot_user,omitempty"`
-	MaprootGroup *string `json:"maproot_group,omitempty"`
-	MapallUser *string `json:"mapall_user,omitempty"`
-	MapallGroup *string `json:"mapall_group,omitempty"`
-	Security []string `json:"security,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
+	Paths                []string `json:"paths"`
+	Comment              *string  `json:"comment,omitempty"`
+	Networks             []string `json:"networks,omitempty"`
+	Hosts                []string `json:"hosts,omitempty"`
+	Alldirs              *bool    `json:"alldirs,omitempty"`
+	Ro                   *bool    `json:"ro,omitempty"`
+	Quiet                *bool    `json:"quiet,omitempty"`
+	MaprootUser          *string  `json:"maproot_user,omitempty"`
+	MaprootGroup         *string  `json:"maproot_group,omitempty"`
+	MapallUser           *string  `json:"mapall_user,omitempty"`
+	MapallGroup          *string  `json:"mapall_group,omitempty"`
+	Security             []string `json:"security,omitempty"`
+	Enabled              *bool    `json:"enabled,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -573,5 +573,3 @@ func (v *NullableCreateShareNFSParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

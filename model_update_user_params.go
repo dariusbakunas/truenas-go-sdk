@@ -16,25 +16,25 @@ import (
 
 // UpdateUserParams struct for UpdateUserParams
 type UpdateUserParams struct {
-	Uid *int32 `json:"uid,omitempty"`
-	Username *string `json:"username,omitempty"`
-	Group *int32 `json:"group,omitempty"`
-	Home *string `json:"home,omitempty"`
-	HomeMode *string `json:"home_mode,omitempty"`
-	Shell *string `json:"shell,omitempty"`
-	FullName *string `json:"full_name,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	Password *string `json:"password,omitempty"`
-	PasswordDisabled *bool `json:"password_disabled,omitempty"`
-	Locked *bool `json:"locked,omitempty"`
-	MicrosoftAccount *bool `json:"microsoft_account,omitempty"`
-	Smb *bool `json:"smb,omitempty"`
-	Sudo *bool `json:"sudo,omitempty"`
-	SudoNopasswd *bool `json:"sudo_nopasswd,omitempty"`
-	SudoCommands []string `json:"sudo_commands,omitempty"`
-	Sshpubkey NullableString `json:"sshpubkey,omitempty"`
-	Groups []int32 `json:"groups,omitempty"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Uid                  *int32                 `json:"uid,omitempty"`
+	Username             *string                `json:"username,omitempty"`
+	Group                *int32                 `json:"group,omitempty"`
+	Home                 *string                `json:"home,omitempty"`
+	HomeMode             *string                `json:"home_mode,omitempty"`
+	Shell                *string                `json:"shell,omitempty"`
+	FullName             *string                `json:"full_name,omitempty"`
+	Email                NullableString         `json:"email,omitempty"`
+	Password             *string                `json:"password,omitempty"`
+	PasswordDisabled     *bool                  `json:"password_disabled,omitempty"`
+	Locked               *bool                  `json:"locked,omitempty"`
+	MicrosoftAccount     *bool                  `json:"microsoft_account,omitempty"`
+	Smb                  *bool                  `json:"smb,omitempty"`
+	Sudo                 *bool                  `json:"sudo,omitempty"`
+	SudoNopasswd         *bool                  `json:"sudo_nopasswd,omitempty"`
+	SudoCommands         []string               `json:"sudo_commands,omitempty"`
+	Sshpubkey            NullableString         `json:"sshpubkey,omitempty"`
+	Groups               []int32                `json:"groups,omitempty"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -313,6 +313,7 @@ func (o *UpdateUserParams) HasEmail() bool {
 func (o *UpdateUserParams) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *UpdateUserParams) SetEmailNil() {
 	o.Email.Set(nil)
@@ -611,6 +612,7 @@ func (o *UpdateUserParams) HasSshpubkey() bool {
 func (o *UpdateUserParams) SetSshpubkey(v string) {
 	o.Sshpubkey.Set(&v)
 }
+
 // SetSshpubkeyNil sets the value for Sshpubkey to be an explicit nil
 func (o *UpdateUserParams) SetSshpubkeyNil() {
 	o.Sshpubkey.Set(nil)
@@ -822,5 +824,3 @@ func (v *NullableUpdateUserParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

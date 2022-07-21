@@ -16,31 +16,31 @@ import (
 
 // ShareSMB struct for ShareSMB
 type ShareSMB struct {
-	Id int32 `json:"id"`
-	Path string `json:"path"`
-	PathSuffix *string `json:"path_suffix,omitempty"`
-	Purpose *string `json:"purpose,omitempty"`
-	Home *bool `json:"home,omitempty"`
-	Timemachine *bool `json:"timemachine,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Comment *string `json:"comment,omitempty"`
-	Ro *bool `json:"ro,omitempty"`
-	Browsable *bool `json:"browsable,omitempty"`
-	Recyclebin *bool `json:"recyclebin,omitempty"`
-	Shadowcopy *bool `json:"shadowcopy,omitempty"`
-	Guestok *bool `json:"guestok,omitempty"`
-	Abe *bool `json:"abe,omitempty"`
-	Hostsallow []string `json:"hostsallow,omitempty"`
-	Hostsdeny []string `json:"hostsdeny,omitempty"`
-	AaplNameMangling *bool `json:"aapl_name_mangling,omitempty"`
-	Acl *bool `json:"acl,omitempty"`
-	Durablehandle *bool `json:"durablehandle,omitempty"`
-	Streams *bool `json:"streams,omitempty"`
-	Fsrvp *bool `json:"fsrvp,omitempty"`
-	Auxsmbconf *string `json:"auxsmbconf,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Locked *bool `json:"locked,omitempty"`
-	Vuid *string `json:"vuid,omitempty"`
+	Id                   int32    `json:"id"`
+	Path                 string   `json:"path"`
+	PathSuffix           *string  `json:"path_suffix,omitempty"`
+	Purpose              *string  `json:"purpose,omitempty"`
+	Home                 *bool    `json:"home,omitempty"`
+	Timemachine          *bool    `json:"timemachine,omitempty"`
+	Name                 *string  `json:"name,omitempty"`
+	Comment              *string  `json:"comment,omitempty"`
+	Ro                   *bool    `json:"ro,omitempty"`
+	Browsable            *bool    `json:"browsable,omitempty"`
+	Recyclebin           *bool    `json:"recyclebin,omitempty"`
+	Shadowcopy           *bool    `json:"shadowcopy,omitempty"`
+	Guestok              *bool    `json:"guestok,omitempty"`
+	Abe                  *bool    `json:"abe,omitempty"`
+	Hostsallow           []string `json:"hostsallow,omitempty"`
+	Hostsdeny            []string `json:"hostsdeny,omitempty"`
+	AaplNameMangling     *bool    `json:"aapl_name_mangling,omitempty"`
+	Acl                  *bool    `json:"acl,omitempty"`
+	Durablehandle        *bool    `json:"durablehandle,omitempty"`
+	Streams              *bool    `json:"streams,omitempty"`
+	Fsrvp                *bool    `json:"fsrvp,omitempty"`
+	Auxsmbconf           *string  `json:"auxsmbconf,omitempty"`
+	Enabled              *bool    `json:"enabled,omitempty"`
+	Locked               *bool    `json:"locked,omitempty"`
+	Vuid                 *string  `json:"vuid,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -1010,5 +1010,3 @@ func (v *NullableShareSMB) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

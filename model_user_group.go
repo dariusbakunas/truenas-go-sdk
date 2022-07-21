@@ -16,14 +16,14 @@ import (
 
 // UserGroup struct for UserGroup
 type UserGroup struct {
-	Id *int32 `json:"id,omitempty"`
-	BsdgrpGid *int32 `json:"bsdgrp_gid,omitempty"`
-	BsdgrpGroup *string `json:"bsdgrp_group,omitempty"`
-	BsdgrpBuiltin *bool `json:"bsdgrp_builtin,omitempty"`
-	BsdgrpSudo *bool `json:"bsdgrp_sudo,omitempty"`
-	BsdgrpSudoNopasswd *bool `json:"bsdgrp_sudo_nopasswd,omitempty"`
-	BsdgrpSudoCommands []string `json:"bsdgrp_sudo_commands,omitempty"`
-	BsdgrpSmb *bool `json:"bsdgrp_smb,omitempty"`
+	Id                   *int32   `json:"id,omitempty"`
+	BsdgrpGid            *int32   `json:"bsdgrp_gid,omitempty"`
+	BsdgrpGroup          *string  `json:"bsdgrp_group,omitempty"`
+	BsdgrpBuiltin        *bool    `json:"bsdgrp_builtin,omitempty"`
+	BsdgrpSudo           *bool    `json:"bsdgrp_sudo,omitempty"`
+	BsdgrpSudoNopasswd   *bool    `json:"bsdgrp_sudo_nopasswd,omitempty"`
+	BsdgrpSudoCommands   []string `json:"bsdgrp_sudo_commands,omitempty"`
+	BsdgrpSmb            *bool    `json:"bsdgrp_smb,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -395,5 +395,3 @@ func (v *NullableUserGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

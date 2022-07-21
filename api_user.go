@@ -19,13 +19,12 @@ import (
 	"strings"
 )
 
-
 // UserApiService UserApi service
 type UserApiService service
 
 type ApiCreateUserRequest struct {
-	ctx context.Context
-	ApiService *UserApiService
+	ctx              context.Context
+	ApiService       *UserApiService
 	createUserParams *CreateUserParams
 }
 
@@ -62,7 +61,7 @@ willl also automatically be added to the `builtin_users` group.
 func (a *UserApiService) CreateUser(ctx context.Context) ApiCreateUserRequest {
 	return ApiCreateUserRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -70,10 +69,10 @@ func (a *UserApiService) CreateUser(ctx context.Context) ApiCreateUserRequest {
 //  @return int32
 func (a *UserApiService) CreateUserExecute(r ApiCreateUserRequest) (int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  int32
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.CreateUser")
@@ -144,9 +143,9 @@ func (a *UserApiService) CreateUserExecute(r ApiCreateUserRequest) (int32, *http
 }
 
 type ApiDeleteUserRequest struct {
-	ctx context.Context
-	ApiService *UserApiService
-	id int32
+	ctx              context.Context
+	ApiService       *UserApiService
+	id               int32
 	deleteUserParams *DeleteUserParams
 }
 
@@ -174,17 +173,17 @@ any other user.
 func (a *UserApiService) DeleteUser(ctx context.Context, id int32) ApiDeleteUserRequest {
 	return ApiDeleteUserRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *UserApiService) DeleteUserExecute(r ApiDeleteUserRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.DeleteUser")
@@ -247,13 +246,13 @@ func (a *UserApiService) DeleteUserExecute(r ApiDeleteUserRequest) (*http.Respon
 }
 
 type ApiGetUserRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *UserApiService
-	id int32
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	id         int32
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiGetUserRequest) Limit(limit int32) ApiGetUserRequest {
@@ -292,8 +291,8 @@ Get user of `id`.
 func (a *UserApiService) GetUser(ctx context.Context, id int32) ApiGetUserRequest {
 	return ApiGetUserRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -301,10 +300,10 @@ func (a *UserApiService) GetUser(ctx context.Context, id int32) ApiGetUserReques
 //  @return User
 func (a *UserApiService) GetUserExecute(r ApiGetUserRequest) (*User, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *User
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.GetUser")
@@ -386,9 +385,9 @@ func (a *UserApiService) GetUserExecute(r ApiGetUserRequest) (*User, *http.Respo
 }
 
 type ApiGetUserShellChoicesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *UserApiService
-	body *int32
+	body       *int32
 }
 
 func (r ApiGetUserShellChoicesRequest) Body(body int32) ApiGetUserShellChoicesRequest {
@@ -413,7 +412,7 @@ If `user_id` is provided, shell choices are filtered to ensure the user can acce
 func (a *UserApiService) GetUserShellChoices(ctx context.Context) ApiGetUserShellChoicesRequest {
 	return ApiGetUserShellChoicesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -421,10 +420,10 @@ func (a *UserApiService) GetUserShellChoices(ctx context.Context) ApiGetUserShel
 //  @return map[string]string
 func (a *UserApiService) GetUserShellChoicesExecute(r ApiGetUserShellChoicesRequest) (map[string]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.GetUserShellChoices")
@@ -495,12 +494,12 @@ func (a *UserApiService) GetUserShellChoicesExecute(r ApiGetUserShellChoicesRequ
 }
 
 type ApiListUsersRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *UserApiService
-	limit *int32
-	offset *int32
-	count *bool
-	sort *string
+	limit      *int32
+	offset     *int32
+	count      *bool
+	sort       *string
 }
 
 func (r ApiListUsersRequest) Limit(limit int32) ApiListUsersRequest {
@@ -538,7 +537,7 @@ Get a list of (local) users.
 func (a *UserApiService) ListUsers(ctx context.Context) ApiListUsersRequest {
 	return ApiListUsersRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -546,10 +545,10 @@ func (a *UserApiService) ListUsers(ctx context.Context) ApiListUsersRequest {
 //  @return []User
 func (a *UserApiService) ListUsersExecute(r ApiListUsersRequest) ([]User, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []User
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.ListUsers")
@@ -630,9 +629,9 @@ func (a *UserApiService) ListUsersExecute(r ApiListUsersRequest) ([]User, *http.
 }
 
 type ApiUpdateUserRequest struct {
-	ctx context.Context
-	ApiService *UserApiService
-	id int32
+	ctx              context.Context
+	ApiService       *UserApiService
+	id               int32
 	updateUserParams *UpdateUserParams
 }
 
@@ -657,8 +656,8 @@ Update attributes of an existing user.
 func (a *UserApiService) UpdateUser(ctx context.Context, id int32) ApiUpdateUserRequest {
 	return ApiUpdateUserRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
@@ -666,10 +665,10 @@ func (a *UserApiService) UpdateUser(ctx context.Context, id int32) ApiUpdateUser
 //  @return int32
 func (a *UserApiService) UpdateUserExecute(r ApiUpdateUserRequest) (int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  int32
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserApiService.UpdateUser")
