@@ -16,8 +16,8 @@ import (
 
 // NetworkSummaryIpsValue struct for NetworkSummaryIpsValue
 type NetworkSummaryIpsValue struct {
-	IPV4 []string `json:"IPV4,omitempty"`
-	IPV6 []string `json:"IPV6,omitempty"`
+	IPV4                 []string `json:"IPV4,omitempty"`
+	IPV6                 []string `json:"IPV6,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -173,5 +173,3 @@ func (v *NullableNetworkSummaryIpsValue) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

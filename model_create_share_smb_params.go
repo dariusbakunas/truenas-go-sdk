@@ -16,28 +16,28 @@ import (
 
 // CreateShareSMBParams struct for CreateShareSMBParams
 type CreateShareSMBParams struct {
-	Purpose *string `json:"purpose,omitempty"`
-	Path string `json:"path"`
-	PathSuffix *string `json:"path_suffix,omitempty"`
-	Home *bool `json:"home,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Comment *string `json:"comment,omitempty"`
-	Ro *bool `json:"ro,omitempty"`
-	Browsable *bool `json:"browsable,omitempty"`
-	Timemachine *bool `json:"timemachine,omitempty"`
-	Recyclebin *bool `json:"recyclebin,omitempty"`
-	Guestok *bool `json:"guestok,omitempty"`
-	Abe *bool `json:"abe,omitempty"`
-	Hostsallow []string `json:"hostsallow,omitempty"`
-	Hostsdeny []string `json:"hostsdeny,omitempty"`
-	AaplNameMangling *bool `json:"aapl_name_mangling,omitempty"`
-	Acl *bool `json:"acl,omitempty"`
-	Durablehandle *bool `json:"durablehandle,omitempty"`
-	Shadowcopy *bool `json:"shadowcopy,omitempty"`
-	Streams *bool `json:"streams,omitempty"`
-	Fsrvp *bool `json:"fsrvp,omitempty"`
-	Auxsmbconf *string `json:"auxsmbconf,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
+	Purpose              *string  `json:"purpose,omitempty"`
+	Path                 string   `json:"path"`
+	PathSuffix           *string  `json:"path_suffix,omitempty"`
+	Home                 *bool    `json:"home,omitempty"`
+	Name                 *string  `json:"name,omitempty"`
+	Comment              *string  `json:"comment,omitempty"`
+	Ro                   *bool    `json:"ro,omitempty"`
+	Browsable            *bool    `json:"browsable,omitempty"`
+	Timemachine          *bool    `json:"timemachine,omitempty"`
+	Recyclebin           *bool    `json:"recyclebin,omitempty"`
+	Guestok              *bool    `json:"guestok,omitempty"`
+	Abe                  *bool    `json:"abe,omitempty"`
+	Hostsallow           []string `json:"hostsallow,omitempty"`
+	Hostsdeny            []string `json:"hostsdeny,omitempty"`
+	AaplNameMangling     *bool    `json:"aapl_name_mangling,omitempty"`
+	Acl                  *bool    `json:"acl,omitempty"`
+	Durablehandle        *bool    `json:"durablehandle,omitempty"`
+	Shadowcopy           *bool    `json:"shadowcopy,omitempty"`
+	Streams              *bool    `json:"streams,omitempty"`
+	Fsrvp                *bool    `json:"fsrvp,omitempty"`
+	Auxsmbconf           *string  `json:"auxsmbconf,omitempty"`
+	Enabled              *bool    `json:"enabled,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -906,5 +906,3 @@ func (v *NullableCreateShareSMBParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -16,21 +16,21 @@ import (
 
 // ShareNFS struct for ShareNFS
 type ShareNFS struct {
-	Id int32 `json:"id"`
-	Comment *string `json:"comment,omitempty"`
-	Hosts []string `json:"hosts,omitempty"`
-	Alldirs *bool `json:"alldirs,omitempty"`
-	Ro *bool `json:"ro,omitempty"`
-	Quiet *bool `json:"quiet,omitempty"`
-	MaprootUser *string `json:"maproot_user,omitempty"`
-	MaprootGroup *string `json:"maproot_group,omitempty"`
-	MapallUser *string `json:"mapall_user,omitempty"`
-	MapallGroup *string `json:"mapall_group,omitempty"`
-	Security []string `json:"security,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Locked *bool `json:"locked,omitempty"`
-	Paths []string `json:"paths"`
-	Networks []string `json:"networks,omitempty"`
+	Id                   int32    `json:"id"`
+	Comment              *string  `json:"comment,omitempty"`
+	Hosts                []string `json:"hosts,omitempty"`
+	Alldirs              *bool    `json:"alldirs,omitempty"`
+	Ro                   *bool    `json:"ro,omitempty"`
+	Quiet                *bool    `json:"quiet,omitempty"`
+	MaprootUser          *string  `json:"maproot_user,omitempty"`
+	MaprootGroup         *string  `json:"maproot_group,omitempty"`
+	MapallUser           *string  `json:"mapall_user,omitempty"`
+	MapallGroup          *string  `json:"mapall_group,omitempty"`
+	Security             []string `json:"security,omitempty"`
+	Enabled              *bool    `json:"enabled,omitempty"`
+	Locked               *bool    `json:"locked,omitempty"`
+	Paths                []string `json:"paths"`
+	Networks             []string `json:"networks,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -640,5 +640,3 @@ func (v *NullableShareNFS) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

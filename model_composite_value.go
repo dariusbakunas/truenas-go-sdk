@@ -16,9 +16,9 @@ import (
 
 // CompositeValue struct for CompositeValue
 type CompositeValue struct {
-	Value *string `json:"value,omitempty"`
-	Rawvalue string `json:"rawvalue"`
-	Source *string `json:"source,omitempty"`
+	Value                *string `json:"value,omitempty"`
+	Rawvalue             string  `json:"rawvalue"`
+	Source               *string `json:"source,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -203,5 +203,3 @@ func (v *NullableCompositeValue) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

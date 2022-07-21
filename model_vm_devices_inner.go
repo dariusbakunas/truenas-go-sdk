@@ -16,11 +16,11 @@ import (
 
 // VMDevicesInner struct for VMDevicesInner
 type VMDevicesInner struct {
-	Id int32 `json:"id"`
-	Dtype string `json:"dtype"`
-	Order *int32 `json:"order,omitempty"`
-	Vm *int32 `json:"vm,omitempty"`
-	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Id                   int32                  `json:"id"`
+	Dtype                string                 `json:"dtype"`
+	Order                *int32                 `json:"order,omitempty"`
+	Vm                   *int32                 `json:"vm,omitempty"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -270,5 +270,3 @@ func (v *NullableVMDevicesInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

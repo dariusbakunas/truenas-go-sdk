@@ -16,9 +16,9 @@ import (
 
 // NetworkConfigServiceAnnouncement struct for NetworkConfigServiceAnnouncement
 type NetworkConfigServiceAnnouncement struct {
-	Netbios *bool `json:"netbios,omitempty"`
-	Mdns *bool `json:"mdns,omitempty"`
-	Wsd *bool `json:"wsd,omitempty"`
+	Netbios              *bool `json:"netbios,omitempty"`
+	Mdns                 *bool `json:"mdns,omitempty"`
+	Wsd                  *bool `json:"wsd,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -210,5 +210,3 @@ func (v *NullableNetworkConfigServiceAnnouncement) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -16,14 +16,14 @@ import (
 
 // CronJob struct for CronJob
 type CronJob struct {
-	Id *int32 `json:"id,omitempty"`
-	User *string `json:"user,omitempty"`
-	Command *string `json:"command,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
-	Stdout *bool `json:"stdout,omitempty"`
-	Stderr *bool `json:"stderr,omitempty"`
-	Schedule *CronJobSchedule `json:"schedule,omitempty"`
+	Id                   *int32           `json:"id,omitempty"`
+	User                 *string          `json:"user,omitempty"`
+	Command              *string          `json:"command,omitempty"`
+	Description          *string          `json:"description,omitempty"`
+	Enabled              *bool            `json:"enabled,omitempty"`
+	Stdout               *bool            `json:"stdout,omitempty"`
+	Stderr               *bool            `json:"stderr,omitempty"`
+	Schedule             *CronJobSchedule `json:"schedule,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -395,5 +395,3 @@ func (v *NullableCronJob) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

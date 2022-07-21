@@ -16,14 +16,14 @@ import (
 
 // Pool struct for Pool
 type Pool struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	Guid *string `json:"guid,omitempty"`
-	Path string `json:"path"`
-	Status *string `json:"status,omitempty"`
-	Healthy *bool `json:"healthy,omitempty"`
-	IsDecrypted *bool `json:"is_decrypted,omitempty"`
-	EncryptkeyPath *string `json:"encryptkey_path,omitempty"`
+	Id                   int32   `json:"id"`
+	Name                 string  `json:"name"`
+	Guid                 *string `json:"guid,omitempty"`
+	Path                 string  `json:"path"`
+	Status               *string `json:"status,omitempty"`
+	Healthy              *bool   `json:"healthy,omitempty"`
+	IsDecrypted          *bool   `json:"is_decrypted,omitempty"`
+	EncryptkeyPath       *string `json:"encryptkey_path,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -374,5 +374,3 @@ func (v *NullablePool) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

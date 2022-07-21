@@ -18,12 +18,11 @@ import (
 	"net/url"
 )
 
-
 // NetworkApiService NetworkApi service
 type NetworkApiService service
 
 type ApiGetNetworkConfigurationRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *NetworkApiService
 }
 
@@ -40,7 +39,7 @@ GetNetworkConfiguration Method for GetNetworkConfiguration
 func (a *NetworkApiService) GetNetworkConfiguration(ctx context.Context) ApiGetNetworkConfigurationRequest {
 	return ApiGetNetworkConfigurationRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -48,10 +47,10 @@ func (a *NetworkApiService) GetNetworkConfiguration(ctx context.Context) ApiGetN
 //  @return NetworkConfig
 func (a *NetworkApiService) GetNetworkConfigurationExecute(r ApiGetNetworkConfigurationRequest) (*NetworkConfig, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *NetworkConfig
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *NetworkConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkApiService.GetNetworkConfiguration")
@@ -120,7 +119,7 @@ func (a *NetworkApiService) GetNetworkConfigurationExecute(r ApiGetNetworkConfig
 }
 
 type ApiGetNetworkSummaryRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *NetworkApiService
 }
 
@@ -137,7 +136,7 @@ GetNetworkSummary Method for GetNetworkSummary
 func (a *NetworkApiService) GetNetworkSummary(ctx context.Context) ApiGetNetworkSummaryRequest {
 	return ApiGetNetworkSummaryRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -145,10 +144,10 @@ func (a *NetworkApiService) GetNetworkSummary(ctx context.Context) ApiGetNetwork
 //  @return NetworkSummary
 func (a *NetworkApiService) GetNetworkSummaryExecute(r ApiGetNetworkSummaryRequest) (*NetworkSummary, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *NetworkSummary
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *NetworkSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkApiService.GetNetworkSummary")

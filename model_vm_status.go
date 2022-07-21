@@ -16,9 +16,9 @@ import (
 
 // VMStatus struct for VMStatus
 type VMStatus struct {
-	State *string `json:"state,omitempty"`
-	Pid *int32 `json:"pid,omitempty"`
-	DomainState *string `json:"domain_state,omitempty"`
+	State                *string `json:"state,omitempty"`
+	Pid                  *int32  `json:"pid,omitempty"`
+	DomainState          *string `json:"domain_state,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -210,5 +210,3 @@ func (v *NullableVMStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

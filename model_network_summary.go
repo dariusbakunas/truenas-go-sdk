@@ -16,9 +16,9 @@ import (
 
 // NetworkSummary struct for NetworkSummary
 type NetworkSummary struct {
-	Ips *map[string]NetworkSummaryIpsValue `json:"ips,omitempty"`
-	DefaultRoutes []string `json:"default_routes,omitempty"`
-	Nameservers []string `json:"nameservers,omitempty"`
+	Ips                  *map[string]NetworkSummaryIpsValue `json:"ips,omitempty"`
+	DefaultRoutes        []string                           `json:"default_routes,omitempty"`
+	Nameservers          []string                           `json:"nameservers,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -210,5 +210,3 @@ func (v *NullableNetworkSummary) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -16,11 +16,11 @@ import (
 
 // Service struct for Service
 type Service struct {
-	Id int32 `json:"id"`
-	Service string `json:"service"`
-	Enable *bool `json:"enable,omitempty"`
-	State *string `json:"state,omitempty"`
-	Pids []int32 `json:"pids,omitempty"`
+	Id                   int32   `json:"id"`
+	Service              string  `json:"service"`
+	Enable               *bool   `json:"enable,omitempty"`
+	State                *string `json:"state,omitempty"`
+	Pids                 []int32 `json:"pids,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -270,5 +270,3 @@ func (v *NullableService) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

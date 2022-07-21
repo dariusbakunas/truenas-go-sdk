@@ -16,19 +16,19 @@ import (
 
 // VM struct for VM
 type VM struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	Description *string `json:"description,omitempty"`
-	Vcpus *int32 `json:"vcpus,omitempty"`
-	Memory *int32 `json:"memory,omitempty"`
-	Autostart *bool `json:"autostart,omitempty"`
-	Time *string `json:"time,omitempty"`
-	Bootloader *string `json:"bootloader,omitempty"`
-	Cores *int32 `json:"cores,omitempty"`
-	Threads *int32 `json:"threads,omitempty"`
-	ShutdownTimeout *int32 `json:"shutdown_timeout,omitempty"`
-	Devices []VMDevicesInner `json:"devices,omitempty"`
-	Status *VMStatus `json:"status,omitempty"`
+	Id                   int32            `json:"id"`
+	Name                 string           `json:"name"`
+	Description          *string          `json:"description,omitempty"`
+	Vcpus                *int32           `json:"vcpus,omitempty"`
+	Memory               *int32           `json:"memory,omitempty"`
+	Autostart            *bool            `json:"autostart,omitempty"`
+	Time                 *string          `json:"time,omitempty"`
+	Bootloader           *string          `json:"bootloader,omitempty"`
+	Cores                *int32           `json:"cores,omitempty"`
+	Threads              *int32           `json:"threads,omitempty"`
+	ShutdownTimeout      *int32           `json:"shutdown_timeout,omitempty"`
+	Devices              []VMDevicesInner `json:"devices,omitempty"`
+	Status               *VMStatus        `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -566,5 +566,3 @@ func (v *NullableVM) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

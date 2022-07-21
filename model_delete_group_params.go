@@ -16,7 +16,7 @@ import (
 
 // DeleteGroupParams struct for DeleteGroupParams
 type DeleteGroupParams struct {
-	DeleteUsers *bool `json:"delete_users,omitempty"`
+	DeleteUsers          *bool `json:"delete_users,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -136,5 +136,3 @@ func (v *NullableDeleteGroupParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
