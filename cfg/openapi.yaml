@@ -1523,7 +1523,7 @@ components:
         devices:
           type: array
           items:
-            $ref: '#/components/schemas/VMDeviceCreate'
+            $ref: '#/components/schemas/VMDevice'
           description: |-
             `devices` is a list of virtualized hardware to add to the newly created Virtual Machine.
             Failure to attach a device destroys the VM and any resources allocated by the VM devices.
@@ -2509,7 +2509,6 @@ components:
     VMDevice:
       type: object
       required:
-        - id
         - dtype
       properties:
         id:
@@ -2523,33 +2522,13 @@ components:
             - PCI
             - DISPLAY
             - RAW
+        attributes:
+          type: object
+          properties: {}
+          additionalProperties: true
         order:
           type: integer
         vm:
-          type: integer
-        attributes:
-          type: object
-          properties: {}
-          additionalProperties: true
-    VMDeviceCreate:
-      type: object
-      required:
-        - dtype
-      properties:
-        dtype:
-          type: string
-          enum:
-            - NIC
-            - DISK
-            - CDROM
-            - PCI
-            - DISPLAY
-            - RAW
-        attributes:
-          type: object
-          properties: {}
-          additionalProperties: true
-        order:
           type: integer
     UsersResponse:
       type: array

@@ -1651,16 +1651,20 @@ components:
         machine_type: machine_type
         memory: 5
         devices:
-        - dtype: NIC
+        - vm: 3
+          dtype: NIC
           attributes:
             key: ""
-          order: 5
-        - dtype: NIC
+          id: 7
+          order: 9
+        - vm: 3
+          dtype: NIC
           attributes:
             key: ""
-          order: 5
+          id: 7
+          order: 9
         arch_type: arch_type
-        shutdown_timeout: 2
+        shutdown_timeout: 5
         description: description
         threads: 1
         vcpus: 0
@@ -1727,7 +1731,7 @@ components:
             `devices` is a list of virtualized hardware to add to the newly created Virtual Machine.
             Failure to attach a device destroys the VM and any resources allocated by the VM devices.
           items:
-            $ref: '#/components/schemas/VMDeviceCreate'
+            $ref: '#/components/schemas/VMDevice'
           type: array
         autostart:
           default: true
@@ -3075,39 +3079,13 @@ components:
           - DISPLAY
           - RAW
           type: string
+        attributes:
+          additionalProperties: true
+          properties: {}
+          type: object
         order:
           type: integer
         vm:
-          type: integer
-        attributes:
-          additionalProperties: true
-          properties: {}
-          type: object
-      required:
-      - dtype
-      - id
-      type: object
-    VMDeviceCreate:
-      example:
-        dtype: NIC
-        attributes:
-          key: ""
-        order: 5
-      properties:
-        dtype:
-          enum:
-          - NIC
-          - DISK
-          - CDROM
-          - PCI
-          - DISPLAY
-          - RAW
-          type: string
-        attributes:
-          additionalProperties: true
-          properties: {}
-          type: object
-        order:
           type: integer
       required:
       - dtype

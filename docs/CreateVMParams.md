@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Threads** | Pointer to **int32** | Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a separate package. Multiple cores can be configured per CPU by specifying &#x60;cores&#x60; attributes. &#x60;vcpus&#x60; specifies total number of CPU sockets. &#x60;cores&#x60; specifies number of cores per socket. &#x60;threads&#x60; specifies number of threads per core. | [optional] [default to 1]
 **Memory** | Pointer to **int64** |  | [optional] 
 **Bootloader** | Pointer to **string** |  | [optional] [default to "UEFI"]
-**Devices** | Pointer to [**[]VMDeviceCreate**](VMDeviceCreate.md) | &#x60;devices&#x60; is a list of virtualized hardware to add to the newly created Virtual Machine. Failure to attach a device destroys the VM and any resources allocated by the VM devices. | [optional] 
+**Devices** | Pointer to [**[]VMDevice**](VMDevice.md) | &#x60;devices&#x60; is a list of virtualized hardware to add to the newly created Virtual Machine. Failure to attach a device destroys the VM and any resources allocated by the VM devices. | [optional] 
 **Autostart** | Pointer to **bool** |  | [optional] [default to true]
 **HideFromMsr** | Pointer to **bool** | &#x60;hide_from_msr&#x60; is a boolean which when set will hide the KVM hypervisor from standard MSR based discovery and is useful to enable when doing GPU passthrough. | [optional] [default to false]
 **EnsureDisplayDevice** | Pointer to **bool** | &#x60;ensure_display_device&#x60; when set ( the default ) will ensure that the guest always has access to a video device. For headless installations like ubuntu server this is required for the guest to operate properly. However for cases where consumer would like to use GPU passthrough and does not want a display device added should set this to &#x60;false&#x60;. | [optional] [default to true]
@@ -279,20 +279,20 @@ HasBootloader returns a boolean if a field has been set.
 
 ### GetDevices
 
-`func (o *CreateVMParams) GetDevices() []VMDeviceCreate`
+`func (o *CreateVMParams) GetDevices() []VMDevice`
 
 GetDevices returns the Devices field if non-nil, zero value otherwise.
 
 ### GetDevicesOk
 
-`func (o *CreateVMParams) GetDevicesOk() (*[]VMDeviceCreate, bool)`
+`func (o *CreateVMParams) GetDevicesOk() (*[]VMDevice, bool)`
 
 GetDevicesOk returns a tuple with the Devices field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDevices
 
-`func (o *CreateVMParams) SetDevices(v []VMDeviceCreate)`
+`func (o *CreateVMParams) SetDevices(v []VMDevice)`
 
 SetDevices sets Devices field to given value.
 

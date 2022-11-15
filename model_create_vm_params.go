@@ -29,8 +29,8 @@ type CreateVMParams struct {
 	Memory     *int64  `json:"memory,omitempty"`
 	Bootloader *string `json:"bootloader,omitempty"`
 	// `devices` is a list of virtualized hardware to add to the newly created Virtual Machine. Failure to attach a device destroys the VM and any resources allocated by the VM devices.
-	Devices   []VMDeviceCreate `json:"devices,omitempty"`
-	Autostart *bool            `json:"autostart,omitempty"`
+	Devices   []VMDevice `json:"devices,omitempty"`
+	Autostart *bool      `json:"autostart,omitempty"`
 	// `hide_from_msr` is a boolean which when set will hide the KVM hypervisor from standard MSR based discovery and is useful to enable when doing GPU passthrough.
 	HideFromMsr *bool `json:"hide_from_msr,omitempty"`
 	// `ensure_display_device` when set ( the default ) will ensure that the guest always has access to a video device. For headless installations like ubuntu server this is required for the guest to operate properly. However for cases where consumer would like to use GPU passthrough and does not want a display device added should set this to `false`.
@@ -402,9 +402,9 @@ func (o *CreateVMParams) SetBootloader(v string) {
 }
 
 // GetDevices returns the Devices field value if set, zero value otherwise.
-func (o *CreateVMParams) GetDevices() []VMDeviceCreate {
+func (o *CreateVMParams) GetDevices() []VMDevice {
 	if o == nil || isNil(o.Devices) {
-		var ret []VMDeviceCreate
+		var ret []VMDevice
 		return ret
 	}
 	return o.Devices
@@ -412,7 +412,7 @@ func (o *CreateVMParams) GetDevices() []VMDeviceCreate {
 
 // GetDevicesOk returns a tuple with the Devices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMParams) GetDevicesOk() ([]VMDeviceCreate, bool) {
+func (o *CreateVMParams) GetDevicesOk() ([]VMDevice, bool) {
 	if o == nil || isNil(o.Devices) {
 		return nil, false
 	}
@@ -428,8 +428,8 @@ func (o *CreateVMParams) HasDevices() bool {
 	return false
 }
 
-// SetDevices gets a reference to the given []VMDeviceCreate and assigns it to the Devices field.
-func (o *CreateVMParams) SetDevices(v []VMDeviceCreate) {
+// SetDevices gets a reference to the given []VMDevice and assigns it to the Devices field.
+func (o *CreateVMParams) SetDevices(v []VMDevice) {
 	o.Devices = v
 }
 

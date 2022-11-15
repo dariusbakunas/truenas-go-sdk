@@ -16,11 +16,11 @@ import (
 
 // VMDevice struct for VMDevice
 type VMDevice struct {
-	Id                   int32                  `json:"id"`
+	Id                   *int32                 `json:"id,omitempty"`
 	Dtype                string                 `json:"dtype"`
+	Attributes           map[string]interface{} `json:"attributes,omitempty"`
 	Order                *int32                 `json:"order,omitempty"`
 	Vm                   *int32                 `json:"vm,omitempty"`
-	Attributes           map[string]interface{} `json:"attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -30,9 +30,8 @@ type _VMDevice VMDevice
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVMDevice(id int32, dtype string) *VMDevice {
+func NewVMDevice(dtype string) *VMDevice {
 	this := VMDevice{}
-	this.Id = id
 	this.Dtype = dtype
 	return &this
 }
@@ -45,28 +44,36 @@ func NewVMDeviceWithDefaults() *VMDevice {
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *VMDevice) GetId() int32 {
-	if o == nil {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VMDevice) GetIdOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *VMDevice) HasId() bool {
+	if o != nil && !isNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given int32 and assigns it to the Id field.
 func (o *VMDevice) SetId(v int32) {
-	o.Id = v
+	o.Id = &v
 }
 
 // GetDtype returns the Dtype field value
@@ -91,6 +98,38 @@ func (o *VMDevice) GetDtypeOk() (*string, bool) {
 // SetDtype sets field value
 func (o *VMDevice) SetDtype(v string) {
 	o.Dtype = v
+}
+
+// GetAttributes returns the Attributes field value if set, zero value otherwise.
+func (o *VMDevice) GetAttributes() map[string]interface{} {
+	if o == nil || isNil(o.Attributes) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VMDevice) GetAttributesOk() (map[string]interface{}, bool) {
+	if o == nil || isNil(o.Attributes) {
+		return map[string]interface{}{}, false
+	}
+	return o.Attributes, true
+}
+
+// HasAttributes returns a boolean if a field has been set.
+func (o *VMDevice) HasAttributes() bool {
+	if o != nil && !isNil(o.Attributes) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
+func (o *VMDevice) SetAttributes(v map[string]interface{}) {
+	o.Attributes = v
 }
 
 // GetOrder returns the Order field value if set, zero value otherwise.
@@ -157,54 +196,22 @@ func (o *VMDevice) SetVm(v int32) {
 	o.Vm = &v
 }
 
-// GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *VMDevice) GetAttributes() map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Attributes
-}
-
-// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VMDevice) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
-		return map[string]interface{}{}, false
-	}
-	return o.Attributes, true
-}
-
-// HasAttributes returns a boolean if a field has been set.
-func (o *VMDevice) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
-		return true
-	}
-
-	return false
-}
-
-// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
-func (o *VMDevice) SetAttributes(v map[string]interface{}) {
-	o.Attributes = v
-}
-
 func (o VMDevice) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if true {
 		toSerialize["dtype"] = o.Dtype
+	}
+	if !isNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
 	}
 	if !isNil(o.Order) {
 		toSerialize["order"] = o.Order
 	}
 	if !isNil(o.Vm) {
 		toSerialize["vm"] = o.Vm
-	}
-	if !isNil(o.Attributes) {
-		toSerialize["attributes"] = o.Attributes
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -226,9 +233,9 @@ func (o *VMDevice) UnmarshalJSON(bytes []byte) (err error) {
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "dtype")
+		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "order")
 		delete(additionalProperties, "vm")
-		delete(additionalProperties, "attributes")
 		o.AdditionalProperties = additionalProperties
 	}
 

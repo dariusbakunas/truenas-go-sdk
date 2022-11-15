@@ -50,7 +50,6 @@ docs/UserApi.md
 docs/UserGroup.md
 docs/VM.md
 docs/VMDevice.md
-docs/VMDeviceCreate.md
 docs/VMStatus.md
 docs/VmApi.md
 git_push.sh
@@ -86,7 +85,6 @@ model_user.go
 model_user_group.go
 model_vm.go
 model_vm_device.go
-model_vm_device_create.go
 model_vm_status.go
 response.go
 test/api_cronjob_test.go

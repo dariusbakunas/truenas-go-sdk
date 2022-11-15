@@ -151,7 +151,6 @@ Class | Method | HTTP request | Description
  - [UserGroup](docs/UserGroup.md)
  - [VM](docs/VM.md)
  - [VMDevice](docs/VMDevice.md)
- - [VMDeviceCreate](docs/VMDeviceCreate.md)
  - [VMStatus](docs/VMStatus.md)
 
 
