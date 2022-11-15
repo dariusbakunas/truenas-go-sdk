@@ -41,7 +41,7 @@ func NewDeleteUserParamsWithDefaults() *DeleteUserParams {
 
 // GetDeleteGroup returns the DeleteGroup field value if set, zero value otherwise.
 func (o *DeleteUserParams) GetDeleteGroup() bool {
-	if o == nil || o.DeleteGroup == nil {
+	if o == nil || isNil(o.DeleteGroup) {
 		var ret bool
 		return ret
 	}
@@ -51,7 +51,7 @@ func (o *DeleteUserParams) GetDeleteGroup() bool {
 // GetDeleteGroupOk returns a tuple with the DeleteGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeleteUserParams) GetDeleteGroupOk() (*bool, bool) {
-	if o == nil || o.DeleteGroup == nil {
+	if o == nil || isNil(o.DeleteGroup) {
 		return nil, false
 	}
 	return o.DeleteGroup, true
@@ -59,7 +59,7 @@ func (o *DeleteUserParams) GetDeleteGroupOk() (*bool, bool) {
 
 // HasDeleteGroup returns a boolean if a field has been set.
 func (o *DeleteUserParams) HasDeleteGroup() bool {
-	if o != nil && o.DeleteGroup != nil {
+	if o != nil && !isNil(o.DeleteGroup) {
 		return true
 	}
 
@@ -73,7 +73,7 @@ func (o *DeleteUserParams) SetDeleteGroup(v bool) {
 
 func (o DeleteUserParams) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DeleteGroup != nil {
+	if !isNil(o.DeleteGroup) {
 		toSerialize["delete_group"] = o.DeleteGroup
 	}
 

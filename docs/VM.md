@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **Cores** | Pointer to **int32** |  | [optional] 
 **Threads** | Pointer to **int32** |  | [optional] 
 **ShutdownTimeout** | Pointer to **int32** |  | [optional] 
-**Devices** | Pointer to [**[]VMDevicesInner**](VMDevicesInner.md) |  | [optional] 
+**Devices** | Pointer to [**[]VMDevice**](VMDevice.md) |  | [optional] 
 **Status** | Pointer to [**VMStatus**](VMStatus.md) |  | [optional] 
 
 ## Methods
@@ -304,20 +304,20 @@ HasShutdownTimeout returns a boolean if a field has been set.
 
 ### GetDevices
 
-`func (o *VM) GetDevices() []VMDevicesInner`
+`func (o *VM) GetDevices() []VMDevice`
 
 GetDevices returns the Devices field if non-nil, zero value otherwise.
 
 ### GetDevicesOk
 
-`func (o *VM) GetDevicesOk() (*[]VMDevicesInner, bool)`
+`func (o *VM) GetDevicesOk() (*[]VMDevice, bool)`
 
 GetDevicesOk returns a tuple with the Devices field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDevices
 
-`func (o *VM) SetDevices(v []VMDevicesInner)`
+`func (o *VM) SetDevices(v []VMDevice)`
 
 SetDevices sets Devices field to given value.
 

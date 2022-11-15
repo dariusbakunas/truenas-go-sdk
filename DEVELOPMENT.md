@@ -1,5 +1,11 @@
 # TrueNAS Go SDK Development
 
+To fetch orignal spec:
+
+```bash
+./cfg/fetch.sh your.nas.hostname cfg/original.yaml
+```
+
 To generate go SDK from current openapi spec use this command:
 
 ```bash

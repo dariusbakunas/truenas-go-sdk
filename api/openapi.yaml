@@ -98,21 +98,28 @@ paths:
       tags:
       - dataset
     post:
-      description: "Creates a dataset/zvol.\n\n`volsize` is required for type=VOLUME\
-        \ and is supposed to be a multiple of the block size.\n`sparse` and `volblocksize`\
-        \ are only used for type=VOLUME.\n\n`encryption` when enabled will create\
-        \ an ZFS encrypted root dataset for `name` pool.\nThere are 2 cases where\
-        \ ZFS encryption is not allowed for a dataset:\n1) Pool in question is GELI\
-        \ encrypted.\n2) If the parent dataset is encrypted with a passphrase and\
-        \ `name` is being created\n  with a key for encrypting the dataset.\n\n`encryption_options`\
-        \ specifies configuration for encryption of dataset for `name` pool.\n`encryption_options.passphrase`\
-        \ must be specified if encryption for dataset is desired with a passphrase\n\
-        as a key.\nOtherwise a hex encoded key can be specified by providing `encryption_options.key`.\n\
-        `encryption_options.generate_key` when enabled automatically generates the\
-        \ key to be used\nfor dataset encryption.\n\nIt should be noted that keys\
-        \ are stored by the system for automatic locking/unlocking\non import/export\
-        \ of encrypted datasets. If that is not desired, dataset should be created\n\
-        with a passphrase as a key.\n"
+      description: |
+        Creates a dataset/zvol.
+
+        `volsize` is required for type=VOLUME and is supposed to be a multiple of the block size.
+        `sparse` and `volblocksize` are only used for type=VOLUME.
+
+        `encryption` when enabled will create an ZFS encrypted root dataset for `name` pool.
+        There are 2 cases where ZFS encryption is not allowed for a dataset:
+        1) Pool in question is GELI encrypted.
+        2) If the parent dataset is encrypted with a passphrase and `name` is being created
+          with a key for encrypting the dataset.
+
+        `encryption_options` specifies configuration for encryption of dataset for `name` pool.
+        `encryption_options.passphrase` must be specified if encryption for dataset is desired with a passphrase
+        as a key.
+        Otherwise a hex encoded key can be specified by providing `encryption_options.key`.
+        `encryption_options.generate_key` when enabled automatically generates the key to be used
+        for dataset encryption.
+
+        It should be noted that keys are stored by the system for automatic locking/unlocking
+        on import/export of encrypted datasets. If that is not desired, dataset should be created
+        with a passphrase as a key.
       operationId: createDataset
       parameters: []
       requestBody:
@@ -159,15 +166,15 @@ paths:
       tags:
       - dataset
     get:
-      description: "Query Pool Datasets with `query-filters` and `query-options`.\n\
-        \nWe provide two ways to retrieve datasets. The first is a flat structure\
-        \ (default), where\nall datasets in the system are returned as separate objects\
-        \ which contain all data\nthere is for their children. This retrieval type\
-        \ is slightly slower because of duplicates in each object.\nThe second type\
-        \ is hierarchical, where only top level datasets are returned in the list.\
-        \ They contain all the\nchildren in the `children` key. This retrieval type\
-        \ is slightly faster.\nThese options are controlled by the `query-options.extra.flat`\
-        \ attribute (default true)."
+      description: |-
+        Query Pool Datasets with `query-filters` and `query-options`.
+
+        We provide two ways to retrieve datasets. The first is a flat structure (default), where
+        all datasets in the system are returned as separate objects which contain all data
+        there is for their children. This retrieval type is slightly slower because of duplicates in each object.
+        The second type is hierarchical, where only top level datasets are returned in the list. They contain all the
+        children in the `children` key. This retrieval type is slightly faster.
+        These options are controlled by the `query-options.extra.flat` attribute (default true).
       operationId: getDataset
       parameters:
       - description: ID of the dataset
@@ -352,9 +359,9 @@ paths:
       - cronjob
   /cronjob:
     post:
-      description: "Create a new cron job.\n`stderr` and `stdout` are boolean values\
-        \ which if `true`, represent that we would like to suppress standard error\
-        \ / standard output respectively."
+      description: |-
+        Create a new cron job.
+        `stderr` and `stdout` are boolean values which if `true`, represent that we would like to suppress standard error / standard output respectively.
       operationId: createCronJob
       parameters: []
       requestBody:
@@ -692,13 +699,19 @@ paths:
       tags:
       - sharing
     post:
-      description: "Create a new NFS Share.\n\n`paths` is a list of valid paths which\
-        \ are configured to be shared on this share.\n\n`networks` is a list of authorized\
-        \ networks that are allowed to access the share having format\n\"network/mask\"\
-        \ CIDR notation. If empty, all networks are allowed.\n\n`hosts` is a list\
-        \ of IP's/hostnames which are allowed to access the share. If empty, all IP's/hostnames\
-        \ are\nallowed.\n\n`alldirs` is a boolean value which when set indicates that\
-        \ the client can mount any subdirectories of the\nselected pool or dataset."
+      description: |-
+        Create a new NFS Share.
+
+        `paths` is a list of valid paths which are configured to be shared on this share.
+
+        `networks` is a list of authorized networks that are allowed to access the share having format
+        "network/mask" CIDR notation. If empty, all networks are allowed.
+
+        `hosts` is a list of IP's/hostnames which are allowed to access the share. If empty, all IP's/hostnames are
+        allowed.
+
+        `alldirs` is a boolean value which when set indicates that the client can mount any subdirectories of the
+        selected pool or dataset.
       operationId: createShareNFS
       parameters: []
       requestBody:
@@ -868,22 +881,33 @@ paths:
       tags:
       - sharing
     post:
-      description: "Create an SMB Share.\n\n`purpose` applies common configuration\
-        \ presets depending on intended purpose.\n\n`timemachine` when set, enables\
-        \ Time Machine backups for this share.\n\n`ro` when enabled, prohibits write\
-        \ access to the share.\n\n`guestok` when enabled, allows access to this share\
-        \ without a password.\n\n`hostsallow` is a list of hostnames / IP addresses\
-        \ which have access to this share.\n\n`hostsdeny` is a list of hostnames /\
-        \ IP addresses which are not allowed access to this share. If a handful\n\
-        of hostnames are to be only allowed access, `hostsdeny` can be passed \"ALL\"\
-        \ which means that it will deny\naccess to ALL hostnames except for the ones\
-        \ which have been listed in `hostsallow`.\n\n`acl` enables support for storing\
-        \ the SMB Security Descriptor as a Filesystem ACL.\n\n`streams` enables support\
-        \ for storing alternate datastreams as filesystem extended attributes.\n\n\
-        `fsrvp` enables support for the filesystem remote VSS protocol. This allows\
-        \ clients to create\nZFS snapshots through RPC.\n\n`shadowcopy` enables support\
-        \ for the volume shadow copy service.\n\n`auxsmbconf` is a string of additional\
-        \ smb4.conf parameters not covered by the system's API."
+      description: |-
+        Create an SMB Share.
+
+        `purpose` applies common configuration presets depending on intended purpose.
+
+        `timemachine` when set, enables Time Machine backups for this share.
+
+        `ro` when enabled, prohibits write access to the share.
+
+        `guestok` when enabled, allows access to this share without a password.
+
+        `hostsallow` is a list of hostnames / IP addresses which have access to this share.
+
+        `hostsdeny` is a list of hostnames / IP addresses which are not allowed access to this share. If a handful
+        of hostnames are to be only allowed access, `hostsdeny` can be passed "ALL" which means that it will deny
+        access to ALL hostnames except for the ones which have been listed in `hostsallow`.
+
+        `acl` enables support for storing the SMB Security Descriptor as a Filesystem ACL.
+
+        `streams` enables support for storing alternate datastreams as filesystem extended attributes.
+
+        `fsrvp` enables support for the filesystem remote VSS protocol. This allows clients to create
+        ZFS snapshots through RPC.
+
+        `shadowcopy` enables support for the volume shadow copy service.
+
+        `auxsmbconf` is a string of additional smb4.conf parameters not covered by the system's API.
       operationId: createShareSMB
       parameters: []
       requestBody:
@@ -1203,9 +1227,10 @@ paths:
       - user
   /user/shell_choices:
     post:
-      description: "Return the available shell choices to be used in `user.create`\
-        \ and `user.update`.\n\nIf `user_id` is provided, shell choices are filtered\
-        \ to ensure the user can access the shell choices provided."
+      description: |-
+        Return the available shell choices to be used in `user.create` and `user.update`.
+
+        If `user_id` is provided, shell choices are filtered to ensure the user can access the shell choices provided.
       operationId: getUserShellChoices
       parameters: []
       requestBody:
@@ -1272,7 +1297,79 @@ paths:
       - bearerAuth: []
       tags:
       - vm
+    post:
+      description: |-
+        Create a Virtual Machine (VM).
+
+        `devices` is a list of virtualized hardware to add to the newly created Virtual Machine.
+        Failure to attach a device destroys the VM and any resources allocated by the VM devices.
+
+        Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a
+        separate package. Multiple cores can be configured per CPU by specifying `cores` attributes.
+        `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads`
+        specifies number of threads per core.
+
+        `ensure_display_device` when set ( the default ) will ensure that the guest always has access to a video device.
+        For headless installations like ubuntu server this is required for the guest to operate properly. However
+        for cases where consumer would like to use GPU passthrough and does not want a display device added should set
+        this to `false`.
+
+        `arch_type` refers to architecture type and can be specified for the guest. By default the value is `null` and
+        system in this case will choose a reasonable default based on host.
+
+        `machine_type` refers to machine type of the guest based on the architecture type selected with `arch_type`.
+        By default the value is `null` and system in this case will choose a reasonable default based on `arch_type`
+        configuration.
+
+        `shutdown_timeout` indicates the time in seconds the system waits for the VM to cleanly shutdown. During system
+        shutdown, if the VM hasn't exited after a hardware shutdown signal has been sent by the system within
+        `shutdown_timeout` seconds, system initiates poweroff for the VM to stop it.
+
+        `hide_from_msr` is a boolean which when set will hide the KVM hypervisor from standard MSR based discovery and
+        is useful to enable when doing GPU passthrough.
+
+        SCALE Angelfish: Specifying `devices` is deprecated and will be removed in next major release.
+      operationId: createVM
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVMParams'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VM'
+          description: VM details
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - vm
   /vm/id/{id}:
+    delete:
+      description: Delete a VM.
+      operationId: deleteVM
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: Operation succeeded
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - vm
     get:
       description: Get VM details
       operationId: getVM
@@ -1325,6 +1422,44 @@ paths:
       - bearerAuth: []
       tags:
       - vm
+    put:
+      description: |-
+        Update all information of a specific VM.
+
+        `devices` is a list of virtualized hardware to attach to the virtual machine. If `devices` is not present,
+        no change is made to devices. If either the device list order or data stored by the device changes when the
+        attribute is passed, these actions are taken:
+
+        1) If there is no device in the `devices` list which was previously attached to the VM, that device is
+           removed from the virtual machine.
+        2) Devices are updated in the `devices` list when they contain a valid `id` attribute that corresponds to
+           an existing device.
+        3) Devices that do not have an `id` attribute are created and attached to `id` VM.
+      operationId: updateVM
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVMParams'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VM'
+          description: List of VMs
+        "401":
+          description: No authorization for this endpoint
+      tags:
+      - vm
 components:
   responses:
     NotFound:
@@ -1371,6 +1506,284 @@ components:
       items:
         $ref: '#/components/schemas/Dataset'
       type: array
+    UpdateVMParams:
+      example:
+        machine_type: machine_type
+        memory: 5
+        devices:
+        - vm: 3
+          dtype: NIC
+          attributes:
+            key: ""
+          id: 7
+          order: 9
+        - vm: 3
+          dtype: NIC
+          attributes:
+            key: ""
+          id: 7
+          order: 9
+        arch_type: arch_type
+        shutdown_timeout: 5
+        description: description
+        threads: 1
+        vcpus: 0
+        autostart: true
+        uuid: uuid
+        ensure_display_device: true
+        cores: 6
+        hide_from_msr: false
+        cpu_model: cpu_model
+        bootloader: UEFI
+        name: name
+        cpu_mode: CUSTOM
+        time: LOCAL
+      properties:
+        name:
+          type: string
+        cpu_mode:
+          default: CUSTOM
+          enum:
+          - CUSTOM
+          - HOST-MODEL
+          - HOST-PASSTHROUGH
+          type: string
+        cpu_model:
+          nullable: true
+          type: string
+        description:
+          type: string
+        vcpus:
+          default: 1
+          description: |-
+            Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a
+            separate package. Multiple cores can be configured per CPU by specifying `cores` attributes.
+            `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads`
+            specifies number of threads per core.
+          type: integer
+        cores:
+          default: 1
+          description: |-
+            Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a
+            separate package. Multiple cores can be configured per CPU by specifying `cores` attributes.
+            `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads`
+            specifies number of threads per core.
+          type: integer
+        threads:
+          default: 1
+          description: |-
+            Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a
+            separate package. Multiple cores can be configured per CPU by specifying `cores` attributes.
+            `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads`
+            specifies number of threads per core.
+          type: integer
+        memory:
+          format: int64
+          type: integer
+        bootloader:
+          default: UEFI
+          enum:
+          - UEFI
+          - UEFI_CSM
+          type: string
+        devices:
+          description: |-
+            `devices` is a list of virtualized hardware to add to the newly created Virtual Machine.
+            Failure to attach a device destroys the VM and any resources allocated by the VM devices.
+          items:
+            $ref: '#/components/schemas/VMDevice'
+          type: array
+        autostart:
+          default: true
+          type: boolean
+        hide_from_msr:
+          default: false
+          description: |-
+            `hide_from_msr` is a boolean which when set will hide the KVM hypervisor from standard MSR based discovery and
+            is useful to enable when doing GPU passthrough.
+          type: boolean
+        ensure_display_device:
+          default: true
+          description: |-
+            `ensure_display_device` when set ( the default ) will ensure that the guest always has access to a video device.
+            For headless installations like ubuntu server this is required for the guest to operate properly. However
+            for cases where consumer would like to use GPU passthrough and does not want a display device added should set
+            this to `false`.
+          type: boolean
+        time:
+          default: LOCAL
+          enum:
+          - LOCAL
+          - UTC
+          title: time
+          type: string
+        shutdown_timeout:
+          default: 90
+          description: |-
+            `shutdown_timeout` indicates the time in seconds the system waits for the VM to cleanly shutdown. During system
+            shutdown, if the VM hasn't exited after a hardware shutdown signal has been sent by the system within
+            `shutdown_timeout` seconds, system initiates poweroff for the VM to stop it.
+          type: integer
+        arch_type:
+          description: |-
+            `arch_type` refers to architecture type and can be specified for the guest. By default the value is `null` and
+            system in this case will choose a reasonable default based on host.
+            `machine_type` refers to machine type of the guest based on the architecture type selected with `arch_type`.
+            By default the value is `null` and system in this case will choose a reasonable default based on `arch_type`
+            configuration.
+          nullable: true
+          type: string
+        machine_type:
+          description: |-
+            `machine_type` refers to machine type of the guest based on the architecture type selected with `arch_type`.
+            By default the value is `null` and system in this case will choose a reasonable default based on `arch_type`
+            configuration.
+          nullable: true
+          type: string
+        uuid:
+          nullable: true
+          type: string
+      type: object
+    CreateVMParams:
+      additionalProperties: false
+      default: {}
+      example:
+        machine_type: machine_type
+        memory: 5
+        devices:
+        - vm: 3
+          dtype: NIC
+          attributes:
+            key: ""
+          id: 7
+          order: 9
+        - vm: 3
+          dtype: NIC
+          attributes:
+            key: ""
+          id: 7
+          order: 9
+        arch_type: arch_type
+        shutdown_timeout: 5
+        description: description
+        threads: 1
+        vcpus: 0
+        autostart: true
+        uuid: uuid
+        ensure_display_device: true
+        cores: 6
+        hide_from_msr: false
+        cpu_model: cpu_model
+        bootloader: UEFI
+        name: name
+        cpu_mode: CUSTOM
+        time: LOCAL
+      properties:
+        cpu_mode:
+          default: CUSTOM
+          enum:
+          - CUSTOM
+          - HOST-MODEL
+          - HOST-PASSTHROUGH
+          type: string
+        cpu_model:
+          nullable: true
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        vcpus:
+          default: 1
+          description: |-
+            Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a
+            separate package. Multiple cores can be configured per CPU by specifying `cores` attributes.
+            `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads`
+            specifies number of threads per core.
+          type: integer
+        cores:
+          default: 1
+          description: |-
+            Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a
+            separate package. Multiple cores can be configured per CPU by specifying `cores` attributes.
+            `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads`
+            specifies number of threads per core.
+          type: integer
+        threads:
+          default: 1
+          description: |-
+            Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a
+            separate package. Multiple cores can be configured per CPU by specifying `cores` attributes.
+            `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads`
+            specifies number of threads per core.
+          type: integer
+        memory:
+          format: int64
+          type: integer
+        bootloader:
+          default: UEFI
+          enum:
+          - UEFI
+          - UEFI_CSM
+          type: string
+        devices:
+          description: |-
+            `devices` is a list of virtualized hardware to add to the newly created Virtual Machine.
+            Failure to attach a device destroys the VM and any resources allocated by the VM devices.
+          items:
+            $ref: '#/components/schemas/VMDevice'
+          type: array
+        autostart:
+          default: true
+          type: boolean
+        hide_from_msr:
+          default: false
+          description: |-
+            `hide_from_msr` is a boolean which when set will hide the KVM hypervisor from standard MSR based discovery and
+            is useful to enable when doing GPU passthrough.
+          type: boolean
+        ensure_display_device:
+          default: true
+          description: |-
+            `ensure_display_device` when set ( the default ) will ensure that the guest always has access to a video device.
+            For headless installations like ubuntu server this is required for the guest to operate properly. However
+            for cases where consumer would like to use GPU passthrough and does not want a display device added should set
+            this to `false`.
+          type: boolean
+        time:
+          default: LOCAL
+          enum:
+          - LOCAL
+          - UTC
+          title: time
+          type: string
+        shutdown_timeout:
+          default: 90
+          description: |-
+            `shutdown_timeout` indicates the time in seconds the system waits for the VM to cleanly shutdown. During system
+            shutdown, if the VM hasn't exited after a hardware shutdown signal has been sent by the system within
+            `shutdown_timeout` seconds, system initiates poweroff for the VM to stop it.
+          type: integer
+        arch_type:
+          description: |-
+            `arch_type` refers to architecture type and can be specified for the guest. By default the value is `null` and
+            system in this case will choose a reasonable default based on host.
+            `machine_type` refers to machine type of the guest based on the architecture type selected with `arch_type`.
+            By default the value is `null` and system in this case will choose a reasonable default based on `arch_type`
+            configuration.
+          nullable: true
+          type: string
+        machine_type:
+          description: |-
+            `machine_type` refers to machine type of the guest based on the architecture type selected with `arch_type`.
+            By default the value is `null` and system in this case will choose a reasonable default based on `arch_type`
+            configuration.
+          nullable: true
+          type: string
+        uuid:
+          nullable: true
+          type: string
+      type: object
     CreateDatasetParams:
       example:
         quota_critical: 1
@@ -2646,6 +3059,37 @@ components:
       - id
       - username
       type: object
+    VMDevice:
+      example:
+        vm: 3
+        dtype: NIC
+        attributes:
+          key: ""
+        id: 7
+        order: 9
+      properties:
+        id:
+          type: integer
+        dtype:
+          enum:
+          - NIC
+          - DISK
+          - CDROM
+          - PCI
+          - DISPLAY
+          - RAW
+          type: string
+        attributes:
+          additionalProperties: true
+          properties: {}
+          type: object
+        order:
+          type: integer
+        vm:
+          type: integer
+      required:
+      - dtype
+      type: object
     UsersResponse:
       items:
         $ref: '#/components/schemas/User'
@@ -2662,13 +3106,15 @@ components:
         memory: 1
         devices:
         - vm: 3
-          dtype: dtype
-          attributes: "{}"
+          dtype: NIC
+          attributes:
+            key: ""
           id: 7
           order: 9
         - vm: 3
-          dtype: dtype
-          attributes: "{}"
+          dtype: NIC
+          attributes:
+            key: ""
           id: 7
           order: 9
         shutdown_timeout: 2
@@ -2710,7 +3156,7 @@ components:
           type: integer
         devices:
           items:
-            $ref: '#/components/schemas/VM_devices_inner'
+            $ref: '#/components/schemas/VMDevice'
           type: array
         status:
           $ref: '#/components/schemas/VM_status'
@@ -2800,28 +3246,6 @@ components:
           type: array
         bsdgrp_smb:
           type: bool
-      type: object
-    VM_devices_inner:
-      example:
-        vm: 3
-        dtype: dtype
-        attributes: "{}"
-        id: 7
-        order: 9
-      properties:
-        id:
-          type: integer
-        dtype:
-          type: string
-        order:
-          type: integer
-        vm:
-          type: integer
-        attributes:
-          type: object
-      required:
-      - dtype
-      - id
       type: object
     VM_status:
       example:

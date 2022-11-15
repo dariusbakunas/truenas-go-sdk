@@ -43,8 +43,8 @@ CreateCronJob Method for CreateCronJob
 Create a new cron job.
 `stderr` and `stdout` are boolean values which if `true`, represent that we would like to suppress standard error / standard output respectively.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateCronJobRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCreateCronJobRequest
 */
 func (a *CronjobApiService) CreateCronJob(ctx context.Context) ApiCreateCronJobRequest {
 	return ApiCreateCronJobRequest{
@@ -54,7 +54,8 @@ func (a *CronjobApiService) CreateCronJob(ctx context.Context) ApiCreateCronJobR
 }
 
 // Execute executes the request
-//  @return CronJob
+//
+//	@return CronJob
 func (a *CronjobApiService) CreateCronJobExecute(r ApiCreateCronJobRequest) (*CronJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -143,9 +144,9 @@ func (r ApiDeleteCronJobRequest) Execute() (*http.Response, error) {
 /*
 DeleteCronJob Method for DeleteCronJob
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the cronjob
- @return ApiDeleteCronJobRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the cronjob
+	@return ApiDeleteCronJobRequest
 */
 func (a *CronjobApiService) DeleteCronJob(ctx context.Context, id int32) ApiDeleteCronJobRequest {
 	return ApiDeleteCronJobRequest{
@@ -257,9 +258,9 @@ func (r ApiGetCronJobRequest) Execute() (*CronJob, *http.Response, error) {
 /*
 GetCronJob Method for GetCronJob
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the cronjob
- @return ApiGetCronJobRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the cronjob
+	@return ApiGetCronJobRequest
 */
 func (a *CronjobApiService) GetCronJob(ctx context.Context, id int32) ApiGetCronJobRequest {
 	return ApiGetCronJobRequest{
@@ -270,7 +271,8 @@ func (a *CronjobApiService) GetCronJob(ctx context.Context, id int32) ApiGetCron
 }
 
 // Execute executes the request
-//  @return CronJob
+//
+//	@return CronJob
 func (a *CronjobApiService) GetCronJobExecute(r ApiGetCronJobRequest) (*CronJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -378,9 +380,9 @@ UpdateCronJob Method for UpdateCronJob
 
 Update cronjob
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiUpdateCronJobRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiUpdateCronJobRequest
 */
 func (a *CronjobApiService) UpdateCronJob(ctx context.Context, id int32) ApiUpdateCronJobRequest {
 	return ApiUpdateCronJobRequest{
@@ -391,7 +393,8 @@ func (a *CronjobApiService) UpdateCronJob(ctx context.Context, id int32) ApiUpda
 }
 
 // Execute executes the request
-//  @return CronJob
+//
+//	@return CronJob
 func (a *CronjobApiService) UpdateCronJobExecute(r ApiUpdateCronJobRequest) (*CronJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut

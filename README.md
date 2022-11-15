@@ -61,7 +61,7 @@ Each operation can use different server URL defined using `OperationServers` map
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
 
-```
+```golang
 ctx := context.WithValue(context.Background(), truenas.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
@@ -112,8 +112,11 @@ Class | Method | HTTP request | Description
 *UserApi* | [**GetUserShellChoices**](docs/UserApi.md#getusershellchoices) | **Post** /user/shell_choices | 
 *UserApi* | [**ListUsers**](docs/UserApi.md#listusers) | **Get** /user | 
 *UserApi* | [**UpdateUser**](docs/UserApi.md#updateuser) | **Put** /user/id/{id} | 
+*VmApi* | [**CreateVM**](docs/VmApi.md#createvm) | **Post** /vm | 
+*VmApi* | [**DeleteVM**](docs/VmApi.md#deletevm) | **Delete** /vm/id/{id} | 
 *VmApi* | [**GetVM**](docs/VmApi.md#getvm) | **Get** /vm/id/{id} | 
 *VmApi* | [**ListVMS**](docs/VmApi.md#listvms) | **Get** /vm | 
+*VmApi* | [**UpdateVM**](docs/VmApi.md#updatevm) | **Put** /vm/id/{id} | 
 
 
 ## Documentation For Models
@@ -126,6 +129,7 @@ Class | Method | HTTP request | Description
  - [CreateShareNFSParams](docs/CreateShareNFSParams.md)
  - [CreateShareSMBParams](docs/CreateShareSMBParams.md)
  - [CreateUserParams](docs/CreateUserParams.md)
+ - [CreateVMParams](docs/CreateVMParams.md)
  - [CronJob](docs/CronJob.md)
  - [CronJobSchedule](docs/CronJobSchedule.md)
  - [Dataset](docs/Dataset.md)
@@ -142,10 +146,11 @@ Class | Method | HTTP request | Description
  - [ShareSMB](docs/ShareSMB.md)
  - [UpdateDatasetParams](docs/UpdateDatasetParams.md)
  - [UpdateUserParams](docs/UpdateUserParams.md)
+ - [UpdateVMParams](docs/UpdateVMParams.md)
  - [User](docs/User.md)
  - [UserGroup](docs/UserGroup.md)
  - [VM](docs/VM.md)
- - [VMDevicesInner](docs/VMDevicesInner.md)
+ - [VMDevice](docs/VMDevice.md)
  - [VMStatus](docs/VMStatus.md)
 
 

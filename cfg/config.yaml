@@ -1,3 +1,5 @@
 packageName: truenas
 isGoSubmodule: false
 disallowAdditionalPropertiesIfNotPresent: false
+apiTests: false
+modelTests: false

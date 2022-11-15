@@ -59,9 +59,9 @@ func (r ApiGetServiceRequest) Execute() (*Service, *http.Response, error) {
 /*
 GetService Method for GetService
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the cronjob
- @return ApiGetServiceRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the cronjob
+	@return ApiGetServiceRequest
 */
 func (a *ServiceApiService) GetService(ctx context.Context, id int32) ApiGetServiceRequest {
 	return ApiGetServiceRequest{
@@ -72,7 +72,8 @@ func (a *ServiceApiService) GetService(ctx context.Context, id int32) ApiGetServ
 }
 
 // Execute executes the request
-//  @return Service
+//
+//	@return Service
 func (a *ServiceApiService) GetServiceExecute(r ApiGetServiceRequest) (*Service, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

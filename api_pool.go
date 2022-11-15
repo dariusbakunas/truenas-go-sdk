@@ -57,8 +57,8 @@ func (r ApiListPoolsRequest) Execute() ([]Pool, *http.Response, error) {
 /*
 ListPools Method for ListPools
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListPoolsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiListPoolsRequest
 */
 func (a *PoolApiService) ListPools(ctx context.Context) ApiListPoolsRequest {
 	return ApiListPoolsRequest{
@@ -68,7 +68,8 @@ func (a *PoolApiService) ListPools(ctx context.Context) ApiListPoolsRequest {
 }
 
 // Execute executes the request
-//  @return []Pool
+//
+//	@return []Pool
 func (a *PoolApiService) ListPoolsExecute(r ApiListPoolsRequest) ([]Pool, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

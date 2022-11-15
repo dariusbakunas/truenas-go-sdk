@@ -53,8 +53,8 @@ allowed.
 `alldirs` is a boolean value which when set indicates that the client can mount any subdirectories of the
 selected pool or dataset.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateShareNFSRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCreateShareNFSRequest
 */
 func (a *SharingApiService) CreateShareNFS(ctx context.Context) ApiCreateShareNFSRequest {
 	return ApiCreateShareNFSRequest{
@@ -64,7 +64,8 @@ func (a *SharingApiService) CreateShareNFS(ctx context.Context) ApiCreateShareNF
 }
 
 // Execute executes the request
-//  @return ShareNFS
+//
+//	@return ShareNFS
 func (a *SharingApiService) CreateShareNFSExecute(r ApiCreateShareNFSRequest) (*ShareNFS, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -185,8 +186,8 @@ ZFS snapshots through RPC.
 
 `auxsmbconf` is a string of additional smb4.conf parameters not covered by the system's API.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateShareSMBRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCreateShareSMBRequest
 */
 func (a *SharingApiService) CreateShareSMB(ctx context.Context) ApiCreateShareSMBRequest {
 	return ApiCreateShareSMBRequest{
@@ -196,7 +197,8 @@ func (a *SharingApiService) CreateShareSMB(ctx context.Context) ApiCreateShareSM
 }
 
 // Execute executes the request
-//  @return ShareSMB
+//
+//	@return ShareSMB
 func (a *SharingApiService) CreateShareSMBExecute(r ApiCreateShareSMBRequest) (*ShareSMB, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -311,9 +313,9 @@ GetShareNFS Method for GetShareNFS
 
 Get NFS Share of `id`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetShareNFSRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetShareNFSRequest
 */
 func (a *SharingApiService) GetShareNFS(ctx context.Context, id int32) ApiGetShareNFSRequest {
 	return ApiGetShareNFSRequest{
@@ -324,7 +326,8 @@ func (a *SharingApiService) GetShareNFS(ctx context.Context, id int32) ApiGetSha
 }
 
 // Execute executes the request
-//  @return ShareNFS
+//
+//	@return ShareNFS
 func (a *SharingApiService) GetShareNFSExecute(r ApiGetShareNFSRequest) (*ShareNFS, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -450,9 +453,9 @@ GetShareSMB Method for GetShareSMB
 
 Get SMB Share of `id`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetShareSMBRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetShareSMBRequest
 */
 func (a *SharingApiService) GetShareSMB(ctx context.Context, id int32) ApiGetShareSMBRequest {
 	return ApiGetShareSMBRequest{
@@ -463,7 +466,8 @@ func (a *SharingApiService) GetShareSMB(ctx context.Context, id int32) ApiGetSha
 }
 
 // Execute executes the request
-//  @return ShareSMB
+//
+//	@return ShareSMB
 func (a *SharingApiService) GetShareSMBExecute(r ApiGetShareSMBRequest) (*ShareSMB, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -588,8 +592,8 @@ ListSharesNFS Method for ListSharesNFS
 
 Get a list of NFS shares
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListSharesNFSRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiListSharesNFSRequest
 */
 func (a *SharingApiService) ListSharesNFS(ctx context.Context) ApiListSharesNFSRequest {
 	return ApiListSharesNFSRequest{
@@ -599,7 +603,8 @@ func (a *SharingApiService) ListSharesNFS(ctx context.Context) ApiListSharesNFSR
 }
 
 // Execute executes the request
-//  @return []ShareNFS
+//
+//	@return []ShareNFS
 func (a *SharingApiService) ListSharesNFSExecute(r ApiListSharesNFSRequest) ([]ShareNFS, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -723,8 +728,8 @@ ListSharesSMB Method for ListSharesSMB
 
 Get a list of SMB shares
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListSharesSMBRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiListSharesSMBRequest
 */
 func (a *SharingApiService) ListSharesSMB(ctx context.Context) ApiListSharesSMBRequest {
 	return ApiListSharesSMBRequest{
@@ -734,7 +739,8 @@ func (a *SharingApiService) ListSharesSMB(ctx context.Context) ApiListSharesSMBR
 }
 
 // Execute executes the request
-//  @return []ShareSMB
+//
+//	@return []ShareSMB
 func (a *SharingApiService) ListSharesSMBExecute(r ApiListSharesSMBRequest) ([]ShareSMB, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -835,9 +841,9 @@ RemoveShareNFS Method for RemoveShareNFS
 
 Delete NFS Share of `id`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiRemoveShareNFSRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiRemoveShareNFSRequest
 */
 func (a *SharingApiService) RemoveShareNFS(ctx context.Context, id int32) ApiRemoveShareNFSRequest {
 	return ApiRemoveShareNFSRequest{
@@ -928,9 +934,9 @@ RemoveShareSMB Method for RemoveShareSMB
 Delete SMB Share of `id`. This will forcibly disconnect SMB clients
 that are accessing the share.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiRemoveShareSMBRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiRemoveShareSMBRequest
 */
 func (a *SharingApiService) RemoveShareSMB(ctx context.Context, id int32) ApiRemoveShareSMBRequest {
 	return ApiRemoveShareSMBRequest{
@@ -1026,9 +1032,9 @@ UpdateShareNFS Method for UpdateShareNFS
 
 Update NFS Share of `id`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiUpdateShareNFSRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiUpdateShareNFSRequest
 */
 func (a *SharingApiService) UpdateShareNFS(ctx context.Context, id int32) ApiUpdateShareNFSRequest {
 	return ApiUpdateShareNFSRequest{
@@ -1039,7 +1045,8 @@ func (a *SharingApiService) UpdateShareNFS(ctx context.Context, id int32) ApiUpd
 }
 
 // Execute executes the request
-//  @return ShareNFS
+//
+//	@return ShareNFS
 func (a *SharingApiService) UpdateShareNFSExecute(r ApiUpdateShareNFSRequest) (*ShareNFS, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -1137,9 +1144,9 @@ UpdateShareSMB Method for UpdateShareSMB
 
 Update SMB Share of `id`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiUpdateShareSMBRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiUpdateShareSMBRequest
 */
 func (a *SharingApiService) UpdateShareSMB(ctx context.Context, id int32) ApiUpdateShareSMBRequest {
 	return ApiUpdateShareSMBRequest{
@@ -1150,7 +1157,8 @@ func (a *SharingApiService) UpdateShareSMB(ctx context.Context, id int32) ApiUpd
 }
 
 // Execute executes the request
-//  @return ShareSMB
+//
+//	@return ShareSMB
 func (a *SharingApiService) UpdateShareSMBExecute(r ApiUpdateShareSMBRequest) (*ShareSMB, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut

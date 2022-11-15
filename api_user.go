@@ -55,8 +55,8 @@ Available choices for `shell` can be retrieved with `user.shell_choices`.
 `smb` specifies whether the user should be allowed access to SMB shares. User
 willl also automatically be added to the `builtin_users` group.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateUserRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCreateUserRequest
 */
 func (a *UserApiService) CreateUser(ctx context.Context) ApiCreateUserRequest {
 	return ApiCreateUserRequest{
@@ -66,7 +66,8 @@ func (a *UserApiService) CreateUser(ctx context.Context) ApiCreateUserRequest {
 }
 
 // Execute executes the request
-//  @return int32
+//
+//	@return int32
 func (a *UserApiService) CreateUserExecute(r ApiCreateUserRequest) (int32, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -166,9 +167,9 @@ Delete user `id`.
 The `delete_group` option deletes the user primary group if it is not being used by
 any other user.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiDeleteUserRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiDeleteUserRequest
 */
 func (a *UserApiService) DeleteUser(ctx context.Context, id int32) ApiDeleteUserRequest {
 	return ApiDeleteUserRequest{
@@ -284,9 +285,9 @@ GetUser Method for GetUser
 
 Get user of `id`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetUserRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetUserRequest
 */
 func (a *UserApiService) GetUser(ctx context.Context, id int32) ApiGetUserRequest {
 	return ApiGetUserRequest{
@@ -297,7 +298,8 @@ func (a *UserApiService) GetUser(ctx context.Context, id int32) ApiGetUserReques
 }
 
 // Execute executes the request
-//  @return User
+//
+//	@return User
 func (a *UserApiService) GetUserExecute(r ApiGetUserRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -406,8 +408,8 @@ Return the available shell choices to be used in `user.create` and `user.update`
 
 If `user_id` is provided, shell choices are filtered to ensure the user can access the shell choices provided.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetUserShellChoicesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetUserShellChoicesRequest
 */
 func (a *UserApiService) GetUserShellChoices(ctx context.Context) ApiGetUserShellChoicesRequest {
 	return ApiGetUserShellChoicesRequest{
@@ -417,7 +419,8 @@ func (a *UserApiService) GetUserShellChoices(ctx context.Context) ApiGetUserShel
 }
 
 // Execute executes the request
-//  @return map[string]string
+//
+//	@return map[string]string
 func (a *UserApiService) GetUserShellChoicesExecute(r ApiGetUserShellChoicesRequest) (map[string]string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -531,8 +534,8 @@ ListUsers Method for ListUsers
 
 Get a list of (local) users.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListUsersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiListUsersRequest
 */
 func (a *UserApiService) ListUsers(ctx context.Context) ApiListUsersRequest {
 	return ApiListUsersRequest{
@@ -542,7 +545,8 @@ func (a *UserApiService) ListUsers(ctx context.Context) ApiListUsersRequest {
 }
 
 // Execute executes the request
-//  @return []User
+//
+//	@return []User
 func (a *UserApiService) ListUsersExecute(r ApiListUsersRequest) ([]User, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -649,9 +653,9 @@ UpdateUser Method for UpdateUser
 
 Update attributes of an existing user.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiUpdateUserRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiUpdateUserRequest
 */
 func (a *UserApiService) UpdateUser(ctx context.Context, id int32) ApiUpdateUserRequest {
 	return ApiUpdateUserRequest{
@@ -662,7 +666,8 @@ func (a *UserApiService) UpdateUser(ctx context.Context, id int32) ApiUpdateUser
 }
 
 // Execute executes the request
-//  @return int32
+//
+//	@return int32
 func (a *UserApiService) UpdateUserExecute(r ApiUpdateUserRequest) (int32, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut

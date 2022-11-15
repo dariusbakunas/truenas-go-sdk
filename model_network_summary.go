@@ -43,7 +43,7 @@ func NewNetworkSummaryWithDefaults() *NetworkSummary {
 
 // GetIps returns the Ips field value if set, zero value otherwise.
 func (o *NetworkSummary) GetIps() map[string]NetworkSummaryIpsValue {
-	if o == nil || o.Ips == nil {
+	if o == nil || isNil(o.Ips) {
 		var ret map[string]NetworkSummaryIpsValue
 		return ret
 	}
@@ -53,7 +53,7 @@ func (o *NetworkSummary) GetIps() map[string]NetworkSummaryIpsValue {
 // GetIpsOk returns a tuple with the Ips field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkSummary) GetIpsOk() (*map[string]NetworkSummaryIpsValue, bool) {
-	if o == nil || o.Ips == nil {
+	if o == nil || isNil(o.Ips) {
 		return nil, false
 	}
 	return o.Ips, true
@@ -61,7 +61,7 @@ func (o *NetworkSummary) GetIpsOk() (*map[string]NetworkSummaryIpsValue, bool) {
 
 // HasIps returns a boolean if a field has been set.
 func (o *NetworkSummary) HasIps() bool {
-	if o != nil && o.Ips != nil {
+	if o != nil && !isNil(o.Ips) {
 		return true
 	}
 
@@ -75,7 +75,7 @@ func (o *NetworkSummary) SetIps(v map[string]NetworkSummaryIpsValue) {
 
 // GetDefaultRoutes returns the DefaultRoutes field value if set, zero value otherwise.
 func (o *NetworkSummary) GetDefaultRoutes() []string {
-	if o == nil || o.DefaultRoutes == nil {
+	if o == nil || isNil(o.DefaultRoutes) {
 		var ret []string
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *NetworkSummary) GetDefaultRoutes() []string {
 // GetDefaultRoutesOk returns a tuple with the DefaultRoutes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkSummary) GetDefaultRoutesOk() ([]string, bool) {
-	if o == nil || o.DefaultRoutes == nil {
+	if o == nil || isNil(o.DefaultRoutes) {
 		return nil, false
 	}
 	return o.DefaultRoutes, true
@@ -93,7 +93,7 @@ func (o *NetworkSummary) GetDefaultRoutesOk() ([]string, bool) {
 
 // HasDefaultRoutes returns a boolean if a field has been set.
 func (o *NetworkSummary) HasDefaultRoutes() bool {
-	if o != nil && o.DefaultRoutes != nil {
+	if o != nil && !isNil(o.DefaultRoutes) {
 		return true
 	}
 
@@ -107,7 +107,7 @@ func (o *NetworkSummary) SetDefaultRoutes(v []string) {
 
 // GetNameservers returns the Nameservers field value if set, zero value otherwise.
 func (o *NetworkSummary) GetNameservers() []string {
-	if o == nil || o.Nameservers == nil {
+	if o == nil || isNil(o.Nameservers) {
 		var ret []string
 		return ret
 	}
@@ -117,7 +117,7 @@ func (o *NetworkSummary) GetNameservers() []string {
 // GetNameserversOk returns a tuple with the Nameservers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkSummary) GetNameserversOk() ([]string, bool) {
-	if o == nil || o.Nameservers == nil {
+	if o == nil || isNil(o.Nameservers) {
 		return nil, false
 	}
 	return o.Nameservers, true
@@ -125,7 +125,7 @@ func (o *NetworkSummary) GetNameserversOk() ([]string, bool) {
 
 // HasNameservers returns a boolean if a field has been set.
 func (o *NetworkSummary) HasNameservers() bool {
-	if o != nil && o.Nameservers != nil {
+	if o != nil && !isNil(o.Nameservers) {
 		return true
 	}
 
@@ -139,13 +139,13 @@ func (o *NetworkSummary) SetNameservers(v []string) {
 
 func (o NetworkSummary) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Ips != nil {
+	if !isNil(o.Ips) {
 		toSerialize["ips"] = o.Ips
 	}
-	if o.DefaultRoutes != nil {
+	if !isNil(o.DefaultRoutes) {
 		toSerialize["default_routes"] = o.DefaultRoutes
 	}
-	if o.Nameservers != nil {
+	if !isNil(o.Nameservers) {
 		toSerialize["nameservers"] = o.Nameservers
 	}
 

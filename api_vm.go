@@ -22,6 +22,235 @@ import (
 // VmApiService VmApi service
 type VmApiService service
 
+type ApiCreateVMRequest struct {
+	ctx            context.Context
+	ApiService     *VmApiService
+	createVMParams *CreateVMParams
+}
+
+func (r ApiCreateVMRequest) CreateVMParams(createVMParams CreateVMParams) ApiCreateVMRequest {
+	r.createVMParams = &createVMParams
+	return r
+}
+
+func (r ApiCreateVMRequest) Execute() (*VM, *http.Response, error) {
+	return r.ApiService.CreateVMExecute(r)
+}
+
+/*
+CreateVM Method for CreateVM
+
+Create a Virtual Machine (VM).
+
+`devices` is a list of virtualized hardware to add to the newly created Virtual Machine.
+Failure to attach a device destroys the VM and any resources allocated by the VM devices.
+
+Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a
+separate package. Multiple cores can be configured per CPU by specifying `cores` attributes.
+`vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads`
+specifies number of threads per core.
+
+`ensure_display_device` when set ( the default ) will ensure that the guest always has access to a video device.
+For headless installations like ubuntu server this is required for the guest to operate properly. However
+for cases where consumer would like to use GPU passthrough and does not want a display device added should set
+this to `false`.
+
+`arch_type` refers to architecture type and can be specified for the guest. By default the value is `null` and
+system in this case will choose a reasonable default based on host.
+
+`machine_type` refers to machine type of the guest based on the architecture type selected with `arch_type`.
+By default the value is `null` and system in this case will choose a reasonable default based on `arch_type`
+configuration.
+
+`shutdown_timeout` indicates the time in seconds the system waits for the VM to cleanly shutdown. During system
+shutdown, if the VM hasn't exited after a hardware shutdown signal has been sent by the system within
+`shutdown_timeout` seconds, system initiates poweroff for the VM to stop it.
+
+`hide_from_msr` is a boolean which when set will hide the KVM hypervisor from standard MSR based discovery and
+is useful to enable when doing GPU passthrough.
+
+SCALE Angelfish: Specifying `devices` is deprecated and will be removed in next major release.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCreateVMRequest
+*/
+func (a *VmApiService) CreateVM(ctx context.Context) ApiCreateVMRequest {
+	return ApiCreateVMRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return VM
+func (a *VmApiService) CreateVMExecute(r ApiCreateVMRequest) (*VM, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VM
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VmApiService.CreateVM")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/vm"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.createVMParams
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDeleteVMRequest struct {
+	ctx        context.Context
+	ApiService *VmApiService
+	id         int32
+}
+
+func (r ApiDeleteVMRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteVMExecute(r)
+}
+
+/*
+DeleteVM Method for DeleteVM
+
+Delete a VM.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiDeleteVMRequest
+*/
+func (a *VmApiService) DeleteVM(ctx context.Context, id int32) ApiDeleteVMRequest {
+	return ApiDeleteVMRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+func (a *VmApiService) DeleteVMExecute(r ApiDeleteVMRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VmApiService.DeleteVM")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/vm/id/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiGetVMRequest struct {
 	ctx        context.Context
 	ApiService *VmApiService
@@ -61,9 +290,9 @@ GetVM Method for GetVM
 
 Get VM details
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetVMRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetVMRequest
 */
 func (a *VmApiService) GetVM(ctx context.Context, id int32) ApiGetVMRequest {
 	return ApiGetVMRequest{
@@ -74,7 +303,8 @@ func (a *VmApiService) GetVM(ctx context.Context, id int32) ApiGetVMRequest {
 }
 
 // Execute executes the request
-//  @return VM
+//
+//	@return VM
 func (a *VmApiService) GetVMExecute(r ApiGetVMRequest) (*VM, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -199,8 +429,8 @@ ListVMS Method for ListVMS
 
 Get a list of VMs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListVMSRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiListVMSRequest
 */
 func (a *VmApiService) ListVMS(ctx context.Context) ApiListVMSRequest {
 	return ApiListVMSRequest{
@@ -210,7 +440,8 @@ func (a *VmApiService) ListVMS(ctx context.Context) ApiListVMSRequest {
 }
 
 // Execute executes the request
-//  @return []VM
+//
+//	@return []VM
 func (a *VmApiService) ListVMSExecute(r ApiListVMSRequest) ([]VM, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -259,6 +490,130 @@ func (a *VmApiService) ListVMSExecute(r ApiListVMSRequest) ([]VM, *http.Response
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateVMRequest struct {
+	ctx            context.Context
+	ApiService     *VmApiService
+	id             int32
+	updateVMParams *UpdateVMParams
+}
+
+func (r ApiUpdateVMRequest) UpdateVMParams(updateVMParams UpdateVMParams) ApiUpdateVMRequest {
+	r.updateVMParams = &updateVMParams
+	return r
+}
+
+func (r ApiUpdateVMRequest) Execute() (*VM, *http.Response, error) {
+	return r.ApiService.UpdateVMExecute(r)
+}
+
+/*
+UpdateVM Method for UpdateVM
+
+Update all information of a specific VM.
+
+`devices` is a list of virtualized hardware to attach to the virtual machine. If `devices` is not present,
+no change is made to devices. If either the device list order or data stored by the device changes when the
+attribute is passed, these actions are taken:
+
+ 1. If there is no device in the `devices` list which was previously attached to the VM, that device is
+    removed from the virtual machine.
+
+ 2. Devices are updated in the `devices` list when they contain a valid `id` attribute that corresponds to
+    an existing device.
+
+ 3. Devices that do not have an `id` attribute are created and attached to `id` VM.
+
+    @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+    @param id
+    @return ApiUpdateVMRequest
+*/
+func (a *VmApiService) UpdateVM(ctx context.Context, id int32) ApiUpdateVMRequest {
+	return ApiUpdateVMRequest{
+		ApiService: a,
+		ctx:        ctx,
+		id:         id,
+	}
+}
+
+// Execute executes the request
+//
+//	@return VM
+func (a *VmApiService) UpdateVMExecute(r ApiUpdateVMRequest) (*VM, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VM
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VmApiService.UpdateVM")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/vm/id/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.updateVMParams
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
