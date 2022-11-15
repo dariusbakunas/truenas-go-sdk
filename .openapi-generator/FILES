@@ -20,6 +20,7 @@ docs/CreateGroupParams.md
 docs/CreateShareNFSParams.md
 docs/CreateShareSMBParams.md
 docs/CreateUserParams.md
+docs/CreateVMParams.md
 docs/CronJob.md
 docs/CronJobSchedule.md
 docs/CronjobApi.md
@@ -47,6 +48,7 @@ docs/User.md
 docs/UserApi.md
 docs/UserGroup.md
 docs/VM.md
+docs/VMDeviceCreate.md
 docs/VMDevicesInner.md
 docs/VMStatus.md
 docs/VmApi.md
@@ -61,6 +63,7 @@ model_create_group_params.go
 model_create_share_nfs_params.go
 model_create_share_smb_params.go
 model_create_user_params.go
+model_create_vm_params.go
 model_cron_job.go
 model_cron_job_schedule.go
 model_dataset.go
@@ -80,6 +83,7 @@ model_update_user_params.go
 model_user.go
 model_user_group.go
 model_vm.go
+model_vm_device_create.go
 model_vm_devices_inner.go
 model_vm_status.go
 response.go

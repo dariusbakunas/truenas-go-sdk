@@ -1297,6 +1297,58 @@ paths:
       - bearerAuth: []
       tags:
       - vm
+    post:
+      description: |-
+        Create a Virtual Machine (VM).
+
+        `devices` is a list of virtualized hardware to add to the newly created Virtual Machine.
+        Failure to attach a device destroys the VM and any resources allocated by the VM devices.
+
+        Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a
+        separate package. Multiple cores can be configured per CPU by specifying `cores` attributes.
+        `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads`
+        specifies number of threads per core.
+
+        `ensure_display_device` when set ( the default ) will ensure that the guest always has access to a video device.
+        For headless installations like ubuntu server this is required for the guest to operate properly. However
+        for cases where consumer would like to use GPU passthrough and does not want a display device added should set
+        this to `false`.
+
+        `arch_type` refers to architecture type and can be specified for the guest. By default the value is `null` and
+        system in this case will choose a reasonable default based on host.
+
+        `machine_type` refers to machine type of the guest based on the architecture type selected with `arch_type`.
+        By default the value is `null` and system in this case will choose a reasonable default based on `arch_type`
+        configuration.
+
+        `shutdown_timeout` indicates the time in seconds the system waits for the VM to cleanly shutdown. During system
+        shutdown, if the VM hasn't exited after a hardware shutdown signal has been sent by the system within
+        `shutdown_timeout` seconds, system initiates poweroff for the VM to stop it.
+
+        `hide_from_msr` is a boolean which when set will hide the KVM hypervisor from standard MSR based discovery and
+        is useful to enable when doing GPU passthrough.
+
+        SCALE Angelfish: Specifying `devices` is deprecated and will be removed in next major release.
+      operationId: createVM
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVMParams'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VM'
+          description: VM details
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - vm
   /vm/id/{id}:
     get:
       description: Get VM details
@@ -1396,6 +1448,141 @@ components:
       items:
         $ref: '#/components/schemas/Dataset'
       type: array
+    CreateVMParams:
+      additionalProperties: false
+      default: {}
+      example:
+        machine_type: machine_type
+        memory: 5
+        devices:
+        - dtype: NIC
+          attributes:
+            key: ""
+          order: 5
+        - dtype: NIC
+          attributes:
+            key: ""
+          order: 5
+        arch_type: arch_type
+        shutdown_timeout: 2
+        description: description
+        threads: 1
+        vcpus: 0
+        autostart: true
+        uuid: uuid
+        ensure_display_device: true
+        cores: 6
+        hide_from_msr: false
+        cpu_model: cpu_model
+        bootloader: UEFI
+        name: name
+        cpu_mode: CUSTOM
+        time: LOCAL
+      properties:
+        cpu_mode:
+          default: CUSTOM
+          enum:
+          - CUSTOM
+          - HOST-MODEL
+          - HOST-PASSTHROUGH
+          type: string
+        cpu_model:
+          nullable: true
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        vcpus:
+          default: 1
+          description: |-
+            Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a
+            separate package. Multiple cores can be configured per CPU by specifying `cores` attributes.
+            `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads`
+            specifies number of threads per core.
+          type: integer
+        cores:
+          default: 1
+          description: |-
+            Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a
+            separate package. Multiple cores can be configured per CPU by specifying `cores` attributes.
+            `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads`
+            specifies number of threads per core.
+          type: integer
+        threads:
+          default: 1
+          description: |-
+            Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a
+            separate package. Multiple cores can be configured per CPU by specifying `cores` attributes.
+            `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads`
+            specifies number of threads per core.
+          type: integer
+        memory:
+          type: integer
+        bootloader:
+          default: UEFI
+          enum:
+          - UEFI
+          - UEFI_CSM
+          type: string
+        devices:
+          description: |-
+            `devices` is a list of virtualized hardware to add to the newly created Virtual Machine.
+            Failure to attach a device destroys the VM and any resources allocated by the VM devices.
+          items:
+            $ref: '#/components/schemas/VMDeviceCreate'
+          type: array
+        autostart:
+          default: true
+          type: boolean
+        hide_from_msr:
+          default: false
+          description: |-
+            `hide_from_msr` is a boolean which when set will hide the KVM hypervisor from standard MSR based discovery and
+            is useful to enable when doing GPU passthrough.
+          type: boolean
+        ensure_display_device:
+          default: true
+          description: |-
+            `ensure_display_device` when set ( the default ) will ensure that the guest always has access to a video device.
+            For headless installations like ubuntu server this is required for the guest to operate properly. However
+            for cases where consumer would like to use GPU passthrough and does not want a display device added should set
+            this to `false`.
+          type: boolean
+        time:
+          default: LOCAL
+          enum:
+          - LOCAL
+          - UTC
+          title: time
+          type: string
+        shutdown_timeout:
+          default: 90
+          description: |-
+            `shutdown_timeout` indicates the time in seconds the system waits for the VM to cleanly shutdown. During system
+            shutdown, if the VM hasn't exited after a hardware shutdown signal has been sent by the system within
+            `shutdown_timeout` seconds, system initiates poweroff for the VM to stop it.
+          type: integer
+        arch_type:
+          description: |-
+            `arch_type` refers to architecture type and can be specified for the guest. By default the value is `null` and
+            system in this case will choose a reasonable default based on host.
+            `machine_type` refers to machine type of the guest based on the architecture type selected with `arch_type`.
+            By default the value is `null` and system in this case will choose a reasonable default based on `arch_type`
+            configuration.
+          nullable: true
+          type: string
+        machine_type:
+          description: |-
+            `machine_type` refers to machine type of the guest based on the architecture type selected with `arch_type`.
+            By default the value is `null` and system in this case will choose a reasonable default based on `arch_type`
+            configuration.
+          nullable: true
+          type: string
+        uuid:
+          nullable: true
+          type: string
+      type: object
     CreateDatasetParams:
       example:
         quota_critical: 1
@@ -2670,6 +2857,31 @@ components:
       - full_name
       - id
       - username
+      type: object
+    VMDeviceCreate:
+      example:
+        dtype: NIC
+        attributes:
+          key: ""
+        order: 5
+      properties:
+        dtype:
+          enum:
+          - NIC
+          - DISK
+          - CDROM
+          - PCI
+          - DISPLAY
+          - RAW
+          type: string
+        attributes:
+          additionalProperties: true
+          properties: {}
+          type: object
+        order:
+          type: integer
+      required:
+      - dtype
       type: object
     UsersResponse:
       items:

@@ -4,9 +4,76 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateVM**](VmApi.md#CreateVM) | **Post** /vm | 
 [**GetVM**](VmApi.md#GetVM) | **Get** /vm/id/{id} | 
 [**ListVMS**](VmApi.md#ListVMS) | **Get** /vm | 
 
+
+
+## CreateVM
+
+> VM CreateVM(ctx).CreateVMParams(createVMParams).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    createVMParams := *openapiclient.NewCreateVMParams() // CreateVMParams |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VmApi.CreateVM(context.Background()).CreateVMParams(createVMParams).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `VmApi.CreateVM``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateVM`: VM
+    fmt.Fprintf(os.Stdout, "Response from `VmApi.CreateVM`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateVMRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVMParams** | [**CreateVMParams**](CreateVMParams.md) |  | 
+
+### Return type
+
+[**VM**](VM.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetVM

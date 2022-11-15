@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
 *UserApi* | [**GetUserShellChoices**](docs/UserApi.md#getusershellchoices) | **Post** /user/shell_choices | 
 *UserApi* | [**ListUsers**](docs/UserApi.md#listusers) | **Get** /user | 
 *UserApi* | [**UpdateUser**](docs/UserApi.md#updateuser) | **Put** /user/id/{id} | 
+*VmApi* | [**CreateVM**](docs/VmApi.md#createvm) | **Post** /vm | 
 *VmApi* | [**GetVM**](docs/VmApi.md#getvm) | **Get** /vm/id/{id} | 
 *VmApi* | [**ListVMS**](docs/VmApi.md#listvms) | **Get** /vm | 
 
@@ -126,6 +127,7 @@ Class | Method | HTTP request | Description
  - [CreateShareNFSParams](docs/CreateShareNFSParams.md)
  - [CreateShareSMBParams](docs/CreateShareSMBParams.md)
  - [CreateUserParams](docs/CreateUserParams.md)
+ - [CreateVMParams](docs/CreateVMParams.md)
  - [CronJob](docs/CronJob.md)
  - [CronJobSchedule](docs/CronJobSchedule.md)
  - [Dataset](docs/Dataset.md)
@@ -145,6 +147,7 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [UserGroup](docs/UserGroup.md)
  - [VM](docs/VM.md)
+ - [VMDeviceCreate](docs/VMDeviceCreate.md)
  - [VMDevicesInner](docs/VMDevicesInner.md)
  - [VMStatus](docs/VMStatus.md)
 
