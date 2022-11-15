@@ -43,7 +43,7 @@ func NewNetworkConfigServiceAnnouncementWithDefaults() *NetworkConfigServiceAnno
 
 // GetNetbios returns the Netbios field value if set, zero value otherwise.
 func (o *NetworkConfigServiceAnnouncement) GetNetbios() bool {
-	if o == nil || o.Netbios == nil {
+	if o == nil || isNil(o.Netbios) {
 		var ret bool
 		return ret
 	}
@@ -53,7 +53,7 @@ func (o *NetworkConfigServiceAnnouncement) GetNetbios() bool {
 // GetNetbiosOk returns a tuple with the Netbios field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfigServiceAnnouncement) GetNetbiosOk() (*bool, bool) {
-	if o == nil || o.Netbios == nil {
+	if o == nil || isNil(o.Netbios) {
 		return nil, false
 	}
 	return o.Netbios, true
@@ -61,7 +61,7 @@ func (o *NetworkConfigServiceAnnouncement) GetNetbiosOk() (*bool, bool) {
 
 // HasNetbios returns a boolean if a field has been set.
 func (o *NetworkConfigServiceAnnouncement) HasNetbios() bool {
-	if o != nil && o.Netbios != nil {
+	if o != nil && !isNil(o.Netbios) {
 		return true
 	}
 
@@ -75,7 +75,7 @@ func (o *NetworkConfigServiceAnnouncement) SetNetbios(v bool) {
 
 // GetMdns returns the Mdns field value if set, zero value otherwise.
 func (o *NetworkConfigServiceAnnouncement) GetMdns() bool {
-	if o == nil || o.Mdns == nil {
+	if o == nil || isNil(o.Mdns) {
 		var ret bool
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *NetworkConfigServiceAnnouncement) GetMdns() bool {
 // GetMdnsOk returns a tuple with the Mdns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfigServiceAnnouncement) GetMdnsOk() (*bool, bool) {
-	if o == nil || o.Mdns == nil {
+	if o == nil || isNil(o.Mdns) {
 		return nil, false
 	}
 	return o.Mdns, true
@@ -93,7 +93,7 @@ func (o *NetworkConfigServiceAnnouncement) GetMdnsOk() (*bool, bool) {
 
 // HasMdns returns a boolean if a field has been set.
 func (o *NetworkConfigServiceAnnouncement) HasMdns() bool {
-	if o != nil && o.Mdns != nil {
+	if o != nil && !isNil(o.Mdns) {
 		return true
 	}
 
@@ -107,7 +107,7 @@ func (o *NetworkConfigServiceAnnouncement) SetMdns(v bool) {
 
 // GetWsd returns the Wsd field value if set, zero value otherwise.
 func (o *NetworkConfigServiceAnnouncement) GetWsd() bool {
-	if o == nil || o.Wsd == nil {
+	if o == nil || isNil(o.Wsd) {
 		var ret bool
 		return ret
 	}
@@ -117,7 +117,7 @@ func (o *NetworkConfigServiceAnnouncement) GetWsd() bool {
 // GetWsdOk returns a tuple with the Wsd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfigServiceAnnouncement) GetWsdOk() (*bool, bool) {
-	if o == nil || o.Wsd == nil {
+	if o == nil || isNil(o.Wsd) {
 		return nil, false
 	}
 	return o.Wsd, true
@@ -125,7 +125,7 @@ func (o *NetworkConfigServiceAnnouncement) GetWsdOk() (*bool, bool) {
 
 // HasWsd returns a boolean if a field has been set.
 func (o *NetworkConfigServiceAnnouncement) HasWsd() bool {
-	if o != nil && o.Wsd != nil {
+	if o != nil && !isNil(o.Wsd) {
 		return true
 	}
 
@@ -139,13 +139,13 @@ func (o *NetworkConfigServiceAnnouncement) SetWsd(v bool) {
 
 func (o NetworkConfigServiceAnnouncement) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Netbios != nil {
+	if !isNil(o.Netbios) {
 		toSerialize["netbios"] = o.Netbios
 	}
-	if o.Mdns != nil {
+	if !isNil(o.Mdns) {
 		toSerialize["mdns"] = o.Mdns
 	}
-	if o.Wsd != nil {
+	if !isNil(o.Wsd) {
 		toSerialize["wsd"] = o.Wsd
 	}
 

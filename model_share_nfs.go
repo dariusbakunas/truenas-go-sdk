@@ -81,7 +81,7 @@ func (o *ShareNFS) SetId(v int32) {
 
 // GetComment returns the Comment field value if set, zero value otherwise.
 func (o *ShareNFS) GetComment() string {
-	if o == nil || o.Comment == nil {
+	if o == nil || isNil(o.Comment) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *ShareNFS) GetComment() string {
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareNFS) GetCommentOk() (*string, bool) {
-	if o == nil || o.Comment == nil {
+	if o == nil || isNil(o.Comment) {
 		return nil, false
 	}
 	return o.Comment, true
@@ -99,7 +99,7 @@ func (o *ShareNFS) GetCommentOk() (*string, bool) {
 
 // HasComment returns a boolean if a field has been set.
 func (o *ShareNFS) HasComment() bool {
-	if o != nil && o.Comment != nil {
+	if o != nil && !isNil(o.Comment) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *ShareNFS) SetComment(v string) {
 
 // GetHosts returns the Hosts field value if set, zero value otherwise.
 func (o *ShareNFS) GetHosts() []string {
-	if o == nil || o.Hosts == nil {
+	if o == nil || isNil(o.Hosts) {
 		var ret []string
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *ShareNFS) GetHosts() []string {
 // GetHostsOk returns a tuple with the Hosts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareNFS) GetHostsOk() ([]string, bool) {
-	if o == nil || o.Hosts == nil {
+	if o == nil || isNil(o.Hosts) {
 		return nil, false
 	}
 	return o.Hosts, true
@@ -131,7 +131,7 @@ func (o *ShareNFS) GetHostsOk() ([]string, bool) {
 
 // HasHosts returns a boolean if a field has been set.
 func (o *ShareNFS) HasHosts() bool {
-	if o != nil && o.Hosts != nil {
+	if o != nil && !isNil(o.Hosts) {
 		return true
 	}
 
@@ -145,7 +145,7 @@ func (o *ShareNFS) SetHosts(v []string) {
 
 // GetAlldirs returns the Alldirs field value if set, zero value otherwise.
 func (o *ShareNFS) GetAlldirs() bool {
-	if o == nil || o.Alldirs == nil {
+	if o == nil || isNil(o.Alldirs) {
 		var ret bool
 		return ret
 	}
@@ -155,7 +155,7 @@ func (o *ShareNFS) GetAlldirs() bool {
 // GetAlldirsOk returns a tuple with the Alldirs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareNFS) GetAlldirsOk() (*bool, bool) {
-	if o == nil || o.Alldirs == nil {
+	if o == nil || isNil(o.Alldirs) {
 		return nil, false
 	}
 	return o.Alldirs, true
@@ -163,7 +163,7 @@ func (o *ShareNFS) GetAlldirsOk() (*bool, bool) {
 
 // HasAlldirs returns a boolean if a field has been set.
 func (o *ShareNFS) HasAlldirs() bool {
-	if o != nil && o.Alldirs != nil {
+	if o != nil && !isNil(o.Alldirs) {
 		return true
 	}
 
@@ -177,7 +177,7 @@ func (o *ShareNFS) SetAlldirs(v bool) {
 
 // GetRo returns the Ro field value if set, zero value otherwise.
 func (o *ShareNFS) GetRo() bool {
-	if o == nil || o.Ro == nil {
+	if o == nil || isNil(o.Ro) {
 		var ret bool
 		return ret
 	}
@@ -187,7 +187,7 @@ func (o *ShareNFS) GetRo() bool {
 // GetRoOk returns a tuple with the Ro field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareNFS) GetRoOk() (*bool, bool) {
-	if o == nil || o.Ro == nil {
+	if o == nil || isNil(o.Ro) {
 		return nil, false
 	}
 	return o.Ro, true
@@ -195,7 +195,7 @@ func (o *ShareNFS) GetRoOk() (*bool, bool) {
 
 // HasRo returns a boolean if a field has been set.
 func (o *ShareNFS) HasRo() bool {
-	if o != nil && o.Ro != nil {
+	if o != nil && !isNil(o.Ro) {
 		return true
 	}
 
@@ -209,7 +209,7 @@ func (o *ShareNFS) SetRo(v bool) {
 
 // GetQuiet returns the Quiet field value if set, zero value otherwise.
 func (o *ShareNFS) GetQuiet() bool {
-	if o == nil || o.Quiet == nil {
+	if o == nil || isNil(o.Quiet) {
 		var ret bool
 		return ret
 	}
@@ -219,7 +219,7 @@ func (o *ShareNFS) GetQuiet() bool {
 // GetQuietOk returns a tuple with the Quiet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareNFS) GetQuietOk() (*bool, bool) {
-	if o == nil || o.Quiet == nil {
+	if o == nil || isNil(o.Quiet) {
 		return nil, false
 	}
 	return o.Quiet, true
@@ -227,7 +227,7 @@ func (o *ShareNFS) GetQuietOk() (*bool, bool) {
 
 // HasQuiet returns a boolean if a field has been set.
 func (o *ShareNFS) HasQuiet() bool {
-	if o != nil && o.Quiet != nil {
+	if o != nil && !isNil(o.Quiet) {
 		return true
 	}
 
@@ -241,7 +241,7 @@ func (o *ShareNFS) SetQuiet(v bool) {
 
 // GetMaprootUser returns the MaprootUser field value if set, zero value otherwise.
 func (o *ShareNFS) GetMaprootUser() string {
-	if o == nil || o.MaprootUser == nil {
+	if o == nil || isNil(o.MaprootUser) {
 		var ret string
 		return ret
 	}
@@ -251,7 +251,7 @@ func (o *ShareNFS) GetMaprootUser() string {
 // GetMaprootUserOk returns a tuple with the MaprootUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareNFS) GetMaprootUserOk() (*string, bool) {
-	if o == nil || o.MaprootUser == nil {
+	if o == nil || isNil(o.MaprootUser) {
 		return nil, false
 	}
 	return o.MaprootUser, true
@@ -259,7 +259,7 @@ func (o *ShareNFS) GetMaprootUserOk() (*string, bool) {
 
 // HasMaprootUser returns a boolean if a field has been set.
 func (o *ShareNFS) HasMaprootUser() bool {
-	if o != nil && o.MaprootUser != nil {
+	if o != nil && !isNil(o.MaprootUser) {
 		return true
 	}
 
@@ -273,7 +273,7 @@ func (o *ShareNFS) SetMaprootUser(v string) {
 
 // GetMaprootGroup returns the MaprootGroup field value if set, zero value otherwise.
 func (o *ShareNFS) GetMaprootGroup() string {
-	if o == nil || o.MaprootGroup == nil {
+	if o == nil || isNil(o.MaprootGroup) {
 		var ret string
 		return ret
 	}
@@ -283,7 +283,7 @@ func (o *ShareNFS) GetMaprootGroup() string {
 // GetMaprootGroupOk returns a tuple with the MaprootGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareNFS) GetMaprootGroupOk() (*string, bool) {
-	if o == nil || o.MaprootGroup == nil {
+	if o == nil || isNil(o.MaprootGroup) {
 		return nil, false
 	}
 	return o.MaprootGroup, true
@@ -291,7 +291,7 @@ func (o *ShareNFS) GetMaprootGroupOk() (*string, bool) {
 
 // HasMaprootGroup returns a boolean if a field has been set.
 func (o *ShareNFS) HasMaprootGroup() bool {
-	if o != nil && o.MaprootGroup != nil {
+	if o != nil && !isNil(o.MaprootGroup) {
 		return true
 	}
 
@@ -305,7 +305,7 @@ func (o *ShareNFS) SetMaprootGroup(v string) {
 
 // GetMapallUser returns the MapallUser field value if set, zero value otherwise.
 func (o *ShareNFS) GetMapallUser() string {
-	if o == nil || o.MapallUser == nil {
+	if o == nil || isNil(o.MapallUser) {
 		var ret string
 		return ret
 	}
@@ -315,7 +315,7 @@ func (o *ShareNFS) GetMapallUser() string {
 // GetMapallUserOk returns a tuple with the MapallUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareNFS) GetMapallUserOk() (*string, bool) {
-	if o == nil || o.MapallUser == nil {
+	if o == nil || isNil(o.MapallUser) {
 		return nil, false
 	}
 	return o.MapallUser, true
@@ -323,7 +323,7 @@ func (o *ShareNFS) GetMapallUserOk() (*string, bool) {
 
 // HasMapallUser returns a boolean if a field has been set.
 func (o *ShareNFS) HasMapallUser() bool {
-	if o != nil && o.MapallUser != nil {
+	if o != nil && !isNil(o.MapallUser) {
 		return true
 	}
 
@@ -337,7 +337,7 @@ func (o *ShareNFS) SetMapallUser(v string) {
 
 // GetMapallGroup returns the MapallGroup field value if set, zero value otherwise.
 func (o *ShareNFS) GetMapallGroup() string {
-	if o == nil || o.MapallGroup == nil {
+	if o == nil || isNil(o.MapallGroup) {
 		var ret string
 		return ret
 	}
@@ -347,7 +347,7 @@ func (o *ShareNFS) GetMapallGroup() string {
 // GetMapallGroupOk returns a tuple with the MapallGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareNFS) GetMapallGroupOk() (*string, bool) {
-	if o == nil || o.MapallGroup == nil {
+	if o == nil || isNil(o.MapallGroup) {
 		return nil, false
 	}
 	return o.MapallGroup, true
@@ -355,7 +355,7 @@ func (o *ShareNFS) GetMapallGroupOk() (*string, bool) {
 
 // HasMapallGroup returns a boolean if a field has been set.
 func (o *ShareNFS) HasMapallGroup() bool {
-	if o != nil && o.MapallGroup != nil {
+	if o != nil && !isNil(o.MapallGroup) {
 		return true
 	}
 
@@ -369,7 +369,7 @@ func (o *ShareNFS) SetMapallGroup(v string) {
 
 // GetSecurity returns the Security field value if set, zero value otherwise.
 func (o *ShareNFS) GetSecurity() []string {
-	if o == nil || o.Security == nil {
+	if o == nil || isNil(o.Security) {
 		var ret []string
 		return ret
 	}
@@ -379,7 +379,7 @@ func (o *ShareNFS) GetSecurity() []string {
 // GetSecurityOk returns a tuple with the Security field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareNFS) GetSecurityOk() ([]string, bool) {
-	if o == nil || o.Security == nil {
+	if o == nil || isNil(o.Security) {
 		return nil, false
 	}
 	return o.Security, true
@@ -387,7 +387,7 @@ func (o *ShareNFS) GetSecurityOk() ([]string, bool) {
 
 // HasSecurity returns a boolean if a field has been set.
 func (o *ShareNFS) HasSecurity() bool {
-	if o != nil && o.Security != nil {
+	if o != nil && !isNil(o.Security) {
 		return true
 	}
 
@@ -401,7 +401,7 @@ func (o *ShareNFS) SetSecurity(v []string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *ShareNFS) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || isNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -411,7 +411,7 @@ func (o *ShareNFS) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareNFS) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || isNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -419,7 +419,7 @@ func (o *ShareNFS) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *ShareNFS) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !isNil(o.Enabled) {
 		return true
 	}
 
@@ -433,7 +433,7 @@ func (o *ShareNFS) SetEnabled(v bool) {
 
 // GetLocked returns the Locked field value if set, zero value otherwise.
 func (o *ShareNFS) GetLocked() bool {
-	if o == nil || o.Locked == nil {
+	if o == nil || isNil(o.Locked) {
 		var ret bool
 		return ret
 	}
@@ -443,7 +443,7 @@ func (o *ShareNFS) GetLocked() bool {
 // GetLockedOk returns a tuple with the Locked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareNFS) GetLockedOk() (*bool, bool) {
-	if o == nil || o.Locked == nil {
+	if o == nil || isNil(o.Locked) {
 		return nil, false
 	}
 	return o.Locked, true
@@ -451,7 +451,7 @@ func (o *ShareNFS) GetLockedOk() (*bool, bool) {
 
 // HasLocked returns a boolean if a field has been set.
 func (o *ShareNFS) HasLocked() bool {
-	if o != nil && o.Locked != nil {
+	if o != nil && !isNil(o.Locked) {
 		return true
 	}
 
@@ -489,7 +489,7 @@ func (o *ShareNFS) SetPaths(v []string) {
 
 // GetNetworks returns the Networks field value if set, zero value otherwise.
 func (o *ShareNFS) GetNetworks() []string {
-	if o == nil || o.Networks == nil {
+	if o == nil || isNil(o.Networks) {
 		var ret []string
 		return ret
 	}
@@ -499,7 +499,7 @@ func (o *ShareNFS) GetNetworks() []string {
 // GetNetworksOk returns a tuple with the Networks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ShareNFS) GetNetworksOk() ([]string, bool) {
-	if o == nil || o.Networks == nil {
+	if o == nil || isNil(o.Networks) {
 		return nil, false
 	}
 	return o.Networks, true
@@ -507,7 +507,7 @@ func (o *ShareNFS) GetNetworksOk() ([]string, bool) {
 
 // HasNetworks returns a boolean if a field has been set.
 func (o *ShareNFS) HasNetworks() bool {
-	if o != nil && o.Networks != nil {
+	if o != nil && !isNil(o.Networks) {
 		return true
 	}
 
@@ -524,46 +524,46 @@ func (o ShareNFS) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["id"] = o.Id
 	}
-	if o.Comment != nil {
+	if !isNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if o.Hosts != nil {
+	if !isNil(o.Hosts) {
 		toSerialize["hosts"] = o.Hosts
 	}
-	if o.Alldirs != nil {
+	if !isNil(o.Alldirs) {
 		toSerialize["alldirs"] = o.Alldirs
 	}
-	if o.Ro != nil {
+	if !isNil(o.Ro) {
 		toSerialize["ro"] = o.Ro
 	}
-	if o.Quiet != nil {
+	if !isNil(o.Quiet) {
 		toSerialize["quiet"] = o.Quiet
 	}
-	if o.MaprootUser != nil {
+	if !isNil(o.MaprootUser) {
 		toSerialize["maproot_user"] = o.MaprootUser
 	}
-	if o.MaprootGroup != nil {
+	if !isNil(o.MaprootGroup) {
 		toSerialize["maproot_group"] = o.MaprootGroup
 	}
-	if o.MapallUser != nil {
+	if !isNil(o.MapallUser) {
 		toSerialize["mapall_user"] = o.MapallUser
 	}
-	if o.MapallGroup != nil {
+	if !isNil(o.MapallGroup) {
 		toSerialize["mapall_group"] = o.MapallGroup
 	}
-	if o.Security != nil {
+	if !isNil(o.Security) {
 		toSerialize["security"] = o.Security
 	}
-	if o.Enabled != nil {
+	if !isNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if o.Locked != nil {
+	if !isNil(o.Locked) {
 		toSerialize["locked"] = o.Locked
 	}
 	if true {
 		toSerialize["paths"] = o.Paths
 	}
-	if o.Networks != nil {
+	if !isNil(o.Networks) {
 		toSerialize["networks"] = o.Networks
 	}
 

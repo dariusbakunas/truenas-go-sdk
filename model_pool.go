@@ -99,7 +99,7 @@ func (o *Pool) SetName(v string) {
 
 // GetGuid returns the Guid field value if set, zero value otherwise.
 func (o *Pool) GetGuid() string {
-	if o == nil || o.Guid == nil {
+	if o == nil || isNil(o.Guid) {
 		var ret string
 		return ret
 	}
@@ -109,7 +109,7 @@ func (o *Pool) GetGuid() string {
 // GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pool) GetGuidOk() (*string, bool) {
-	if o == nil || o.Guid == nil {
+	if o == nil || isNil(o.Guid) {
 		return nil, false
 	}
 	return o.Guid, true
@@ -117,7 +117,7 @@ func (o *Pool) GetGuidOk() (*string, bool) {
 
 // HasGuid returns a boolean if a field has been set.
 func (o *Pool) HasGuid() bool {
-	if o != nil && o.Guid != nil {
+	if o != nil && !isNil(o.Guid) {
 		return true
 	}
 
@@ -155,7 +155,7 @@ func (o *Pool) SetPath(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Pool) GetStatus() string {
-	if o == nil || o.Status == nil {
+	if o == nil || isNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -165,7 +165,7 @@ func (o *Pool) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pool) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || isNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -173,7 +173,7 @@ func (o *Pool) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Pool) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !isNil(o.Status) {
 		return true
 	}
 
@@ -187,7 +187,7 @@ func (o *Pool) SetStatus(v string) {
 
 // GetHealthy returns the Healthy field value if set, zero value otherwise.
 func (o *Pool) GetHealthy() bool {
-	if o == nil || o.Healthy == nil {
+	if o == nil || isNil(o.Healthy) {
 		var ret bool
 		return ret
 	}
@@ -197,7 +197,7 @@ func (o *Pool) GetHealthy() bool {
 // GetHealthyOk returns a tuple with the Healthy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pool) GetHealthyOk() (*bool, bool) {
-	if o == nil || o.Healthy == nil {
+	if o == nil || isNil(o.Healthy) {
 		return nil, false
 	}
 	return o.Healthy, true
@@ -205,7 +205,7 @@ func (o *Pool) GetHealthyOk() (*bool, bool) {
 
 // HasHealthy returns a boolean if a field has been set.
 func (o *Pool) HasHealthy() bool {
-	if o != nil && o.Healthy != nil {
+	if o != nil && !isNil(o.Healthy) {
 		return true
 	}
 
@@ -219,7 +219,7 @@ func (o *Pool) SetHealthy(v bool) {
 
 // GetIsDecrypted returns the IsDecrypted field value if set, zero value otherwise.
 func (o *Pool) GetIsDecrypted() bool {
-	if o == nil || o.IsDecrypted == nil {
+	if o == nil || isNil(o.IsDecrypted) {
 		var ret bool
 		return ret
 	}
@@ -229,7 +229,7 @@ func (o *Pool) GetIsDecrypted() bool {
 // GetIsDecryptedOk returns a tuple with the IsDecrypted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pool) GetIsDecryptedOk() (*bool, bool) {
-	if o == nil || o.IsDecrypted == nil {
+	if o == nil || isNil(o.IsDecrypted) {
 		return nil, false
 	}
 	return o.IsDecrypted, true
@@ -237,7 +237,7 @@ func (o *Pool) GetIsDecryptedOk() (*bool, bool) {
 
 // HasIsDecrypted returns a boolean if a field has been set.
 func (o *Pool) HasIsDecrypted() bool {
-	if o != nil && o.IsDecrypted != nil {
+	if o != nil && !isNil(o.IsDecrypted) {
 		return true
 	}
 
@@ -251,7 +251,7 @@ func (o *Pool) SetIsDecrypted(v bool) {
 
 // GetEncryptkeyPath returns the EncryptkeyPath field value if set, zero value otherwise.
 func (o *Pool) GetEncryptkeyPath() string {
-	if o == nil || o.EncryptkeyPath == nil {
+	if o == nil || isNil(o.EncryptkeyPath) {
 		var ret string
 		return ret
 	}
@@ -261,7 +261,7 @@ func (o *Pool) GetEncryptkeyPath() string {
 // GetEncryptkeyPathOk returns a tuple with the EncryptkeyPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pool) GetEncryptkeyPathOk() (*string, bool) {
-	if o == nil || o.EncryptkeyPath == nil {
+	if o == nil || isNil(o.EncryptkeyPath) {
 		return nil, false
 	}
 	return o.EncryptkeyPath, true
@@ -269,7 +269,7 @@ func (o *Pool) GetEncryptkeyPathOk() (*string, bool) {
 
 // HasEncryptkeyPath returns a boolean if a field has been set.
 func (o *Pool) HasEncryptkeyPath() bool {
-	if o != nil && o.EncryptkeyPath != nil {
+	if o != nil && !isNil(o.EncryptkeyPath) {
 		return true
 	}
 
@@ -289,22 +289,22 @@ func (o Pool) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Guid != nil {
+	if !isNil(o.Guid) {
 		toSerialize["guid"] = o.Guid
 	}
 	if true {
 		toSerialize["path"] = o.Path
 	}
-	if o.Status != nil {
+	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if o.Healthy != nil {
+	if !isNil(o.Healthy) {
 		toSerialize["healthy"] = o.Healthy
 	}
-	if o.IsDecrypted != nil {
+	if !isNil(o.IsDecrypted) {
 		toSerialize["is_decrypted"] = o.IsDecrypted
 	}
-	if o.EncryptkeyPath != nil {
+	if !isNil(o.EncryptkeyPath) {
 		toSerialize["encryptkey_path"] = o.EncryptkeyPath
 	}
 

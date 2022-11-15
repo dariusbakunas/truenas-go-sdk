@@ -55,7 +55,7 @@ func NewNetworkConfigWithDefaults() *NetworkConfig {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NetworkConfig) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -65,7 +65,7 @@ func (o *NetworkConfig) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfig) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -73,7 +73,7 @@ func (o *NetworkConfig) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *NetworkConfig) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -87,7 +87,7 @@ func (o *NetworkConfig) SetId(v int32) {
 
 // GetHostname returns the Hostname field value if set, zero value otherwise.
 func (o *NetworkConfig) GetHostname() string {
-	if o == nil || o.Hostname == nil {
+	if o == nil || isNil(o.Hostname) {
 		var ret string
 		return ret
 	}
@@ -97,7 +97,7 @@ func (o *NetworkConfig) GetHostname() string {
 // GetHostnameOk returns a tuple with the Hostname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfig) GetHostnameOk() (*string, bool) {
-	if o == nil || o.Hostname == nil {
+	if o == nil || isNil(o.Hostname) {
 		return nil, false
 	}
 	return o.Hostname, true
@@ -105,7 +105,7 @@ func (o *NetworkConfig) GetHostnameOk() (*string, bool) {
 
 // HasHostname returns a boolean if a field has been set.
 func (o *NetworkConfig) HasHostname() bool {
-	if o != nil && o.Hostname != nil {
+	if o != nil && !isNil(o.Hostname) {
 		return true
 	}
 
@@ -119,7 +119,7 @@ func (o *NetworkConfig) SetHostname(v string) {
 
 // GetDomain returns the Domain field value if set, zero value otherwise.
 func (o *NetworkConfig) GetDomain() string {
-	if o == nil || o.Domain == nil {
+	if o == nil || isNil(o.Domain) {
 		var ret string
 		return ret
 	}
@@ -129,7 +129,7 @@ func (o *NetworkConfig) GetDomain() string {
 // GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfig) GetDomainOk() (*string, bool) {
-	if o == nil || o.Domain == nil {
+	if o == nil || isNil(o.Domain) {
 		return nil, false
 	}
 	return o.Domain, true
@@ -137,7 +137,7 @@ func (o *NetworkConfig) GetDomainOk() (*string, bool) {
 
 // HasDomain returns a boolean if a field has been set.
 func (o *NetworkConfig) HasDomain() bool {
-	if o != nil && o.Domain != nil {
+	if o != nil && !isNil(o.Domain) {
 		return true
 	}
 
@@ -151,7 +151,7 @@ func (o *NetworkConfig) SetDomain(v string) {
 
 // GetIpv4gateway returns the Ipv4gateway field value if set, zero value otherwise.
 func (o *NetworkConfig) GetIpv4gateway() string {
-	if o == nil || o.Ipv4gateway == nil {
+	if o == nil || isNil(o.Ipv4gateway) {
 		var ret string
 		return ret
 	}
@@ -161,7 +161,7 @@ func (o *NetworkConfig) GetIpv4gateway() string {
 // GetIpv4gatewayOk returns a tuple with the Ipv4gateway field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfig) GetIpv4gatewayOk() (*string, bool) {
-	if o == nil || o.Ipv4gateway == nil {
+	if o == nil || isNil(o.Ipv4gateway) {
 		return nil, false
 	}
 	return o.Ipv4gateway, true
@@ -169,7 +169,7 @@ func (o *NetworkConfig) GetIpv4gatewayOk() (*string, bool) {
 
 // HasIpv4gateway returns a boolean if a field has been set.
 func (o *NetworkConfig) HasIpv4gateway() bool {
-	if o != nil && o.Ipv4gateway != nil {
+	if o != nil && !isNil(o.Ipv4gateway) {
 		return true
 	}
 
@@ -183,7 +183,7 @@ func (o *NetworkConfig) SetIpv4gateway(v string) {
 
 // GetIpv6gateway returns the Ipv6gateway field value if set, zero value otherwise.
 func (o *NetworkConfig) GetIpv6gateway() string {
-	if o == nil || o.Ipv6gateway == nil {
+	if o == nil || isNil(o.Ipv6gateway) {
 		var ret string
 		return ret
 	}
@@ -193,7 +193,7 @@ func (o *NetworkConfig) GetIpv6gateway() string {
 // GetIpv6gatewayOk returns a tuple with the Ipv6gateway field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfig) GetIpv6gatewayOk() (*string, bool) {
-	if o == nil || o.Ipv6gateway == nil {
+	if o == nil || isNil(o.Ipv6gateway) {
 		return nil, false
 	}
 	return o.Ipv6gateway, true
@@ -201,7 +201,7 @@ func (o *NetworkConfig) GetIpv6gatewayOk() (*string, bool) {
 
 // HasIpv6gateway returns a boolean if a field has been set.
 func (o *NetworkConfig) HasIpv6gateway() bool {
-	if o != nil && o.Ipv6gateway != nil {
+	if o != nil && !isNil(o.Ipv6gateway) {
 		return true
 	}
 
@@ -215,7 +215,7 @@ func (o *NetworkConfig) SetIpv6gateway(v string) {
 
 // GetNameserver1 returns the Nameserver1 field value if set, zero value otherwise.
 func (o *NetworkConfig) GetNameserver1() string {
-	if o == nil || o.Nameserver1 == nil {
+	if o == nil || isNil(o.Nameserver1) {
 		var ret string
 		return ret
 	}
@@ -225,7 +225,7 @@ func (o *NetworkConfig) GetNameserver1() string {
 // GetNameserver1Ok returns a tuple with the Nameserver1 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfig) GetNameserver1Ok() (*string, bool) {
-	if o == nil || o.Nameserver1 == nil {
+	if o == nil || isNil(o.Nameserver1) {
 		return nil, false
 	}
 	return o.Nameserver1, true
@@ -233,7 +233,7 @@ func (o *NetworkConfig) GetNameserver1Ok() (*string, bool) {
 
 // HasNameserver1 returns a boolean if a field has been set.
 func (o *NetworkConfig) HasNameserver1() bool {
-	if o != nil && o.Nameserver1 != nil {
+	if o != nil && !isNil(o.Nameserver1) {
 		return true
 	}
 
@@ -247,7 +247,7 @@ func (o *NetworkConfig) SetNameserver1(v string) {
 
 // GetNameserver2 returns the Nameserver2 field value if set, zero value otherwise.
 func (o *NetworkConfig) GetNameserver2() string {
-	if o == nil || o.Nameserver2 == nil {
+	if o == nil || isNil(o.Nameserver2) {
 		var ret string
 		return ret
 	}
@@ -257,7 +257,7 @@ func (o *NetworkConfig) GetNameserver2() string {
 // GetNameserver2Ok returns a tuple with the Nameserver2 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfig) GetNameserver2Ok() (*string, bool) {
-	if o == nil || o.Nameserver2 == nil {
+	if o == nil || isNil(o.Nameserver2) {
 		return nil, false
 	}
 	return o.Nameserver2, true
@@ -265,7 +265,7 @@ func (o *NetworkConfig) GetNameserver2Ok() (*string, bool) {
 
 // HasNameserver2 returns a boolean if a field has been set.
 func (o *NetworkConfig) HasNameserver2() bool {
-	if o != nil && o.Nameserver2 != nil {
+	if o != nil && !isNil(o.Nameserver2) {
 		return true
 	}
 
@@ -279,7 +279,7 @@ func (o *NetworkConfig) SetNameserver2(v string) {
 
 // GetNameserver3 returns the Nameserver3 field value if set, zero value otherwise.
 func (o *NetworkConfig) GetNameserver3() string {
-	if o == nil || o.Nameserver3 == nil {
+	if o == nil || isNil(o.Nameserver3) {
 		var ret string
 		return ret
 	}
@@ -289,7 +289,7 @@ func (o *NetworkConfig) GetNameserver3() string {
 // GetNameserver3Ok returns a tuple with the Nameserver3 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfig) GetNameserver3Ok() (*string, bool) {
-	if o == nil || o.Nameserver3 == nil {
+	if o == nil || isNil(o.Nameserver3) {
 		return nil, false
 	}
 	return o.Nameserver3, true
@@ -297,7 +297,7 @@ func (o *NetworkConfig) GetNameserver3Ok() (*string, bool) {
 
 // HasNameserver3 returns a boolean if a field has been set.
 func (o *NetworkConfig) HasNameserver3() bool {
-	if o != nil && o.Nameserver3 != nil {
+	if o != nil && !isNil(o.Nameserver3) {
 		return true
 	}
 
@@ -311,7 +311,7 @@ func (o *NetworkConfig) SetNameserver3(v string) {
 
 // GetHttpproxy returns the Httpproxy field value if set, zero value otherwise.
 func (o *NetworkConfig) GetHttpproxy() string {
-	if o == nil || o.Httpproxy == nil {
+	if o == nil || isNil(o.Httpproxy) {
 		var ret string
 		return ret
 	}
@@ -321,7 +321,7 @@ func (o *NetworkConfig) GetHttpproxy() string {
 // GetHttpproxyOk returns a tuple with the Httpproxy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfig) GetHttpproxyOk() (*string, bool) {
-	if o == nil || o.Httpproxy == nil {
+	if o == nil || isNil(o.Httpproxy) {
 		return nil, false
 	}
 	return o.Httpproxy, true
@@ -329,7 +329,7 @@ func (o *NetworkConfig) GetHttpproxyOk() (*string, bool) {
 
 // HasHttpproxy returns a boolean if a field has been set.
 func (o *NetworkConfig) HasHttpproxy() bool {
-	if o != nil && o.Httpproxy != nil {
+	if o != nil && !isNil(o.Httpproxy) {
 		return true
 	}
 
@@ -343,7 +343,7 @@ func (o *NetworkConfig) SetHttpproxy(v string) {
 
 // GetNetwaitEnabled returns the NetwaitEnabled field value if set, zero value otherwise.
 func (o *NetworkConfig) GetNetwaitEnabled() bool {
-	if o == nil || o.NetwaitEnabled == nil {
+	if o == nil || isNil(o.NetwaitEnabled) {
 		var ret bool
 		return ret
 	}
@@ -353,7 +353,7 @@ func (o *NetworkConfig) GetNetwaitEnabled() bool {
 // GetNetwaitEnabledOk returns a tuple with the NetwaitEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfig) GetNetwaitEnabledOk() (*bool, bool) {
-	if o == nil || o.NetwaitEnabled == nil {
+	if o == nil || isNil(o.NetwaitEnabled) {
 		return nil, false
 	}
 	return o.NetwaitEnabled, true
@@ -361,7 +361,7 @@ func (o *NetworkConfig) GetNetwaitEnabledOk() (*bool, bool) {
 
 // HasNetwaitEnabled returns a boolean if a field has been set.
 func (o *NetworkConfig) HasNetwaitEnabled() bool {
-	if o != nil && o.NetwaitEnabled != nil {
+	if o != nil && !isNil(o.NetwaitEnabled) {
 		return true
 	}
 
@@ -375,7 +375,7 @@ func (o *NetworkConfig) SetNetwaitEnabled(v bool) {
 
 // GetNetwaitIp returns the NetwaitIp field value if set, zero value otherwise.
 func (o *NetworkConfig) GetNetwaitIp() []string {
-	if o == nil || o.NetwaitIp == nil {
+	if o == nil || isNil(o.NetwaitIp) {
 		var ret []string
 		return ret
 	}
@@ -385,7 +385,7 @@ func (o *NetworkConfig) GetNetwaitIp() []string {
 // GetNetwaitIpOk returns a tuple with the NetwaitIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfig) GetNetwaitIpOk() ([]string, bool) {
-	if o == nil || o.NetwaitIp == nil {
+	if o == nil || isNil(o.NetwaitIp) {
 		return nil, false
 	}
 	return o.NetwaitIp, true
@@ -393,7 +393,7 @@ func (o *NetworkConfig) GetNetwaitIpOk() ([]string, bool) {
 
 // HasNetwaitIp returns a boolean if a field has been set.
 func (o *NetworkConfig) HasNetwaitIp() bool {
-	if o != nil && o.NetwaitIp != nil {
+	if o != nil && !isNil(o.NetwaitIp) {
 		return true
 	}
 
@@ -407,7 +407,7 @@ func (o *NetworkConfig) SetNetwaitIp(v []string) {
 
 // GetHosts returns the Hosts field value if set, zero value otherwise.
 func (o *NetworkConfig) GetHosts() string {
-	if o == nil || o.Hosts == nil {
+	if o == nil || isNil(o.Hosts) {
 		var ret string
 		return ret
 	}
@@ -417,7 +417,7 @@ func (o *NetworkConfig) GetHosts() string {
 // GetHostsOk returns a tuple with the Hosts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfig) GetHostsOk() (*string, bool) {
-	if o == nil || o.Hosts == nil {
+	if o == nil || isNil(o.Hosts) {
 		return nil, false
 	}
 	return o.Hosts, true
@@ -425,7 +425,7 @@ func (o *NetworkConfig) GetHostsOk() (*string, bool) {
 
 // HasHosts returns a boolean if a field has been set.
 func (o *NetworkConfig) HasHosts() bool {
-	if o != nil && o.Hosts != nil {
+	if o != nil && !isNil(o.Hosts) {
 		return true
 	}
 
@@ -439,7 +439,7 @@ func (o *NetworkConfig) SetHosts(v string) {
 
 // GetDomains returns the Domains field value if set, zero value otherwise.
 func (o *NetworkConfig) GetDomains() []string {
-	if o == nil || o.Domains == nil {
+	if o == nil || isNil(o.Domains) {
 		var ret []string
 		return ret
 	}
@@ -449,7 +449,7 @@ func (o *NetworkConfig) GetDomains() []string {
 // GetDomainsOk returns a tuple with the Domains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfig) GetDomainsOk() ([]string, bool) {
-	if o == nil || o.Domains == nil {
+	if o == nil || isNil(o.Domains) {
 		return nil, false
 	}
 	return o.Domains, true
@@ -457,7 +457,7 @@ func (o *NetworkConfig) GetDomainsOk() ([]string, bool) {
 
 // HasDomains returns a boolean if a field has been set.
 func (o *NetworkConfig) HasDomains() bool {
-	if o != nil && o.Domains != nil {
+	if o != nil && !isNil(o.Domains) {
 		return true
 	}
 
@@ -471,7 +471,7 @@ func (o *NetworkConfig) SetDomains(v []string) {
 
 // GetServiceAnnouncement returns the ServiceAnnouncement field value if set, zero value otherwise.
 func (o *NetworkConfig) GetServiceAnnouncement() NetworkConfigServiceAnnouncement {
-	if o == nil || o.ServiceAnnouncement == nil {
+	if o == nil || isNil(o.ServiceAnnouncement) {
 		var ret NetworkConfigServiceAnnouncement
 		return ret
 	}
@@ -481,7 +481,7 @@ func (o *NetworkConfig) GetServiceAnnouncement() NetworkConfigServiceAnnouncemen
 // GetServiceAnnouncementOk returns a tuple with the ServiceAnnouncement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfig) GetServiceAnnouncementOk() (*NetworkConfigServiceAnnouncement, bool) {
-	if o == nil || o.ServiceAnnouncement == nil {
+	if o == nil || isNil(o.ServiceAnnouncement) {
 		return nil, false
 	}
 	return o.ServiceAnnouncement, true
@@ -489,7 +489,7 @@ func (o *NetworkConfig) GetServiceAnnouncementOk() (*NetworkConfigServiceAnnounc
 
 // HasServiceAnnouncement returns a boolean if a field has been set.
 func (o *NetworkConfig) HasServiceAnnouncement() bool {
-	if o != nil && o.ServiceAnnouncement != nil {
+	if o != nil && !isNil(o.ServiceAnnouncement) {
 		return true
 	}
 
@@ -503,7 +503,7 @@ func (o *NetworkConfig) SetServiceAnnouncement(v NetworkConfigServiceAnnouncemen
 
 // GetHostnameLocal returns the HostnameLocal field value if set, zero value otherwise.
 func (o *NetworkConfig) GetHostnameLocal() string {
-	if o == nil || o.HostnameLocal == nil {
+	if o == nil || isNil(o.HostnameLocal) {
 		var ret string
 		return ret
 	}
@@ -513,7 +513,7 @@ func (o *NetworkConfig) GetHostnameLocal() string {
 // GetHostnameLocalOk returns a tuple with the HostnameLocal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkConfig) GetHostnameLocalOk() (*string, bool) {
-	if o == nil || o.HostnameLocal == nil {
+	if o == nil || isNil(o.HostnameLocal) {
 		return nil, false
 	}
 	return o.HostnameLocal, true
@@ -521,7 +521,7 @@ func (o *NetworkConfig) GetHostnameLocalOk() (*string, bool) {
 
 // HasHostnameLocal returns a boolean if a field has been set.
 func (o *NetworkConfig) HasHostnameLocal() bool {
-	if o != nil && o.HostnameLocal != nil {
+	if o != nil && !isNil(o.HostnameLocal) {
 		return true
 	}
 
@@ -535,49 +535,49 @@ func (o *NetworkConfig) SetHostnameLocal(v string) {
 
 func (o NetworkConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Hostname != nil {
+	if !isNil(o.Hostname) {
 		toSerialize["hostname"] = o.Hostname
 	}
-	if o.Domain != nil {
+	if !isNil(o.Domain) {
 		toSerialize["domain"] = o.Domain
 	}
-	if o.Ipv4gateway != nil {
+	if !isNil(o.Ipv4gateway) {
 		toSerialize["ipv4gateway"] = o.Ipv4gateway
 	}
-	if o.Ipv6gateway != nil {
+	if !isNil(o.Ipv6gateway) {
 		toSerialize["ipv6gateway"] = o.Ipv6gateway
 	}
-	if o.Nameserver1 != nil {
+	if !isNil(o.Nameserver1) {
 		toSerialize["nameserver1"] = o.Nameserver1
 	}
-	if o.Nameserver2 != nil {
+	if !isNil(o.Nameserver2) {
 		toSerialize["nameserver2"] = o.Nameserver2
 	}
-	if o.Nameserver3 != nil {
+	if !isNil(o.Nameserver3) {
 		toSerialize["nameserver3"] = o.Nameserver3
 	}
-	if o.Httpproxy != nil {
+	if !isNil(o.Httpproxy) {
 		toSerialize["httpproxy"] = o.Httpproxy
 	}
-	if o.NetwaitEnabled != nil {
+	if !isNil(o.NetwaitEnabled) {
 		toSerialize["netwait_enabled"] = o.NetwaitEnabled
 	}
-	if o.NetwaitIp != nil {
+	if !isNil(o.NetwaitIp) {
 		toSerialize["netwait_ip"] = o.NetwaitIp
 	}
-	if o.Hosts != nil {
+	if !isNil(o.Hosts) {
 		toSerialize["hosts"] = o.Hosts
 	}
-	if o.Domains != nil {
+	if !isNil(o.Domains) {
 		toSerialize["domains"] = o.Domains
 	}
-	if o.ServiceAnnouncement != nil {
+	if !isNil(o.ServiceAnnouncement) {
 		toSerialize["service_announcement"] = o.ServiceAnnouncement
 	}
-	if o.HostnameLocal != nil {
+	if !isNil(o.HostnameLocal) {
 		toSerialize["hostname_local"] = o.HostnameLocal
 	}
 

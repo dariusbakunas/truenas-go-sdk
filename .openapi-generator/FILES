@@ -83,4 +83,13 @@ model_vm.go
 model_vm_devices_inner.go
 model_vm_status.go
 response.go
+test/api_cronjob_test.go
+test/api_dataset_test.go
+test/api_group_test.go
+test/api_network_test.go
+test/api_pool_test.go
+test/api_service_test.go
+test/api_sharing_test.go
+test/api_user_test.go
+test/api_vm_test.go
 utils.go

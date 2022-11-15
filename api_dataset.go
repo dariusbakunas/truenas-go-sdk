@@ -47,9 +47,9 @@ Creates a dataset/zvol.
 
 `encryption` when enabled will create an ZFS encrypted root dataset for `name` pool.
 There are 2 cases where ZFS encryption is not allowed for a dataset:
-1) Pool in question is GELI encrypted.
-2) If the parent dataset is encrypted with a passphrase and `name` is being created
-  with a key for encrypting the dataset.
+ 1. Pool in question is GELI encrypted.
+ 2. If the parent dataset is encrypted with a passphrase and `name` is being created
+    with a key for encrypting the dataset.
 
 `encryption_options` specifies configuration for encryption of dataset for `name` pool.
 `encryption_options.passphrase` must be specified if encryption for dataset is desired with a passphrase
@@ -62,9 +62,8 @@ It should be noted that keys are stored by the system for automatic locking/unlo
 on import/export of encrypted datasets. If that is not desired, dataset should be created
 with a passphrase as a key.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateDatasetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCreateDatasetRequest
 */
 func (a *DatasetApiService) CreateDataset(ctx context.Context) ApiCreateDatasetRequest {
 	return ApiCreateDatasetRequest{
@@ -74,7 +73,8 @@ func (a *DatasetApiService) CreateDataset(ctx context.Context) ApiCreateDatasetR
 }
 
 // Execute executes the request
-//  @return Dataset
+//
+//	@return Dataset
 func (a *DatasetApiService) CreateDatasetExecute(r ApiCreateDatasetRequest) (*Dataset, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -168,10 +168,9 @@ Delete dataset/zvol
 `recursive` will also delete/destroy all children datasets.
 `force` will force delete busy datasets.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiDeleteDatasetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiDeleteDatasetRequest
 */
 func (a *DatasetApiService) DeleteDataset(ctx context.Context, id string) ApiDeleteDatasetRequest {
 	return ApiDeleteDatasetRequest{
@@ -292,9 +291,9 @@ The second type is hierarchical, where only top level datasets are returned in t
 children in the `children` key. This retrieval type is slightly faster.
 These options are controlled by the `query-options.extra.flat` attribute (default true).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the dataset
- @return ApiGetDatasetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the dataset
+	@return ApiGetDatasetRequest
 */
 func (a *DatasetApiService) GetDataset(ctx context.Context, id string) ApiGetDatasetRequest {
 	return ApiGetDatasetRequest{
@@ -305,7 +304,8 @@ func (a *DatasetApiService) GetDataset(ctx context.Context, id string) ApiGetDat
 }
 
 // Execute executes the request
-//  @return Dataset
+//
+//	@return Dataset
 func (a *DatasetApiService) GetDatasetExecute(r ApiGetDatasetRequest) (*Dataset, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -428,8 +428,8 @@ func (r ApiListDatasetsRequest) Execute() ([]Dataset, *http.Response, error) {
 /*
 ListDatasets Method for ListDatasets
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListDatasetsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiListDatasetsRequest
 */
 func (a *DatasetApiService) ListDatasets(ctx context.Context) ApiListDatasetsRequest {
 	return ApiListDatasetsRequest{
@@ -439,7 +439,8 @@ func (a *DatasetApiService) ListDatasets(ctx context.Context) ApiListDatasetsReq
 }
 
 // Execute executes the request
-//  @return []Dataset
+//
+//	@return []Dataset
 func (a *DatasetApiService) ListDatasetsExecute(r ApiListDatasetsRequest) ([]Dataset, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -546,9 +547,9 @@ UpdateDataset Method for UpdateDataset
 
 Update dataset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiUpdateDatasetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiUpdateDatasetRequest
 */
 func (a *DatasetApiService) UpdateDataset(ctx context.Context, id string) ApiUpdateDatasetRequest {
 	return ApiUpdateDatasetRequest{
@@ -559,7 +560,8 @@ func (a *DatasetApiService) UpdateDataset(ctx context.Context, id string) ApiUpd
 }
 
 // Execute executes the request
-//  @return Dataset
+//
+//	@return Dataset
 func (a *DatasetApiService) UpdateDatasetExecute(r ApiUpdateDatasetRequest) (*Dataset, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut

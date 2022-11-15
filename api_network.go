@@ -33,8 +33,8 @@ func (r ApiGetNetworkConfigurationRequest) Execute() (*NetworkConfig, *http.Resp
 /*
 GetNetworkConfiguration Method for GetNetworkConfiguration
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetNetworkConfigurationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetNetworkConfigurationRequest
 */
 func (a *NetworkApiService) GetNetworkConfiguration(ctx context.Context) ApiGetNetworkConfigurationRequest {
 	return ApiGetNetworkConfigurationRequest{
@@ -44,7 +44,8 @@ func (a *NetworkApiService) GetNetworkConfiguration(ctx context.Context) ApiGetN
 }
 
 // Execute executes the request
-//  @return NetworkConfig
+//
+//	@return NetworkConfig
 func (a *NetworkApiService) GetNetworkConfigurationExecute(r ApiGetNetworkConfigurationRequest) (*NetworkConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -130,8 +131,8 @@ func (r ApiGetNetworkSummaryRequest) Execute() (*NetworkSummary, *http.Response,
 /*
 GetNetworkSummary Method for GetNetworkSummary
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetNetworkSummaryRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetNetworkSummaryRequest
 */
 func (a *NetworkApiService) GetNetworkSummary(ctx context.Context) ApiGetNetworkSummaryRequest {
 	return ApiGetNetworkSummaryRequest{
@@ -141,7 +142,8 @@ func (a *NetworkApiService) GetNetworkSummary(ctx context.Context) ApiGetNetwork
 }
 
 // Execute executes the request
-//  @return NetworkSummary
+//
+//	@return NetworkSummary
 func (a *NetworkApiService) GetNetworkSummaryExecute(r ApiGetNetworkSummaryRequest) (*NetworkSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

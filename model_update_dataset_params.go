@@ -56,7 +56,7 @@ func NewUpdateDatasetParamsWithDefaults() *UpdateDatasetParams {
 
 // GetAtime returns the Atime field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetAtime() string {
-	if o == nil || o.Atime == nil {
+	if o == nil || isNil(o.Atime) {
 		var ret string
 		return ret
 	}
@@ -66,7 +66,7 @@ func (o *UpdateDatasetParams) GetAtime() string {
 // GetAtimeOk returns a tuple with the Atime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetAtimeOk() (*string, bool) {
-	if o == nil || o.Atime == nil {
+	if o == nil || isNil(o.Atime) {
 		return nil, false
 	}
 	return o.Atime, true
@@ -74,7 +74,7 @@ func (o *UpdateDatasetParams) GetAtimeOk() (*string, bool) {
 
 // HasAtime returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasAtime() bool {
-	if o != nil && o.Atime != nil {
+	if o != nil && !isNil(o.Atime) {
 		return true
 	}
 
@@ -88,7 +88,7 @@ func (o *UpdateDatasetParams) SetAtime(v string) {
 
 // GetAclmode returns the Aclmode field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetAclmode() string {
-	if o == nil || o.Aclmode == nil {
+	if o == nil || isNil(o.Aclmode) {
 		var ret string
 		return ret
 	}
@@ -98,7 +98,7 @@ func (o *UpdateDatasetParams) GetAclmode() string {
 // GetAclmodeOk returns a tuple with the Aclmode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetAclmodeOk() (*string, bool) {
-	if o == nil || o.Aclmode == nil {
+	if o == nil || isNil(o.Aclmode) {
 		return nil, false
 	}
 	return o.Aclmode, true
@@ -106,7 +106,7 @@ func (o *UpdateDatasetParams) GetAclmodeOk() (*string, bool) {
 
 // HasAclmode returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasAclmode() bool {
-	if o != nil && o.Aclmode != nil {
+	if o != nil && !isNil(o.Aclmode) {
 		return true
 	}
 
@@ -120,7 +120,7 @@ func (o *UpdateDatasetParams) SetAclmode(v string) {
 
 // GetComments returns the Comments field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetComments() string {
-	if o == nil || o.Comments == nil {
+	if o == nil || isNil(o.Comments) {
 		var ret string
 		return ret
 	}
@@ -130,7 +130,7 @@ func (o *UpdateDatasetParams) GetComments() string {
 // GetCommentsOk returns a tuple with the Comments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetCommentsOk() (*string, bool) {
-	if o == nil || o.Comments == nil {
+	if o == nil || isNil(o.Comments) {
 		return nil, false
 	}
 	return o.Comments, true
@@ -138,7 +138,7 @@ func (o *UpdateDatasetParams) GetCommentsOk() (*string, bool) {
 
 // HasComments returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasComments() bool {
-	if o != nil && o.Comments != nil {
+	if o != nil && !isNil(o.Comments) {
 		return true
 	}
 
@@ -152,7 +152,7 @@ func (o *UpdateDatasetParams) SetComments(v string) {
 
 // GetCompression returns the Compression field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetCompression() string {
-	if o == nil || o.Compression == nil {
+	if o == nil || isNil(o.Compression) {
 		var ret string
 		return ret
 	}
@@ -162,7 +162,7 @@ func (o *UpdateDatasetParams) GetCompression() string {
 // GetCompressionOk returns a tuple with the Compression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetCompressionOk() (*string, bool) {
-	if o == nil || o.Compression == nil {
+	if o == nil || isNil(o.Compression) {
 		return nil, false
 	}
 	return o.Compression, true
@@ -170,7 +170,7 @@ func (o *UpdateDatasetParams) GetCompressionOk() (*string, bool) {
 
 // HasCompression returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasCompression() bool {
-	if o != nil && o.Compression != nil {
+	if o != nil && !isNil(o.Compression) {
 		return true
 	}
 
@@ -184,7 +184,7 @@ func (o *UpdateDatasetParams) SetCompression(v string) {
 
 // GetCopies returns the Copies field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetCopies() int32 {
-	if o == nil || o.Copies == nil {
+	if o == nil || isNil(o.Copies) {
 		var ret int32
 		return ret
 	}
@@ -194,7 +194,7 @@ func (o *UpdateDatasetParams) GetCopies() int32 {
 // GetCopiesOk returns a tuple with the Copies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetCopiesOk() (*int32, bool) {
-	if o == nil || o.Copies == nil {
+	if o == nil || isNil(o.Copies) {
 		return nil, false
 	}
 	return o.Copies, true
@@ -202,7 +202,7 @@ func (o *UpdateDatasetParams) GetCopiesOk() (*int32, bool) {
 
 // HasCopies returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasCopies() bool {
-	if o != nil && o.Copies != nil {
+	if o != nil && !isNil(o.Copies) {
 		return true
 	}
 
@@ -216,7 +216,7 @@ func (o *UpdateDatasetParams) SetCopies(v int32) {
 
 // GetDeduplication returns the Deduplication field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetDeduplication() string {
-	if o == nil || o.Deduplication == nil {
+	if o == nil || isNil(o.Deduplication) {
 		var ret string
 		return ret
 	}
@@ -226,7 +226,7 @@ func (o *UpdateDatasetParams) GetDeduplication() string {
 // GetDeduplicationOk returns a tuple with the Deduplication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetDeduplicationOk() (*string, bool) {
-	if o == nil || o.Deduplication == nil {
+	if o == nil || isNil(o.Deduplication) {
 		return nil, false
 	}
 	return o.Deduplication, true
@@ -234,7 +234,7 @@ func (o *UpdateDatasetParams) GetDeduplicationOk() (*string, bool) {
 
 // HasDeduplication returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasDeduplication() bool {
-	if o != nil && o.Deduplication != nil {
+	if o != nil && !isNil(o.Deduplication) {
 		return true
 	}
 
@@ -248,7 +248,7 @@ func (o *UpdateDatasetParams) SetDeduplication(v string) {
 
 // GetExec returns the Exec field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetExec() string {
-	if o == nil || o.Exec == nil {
+	if o == nil || isNil(o.Exec) {
 		var ret string
 		return ret
 	}
@@ -258,7 +258,7 @@ func (o *UpdateDatasetParams) GetExec() string {
 // GetExecOk returns a tuple with the Exec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetExecOk() (*string, bool) {
-	if o == nil || o.Exec == nil {
+	if o == nil || isNil(o.Exec) {
 		return nil, false
 	}
 	return o.Exec, true
@@ -266,7 +266,7 @@ func (o *UpdateDatasetParams) GetExecOk() (*string, bool) {
 
 // HasExec returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasExec() bool {
-	if o != nil && o.Exec != nil {
+	if o != nil && !isNil(o.Exec) {
 		return true
 	}
 
@@ -280,7 +280,7 @@ func (o *UpdateDatasetParams) SetExec(v string) {
 
 // GetForceSize returns the ForceSize field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetForceSize() bool {
-	if o == nil || o.ForceSize == nil {
+	if o == nil || isNil(o.ForceSize) {
 		var ret bool
 		return ret
 	}
@@ -290,7 +290,7 @@ func (o *UpdateDatasetParams) GetForceSize() bool {
 // GetForceSizeOk returns a tuple with the ForceSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetForceSizeOk() (*bool, bool) {
-	if o == nil || o.ForceSize == nil {
+	if o == nil || isNil(o.ForceSize) {
 		return nil, false
 	}
 	return o.ForceSize, true
@@ -298,7 +298,7 @@ func (o *UpdateDatasetParams) GetForceSizeOk() (*bool, bool) {
 
 // HasForceSize returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasForceSize() bool {
-	if o != nil && o.ForceSize != nil {
+	if o != nil && !isNil(o.ForceSize) {
 		return true
 	}
 
@@ -312,7 +312,7 @@ func (o *UpdateDatasetParams) SetForceSize(v bool) {
 
 // GetQuota returns the Quota field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetQuota() int64 {
-	if o == nil || o.Quota == nil {
+	if o == nil || isNil(o.Quota) {
 		var ret int64
 		return ret
 	}
@@ -322,7 +322,7 @@ func (o *UpdateDatasetParams) GetQuota() int64 {
 // GetQuotaOk returns a tuple with the Quota field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetQuotaOk() (*int64, bool) {
-	if o == nil || o.Quota == nil {
+	if o == nil || isNil(o.Quota) {
 		return nil, false
 	}
 	return o.Quota, true
@@ -330,7 +330,7 @@ func (o *UpdateDatasetParams) GetQuotaOk() (*int64, bool) {
 
 // HasQuota returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasQuota() bool {
-	if o != nil && o.Quota != nil {
+	if o != nil && !isNil(o.Quota) {
 		return true
 	}
 
@@ -344,7 +344,7 @@ func (o *UpdateDatasetParams) SetQuota(v int64) {
 
 // GetReadonly returns the Readonly field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetReadonly() string {
-	if o == nil || o.Readonly == nil {
+	if o == nil || isNil(o.Readonly) {
 		var ret string
 		return ret
 	}
@@ -354,7 +354,7 @@ func (o *UpdateDatasetParams) GetReadonly() string {
 // GetReadonlyOk returns a tuple with the Readonly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetReadonlyOk() (*string, bool) {
-	if o == nil || o.Readonly == nil {
+	if o == nil || isNil(o.Readonly) {
 		return nil, false
 	}
 	return o.Readonly, true
@@ -362,7 +362,7 @@ func (o *UpdateDatasetParams) GetReadonlyOk() (*string, bool) {
 
 // HasReadonly returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasReadonly() bool {
-	if o != nil && o.Readonly != nil {
+	if o != nil && !isNil(o.Readonly) {
 		return true
 	}
 
@@ -376,7 +376,7 @@ func (o *UpdateDatasetParams) SetReadonly(v string) {
 
 // GetRecordsize returns the Recordsize field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetRecordsize() string {
-	if o == nil || o.Recordsize == nil {
+	if o == nil || isNil(o.Recordsize) {
 		var ret string
 		return ret
 	}
@@ -386,7 +386,7 @@ func (o *UpdateDatasetParams) GetRecordsize() string {
 // GetRecordsizeOk returns a tuple with the Recordsize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetRecordsizeOk() (*string, bool) {
-	if o == nil || o.Recordsize == nil {
+	if o == nil || isNil(o.Recordsize) {
 		return nil, false
 	}
 	return o.Recordsize, true
@@ -394,7 +394,7 @@ func (o *UpdateDatasetParams) GetRecordsizeOk() (*string, bool) {
 
 // HasRecordsize returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasRecordsize() bool {
-	if o != nil && o.Recordsize != nil {
+	if o != nil && !isNil(o.Recordsize) {
 		return true
 	}
 
@@ -408,7 +408,7 @@ func (o *UpdateDatasetParams) SetRecordsize(v string) {
 
 // GetRefquota returns the Refquota field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetRefquota() int64 {
-	if o == nil || o.Refquota == nil {
+	if o == nil || isNil(o.Refquota) {
 		var ret int64
 		return ret
 	}
@@ -418,7 +418,7 @@ func (o *UpdateDatasetParams) GetRefquota() int64 {
 // GetRefquotaOk returns a tuple with the Refquota field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetRefquotaOk() (*int64, bool) {
-	if o == nil || o.Refquota == nil {
+	if o == nil || isNil(o.Refquota) {
 		return nil, false
 	}
 	return o.Refquota, true
@@ -426,7 +426,7 @@ func (o *UpdateDatasetParams) GetRefquotaOk() (*int64, bool) {
 
 // HasRefquota returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasRefquota() bool {
-	if o != nil && o.Refquota != nil {
+	if o != nil && !isNil(o.Refquota) {
 		return true
 	}
 
@@ -440,7 +440,7 @@ func (o *UpdateDatasetParams) SetRefquota(v int64) {
 
 // GetRefreservation returns the Refreservation field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetRefreservation() int64 {
-	if o == nil || o.Refreservation == nil {
+	if o == nil || isNil(o.Refreservation) {
 		var ret int64
 		return ret
 	}
@@ -450,7 +450,7 @@ func (o *UpdateDatasetParams) GetRefreservation() int64 {
 // GetRefreservationOk returns a tuple with the Refreservation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetRefreservationOk() (*int64, bool) {
-	if o == nil || o.Refreservation == nil {
+	if o == nil || isNil(o.Refreservation) {
 		return nil, false
 	}
 	return o.Refreservation, true
@@ -458,7 +458,7 @@ func (o *UpdateDatasetParams) GetRefreservationOk() (*int64, bool) {
 
 // HasRefreservation returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasRefreservation() bool {
-	if o != nil && o.Refreservation != nil {
+	if o != nil && !isNil(o.Refreservation) {
 		return true
 	}
 
@@ -472,7 +472,7 @@ func (o *UpdateDatasetParams) SetRefreservation(v int64) {
 
 // GetVolsize returns the Volsize field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetVolsize() int64 {
-	if o == nil || o.Volsize == nil {
+	if o == nil || isNil(o.Volsize) {
 		var ret int64
 		return ret
 	}
@@ -482,7 +482,7 @@ func (o *UpdateDatasetParams) GetVolsize() int64 {
 // GetVolsizeOk returns a tuple with the Volsize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetVolsizeOk() (*int64, bool) {
-	if o == nil || o.Volsize == nil {
+	if o == nil || isNil(o.Volsize) {
 		return nil, false
 	}
 	return o.Volsize, true
@@ -490,7 +490,7 @@ func (o *UpdateDatasetParams) GetVolsizeOk() (*int64, bool) {
 
 // HasVolsize returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasVolsize() bool {
-	if o != nil && o.Volsize != nil {
+	if o != nil && !isNil(o.Volsize) {
 		return true
 	}
 
@@ -504,7 +504,7 @@ func (o *UpdateDatasetParams) SetVolsize(v int64) {
 
 // GetSnapdir returns the Snapdir field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetSnapdir() string {
-	if o == nil || o.Snapdir == nil {
+	if o == nil || isNil(o.Snapdir) {
 		var ret string
 		return ret
 	}
@@ -514,7 +514,7 @@ func (o *UpdateDatasetParams) GetSnapdir() string {
 // GetSnapdirOk returns a tuple with the Snapdir field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetSnapdirOk() (*string, bool) {
-	if o == nil || o.Snapdir == nil {
+	if o == nil || isNil(o.Snapdir) {
 		return nil, false
 	}
 	return o.Snapdir, true
@@ -522,7 +522,7 @@ func (o *UpdateDatasetParams) GetSnapdirOk() (*string, bool) {
 
 // HasSnapdir returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasSnapdir() bool {
-	if o != nil && o.Snapdir != nil {
+	if o != nil && !isNil(o.Snapdir) {
 		return true
 	}
 
@@ -536,7 +536,7 @@ func (o *UpdateDatasetParams) SetSnapdir(v string) {
 
 // GetSync returns the Sync field value if set, zero value otherwise.
 func (o *UpdateDatasetParams) GetSync() string {
-	if o == nil || o.Sync == nil {
+	if o == nil || isNil(o.Sync) {
 		var ret string
 		return ret
 	}
@@ -546,7 +546,7 @@ func (o *UpdateDatasetParams) GetSync() string {
 // GetSyncOk returns a tuple with the Sync field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDatasetParams) GetSyncOk() (*string, bool) {
-	if o == nil || o.Sync == nil {
+	if o == nil || isNil(o.Sync) {
 		return nil, false
 	}
 	return o.Sync, true
@@ -554,7 +554,7 @@ func (o *UpdateDatasetParams) GetSyncOk() (*string, bool) {
 
 // HasSync returns a boolean if a field has been set.
 func (o *UpdateDatasetParams) HasSync() bool {
-	if o != nil && o.Sync != nil {
+	if o != nil && !isNil(o.Sync) {
 		return true
 	}
 
@@ -568,52 +568,52 @@ func (o *UpdateDatasetParams) SetSync(v string) {
 
 func (o UpdateDatasetParams) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Atime != nil {
+	if !isNil(o.Atime) {
 		toSerialize["atime"] = o.Atime
 	}
-	if o.Aclmode != nil {
+	if !isNil(o.Aclmode) {
 		toSerialize["aclmode"] = o.Aclmode
 	}
-	if o.Comments != nil {
+	if !isNil(o.Comments) {
 		toSerialize["comments"] = o.Comments
 	}
-	if o.Compression != nil {
+	if !isNil(o.Compression) {
 		toSerialize["compression"] = o.Compression
 	}
-	if o.Copies != nil {
+	if !isNil(o.Copies) {
 		toSerialize["copies"] = o.Copies
 	}
-	if o.Deduplication != nil {
+	if !isNil(o.Deduplication) {
 		toSerialize["deduplication"] = o.Deduplication
 	}
-	if o.Exec != nil {
+	if !isNil(o.Exec) {
 		toSerialize["exec"] = o.Exec
 	}
-	if o.ForceSize != nil {
+	if !isNil(o.ForceSize) {
 		toSerialize["force_size"] = o.ForceSize
 	}
-	if o.Quota != nil {
+	if !isNil(o.Quota) {
 		toSerialize["quota"] = o.Quota
 	}
-	if o.Readonly != nil {
+	if !isNil(o.Readonly) {
 		toSerialize["readonly"] = o.Readonly
 	}
-	if o.Recordsize != nil {
+	if !isNil(o.Recordsize) {
 		toSerialize["recordsize"] = o.Recordsize
 	}
-	if o.Refquota != nil {
+	if !isNil(o.Refquota) {
 		toSerialize["refquota"] = o.Refquota
 	}
-	if o.Refreservation != nil {
+	if !isNil(o.Refreservation) {
 		toSerialize["refreservation"] = o.Refreservation
 	}
-	if o.Volsize != nil {
+	if !isNil(o.Volsize) {
 		toSerialize["volsize"] = o.Volsize
 	}
-	if o.Snapdir != nil {
+	if !isNil(o.Snapdir) {
 		toSerialize["snapdir"] = o.Snapdir
 	}
-	if o.Sync != nil {
+	if !isNil(o.Sync) {
 		toSerialize["sync"] = o.Sync
 	}
 

@@ -103,7 +103,7 @@ func (o *VM) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *VM) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -113,7 +113,7 @@ func (o *VM) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VM) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -121,7 +121,7 @@ func (o *VM) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *VM) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -135,7 +135,7 @@ func (o *VM) SetDescription(v string) {
 
 // GetVcpus returns the Vcpus field value if set, zero value otherwise.
 func (o *VM) GetVcpus() int32 {
-	if o == nil || o.Vcpus == nil {
+	if o == nil || isNil(o.Vcpus) {
 		var ret int32
 		return ret
 	}
@@ -145,7 +145,7 @@ func (o *VM) GetVcpus() int32 {
 // GetVcpusOk returns a tuple with the Vcpus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VM) GetVcpusOk() (*int32, bool) {
-	if o == nil || o.Vcpus == nil {
+	if o == nil || isNil(o.Vcpus) {
 		return nil, false
 	}
 	return o.Vcpus, true
@@ -153,7 +153,7 @@ func (o *VM) GetVcpusOk() (*int32, bool) {
 
 // HasVcpus returns a boolean if a field has been set.
 func (o *VM) HasVcpus() bool {
-	if o != nil && o.Vcpus != nil {
+	if o != nil && !isNil(o.Vcpus) {
 		return true
 	}
 
@@ -167,7 +167,7 @@ func (o *VM) SetVcpus(v int32) {
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
 func (o *VM) GetMemory() int32 {
-	if o == nil || o.Memory == nil {
+	if o == nil || isNil(o.Memory) {
 		var ret int32
 		return ret
 	}
@@ -177,7 +177,7 @@ func (o *VM) GetMemory() int32 {
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VM) GetMemoryOk() (*int32, bool) {
-	if o == nil || o.Memory == nil {
+	if o == nil || isNil(o.Memory) {
 		return nil, false
 	}
 	return o.Memory, true
@@ -185,7 +185,7 @@ func (o *VM) GetMemoryOk() (*int32, bool) {
 
 // HasMemory returns a boolean if a field has been set.
 func (o *VM) HasMemory() bool {
-	if o != nil && o.Memory != nil {
+	if o != nil && !isNil(o.Memory) {
 		return true
 	}
 
@@ -199,7 +199,7 @@ func (o *VM) SetMemory(v int32) {
 
 // GetAutostart returns the Autostart field value if set, zero value otherwise.
 func (o *VM) GetAutostart() bool {
-	if o == nil || o.Autostart == nil {
+	if o == nil || isNil(o.Autostart) {
 		var ret bool
 		return ret
 	}
@@ -209,7 +209,7 @@ func (o *VM) GetAutostart() bool {
 // GetAutostartOk returns a tuple with the Autostart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VM) GetAutostartOk() (*bool, bool) {
-	if o == nil || o.Autostart == nil {
+	if o == nil || isNil(o.Autostart) {
 		return nil, false
 	}
 	return o.Autostart, true
@@ -217,7 +217,7 @@ func (o *VM) GetAutostartOk() (*bool, bool) {
 
 // HasAutostart returns a boolean if a field has been set.
 func (o *VM) HasAutostart() bool {
-	if o != nil && o.Autostart != nil {
+	if o != nil && !isNil(o.Autostart) {
 		return true
 	}
 
@@ -231,7 +231,7 @@ func (o *VM) SetAutostart(v bool) {
 
 // GetTime returns the Time field value if set, zero value otherwise.
 func (o *VM) GetTime() string {
-	if o == nil || o.Time == nil {
+	if o == nil || isNil(o.Time) {
 		var ret string
 		return ret
 	}
@@ -241,7 +241,7 @@ func (o *VM) GetTime() string {
 // GetTimeOk returns a tuple with the Time field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VM) GetTimeOk() (*string, bool) {
-	if o == nil || o.Time == nil {
+	if o == nil || isNil(o.Time) {
 		return nil, false
 	}
 	return o.Time, true
@@ -249,7 +249,7 @@ func (o *VM) GetTimeOk() (*string, bool) {
 
 // HasTime returns a boolean if a field has been set.
 func (o *VM) HasTime() bool {
-	if o != nil && o.Time != nil {
+	if o != nil && !isNil(o.Time) {
 		return true
 	}
 
@@ -263,7 +263,7 @@ func (o *VM) SetTime(v string) {
 
 // GetBootloader returns the Bootloader field value if set, zero value otherwise.
 func (o *VM) GetBootloader() string {
-	if o == nil || o.Bootloader == nil {
+	if o == nil || isNil(o.Bootloader) {
 		var ret string
 		return ret
 	}
@@ -273,7 +273,7 @@ func (o *VM) GetBootloader() string {
 // GetBootloaderOk returns a tuple with the Bootloader field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VM) GetBootloaderOk() (*string, bool) {
-	if o == nil || o.Bootloader == nil {
+	if o == nil || isNil(o.Bootloader) {
 		return nil, false
 	}
 	return o.Bootloader, true
@@ -281,7 +281,7 @@ func (o *VM) GetBootloaderOk() (*string, bool) {
 
 // HasBootloader returns a boolean if a field has been set.
 func (o *VM) HasBootloader() bool {
-	if o != nil && o.Bootloader != nil {
+	if o != nil && !isNil(o.Bootloader) {
 		return true
 	}
 
@@ -295,7 +295,7 @@ func (o *VM) SetBootloader(v string) {
 
 // GetCores returns the Cores field value if set, zero value otherwise.
 func (o *VM) GetCores() int32 {
-	if o == nil || o.Cores == nil {
+	if o == nil || isNil(o.Cores) {
 		var ret int32
 		return ret
 	}
@@ -305,7 +305,7 @@ func (o *VM) GetCores() int32 {
 // GetCoresOk returns a tuple with the Cores field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VM) GetCoresOk() (*int32, bool) {
-	if o == nil || o.Cores == nil {
+	if o == nil || isNil(o.Cores) {
 		return nil, false
 	}
 	return o.Cores, true
@@ -313,7 +313,7 @@ func (o *VM) GetCoresOk() (*int32, bool) {
 
 // HasCores returns a boolean if a field has been set.
 func (o *VM) HasCores() bool {
-	if o != nil && o.Cores != nil {
+	if o != nil && !isNil(o.Cores) {
 		return true
 	}
 
@@ -327,7 +327,7 @@ func (o *VM) SetCores(v int32) {
 
 // GetThreads returns the Threads field value if set, zero value otherwise.
 func (o *VM) GetThreads() int32 {
-	if o == nil || o.Threads == nil {
+	if o == nil || isNil(o.Threads) {
 		var ret int32
 		return ret
 	}
@@ -337,7 +337,7 @@ func (o *VM) GetThreads() int32 {
 // GetThreadsOk returns a tuple with the Threads field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VM) GetThreadsOk() (*int32, bool) {
-	if o == nil || o.Threads == nil {
+	if o == nil || isNil(o.Threads) {
 		return nil, false
 	}
 	return o.Threads, true
@@ -345,7 +345,7 @@ func (o *VM) GetThreadsOk() (*int32, bool) {
 
 // HasThreads returns a boolean if a field has been set.
 func (o *VM) HasThreads() bool {
-	if o != nil && o.Threads != nil {
+	if o != nil && !isNil(o.Threads) {
 		return true
 	}
 
@@ -359,7 +359,7 @@ func (o *VM) SetThreads(v int32) {
 
 // GetShutdownTimeout returns the ShutdownTimeout field value if set, zero value otherwise.
 func (o *VM) GetShutdownTimeout() int32 {
-	if o == nil || o.ShutdownTimeout == nil {
+	if o == nil || isNil(o.ShutdownTimeout) {
 		var ret int32
 		return ret
 	}
@@ -369,7 +369,7 @@ func (o *VM) GetShutdownTimeout() int32 {
 // GetShutdownTimeoutOk returns a tuple with the ShutdownTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VM) GetShutdownTimeoutOk() (*int32, bool) {
-	if o == nil || o.ShutdownTimeout == nil {
+	if o == nil || isNil(o.ShutdownTimeout) {
 		return nil, false
 	}
 	return o.ShutdownTimeout, true
@@ -377,7 +377,7 @@ func (o *VM) GetShutdownTimeoutOk() (*int32, bool) {
 
 // HasShutdownTimeout returns a boolean if a field has been set.
 func (o *VM) HasShutdownTimeout() bool {
-	if o != nil && o.ShutdownTimeout != nil {
+	if o != nil && !isNil(o.ShutdownTimeout) {
 		return true
 	}
 
@@ -391,7 +391,7 @@ func (o *VM) SetShutdownTimeout(v int32) {
 
 // GetDevices returns the Devices field value if set, zero value otherwise.
 func (o *VM) GetDevices() []VMDevicesInner {
-	if o == nil || o.Devices == nil {
+	if o == nil || isNil(o.Devices) {
 		var ret []VMDevicesInner
 		return ret
 	}
@@ -401,7 +401,7 @@ func (o *VM) GetDevices() []VMDevicesInner {
 // GetDevicesOk returns a tuple with the Devices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VM) GetDevicesOk() ([]VMDevicesInner, bool) {
-	if o == nil || o.Devices == nil {
+	if o == nil || isNil(o.Devices) {
 		return nil, false
 	}
 	return o.Devices, true
@@ -409,7 +409,7 @@ func (o *VM) GetDevicesOk() ([]VMDevicesInner, bool) {
 
 // HasDevices returns a boolean if a field has been set.
 func (o *VM) HasDevices() bool {
-	if o != nil && o.Devices != nil {
+	if o != nil && !isNil(o.Devices) {
 		return true
 	}
 
@@ -423,7 +423,7 @@ func (o *VM) SetDevices(v []VMDevicesInner) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *VM) GetStatus() VMStatus {
-	if o == nil || o.Status == nil {
+	if o == nil || isNil(o.Status) {
 		var ret VMStatus
 		return ret
 	}
@@ -433,7 +433,7 @@ func (o *VM) GetStatus() VMStatus {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VM) GetStatusOk() (*VMStatus, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || isNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -441,7 +441,7 @@ func (o *VM) GetStatusOk() (*VMStatus, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *VM) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !isNil(o.Status) {
 		return true
 	}
 
@@ -461,37 +461,37 @@ func (o VM) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description != nil {
+	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if o.Vcpus != nil {
+	if !isNil(o.Vcpus) {
 		toSerialize["vcpus"] = o.Vcpus
 	}
-	if o.Memory != nil {
+	if !isNil(o.Memory) {
 		toSerialize["memory"] = o.Memory
 	}
-	if o.Autostart != nil {
+	if !isNil(o.Autostart) {
 		toSerialize["autostart"] = o.Autostart
 	}
-	if o.Time != nil {
+	if !isNil(o.Time) {
 		toSerialize["time"] = o.Time
 	}
-	if o.Bootloader != nil {
+	if !isNil(o.Bootloader) {
 		toSerialize["bootloader"] = o.Bootloader
 	}
-	if o.Cores != nil {
+	if !isNil(o.Cores) {
 		toSerialize["cores"] = o.Cores
 	}
-	if o.Threads != nil {
+	if !isNil(o.Threads) {
 		toSerialize["threads"] = o.Threads
 	}
-	if o.ShutdownTimeout != nil {
+	if !isNil(o.ShutdownTimeout) {
 		toSerialize["shutdown_timeout"] = o.ShutdownTimeout
 	}
-	if o.Devices != nil {
+	if !isNil(o.Devices) {
 		toSerialize["devices"] = o.Devices
 	}
-	if o.Status != nil {
+	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 

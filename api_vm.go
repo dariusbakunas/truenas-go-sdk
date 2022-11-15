@@ -61,9 +61,9 @@ GetVM Method for GetVM
 
 Get VM details
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetVMRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetVMRequest
 */
 func (a *VmApiService) GetVM(ctx context.Context, id int32) ApiGetVMRequest {
 	return ApiGetVMRequest{
@@ -74,7 +74,8 @@ func (a *VmApiService) GetVM(ctx context.Context, id int32) ApiGetVMRequest {
 }
 
 // Execute executes the request
-//  @return VM
+//
+//	@return VM
 func (a *VmApiService) GetVMExecute(r ApiGetVMRequest) (*VM, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -199,8 +200,8 @@ ListVMS Method for ListVMS
 
 Get a list of VMs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListVMSRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiListVMSRequest
 */
 func (a *VmApiService) ListVMS(ctx context.Context) ApiListVMSRequest {
 	return ApiListVMSRequest{
@@ -210,7 +211,8 @@ func (a *VmApiService) ListVMS(ctx context.Context) ApiListVMSRequest {
 }
 
 // Execute executes the request
-//  @return []VM
+//
+//	@return []VM
 func (a *VmApiService) ListVMSExecute(r ApiListVMSRequest) ([]VM, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

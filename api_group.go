@@ -50,8 +50,8 @@ If `gid` is not provided it is automatically filled with the next one available.
 
 `smb` specifies whether the group should be mapped into an NT group.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCreateGroupRequest
 */
 func (a *GroupApiService) CreateGroup(ctx context.Context) ApiCreateGroupRequest {
 	return ApiCreateGroupRequest{
@@ -61,7 +61,8 @@ func (a *GroupApiService) CreateGroup(ctx context.Context) ApiCreateGroupRequest
 }
 
 // Execute executes the request
-//  @return int32
+//
+//	@return int32
 func (a *GroupApiService) CreateGroupExecute(r ApiCreateGroupRequest) (int32, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -160,9 +161,9 @@ Delete group `id`.
 
 The `delete_users` option deletes all users that have this group as their primary group.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiDeleteGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiDeleteGroupRequest
 */
 func (a *GroupApiService) DeleteGroup(ctx context.Context, id int32) ApiDeleteGroupRequest {
 	return ApiDeleteGroupRequest{
@@ -278,9 +279,9 @@ GetGroup Method for GetGroup
 
 Get group of `id`.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGetGroupRequest
 */
 func (a *GroupApiService) GetGroup(ctx context.Context, id int32) ApiGetGroupRequest {
 	return ApiGetGroupRequest{
@@ -291,7 +292,8 @@ func (a *GroupApiService) GetGroup(ctx context.Context, id int32) ApiGetGroupReq
 }
 
 // Execute executes the request
-//  @return Group
+//
+//	@return Group
 func (a *GroupApiService) GetGroupExecute(r ApiGetGroupRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -416,8 +418,8 @@ ListGroups Method for ListGroups
 
 Get a list of (local) groups
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListGroupsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiListGroupsRequest
 */
 func (a *GroupApiService) ListGroups(ctx context.Context) ApiListGroupsRequest {
 	return ApiListGroupsRequest{
@@ -523,9 +525,9 @@ UpdateGroup Method for UpdateGroup
 
 Update attributes of an existing group.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiUpdateGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiUpdateGroupRequest
 */
 func (a *GroupApiService) UpdateGroup(ctx context.Context, id int32) ApiUpdateGroupRequest {
 	return ApiUpdateGroupRequest{
@@ -536,7 +538,8 @@ func (a *GroupApiService) UpdateGroup(ctx context.Context, id int32) ApiUpdateGr
 }
 
 // Execute executes the request
-//  @return int32
+//
+//	@return int32
 func (a *GroupApiService) UpdateGroupExecute(r ApiUpdateGroupRequest) (int32, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut

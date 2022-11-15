@@ -95,7 +95,7 @@ func (o *VMDevicesInner) SetDtype(v string) {
 
 // GetOrder returns the Order field value if set, zero value otherwise.
 func (o *VMDevicesInner) GetOrder() int32 {
-	if o == nil || o.Order == nil {
+	if o == nil || isNil(o.Order) {
 		var ret int32
 		return ret
 	}
@@ -105,7 +105,7 @@ func (o *VMDevicesInner) GetOrder() int32 {
 // GetOrderOk returns a tuple with the Order field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VMDevicesInner) GetOrderOk() (*int32, bool) {
-	if o == nil || o.Order == nil {
+	if o == nil || isNil(o.Order) {
 		return nil, false
 	}
 	return o.Order, true
@@ -113,7 +113,7 @@ func (o *VMDevicesInner) GetOrderOk() (*int32, bool) {
 
 // HasOrder returns a boolean if a field has been set.
 func (o *VMDevicesInner) HasOrder() bool {
-	if o != nil && o.Order != nil {
+	if o != nil && !isNil(o.Order) {
 		return true
 	}
 
@@ -127,7 +127,7 @@ func (o *VMDevicesInner) SetOrder(v int32) {
 
 // GetVm returns the Vm field value if set, zero value otherwise.
 func (o *VMDevicesInner) GetVm() int32 {
-	if o == nil || o.Vm == nil {
+	if o == nil || isNil(o.Vm) {
 		var ret int32
 		return ret
 	}
@@ -137,7 +137,7 @@ func (o *VMDevicesInner) GetVm() int32 {
 // GetVmOk returns a tuple with the Vm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VMDevicesInner) GetVmOk() (*int32, bool) {
-	if o == nil || o.Vm == nil {
+	if o == nil || isNil(o.Vm) {
 		return nil, false
 	}
 	return o.Vm, true
@@ -145,7 +145,7 @@ func (o *VMDevicesInner) GetVmOk() (*int32, bool) {
 
 // HasVm returns a boolean if a field has been set.
 func (o *VMDevicesInner) HasVm() bool {
-	if o != nil && o.Vm != nil {
+	if o != nil && !isNil(o.Vm) {
 		return true
 	}
 
@@ -159,7 +159,7 @@ func (o *VMDevicesInner) SetVm(v int32) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *VMDevicesInner) GetAttributes() map[string]interface{} {
-	if o == nil || o.Attributes == nil {
+	if o == nil || isNil(o.Attributes) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -169,15 +169,15 @@ func (o *VMDevicesInner) GetAttributes() map[string]interface{} {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VMDevicesInner) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || isNil(o.Attributes) {
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *VMDevicesInner) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !isNil(o.Attributes) {
 		return true
 	}
 
@@ -197,13 +197,13 @@ func (o VMDevicesInner) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["dtype"] = o.Dtype
 	}
-	if o.Order != nil {
+	if !isNil(o.Order) {
 		toSerialize["order"] = o.Order
 	}
-	if o.Vm != nil {
+	if !isNil(o.Vm) {
 		toSerialize["vm"] = o.Vm
 	}
-	if o.Attributes != nil {
+	if !isNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
 
