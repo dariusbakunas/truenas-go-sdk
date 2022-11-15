@@ -113,8 +113,10 @@ Class | Method | HTTP request | Description
 *UserApi* | [**ListUsers**](docs/UserApi.md#listusers) | **Get** /user | 
 *UserApi* | [**UpdateUser**](docs/UserApi.md#updateuser) | **Put** /user/id/{id} | 
 *VmApi* | [**CreateVM**](docs/VmApi.md#createvm) | **Post** /vm | 
+*VmApi* | [**DeleteVM**](docs/VmApi.md#deletevm) | **Delete** /vm/id/{id} | 
 *VmApi* | [**GetVM**](docs/VmApi.md#getvm) | **Get** /vm/id/{id} | 
 *VmApi* | [**ListVMS**](docs/VmApi.md#listvms) | **Get** /vm | 
+*VmApi* | [**UpdateVM**](docs/VmApi.md#updatevm) | **Put** /vm/id/{id} | 
 
 
 ## Documentation For Models
@@ -144,11 +146,12 @@ Class | Method | HTTP request | Description
  - [ShareSMB](docs/ShareSMB.md)
  - [UpdateDatasetParams](docs/UpdateDatasetParams.md)
  - [UpdateUserParams](docs/UpdateUserParams.md)
+ - [UpdateVMParams](docs/UpdateVMParams.md)
  - [User](docs/User.md)
  - [UserGroup](docs/UserGroup.md)
  - [VM](docs/VM.md)
+ - [VMDevice](docs/VMDevice.md)
  - [VMDeviceCreate](docs/VMDeviceCreate.md)
- - [VMDevicesInner](docs/VMDevicesInner.md)
  - [VMStatus](docs/VMStatus.md)
 
 
