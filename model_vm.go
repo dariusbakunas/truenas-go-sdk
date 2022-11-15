@@ -16,19 +16,19 @@ import (
 
 // VM struct for VM
 type VM struct {
-	Id                   int32            `json:"id"`
-	Name                 string           `json:"name"`
-	Description          *string          `json:"description,omitempty"`
-	Vcpus                *int32           `json:"vcpus,omitempty"`
-	Memory               *int32           `json:"memory,omitempty"`
-	Autostart            *bool            `json:"autostart,omitempty"`
-	Time                 *string          `json:"time,omitempty"`
-	Bootloader           *string          `json:"bootloader,omitempty"`
-	Cores                *int32           `json:"cores,omitempty"`
-	Threads              *int32           `json:"threads,omitempty"`
-	ShutdownTimeout      *int32           `json:"shutdown_timeout,omitempty"`
-	Devices              []VMDevicesInner `json:"devices,omitempty"`
-	Status               *VMStatus        `json:"status,omitempty"`
+	Id                   int32      `json:"id"`
+	Name                 string     `json:"name"`
+	Description          *string    `json:"description,omitempty"`
+	Vcpus                *int32     `json:"vcpus,omitempty"`
+	Memory               *int32     `json:"memory,omitempty"`
+	Autostart            *bool      `json:"autostart,omitempty"`
+	Time                 *string    `json:"time,omitempty"`
+	Bootloader           *string    `json:"bootloader,omitempty"`
+	Cores                *int32     `json:"cores,omitempty"`
+	Threads              *int32     `json:"threads,omitempty"`
+	ShutdownTimeout      *int32     `json:"shutdown_timeout,omitempty"`
+	Devices              []VMDevice `json:"devices,omitempty"`
+	Status               *VMStatus  `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -390,9 +390,9 @@ func (o *VM) SetShutdownTimeout(v int32) {
 }
 
 // GetDevices returns the Devices field value if set, zero value otherwise.
-func (o *VM) GetDevices() []VMDevicesInner {
+func (o *VM) GetDevices() []VMDevice {
 	if o == nil || isNil(o.Devices) {
-		var ret []VMDevicesInner
+		var ret []VMDevice
 		return ret
 	}
 	return o.Devices
@@ -400,7 +400,7 @@ func (o *VM) GetDevices() []VMDevicesInner {
 
 // GetDevicesOk returns a tuple with the Devices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VM) GetDevicesOk() ([]VMDevicesInner, bool) {
+func (o *VM) GetDevicesOk() ([]VMDevice, bool) {
 	if o == nil || isNil(o.Devices) {
 		return nil, false
 	}
@@ -416,8 +416,8 @@ func (o *VM) HasDevices() bool {
 	return false
 }
 
-// SetDevices gets a reference to the given []VMDevicesInner and assigns it to the Devices field.
-func (o *VM) SetDevices(v []VMDevicesInner) {
+// SetDevices gets a reference to the given []VMDevice and assigns it to the Devices field.
+func (o *VM) SetDevices(v []VMDevice) {
 	o.Devices = v
 }
 

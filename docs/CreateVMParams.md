@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Vcpus** | Pointer to **int32** | Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a separate package. Multiple cores can be configured per CPU by specifying &#x60;cores&#x60; attributes. &#x60;vcpus&#x60; specifies total number of CPU sockets. &#x60;cores&#x60; specifies number of cores per socket. &#x60;threads&#x60; specifies number of threads per core. | [optional] [default to 1]
 **Cores** | Pointer to **int32** | Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a separate package. Multiple cores can be configured per CPU by specifying &#x60;cores&#x60; attributes. &#x60;vcpus&#x60; specifies total number of CPU sockets. &#x60;cores&#x60; specifies number of cores per socket. &#x60;threads&#x60; specifies number of threads per core. | [optional] [default to 1]
 **Threads** | Pointer to **int32** | Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a separate package. Multiple cores can be configured per CPU by specifying &#x60;cores&#x60; attributes. &#x60;vcpus&#x60; specifies total number of CPU sockets. &#x60;cores&#x60; specifies number of cores per socket. &#x60;threads&#x60; specifies number of threads per core. | [optional] [default to 1]
-**Memory** | Pointer to **int32** |  | [optional] 
+**Memory** | Pointer to **int64** |  | [optional] 
 **Bootloader** | Pointer to **string** |  | [optional] [default to "UEFI"]
 **Devices** | Pointer to [**[]VMDeviceCreate**](VMDeviceCreate.md) | &#x60;devices&#x60; is a list of virtualized hardware to add to the newly created Virtual Machine. Failure to attach a device destroys the VM and any resources allocated by the VM devices. | [optional] 
 **Autostart** | Pointer to **bool** |  | [optional] [default to true]
@@ -229,20 +229,20 @@ HasThreads returns a boolean if a field has been set.
 
 ### GetMemory
 
-`func (o *CreateVMParams) GetMemory() int32`
+`func (o *CreateVMParams) GetMemory() int64`
 
 GetMemory returns the Memory field if non-nil, zero value otherwise.
 
 ### GetMemoryOk
 
-`func (o *CreateVMParams) GetMemoryOk() (*int32, bool)`
+`func (o *CreateVMParams) GetMemoryOk() (*int64, bool)`
 
 GetMemoryOk returns a tuple with the Memory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemory
 
-`func (o *CreateVMParams) SetMemory(v int32)`
+`func (o *CreateVMParams) SetMemory(v int64)`
 
 SetMemory sets Memory field to given value.
 

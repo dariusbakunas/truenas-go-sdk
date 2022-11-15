@@ -26,7 +26,7 @@ type CreateVMParams struct {
 	Cores *int32 `json:"cores,omitempty"`
 	// Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a separate package. Multiple cores can be configured per CPU by specifying `cores` attributes. `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads` specifies number of threads per core.
 	Threads    *int32  `json:"threads,omitempty"`
-	Memory     *int32  `json:"memory,omitempty"`
+	Memory     *int64  `json:"memory,omitempty"`
 	Bootloader *string `json:"bootloader,omitempty"`
 	// `devices` is a list of virtualized hardware to add to the newly created Virtual Machine. Failure to attach a device destroys the VM and any resources allocated by the VM devices.
 	Devices   []VMDeviceCreate `json:"devices,omitempty"`
@@ -338,9 +338,9 @@ func (o *CreateVMParams) SetThreads(v int32) {
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *CreateVMParams) GetMemory() int32 {
+func (o *CreateVMParams) GetMemory() int64 {
 	if o == nil || isNil(o.Memory) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Memory
@@ -348,7 +348,7 @@ func (o *CreateVMParams) GetMemory() int32 {
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVMParams) GetMemoryOk() (*int32, bool) {
+func (o *CreateVMParams) GetMemoryOk() (*int64, bool) {
 	if o == nil || isNil(o.Memory) {
 		return nil, false
 	}
@@ -364,8 +364,8 @@ func (o *CreateVMParams) HasMemory() bool {
 	return false
 }
 
-// SetMemory gets a reference to the given int32 and assigns it to the Memory field.
-func (o *CreateVMParams) SetMemory(v int32) {
+// SetMemory gets a reference to the given int64 and assigns it to the Memory field.
+func (o *CreateVMParams) SetMemory(v int64) {
 	o.Memory = &v
 }
 
