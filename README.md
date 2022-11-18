@@ -78,6 +78,7 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*CertificateApi* | [**GetCertificate**](docs/CertificateApi.md#getcertificate) | **Get** /certificate/id/{id} | 
 *CronjobApi* | [**CreateCronJob**](docs/CronjobApi.md#createcronjob) | **Post** /cronjob | 
 *CronjobApi* | [**DeleteCronJob**](docs/CronjobApi.md#deletecronjob) | **Delete** /cronjob/id/{id} | 
 *CronjobApi* | [**GetCronJob**](docs/CronjobApi.md#getcronjob) | **Get** /cronjob/id/{id} | 
@@ -121,6 +122,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Certificate](docs/Certificate.md)
  - [CompositeValue](docs/CompositeValue.md)
  - [CreateCronjobParams](docs/CreateCronjobParams.md)
  - [CreateDatasetParams](docs/CreateDatasetParams.md)

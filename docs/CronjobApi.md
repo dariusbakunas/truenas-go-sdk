@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ## GetCronJob
 
-> CronJob GetCronJob(ctx, id).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
+> CronJob GetCronJob(ctx, id).Execute()
 
 
 
@@ -163,14 +163,10 @@ import (
 
 func main() {
     id := int32(56) // int32 | ID of the cronjob
-    limit := int32(56) // int32 |  (optional)
-    offset := int32(56) // int32 |  (optional)
-    count := true // bool |  (optional)
-    sort := "sort_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CronjobApi.GetCronJob(context.Background(), id).Limit(limit).Offset(offset).Count(count).Sort(sort).Execute()
+    resp, r, err := apiClient.CronjobApi.GetCronJob(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CronjobApi.GetCronJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -196,10 +192,6 @@ Other parameters are passed through a pointer to a apiGetCronJobRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **limit** | **int32** |  | 
- **offset** | **int32** |  | 
- **count** | **bool** |  | 
- **sort** | **string** |  | 
 
 ### Return type
 

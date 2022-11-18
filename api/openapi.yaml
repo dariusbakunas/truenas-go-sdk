@@ -7,6 +7,33 @@ info:
 servers:
 - url: /
 paths:
+  /certificate/id/{id}:
+    get:
+      description: "`query-options.extra` can be specified as query parameters with\
+        \ prefixing them with `extra.` prefix. For example, `extra.retrieve_properties=false`\
+        \ will pass `retrieve_properties` as an extra argument to pool/dataset endpoint."
+      operationId: getCertificate
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Certificate'
+          description: CronJob details
+        "401":
+          description: No authorization for this endpoint
+      security:
+      - bearerAuth: []
+      tags:
+      - certificate
   /pool:
     get:
       operationId: listPools
@@ -287,34 +314,6 @@ paths:
         schema:
           type: integer
         style: simple
-      - explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: count
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: sort
-        required: false
-        schema:
-          type: string
-        style: form
       responses:
         "200":
           content:
@@ -2311,6 +2310,148 @@ components:
           type: string
       required:
       - rawvalue
+      type: object
+    Certificate:
+      example:
+        country: country
+        cert_type: cert_type
+        internal: internal
+        key_type: key_type
+        city: city
+        certificate: certificate
+        lifetime: 5
+        chain_list:
+        - chain_list
+        - chain_list
+        DN: DN
+        type: 6
+        revoked: true
+        cert_type_existing: true
+        issuer: issuer
+        privatekey: privatekey
+        certificate_path: certificate_path
+        common: common
+        key_length: 1
+        fingerprint: fingerprint
+        from: from
+        id: 0
+        state: state
+        organizational_unit: organizational_unit
+        email: email
+        CA_type_existing: true
+        san:
+        - san
+        - san
+        cert_type_CSR: true
+        chain: true
+        privatekey_path: privatekey_path
+        cert_type_internal: true
+        can_be_revoked: true
+        root_path: root_path
+        CA_type_internal: true
+        extensions:
+          key: ""
+        digest_algorithm: digest_algorithm
+        serial: 2
+        CA_type_intermediate: true
+        subject_name_hash: 5
+        organization: organization
+        name: name
+        csr_path: csr_path
+        until: until
+        parsed: true
+      properties:
+        id:
+          type: integer
+        type:
+          type: integer
+        name:
+          type: string
+        certificate:
+          type: string
+        privatekey:
+          type: string
+        root_path:
+          type: string
+        certificate_path:
+          type: string
+        privatekey_path:
+          type: string
+        csr_path:
+          type: string
+        cert_type:
+          type: string
+        revoked:
+          type: boolean
+        can_be_revoked:
+          type: boolean
+        internal:
+          type: string
+        CA_type_existing:
+          type: boolean
+        CA_type_internal:
+          type: boolean
+        CA_type_intermediate:
+          type: boolean
+        cert_type_existing:
+          type: boolean
+        cert_type_internal:
+          type: boolean
+        cert_type_CSR:
+          type: boolean
+        issuer:
+          type: string
+        chain_list:
+          items:
+            type: string
+          type: array
+        key_length:
+          type: integer
+        key_type:
+          type: string
+        country:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+        organization:
+          type: string
+        organizational_unit:
+          type: string
+        common:
+          type: string
+        san:
+          items:
+            type: string
+          type: array
+        email:
+          type: string
+        DN:
+          type: string
+        subject_name_hash:
+          format: int64
+          type: integer
+        extensions:
+          additionalProperties: true
+          properties: {}
+          type: object
+        digest_algorithm:
+          type: string
+        lifetime:
+          type: integer
+        from:
+          type: string
+        until:
+          type: string
+        serial:
+          type: integer
+        chain:
+          type: boolean
+        fingerprint:
+          type: string
+        parsed:
+          type: boolean
       type: object
     CronJob:
       example:
