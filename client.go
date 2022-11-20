@@ -49,6 +49,10 @@ type APIClient struct {
 
 	// API Services
 
+	CertificateApi *CertificateApiService
+
+	CoreApi *CoreApiService
+
 	CronjobApi *CronjobApiService
 
 	DatasetApi *DatasetApiService
@@ -84,6 +88,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.CertificateApi = (*CertificateApiService)(&c.common)
+	c.CoreApi = (*CoreApiService)(&c.common)
 	c.CronjobApi = (*CronjobApiService)(&c.common)
 	c.DatasetApi = (*DatasetApiService)(&c.common)
 	c.GroupApi = (*GroupApiService)(&c.common)

@@ -1,6 +1,8 @@
 .travis.yml
 README.md
 api/openapi.yaml
+api_certificate.go
+api_core.go
 api_cronjob.go
 api_dataset.go
 api_group.go
@@ -12,7 +14,10 @@ api_user.go
 api_vm.go
 client.go
 configuration.go
+docs/Certificate.md
+docs/CertificateApi.md
 docs/CompositeValue.md
+docs/CoreApi.md
 docs/CreateCronjobParams.md
 docs/CreateDatasetParams.md
 docs/CreateDatasetParamsEncryptionOptions.md
@@ -30,6 +35,8 @@ docs/DeleteGroupParams.md
 docs/DeleteUserParams.md
 docs/Group.md
 docs/GroupApi.md
+docs/Job.md
+docs/JobProgress.md
 docs/NetworkApi.md
 docs/NetworkConfig.md
 docs/NetworkConfigServiceAnnouncement.md
@@ -55,6 +62,7 @@ docs/VmApi.md
 git_push.sh
 go.mod
 go.sum
+model_certificate.go
 model_composite_value.go
 model_create_cronjob_params.go
 model_create_dataset_params.go
@@ -70,6 +78,8 @@ model_dataset.go
 model_delete_group_params.go
 model_delete_user_params.go
 model_group.go
+model_job.go
+model_job_progress.go
 model_network_config.go
 model_network_config_service_announcement.go
 model_network_summary.go
@@ -87,6 +97,8 @@ model_vm.go
 model_vm_device.go
 model_vm_status.go
 response.go
+test/api_certificate_test.go
+test/api_core_test.go
 test/api_cronjob_test.go
 test/api_dataset_test.go
 test/api_group_test.go

@@ -78,6 +78,8 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*CertificateApi* | [**GetCertificate**](docs/CertificateApi.md#getcertificate) | **Get** /certificate/id/{id} | 
+*CoreApi* | [**GetJobs**](docs/CoreApi.md#getjobs) | **Get** /core/get_jobs | 
 *CronjobApi* | [**CreateCronJob**](docs/CronjobApi.md#createcronjob) | **Post** /cronjob | 
 *CronjobApi* | [**DeleteCronJob**](docs/CronjobApi.md#deletecronjob) | **Delete** /cronjob/id/{id} | 
 *CronjobApi* | [**GetCronJob**](docs/CronjobApi.md#getcronjob) | **Get** /cronjob/id/{id} | 
@@ -121,6 +123,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Certificate](docs/Certificate.md)
  - [CompositeValue](docs/CompositeValue.md)
  - [CreateCronjobParams](docs/CreateCronjobParams.md)
  - [CreateDatasetParams](docs/CreateDatasetParams.md)
@@ -136,6 +139,8 @@ Class | Method | HTTP request | Description
  - [DeleteGroupParams](docs/DeleteGroupParams.md)
  - [DeleteUserParams](docs/DeleteUserParams.md)
  - [Group](docs/Group.md)
+ - [Job](docs/Job.md)
+ - [JobProgress](docs/JobProgress.md)
  - [NetworkConfig](docs/NetworkConfig.md)
  - [NetworkConfigServiceAnnouncement](docs/NetworkConfigServiceAnnouncement.md)
  - [NetworkSummary](docs/NetworkSummary.md)

@@ -225,30 +225,6 @@ type ApiGetCronJobRequest struct {
 	ctx        context.Context
 	ApiService *CronjobApiService
 	id         int32
-	limit      *int32
-	offset     *int32
-	count      *bool
-	sort       *string
-}
-
-func (r ApiGetCronJobRequest) Limit(limit int32) ApiGetCronJobRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiGetCronJobRequest) Offset(offset int32) ApiGetCronJobRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiGetCronJobRequest) Count(count bool) ApiGetCronJobRequest {
-	r.count = &count
-	return r
-}
-
-func (r ApiGetCronJobRequest) Sort(sort string) ApiGetCronJobRequest {
-	r.sort = &sort
-	return r
 }
 
 func (r ApiGetCronJobRequest) Execute() (*CronJob, *http.Response, error) {
@@ -293,18 +269,6 @@ func (a *CronjobApiService) GetCronJobExecute(r ApiGetCronJobRequest) (*CronJob,
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
-	}
-	if r.offset != nil {
-		localVarQueryParams.Add("offset", parameterToString(*r.offset, ""))
-	}
-	if r.count != nil {
-		localVarQueryParams.Add("count", parameterToString(*r.count, ""))
-	}
-	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
