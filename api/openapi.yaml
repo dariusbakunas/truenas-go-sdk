@@ -7,6 +7,53 @@ info:
 servers:
 - url: /
 paths:
+  /core/get_jobs:
+    get:
+      description: |-
+        Get the long running jobs.
+
+        `query-options.extra` can be specified as query parameters with prefixing them with `extra.` prefix. For example, `extra.retrieve_properties=false` will pass `retrieve_properties` as an extra argument to pool/dataset endpoint.
+      operationId: getJobs
+      parameters:
+      - explode: true
+        in: query
+        name: id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: method
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: state
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: abortable
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobsResponse'
+          description: List of Jobs
+        "401":
+          description: No authorization for this endpoint
+      tags:
+      - core
   /certificate/id/{id}:
     get:
       description: "`query-options.extra` can be specified as query parameters with\
@@ -3200,6 +3247,71 @@ components:
       - id
       - username
       type: object
+    Job:
+      example:
+        exception: exception
+        result:
+          key: ""
+        logs_excerpt: logs_excerpt
+        method: method
+        abortable: true
+        description: description
+        progress:
+          extra: extra
+          description: description
+          percent: 6.027456183070403
+        arguments:
+        - key: ""
+        - key: ""
+        logs_path: logs_path
+        id: 0
+        state: PENDING
+        error: error
+      properties:
+        id:
+          type: integer
+        abortable:
+          type: boolean
+        arguments:
+          items:
+            additionalProperties: true
+            properties: {}
+            type: object
+          type: array
+        description:
+          type: string
+        error:
+          type: string
+        exception:
+          type: string
+        logs_excerpt:
+          type: string
+        logs_path:
+          type: string
+        method:
+          type: string
+        progress:
+          $ref: '#/components/schemas/Job_progress'
+        result:
+          additionalProperties: true
+          properties: {}
+          type: object
+        state:
+          enum:
+          - PENDING
+          - RUNNING
+          - HOLD
+          - ERROR
+          - FAILED
+          - ABORTED
+          - SUCCESS
+          - FINISHED
+          - LOCKED
+          - WAITING
+          type: string
+      required:
+      - id
+      type: object
     VMDevice:
       example:
         vm: 3
@@ -3231,6 +3343,10 @@ components:
       required:
       - dtype
       type: object
+    JobsResponse:
+      items:
+        $ref: '#/components/schemas/Job'
+      type: array
     UsersResponse:
       items:
         $ref: '#/components/schemas/User'
@@ -3387,6 +3503,19 @@ components:
           type: array
         bsdgrp_smb:
           type: bool
+      type: object
+    Job_progress:
+      example:
+        extra: extra
+        description: description
+        percent: 6.027456183070403
+      properties:
+        percent:
+          type: number
+        description:
+          type: string
+        extra:
+          type: string
       type: object
     VM_status:
       example:
