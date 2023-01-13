@@ -1,0 +1,5 @@
+packageName: angelfish
+isGoSubmodule: true
+disallowAdditionalPropertiesIfNotPresent: false
+apiTests: false
+modelTests: false
