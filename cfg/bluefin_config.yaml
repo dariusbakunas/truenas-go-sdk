@@ -1,4 +1,4 @@
-packageName: angelfish
+packageName: bluefin
 isGoSubmodule: true
 disallowAdditionalPropertiesIfNotPresent: false
 apiTests: false
