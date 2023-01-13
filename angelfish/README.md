@@ -22,7 +22,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import angelfish "github.com/dariusbakunas/truenas-go-sdk"
+import angelfish "github.com/dariusbakunas/truenas-go-sdk/angelfish"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
