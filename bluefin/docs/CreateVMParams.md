@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CommandLineArgs** | Pointer to **string** |  | [optional] [default to ""]
 **CpuMode** | Pointer to **string** |  | [optional] [default to "CUSTOM"]
 **CpuModel** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -11,9 +12,14 @@ Name | Type | Description | Notes
 **Vcpus** | Pointer to **int32** | Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a separate package. Multiple cores can be configured per CPU by specifying &#x60;cores&#x60; attributes. &#x60;vcpus&#x60; specifies total number of CPU sockets. &#x60;cores&#x60; specifies number of cores per socket. &#x60;threads&#x60; specifies number of threads per core. | [optional] [default to 1]
 **Cores** | Pointer to **int32** | Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a separate package. Multiple cores can be configured per CPU by specifying &#x60;cores&#x60; attributes. &#x60;vcpus&#x60; specifies total number of CPU sockets. &#x60;cores&#x60; specifies number of cores per socket. &#x60;threads&#x60; specifies number of threads per core. | [optional] [default to 1]
 **Threads** | Pointer to **int32** | Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a separate package. Multiple cores can be configured per CPU by specifying &#x60;cores&#x60; attributes. &#x60;vcpus&#x60; specifies total number of CPU sockets. &#x60;cores&#x60; specifies number of cores per socket. &#x60;threads&#x60; specifies number of threads per core. | [optional] [default to 1]
+**Cpuset** | Pointer to **NullableString** |  | [optional] 
+**Nodeset** | Pointer to **NullableString** |  | [optional] 
+**PinVcpus** | Pointer to **bool** |  | [optional] [default to false]
+**SuspendOnSnapshot** | Pointer to **bool** |  | [optional] [default to false]
 **Memory** | Pointer to **int64** |  | [optional] 
+**MinMemory** | Pointer to **NullableInt64** |  | [optional] 
+**HypervEnlightenments** | Pointer to **bool** | &#x60;hyperv_enlightenments&#x60; can be used to enable subset of predefined Hyper-V enlightenments for Windows guests. These enlightenments improve performance and enable otherwise missing features. | [optional] [default to false]
 **Bootloader** | Pointer to **string** |  | [optional] [default to "UEFI"]
-**Devices** | Pointer to [**[]VMDevice**](VMDevice.md) | &#x60;devices&#x60; is a list of virtualized hardware to add to the newly created Virtual Machine. Failure to attach a device destroys the VM and any resources allocated by the VM devices. | [optional] 
 **Autostart** | Pointer to **bool** |  | [optional] [default to true]
 **HideFromMsr** | Pointer to **bool** | &#x60;hide_from_msr&#x60; is a boolean which when set will hide the KVM hypervisor from standard MSR based discovery and is useful to enable when doing GPU passthrough. | [optional] [default to false]
 **EnsureDisplayDevice** | Pointer to **bool** | &#x60;ensure_display_device&#x60; when set ( the default ) will ensure that the guest always has access to a video device. For headless installations like ubuntu server this is required for the guest to operate properly. However for cases where consumer would like to use GPU passthrough and does not want a display device added should set this to &#x60;false&#x60;. | [optional] [default to true]
@@ -41,6 +47,31 @@ will change when the set of required properties is changed
 NewCreateVMParamsWithDefaults instantiates a new CreateVMParams object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCommandLineArgs
+
+`func (o *CreateVMParams) GetCommandLineArgs() string`
+
+GetCommandLineArgs returns the CommandLineArgs field if non-nil, zero value otherwise.
+
+### GetCommandLineArgsOk
+
+`func (o *CreateVMParams) GetCommandLineArgsOk() (*string, bool)`
+
+GetCommandLineArgsOk returns a tuple with the CommandLineArgs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommandLineArgs
+
+`func (o *CreateVMParams) SetCommandLineArgs(v string)`
+
+SetCommandLineArgs sets CommandLineArgs field to given value.
+
+### HasCommandLineArgs
+
+`func (o *CreateVMParams) HasCommandLineArgs() bool`
+
+HasCommandLineArgs returns a boolean if a field has been set.
 
 ### GetCpuMode
 
@@ -227,6 +258,126 @@ SetThreads sets Threads field to given value.
 
 HasThreads returns a boolean if a field has been set.
 
+### GetCpuset
+
+`func (o *CreateVMParams) GetCpuset() string`
+
+GetCpuset returns the Cpuset field if non-nil, zero value otherwise.
+
+### GetCpusetOk
+
+`func (o *CreateVMParams) GetCpusetOk() (*string, bool)`
+
+GetCpusetOk returns a tuple with the Cpuset field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCpuset
+
+`func (o *CreateVMParams) SetCpuset(v string)`
+
+SetCpuset sets Cpuset field to given value.
+
+### HasCpuset
+
+`func (o *CreateVMParams) HasCpuset() bool`
+
+HasCpuset returns a boolean if a field has been set.
+
+### SetCpusetNil
+
+`func (o *CreateVMParams) SetCpusetNil(b bool)`
+
+ SetCpusetNil sets the value for Cpuset to be an explicit nil
+
+### UnsetCpuset
+`func (o *CreateVMParams) UnsetCpuset()`
+
+UnsetCpuset ensures that no value is present for Cpuset, not even an explicit nil
+### GetNodeset
+
+`func (o *CreateVMParams) GetNodeset() string`
+
+GetNodeset returns the Nodeset field if non-nil, zero value otherwise.
+
+### GetNodesetOk
+
+`func (o *CreateVMParams) GetNodesetOk() (*string, bool)`
+
+GetNodesetOk returns a tuple with the Nodeset field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNodeset
+
+`func (o *CreateVMParams) SetNodeset(v string)`
+
+SetNodeset sets Nodeset field to given value.
+
+### HasNodeset
+
+`func (o *CreateVMParams) HasNodeset() bool`
+
+HasNodeset returns a boolean if a field has been set.
+
+### SetNodesetNil
+
+`func (o *CreateVMParams) SetNodesetNil(b bool)`
+
+ SetNodesetNil sets the value for Nodeset to be an explicit nil
+
+### UnsetNodeset
+`func (o *CreateVMParams) UnsetNodeset()`
+
+UnsetNodeset ensures that no value is present for Nodeset, not even an explicit nil
+### GetPinVcpus
+
+`func (o *CreateVMParams) GetPinVcpus() bool`
+
+GetPinVcpus returns the PinVcpus field if non-nil, zero value otherwise.
+
+### GetPinVcpusOk
+
+`func (o *CreateVMParams) GetPinVcpusOk() (*bool, bool)`
+
+GetPinVcpusOk returns a tuple with the PinVcpus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPinVcpus
+
+`func (o *CreateVMParams) SetPinVcpus(v bool)`
+
+SetPinVcpus sets PinVcpus field to given value.
+
+### HasPinVcpus
+
+`func (o *CreateVMParams) HasPinVcpus() bool`
+
+HasPinVcpus returns a boolean if a field has been set.
+
+### GetSuspendOnSnapshot
+
+`func (o *CreateVMParams) GetSuspendOnSnapshot() bool`
+
+GetSuspendOnSnapshot returns the SuspendOnSnapshot field if non-nil, zero value otherwise.
+
+### GetSuspendOnSnapshotOk
+
+`func (o *CreateVMParams) GetSuspendOnSnapshotOk() (*bool, bool)`
+
+GetSuspendOnSnapshotOk returns a tuple with the SuspendOnSnapshot field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSuspendOnSnapshot
+
+`func (o *CreateVMParams) SetSuspendOnSnapshot(v bool)`
+
+SetSuspendOnSnapshot sets SuspendOnSnapshot field to given value.
+
+### HasSuspendOnSnapshot
+
+`func (o *CreateVMParams) HasSuspendOnSnapshot() bool`
+
+HasSuspendOnSnapshot returns a boolean if a field has been set.
+
 ### GetMemory
 
 `func (o *CreateVMParams) GetMemory() int64`
@@ -252,6 +403,66 @@ SetMemory sets Memory field to given value.
 
 HasMemory returns a boolean if a field has been set.
 
+### GetMinMemory
+
+`func (o *CreateVMParams) GetMinMemory() int64`
+
+GetMinMemory returns the MinMemory field if non-nil, zero value otherwise.
+
+### GetMinMemoryOk
+
+`func (o *CreateVMParams) GetMinMemoryOk() (*int64, bool)`
+
+GetMinMemoryOk returns a tuple with the MinMemory field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMinMemory
+
+`func (o *CreateVMParams) SetMinMemory(v int64)`
+
+SetMinMemory sets MinMemory field to given value.
+
+### HasMinMemory
+
+`func (o *CreateVMParams) HasMinMemory() bool`
+
+HasMinMemory returns a boolean if a field has been set.
+
+### SetMinMemoryNil
+
+`func (o *CreateVMParams) SetMinMemoryNil(b bool)`
+
+ SetMinMemoryNil sets the value for MinMemory to be an explicit nil
+
+### UnsetMinMemory
+`func (o *CreateVMParams) UnsetMinMemory()`
+
+UnsetMinMemory ensures that no value is present for MinMemory, not even an explicit nil
+### GetHypervEnlightenments
+
+`func (o *CreateVMParams) GetHypervEnlightenments() bool`
+
+GetHypervEnlightenments returns the HypervEnlightenments field if non-nil, zero value otherwise.
+
+### GetHypervEnlightenmentsOk
+
+`func (o *CreateVMParams) GetHypervEnlightenmentsOk() (*bool, bool)`
+
+GetHypervEnlightenmentsOk returns a tuple with the HypervEnlightenments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHypervEnlightenments
+
+`func (o *CreateVMParams) SetHypervEnlightenments(v bool)`
+
+SetHypervEnlightenments sets HypervEnlightenments field to given value.
+
+### HasHypervEnlightenments
+
+`func (o *CreateVMParams) HasHypervEnlightenments() bool`
+
+HasHypervEnlightenments returns a boolean if a field has been set.
+
 ### GetBootloader
 
 `func (o *CreateVMParams) GetBootloader() string`
@@ -276,31 +487,6 @@ SetBootloader sets Bootloader field to given value.
 `func (o *CreateVMParams) HasBootloader() bool`
 
 HasBootloader returns a boolean if a field has been set.
-
-### GetDevices
-
-`func (o *CreateVMParams) GetDevices() []VMDevice`
-
-GetDevices returns the Devices field if non-nil, zero value otherwise.
-
-### GetDevicesOk
-
-`func (o *CreateVMParams) GetDevicesOk() (*[]VMDevice, bool)`
-
-GetDevicesOk returns a tuple with the Devices field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDevices
-
-`func (o *CreateVMParams) SetDevices(v []VMDevice)`
-
-SetDevices sets Devices field to given value.
-
-### HasDevices
-
-`func (o *CreateVMParams) HasDevices() bool`
-
-HasDevices returns a boolean if a field has been set.
 
 ### GetAutostart
 

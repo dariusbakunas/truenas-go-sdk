@@ -8,13 +8,27 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Vcpus** | Pointer to **int32** |  | [optional] 
-**Memory** | Pointer to **int32** |  | [optional] 
+**Memory** | Pointer to **int64** |  | [optional] 
+**MinMemory** | Pointer to **int64** |  | [optional] 
 **Autostart** | Pointer to **bool** |  | [optional] 
 **Time** | Pointer to **string** |  | [optional] 
 **Bootloader** | Pointer to **string** |  | [optional] 
 **Cores** | Pointer to **int32** |  | [optional] 
 **Threads** | Pointer to **int32** |  | [optional] 
+**HypervEnlightenments** | Pointer to **bool** |  | [optional] 
 **ShutdownTimeout** | Pointer to **int32** |  | [optional] 
+**CpuMode** | Pointer to **string** |  | [optional] 
+**CpuModel** | Pointer to **string** |  | [optional] 
+**Cpuset** | Pointer to **string** |  | [optional] 
+**Nodeset** | Pointer to **string** |  | [optional] 
+**PinVcpus** | Pointer to **bool** |  | [optional] 
+**HideFromMsr** | Pointer to **bool** |  | [optional] 
+**SuspendOnSnapshot** | Pointer to **bool** |  | [optional] 
+**EnsureDisplayDevice** | Pointer to **bool** |  | [optional] 
+**ArchType** | Pointer to **string** |  | [optional] 
+**MachineType** | Pointer to **string** |  | [optional] 
+**Uuid** | Pointer to **string** |  | [optional] 
+**CommandLineArgs** | Pointer to **string** |  | [optional] 
 **Devices** | Pointer to [**[]VMDevice**](VMDevice.md) |  | [optional] 
 **Status** | Pointer to [**VMStatus**](VMStatus.md) |  | [optional] 
 
@@ -129,20 +143,20 @@ HasVcpus returns a boolean if a field has been set.
 
 ### GetMemory
 
-`func (o *VM) GetMemory() int32`
+`func (o *VM) GetMemory() int64`
 
 GetMemory returns the Memory field if non-nil, zero value otherwise.
 
 ### GetMemoryOk
 
-`func (o *VM) GetMemoryOk() (*int32, bool)`
+`func (o *VM) GetMemoryOk() (*int64, bool)`
 
 GetMemoryOk returns a tuple with the Memory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemory
 
-`func (o *VM) SetMemory(v int32)`
+`func (o *VM) SetMemory(v int64)`
 
 SetMemory sets Memory field to given value.
 
@@ -151,6 +165,31 @@ SetMemory sets Memory field to given value.
 `func (o *VM) HasMemory() bool`
 
 HasMemory returns a boolean if a field has been set.
+
+### GetMinMemory
+
+`func (o *VM) GetMinMemory() int64`
+
+GetMinMemory returns the MinMemory field if non-nil, zero value otherwise.
+
+### GetMinMemoryOk
+
+`func (o *VM) GetMinMemoryOk() (*int64, bool)`
+
+GetMinMemoryOk returns a tuple with the MinMemory field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMinMemory
+
+`func (o *VM) SetMinMemory(v int64)`
+
+SetMinMemory sets MinMemory field to given value.
+
+### HasMinMemory
+
+`func (o *VM) HasMinMemory() bool`
+
+HasMinMemory returns a boolean if a field has been set.
 
 ### GetAutostart
 
@@ -277,6 +316,31 @@ SetThreads sets Threads field to given value.
 
 HasThreads returns a boolean if a field has been set.
 
+### GetHypervEnlightenments
+
+`func (o *VM) GetHypervEnlightenments() bool`
+
+GetHypervEnlightenments returns the HypervEnlightenments field if non-nil, zero value otherwise.
+
+### GetHypervEnlightenmentsOk
+
+`func (o *VM) GetHypervEnlightenmentsOk() (*bool, bool)`
+
+GetHypervEnlightenmentsOk returns a tuple with the HypervEnlightenments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHypervEnlightenments
+
+`func (o *VM) SetHypervEnlightenments(v bool)`
+
+SetHypervEnlightenments sets HypervEnlightenments field to given value.
+
+### HasHypervEnlightenments
+
+`func (o *VM) HasHypervEnlightenments() bool`
+
+HasHypervEnlightenments returns a boolean if a field has been set.
+
 ### GetShutdownTimeout
 
 `func (o *VM) GetShutdownTimeout() int32`
@@ -301,6 +365,306 @@ SetShutdownTimeout sets ShutdownTimeout field to given value.
 `func (o *VM) HasShutdownTimeout() bool`
 
 HasShutdownTimeout returns a boolean if a field has been set.
+
+### GetCpuMode
+
+`func (o *VM) GetCpuMode() string`
+
+GetCpuMode returns the CpuMode field if non-nil, zero value otherwise.
+
+### GetCpuModeOk
+
+`func (o *VM) GetCpuModeOk() (*string, bool)`
+
+GetCpuModeOk returns a tuple with the CpuMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCpuMode
+
+`func (o *VM) SetCpuMode(v string)`
+
+SetCpuMode sets CpuMode field to given value.
+
+### HasCpuMode
+
+`func (o *VM) HasCpuMode() bool`
+
+HasCpuMode returns a boolean if a field has been set.
+
+### GetCpuModel
+
+`func (o *VM) GetCpuModel() string`
+
+GetCpuModel returns the CpuModel field if non-nil, zero value otherwise.
+
+### GetCpuModelOk
+
+`func (o *VM) GetCpuModelOk() (*string, bool)`
+
+GetCpuModelOk returns a tuple with the CpuModel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCpuModel
+
+`func (o *VM) SetCpuModel(v string)`
+
+SetCpuModel sets CpuModel field to given value.
+
+### HasCpuModel
+
+`func (o *VM) HasCpuModel() bool`
+
+HasCpuModel returns a boolean if a field has been set.
+
+### GetCpuset
+
+`func (o *VM) GetCpuset() string`
+
+GetCpuset returns the Cpuset field if non-nil, zero value otherwise.
+
+### GetCpusetOk
+
+`func (o *VM) GetCpusetOk() (*string, bool)`
+
+GetCpusetOk returns a tuple with the Cpuset field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCpuset
+
+`func (o *VM) SetCpuset(v string)`
+
+SetCpuset sets Cpuset field to given value.
+
+### HasCpuset
+
+`func (o *VM) HasCpuset() bool`
+
+HasCpuset returns a boolean if a field has been set.
+
+### GetNodeset
+
+`func (o *VM) GetNodeset() string`
+
+GetNodeset returns the Nodeset field if non-nil, zero value otherwise.
+
+### GetNodesetOk
+
+`func (o *VM) GetNodesetOk() (*string, bool)`
+
+GetNodesetOk returns a tuple with the Nodeset field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNodeset
+
+`func (o *VM) SetNodeset(v string)`
+
+SetNodeset sets Nodeset field to given value.
+
+### HasNodeset
+
+`func (o *VM) HasNodeset() bool`
+
+HasNodeset returns a boolean if a field has been set.
+
+### GetPinVcpus
+
+`func (o *VM) GetPinVcpus() bool`
+
+GetPinVcpus returns the PinVcpus field if non-nil, zero value otherwise.
+
+### GetPinVcpusOk
+
+`func (o *VM) GetPinVcpusOk() (*bool, bool)`
+
+GetPinVcpusOk returns a tuple with the PinVcpus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPinVcpus
+
+`func (o *VM) SetPinVcpus(v bool)`
+
+SetPinVcpus sets PinVcpus field to given value.
+
+### HasPinVcpus
+
+`func (o *VM) HasPinVcpus() bool`
+
+HasPinVcpus returns a boolean if a field has been set.
+
+### GetHideFromMsr
+
+`func (o *VM) GetHideFromMsr() bool`
+
+GetHideFromMsr returns the HideFromMsr field if non-nil, zero value otherwise.
+
+### GetHideFromMsrOk
+
+`func (o *VM) GetHideFromMsrOk() (*bool, bool)`
+
+GetHideFromMsrOk returns a tuple with the HideFromMsr field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHideFromMsr
+
+`func (o *VM) SetHideFromMsr(v bool)`
+
+SetHideFromMsr sets HideFromMsr field to given value.
+
+### HasHideFromMsr
+
+`func (o *VM) HasHideFromMsr() bool`
+
+HasHideFromMsr returns a boolean if a field has been set.
+
+### GetSuspendOnSnapshot
+
+`func (o *VM) GetSuspendOnSnapshot() bool`
+
+GetSuspendOnSnapshot returns the SuspendOnSnapshot field if non-nil, zero value otherwise.
+
+### GetSuspendOnSnapshotOk
+
+`func (o *VM) GetSuspendOnSnapshotOk() (*bool, bool)`
+
+GetSuspendOnSnapshotOk returns a tuple with the SuspendOnSnapshot field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSuspendOnSnapshot
+
+`func (o *VM) SetSuspendOnSnapshot(v bool)`
+
+SetSuspendOnSnapshot sets SuspendOnSnapshot field to given value.
+
+### HasSuspendOnSnapshot
+
+`func (o *VM) HasSuspendOnSnapshot() bool`
+
+HasSuspendOnSnapshot returns a boolean if a field has been set.
+
+### GetEnsureDisplayDevice
+
+`func (o *VM) GetEnsureDisplayDevice() bool`
+
+GetEnsureDisplayDevice returns the EnsureDisplayDevice field if non-nil, zero value otherwise.
+
+### GetEnsureDisplayDeviceOk
+
+`func (o *VM) GetEnsureDisplayDeviceOk() (*bool, bool)`
+
+GetEnsureDisplayDeviceOk returns a tuple with the EnsureDisplayDevice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnsureDisplayDevice
+
+`func (o *VM) SetEnsureDisplayDevice(v bool)`
+
+SetEnsureDisplayDevice sets EnsureDisplayDevice field to given value.
+
+### HasEnsureDisplayDevice
+
+`func (o *VM) HasEnsureDisplayDevice() bool`
+
+HasEnsureDisplayDevice returns a boolean if a field has been set.
+
+### GetArchType
+
+`func (o *VM) GetArchType() string`
+
+GetArchType returns the ArchType field if non-nil, zero value otherwise.
+
+### GetArchTypeOk
+
+`func (o *VM) GetArchTypeOk() (*string, bool)`
+
+GetArchTypeOk returns a tuple with the ArchType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArchType
+
+`func (o *VM) SetArchType(v string)`
+
+SetArchType sets ArchType field to given value.
+
+### HasArchType
+
+`func (o *VM) HasArchType() bool`
+
+HasArchType returns a boolean if a field has been set.
+
+### GetMachineType
+
+`func (o *VM) GetMachineType() string`
+
+GetMachineType returns the MachineType field if non-nil, zero value otherwise.
+
+### GetMachineTypeOk
+
+`func (o *VM) GetMachineTypeOk() (*string, bool)`
+
+GetMachineTypeOk returns a tuple with the MachineType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMachineType
+
+`func (o *VM) SetMachineType(v string)`
+
+SetMachineType sets MachineType field to given value.
+
+### HasMachineType
+
+`func (o *VM) HasMachineType() bool`
+
+HasMachineType returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *VM) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *VM) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *VM) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *VM) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
+
+### GetCommandLineArgs
+
+`func (o *VM) GetCommandLineArgs() string`
+
+GetCommandLineArgs returns the CommandLineArgs field if non-nil, zero value otherwise.
+
+### GetCommandLineArgsOk
+
+`func (o *VM) GetCommandLineArgsOk() (*string, bool)`
+
+GetCommandLineArgsOk returns a tuple with the CommandLineArgs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommandLineArgs
+
+`func (o *VM) SetCommandLineArgs(v string)`
+
+SetCommandLineArgs sets CommandLineArgs field to given value.
+
+### HasCommandLineArgs
+
+`func (o *VM) HasCommandLineArgs() bool`
+
+HasCommandLineArgs returns a boolean if a field has been set.
 
 ### GetDevices
 
