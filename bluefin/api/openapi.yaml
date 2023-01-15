@@ -2808,34 +2808,57 @@ components:
       type: object
     ShareNFS:
       example:
+        aliases:
+        - aliases
+        - aliases
         maproot_group: maproot_group
         hosts:
         - hosts
         - hosts
-        maproot_user: maproot_user
         networks:
         - networks
         - networks
+        maproot_user: maproot_user
         enabled: true
         alldirs: true
+        path: path
         mapall_user: mapall_user
         mapall_group: mapall_group
         security:
-        - security
-        - security
-        paths:
-        - paths
-        - paths
+        - SYS
+        - SYS
         comment: comment
         id: 0
-        quiet: true
-        locked: true
-        ro: true
+        quiet: false
+        ro: false
       properties:
         id:
           type: integer
-        comment:
+        path:
+          description: '`path` local path to be exported.'
+          title: path
           type: string
+        aliases:
+          default: []
+          description: "`aliases` IGNORED, for now."
+          items:
+            title: path
+            type: string
+          title: aliases
+          type: array
+        comment:
+          default: ""
+          type: string
+        networks:
+          default: []
+          description: |-
+            `networks` is a list of authorized networks that are allowed to access the share having format
+            "network/mask" CIDR notation. If empty, all networks are allowed.
+          items:
+            title: network
+            type: string
+          title: networks
+          type: array
         hosts:
           items:
             type: string
@@ -2843,33 +2866,35 @@ components:
         alldirs:
           type: boolean
         ro:
+          default: false
           type: boolean
         quiet:
+          default: false
           type: boolean
         maproot_user:
+          nullable: true
           type: string
         maproot_group:
+          nullable: true
           type: string
         mapall_user:
+          nullable: true
           type: string
         mapall_group:
+          nullable: true
           type: string
         security:
           items:
+            enum:
+            - SYS
+            - KRB5
+            - KRB5I
+            - KRB5P
             type: string
           type: array
         enabled:
+          default: true
           type: boolean
-        locked:
-          type: boolean
-        paths:
-          items:
-            type: string
-          type: array
-        networks:
-          items:
-            type: string
-          type: array
       required:
       - id
       - paths

@@ -5,26 +5,26 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int32** |  | 
-**Comment** | Pointer to **string** |  | [optional] 
+**Path** | Pointer to **string** | &#x60;path&#x60; local path to be exported. | [optional] 
+**Aliases** | Pointer to **[]string** | &#x60;aliases&#x60; IGNORED, for now. | [optional] [default to []]
+**Comment** | Pointer to **string** |  | [optional] [default to ""]
+**Networks** | Pointer to **[]string** | &#x60;networks&#x60; is a list of authorized networks that are allowed to access the share having format \&quot;network/mask\&quot; CIDR notation. If empty, all networks are allowed. | [optional] [default to []]
 **Hosts** | Pointer to **[]string** |  | [optional] 
 **Alldirs** | Pointer to **bool** |  | [optional] 
-**Ro** | Pointer to **bool** |  | [optional] 
-**Quiet** | Pointer to **bool** |  | [optional] 
-**MaprootUser** | Pointer to **string** |  | [optional] 
-**MaprootGroup** | Pointer to **string** |  | [optional] 
-**MapallUser** | Pointer to **string** |  | [optional] 
-**MapallGroup** | Pointer to **string** |  | [optional] 
+**Ro** | Pointer to **bool** |  | [optional] [default to false]
+**Quiet** | Pointer to **bool** |  | [optional] [default to false]
+**MaprootUser** | Pointer to **NullableString** |  | [optional] 
+**MaprootGroup** | Pointer to **NullableString** |  | [optional] 
+**MapallUser** | Pointer to **NullableString** |  | [optional] 
+**MapallGroup** | Pointer to **NullableString** |  | [optional] 
 **Security** | Pointer to **[]string** |  | [optional] 
-**Enabled** | Pointer to **bool** |  | [optional] 
-**Locked** | Pointer to **bool** |  | [optional] 
-**Paths** | **[]string** |  | 
-**Networks** | Pointer to **[]string** |  | [optional] 
+**Enabled** | Pointer to **bool** |  | [optional] [default to true]
 
 ## Methods
 
 ### NewShareNFS
 
-`func NewShareNFS(id int32, paths []string, ) *ShareNFS`
+`func NewShareNFS(id int32, ) *ShareNFS`
 
 NewShareNFS instantiates a new ShareNFS object
 This constructor will assign default values to properties that have it defined,
@@ -59,6 +59,56 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
+### GetPath
+
+`func (o *ShareNFS) GetPath() string`
+
+GetPath returns the Path field if non-nil, zero value otherwise.
+
+### GetPathOk
+
+`func (o *ShareNFS) GetPathOk() (*string, bool)`
+
+GetPathOk returns a tuple with the Path field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPath
+
+`func (o *ShareNFS) SetPath(v string)`
+
+SetPath sets Path field to given value.
+
+### HasPath
+
+`func (o *ShareNFS) HasPath() bool`
+
+HasPath returns a boolean if a field has been set.
+
+### GetAliases
+
+`func (o *ShareNFS) GetAliases() []string`
+
+GetAliases returns the Aliases field if non-nil, zero value otherwise.
+
+### GetAliasesOk
+
+`func (o *ShareNFS) GetAliasesOk() (*[]string, bool)`
+
+GetAliasesOk returns a tuple with the Aliases field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAliases
+
+`func (o *ShareNFS) SetAliases(v []string)`
+
+SetAliases sets Aliases field to given value.
+
+### HasAliases
+
+`func (o *ShareNFS) HasAliases() bool`
+
+HasAliases returns a boolean if a field has been set.
+
 ### GetComment
 
 `func (o *ShareNFS) GetComment() string`
@@ -83,6 +133,31 @@ SetComment sets Comment field to given value.
 `func (o *ShareNFS) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetNetworks
+
+`func (o *ShareNFS) GetNetworks() []string`
+
+GetNetworks returns the Networks field if non-nil, zero value otherwise.
+
+### GetNetworksOk
+
+`func (o *ShareNFS) GetNetworksOk() (*[]string, bool)`
+
+GetNetworksOk returns a tuple with the Networks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworks
+
+`func (o *ShareNFS) SetNetworks(v []string)`
+
+SetNetworks sets Networks field to given value.
+
+### HasNetworks
+
+`func (o *ShareNFS) HasNetworks() bool`
+
+HasNetworks returns a boolean if a field has been set.
 
 ### GetHosts
 
@@ -209,6 +284,16 @@ SetMaprootUser sets MaprootUser field to given value.
 
 HasMaprootUser returns a boolean if a field has been set.
 
+### SetMaprootUserNil
+
+`func (o *ShareNFS) SetMaprootUserNil(b bool)`
+
+ SetMaprootUserNil sets the value for MaprootUser to be an explicit nil
+
+### UnsetMaprootUser
+`func (o *ShareNFS) UnsetMaprootUser()`
+
+UnsetMaprootUser ensures that no value is present for MaprootUser, not even an explicit nil
 ### GetMaprootGroup
 
 `func (o *ShareNFS) GetMaprootGroup() string`
@@ -234,6 +319,16 @@ SetMaprootGroup sets MaprootGroup field to given value.
 
 HasMaprootGroup returns a boolean if a field has been set.
 
+### SetMaprootGroupNil
+
+`func (o *ShareNFS) SetMaprootGroupNil(b bool)`
+
+ SetMaprootGroupNil sets the value for MaprootGroup to be an explicit nil
+
+### UnsetMaprootGroup
+`func (o *ShareNFS) UnsetMaprootGroup()`
+
+UnsetMaprootGroup ensures that no value is present for MaprootGroup, not even an explicit nil
 ### GetMapallUser
 
 `func (o *ShareNFS) GetMapallUser() string`
@@ -259,6 +354,16 @@ SetMapallUser sets MapallUser field to given value.
 
 HasMapallUser returns a boolean if a field has been set.
 
+### SetMapallUserNil
+
+`func (o *ShareNFS) SetMapallUserNil(b bool)`
+
+ SetMapallUserNil sets the value for MapallUser to be an explicit nil
+
+### UnsetMapallUser
+`func (o *ShareNFS) UnsetMapallUser()`
+
+UnsetMapallUser ensures that no value is present for MapallUser, not even an explicit nil
 ### GetMapallGroup
 
 `func (o *ShareNFS) GetMapallGroup() string`
@@ -284,6 +389,16 @@ SetMapallGroup sets MapallGroup field to given value.
 
 HasMapallGroup returns a boolean if a field has been set.
 
+### SetMapallGroupNil
+
+`func (o *ShareNFS) SetMapallGroupNil(b bool)`
+
+ SetMapallGroupNil sets the value for MapallGroup to be an explicit nil
+
+### UnsetMapallGroup
+`func (o *ShareNFS) UnsetMapallGroup()`
+
+UnsetMapallGroup ensures that no value is present for MapallGroup, not even an explicit nil
 ### GetSecurity
 
 `func (o *ShareNFS) GetSecurity() []string`
@@ -333,76 +448,6 @@ SetEnabled sets Enabled field to given value.
 `func (o *ShareNFS) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
-
-### GetLocked
-
-`func (o *ShareNFS) GetLocked() bool`
-
-GetLocked returns the Locked field if non-nil, zero value otherwise.
-
-### GetLockedOk
-
-`func (o *ShareNFS) GetLockedOk() (*bool, bool)`
-
-GetLockedOk returns a tuple with the Locked field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLocked
-
-`func (o *ShareNFS) SetLocked(v bool)`
-
-SetLocked sets Locked field to given value.
-
-### HasLocked
-
-`func (o *ShareNFS) HasLocked() bool`
-
-HasLocked returns a boolean if a field has been set.
-
-### GetPaths
-
-`func (o *ShareNFS) GetPaths() []string`
-
-GetPaths returns the Paths field if non-nil, zero value otherwise.
-
-### GetPathsOk
-
-`func (o *ShareNFS) GetPathsOk() (*[]string, bool)`
-
-GetPathsOk returns a tuple with the Paths field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPaths
-
-`func (o *ShareNFS) SetPaths(v []string)`
-
-SetPaths sets Paths field to given value.
-
-
-### GetNetworks
-
-`func (o *ShareNFS) GetNetworks() []string`
-
-GetNetworks returns the Networks field if non-nil, zero value otherwise.
-
-### GetNetworksOk
-
-`func (o *ShareNFS) GetNetworksOk() (*[]string, bool)`
-
-GetNetworksOk returns a tuple with the Networks field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNetworks
-
-`func (o *ShareNFS) SetNetworks(v []string)`
-
-SetNetworks sets Networks field to given value.
-
-### HasNetworks
-
-`func (o *ShareNFS) HasNetworks() bool`
-
-HasNetworks returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

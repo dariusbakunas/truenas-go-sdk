@@ -16,21 +16,24 @@ import (
 
 // ShareNFS struct for ShareNFS
 type ShareNFS struct {
-	Id                   int32    `json:"id"`
-	Comment              *string  `json:"comment,omitempty"`
-	Hosts                []string `json:"hosts,omitempty"`
-	Alldirs              *bool    `json:"alldirs,omitempty"`
-	Ro                   *bool    `json:"ro,omitempty"`
-	Quiet                *bool    `json:"quiet,omitempty"`
-	MaprootUser          *string  `json:"maproot_user,omitempty"`
-	MaprootGroup         *string  `json:"maproot_group,omitempty"`
-	MapallUser           *string  `json:"mapall_user,omitempty"`
-	MapallGroup          *string  `json:"mapall_group,omitempty"`
-	Security             []string `json:"security,omitempty"`
-	Enabled              *bool    `json:"enabled,omitempty"`
-	Locked               *bool    `json:"locked,omitempty"`
-	Paths                []string `json:"paths"`
-	Networks             []string `json:"networks,omitempty"`
+	Id int32 `json:"id"`
+	// `path` local path to be exported.
+	Path *string `json:"path,omitempty"`
+	// `aliases` IGNORED, for now.
+	Aliases []string `json:"aliases,omitempty"`
+	Comment *string  `json:"comment,omitempty"`
+	// `networks` is a list of authorized networks that are allowed to access the share having format \"network/mask\" CIDR notation. If empty, all networks are allowed.
+	Networks             []string       `json:"networks,omitempty"`
+	Hosts                []string       `json:"hosts,omitempty"`
+	Alldirs              *bool          `json:"alldirs,omitempty"`
+	Ro                   *bool          `json:"ro,omitempty"`
+	Quiet                *bool          `json:"quiet,omitempty"`
+	MaprootUser          NullableString `json:"maproot_user,omitempty"`
+	MaprootGroup         NullableString `json:"maproot_group,omitempty"`
+	MapallUser           NullableString `json:"mapall_user,omitempty"`
+	MapallGroup          NullableString `json:"mapall_group,omitempty"`
+	Security             []string       `json:"security,omitempty"`
+	Enabled              *bool          `json:"enabled,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,10 +43,17 @@ type _ShareNFS ShareNFS
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewShareNFS(id int32, paths []string) *ShareNFS {
+func NewShareNFS(id int32) *ShareNFS {
 	this := ShareNFS{}
 	this.Id = id
-	this.Paths = paths
+	var comment string = ""
+	this.Comment = &comment
+	var ro bool = false
+	this.Ro = &ro
+	var quiet bool = false
+	this.Quiet = &quiet
+	var enabled bool = true
+	this.Enabled = &enabled
 	return &this
 }
 
@@ -52,6 +62,14 @@ func NewShareNFS(id int32, paths []string) *ShareNFS {
 // but it doesn't guarantee that properties required by API are set
 func NewShareNFSWithDefaults() *ShareNFS {
 	this := ShareNFS{}
+	var comment string = ""
+	this.Comment = &comment
+	var ro bool = false
+	this.Ro = &ro
+	var quiet bool = false
+	this.Quiet = &quiet
+	var enabled bool = true
+	this.Enabled = &enabled
 	return &this
 }
 
@@ -77,6 +95,70 @@ func (o *ShareNFS) GetIdOk() (*int32, bool) {
 // SetId sets field value
 func (o *ShareNFS) SetId(v int32) {
 	o.Id = v
+}
+
+// GetPath returns the Path field value if set, zero value otherwise.
+func (o *ShareNFS) GetPath() string {
+	if o == nil || isNil(o.Path) {
+		var ret string
+		return ret
+	}
+	return *o.Path
+}
+
+// GetPathOk returns a tuple with the Path field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ShareNFS) GetPathOk() (*string, bool) {
+	if o == nil || isNil(o.Path) {
+		return nil, false
+	}
+	return o.Path, true
+}
+
+// HasPath returns a boolean if a field has been set.
+func (o *ShareNFS) HasPath() bool {
+	if o != nil && !isNil(o.Path) {
+		return true
+	}
+
+	return false
+}
+
+// SetPath gets a reference to the given string and assigns it to the Path field.
+func (o *ShareNFS) SetPath(v string) {
+	o.Path = &v
+}
+
+// GetAliases returns the Aliases field value if set, zero value otherwise.
+func (o *ShareNFS) GetAliases() []string {
+	if o == nil || isNil(o.Aliases) {
+		var ret []string
+		return ret
+	}
+	return o.Aliases
+}
+
+// GetAliasesOk returns a tuple with the Aliases field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ShareNFS) GetAliasesOk() ([]string, bool) {
+	if o == nil || isNil(o.Aliases) {
+		return nil, false
+	}
+	return o.Aliases, true
+}
+
+// HasAliases returns a boolean if a field has been set.
+func (o *ShareNFS) HasAliases() bool {
+	if o != nil && !isNil(o.Aliases) {
+		return true
+	}
+
+	return false
+}
+
+// SetAliases gets a reference to the given []string and assigns it to the Aliases field.
+func (o *ShareNFS) SetAliases(v []string) {
+	o.Aliases = v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -109,6 +191,38 @@ func (o *ShareNFS) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *ShareNFS) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetNetworks returns the Networks field value if set, zero value otherwise.
+func (o *ShareNFS) GetNetworks() []string {
+	if o == nil || isNil(o.Networks) {
+		var ret []string
+		return ret
+	}
+	return o.Networks
+}
+
+// GetNetworksOk returns a tuple with the Networks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ShareNFS) GetNetworksOk() ([]string, bool) {
+	if o == nil || isNil(o.Networks) {
+		return nil, false
+	}
+	return o.Networks, true
+}
+
+// HasNetworks returns a boolean if a field has been set.
+func (o *ShareNFS) HasNetworks() bool {
+	if o != nil && !isNil(o.Networks) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworks gets a reference to the given []string and assigns it to the Networks field.
+func (o *ShareNFS) SetNetworks(v []string) {
+	o.Networks = v
 }
 
 // GetHosts returns the Hosts field value if set, zero value otherwise.
@@ -239,132 +353,176 @@ func (o *ShareNFS) SetQuiet(v bool) {
 	o.Quiet = &v
 }
 
-// GetMaprootUser returns the MaprootUser field value if set, zero value otherwise.
+// GetMaprootUser returns the MaprootUser field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ShareNFS) GetMaprootUser() string {
-	if o == nil || isNil(o.MaprootUser) {
+	if o == nil || isNil(o.MaprootUser.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MaprootUser
+	return *o.MaprootUser.Get()
 }
 
 // GetMaprootUserOk returns a tuple with the MaprootUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ShareNFS) GetMaprootUserOk() (*string, bool) {
-	if o == nil || isNil(o.MaprootUser) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaprootUser, true
+	return o.MaprootUser.Get(), o.MaprootUser.IsSet()
 }
 
 // HasMaprootUser returns a boolean if a field has been set.
 func (o *ShareNFS) HasMaprootUser() bool {
-	if o != nil && !isNil(o.MaprootUser) {
+	if o != nil && o.MaprootUser.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMaprootUser gets a reference to the given string and assigns it to the MaprootUser field.
+// SetMaprootUser gets a reference to the given NullableString and assigns it to the MaprootUser field.
 func (o *ShareNFS) SetMaprootUser(v string) {
-	o.MaprootUser = &v
+	o.MaprootUser.Set(&v)
 }
 
-// GetMaprootGroup returns the MaprootGroup field value if set, zero value otherwise.
+// SetMaprootUserNil sets the value for MaprootUser to be an explicit nil
+func (o *ShareNFS) SetMaprootUserNil() {
+	o.MaprootUser.Set(nil)
+}
+
+// UnsetMaprootUser ensures that no value is present for MaprootUser, not even an explicit nil
+func (o *ShareNFS) UnsetMaprootUser() {
+	o.MaprootUser.Unset()
+}
+
+// GetMaprootGroup returns the MaprootGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ShareNFS) GetMaprootGroup() string {
-	if o == nil || isNil(o.MaprootGroup) {
+	if o == nil || isNil(o.MaprootGroup.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MaprootGroup
+	return *o.MaprootGroup.Get()
 }
 
 // GetMaprootGroupOk returns a tuple with the MaprootGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ShareNFS) GetMaprootGroupOk() (*string, bool) {
-	if o == nil || isNil(o.MaprootGroup) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaprootGroup, true
+	return o.MaprootGroup.Get(), o.MaprootGroup.IsSet()
 }
 
 // HasMaprootGroup returns a boolean if a field has been set.
 func (o *ShareNFS) HasMaprootGroup() bool {
-	if o != nil && !isNil(o.MaprootGroup) {
+	if o != nil && o.MaprootGroup.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMaprootGroup gets a reference to the given string and assigns it to the MaprootGroup field.
+// SetMaprootGroup gets a reference to the given NullableString and assigns it to the MaprootGroup field.
 func (o *ShareNFS) SetMaprootGroup(v string) {
-	o.MaprootGroup = &v
+	o.MaprootGroup.Set(&v)
 }
 
-// GetMapallUser returns the MapallUser field value if set, zero value otherwise.
+// SetMaprootGroupNil sets the value for MaprootGroup to be an explicit nil
+func (o *ShareNFS) SetMaprootGroupNil() {
+	o.MaprootGroup.Set(nil)
+}
+
+// UnsetMaprootGroup ensures that no value is present for MaprootGroup, not even an explicit nil
+func (o *ShareNFS) UnsetMaprootGroup() {
+	o.MaprootGroup.Unset()
+}
+
+// GetMapallUser returns the MapallUser field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ShareNFS) GetMapallUser() string {
-	if o == nil || isNil(o.MapallUser) {
+	if o == nil || isNil(o.MapallUser.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MapallUser
+	return *o.MapallUser.Get()
 }
 
 // GetMapallUserOk returns a tuple with the MapallUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ShareNFS) GetMapallUserOk() (*string, bool) {
-	if o == nil || isNil(o.MapallUser) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MapallUser, true
+	return o.MapallUser.Get(), o.MapallUser.IsSet()
 }
 
 // HasMapallUser returns a boolean if a field has been set.
 func (o *ShareNFS) HasMapallUser() bool {
-	if o != nil && !isNil(o.MapallUser) {
+	if o != nil && o.MapallUser.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMapallUser gets a reference to the given string and assigns it to the MapallUser field.
+// SetMapallUser gets a reference to the given NullableString and assigns it to the MapallUser field.
 func (o *ShareNFS) SetMapallUser(v string) {
-	o.MapallUser = &v
+	o.MapallUser.Set(&v)
 }
 
-// GetMapallGroup returns the MapallGroup field value if set, zero value otherwise.
+// SetMapallUserNil sets the value for MapallUser to be an explicit nil
+func (o *ShareNFS) SetMapallUserNil() {
+	o.MapallUser.Set(nil)
+}
+
+// UnsetMapallUser ensures that no value is present for MapallUser, not even an explicit nil
+func (o *ShareNFS) UnsetMapallUser() {
+	o.MapallUser.Unset()
+}
+
+// GetMapallGroup returns the MapallGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ShareNFS) GetMapallGroup() string {
-	if o == nil || isNil(o.MapallGroup) {
+	if o == nil || isNil(o.MapallGroup.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MapallGroup
+	return *o.MapallGroup.Get()
 }
 
 // GetMapallGroupOk returns a tuple with the MapallGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ShareNFS) GetMapallGroupOk() (*string, bool) {
-	if o == nil || isNil(o.MapallGroup) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MapallGroup, true
+	return o.MapallGroup.Get(), o.MapallGroup.IsSet()
 }
 
 // HasMapallGroup returns a boolean if a field has been set.
 func (o *ShareNFS) HasMapallGroup() bool {
-	if o != nil && !isNil(o.MapallGroup) {
+	if o != nil && o.MapallGroup.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMapallGroup gets a reference to the given string and assigns it to the MapallGroup field.
+// SetMapallGroup gets a reference to the given NullableString and assigns it to the MapallGroup field.
 func (o *ShareNFS) SetMapallGroup(v string) {
-	o.MapallGroup = &v
+	o.MapallGroup.Set(&v)
+}
+
+// SetMapallGroupNil sets the value for MapallGroup to be an explicit nil
+func (o *ShareNFS) SetMapallGroupNil() {
+	o.MapallGroup.Set(nil)
+}
+
+// UnsetMapallGroup ensures that no value is present for MapallGroup, not even an explicit nil
+func (o *ShareNFS) UnsetMapallGroup() {
+	o.MapallGroup.Unset()
 }
 
 // GetSecurity returns the Security field value if set, zero value otherwise.
@@ -431,101 +589,22 @@ func (o *ShareNFS) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetLocked returns the Locked field value if set, zero value otherwise.
-func (o *ShareNFS) GetLocked() bool {
-	if o == nil || isNil(o.Locked) {
-		var ret bool
-		return ret
-	}
-	return *o.Locked
-}
-
-// GetLockedOk returns a tuple with the Locked field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ShareNFS) GetLockedOk() (*bool, bool) {
-	if o == nil || isNil(o.Locked) {
-		return nil, false
-	}
-	return o.Locked, true
-}
-
-// HasLocked returns a boolean if a field has been set.
-func (o *ShareNFS) HasLocked() bool {
-	if o != nil && !isNil(o.Locked) {
-		return true
-	}
-
-	return false
-}
-
-// SetLocked gets a reference to the given bool and assigns it to the Locked field.
-func (o *ShareNFS) SetLocked(v bool) {
-	o.Locked = &v
-}
-
-// GetPaths returns the Paths field value
-func (o *ShareNFS) GetPaths() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-
-	return o.Paths
-}
-
-// GetPathsOk returns a tuple with the Paths field value
-// and a boolean to check if the value has been set.
-func (o *ShareNFS) GetPathsOk() ([]string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Paths, true
-}
-
-// SetPaths sets field value
-func (o *ShareNFS) SetPaths(v []string) {
-	o.Paths = v
-}
-
-// GetNetworks returns the Networks field value if set, zero value otherwise.
-func (o *ShareNFS) GetNetworks() []string {
-	if o == nil || isNil(o.Networks) {
-		var ret []string
-		return ret
-	}
-	return o.Networks
-}
-
-// GetNetworksOk returns a tuple with the Networks field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ShareNFS) GetNetworksOk() ([]string, bool) {
-	if o == nil || isNil(o.Networks) {
-		return nil, false
-	}
-	return o.Networks, true
-}
-
-// HasNetworks returns a boolean if a field has been set.
-func (o *ShareNFS) HasNetworks() bool {
-	if o != nil && !isNil(o.Networks) {
-		return true
-	}
-
-	return false
-}
-
-// SetNetworks gets a reference to the given []string and assigns it to the Networks field.
-func (o *ShareNFS) SetNetworks(v []string) {
-	o.Networks = v
-}
-
 func (o ShareNFS) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["id"] = o.Id
 	}
+	if !isNil(o.Path) {
+		toSerialize["path"] = o.Path
+	}
+	if !isNil(o.Aliases) {
+		toSerialize["aliases"] = o.Aliases
+	}
 	if !isNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
+	}
+	if !isNil(o.Networks) {
+		toSerialize["networks"] = o.Networks
 	}
 	if !isNil(o.Hosts) {
 		toSerialize["hosts"] = o.Hosts
@@ -539,32 +618,23 @@ func (o ShareNFS) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Quiet) {
 		toSerialize["quiet"] = o.Quiet
 	}
-	if !isNil(o.MaprootUser) {
-		toSerialize["maproot_user"] = o.MaprootUser
+	if o.MaprootUser.IsSet() {
+		toSerialize["maproot_user"] = o.MaprootUser.Get()
 	}
-	if !isNil(o.MaprootGroup) {
-		toSerialize["maproot_group"] = o.MaprootGroup
+	if o.MaprootGroup.IsSet() {
+		toSerialize["maproot_group"] = o.MaprootGroup.Get()
 	}
-	if !isNil(o.MapallUser) {
-		toSerialize["mapall_user"] = o.MapallUser
+	if o.MapallUser.IsSet() {
+		toSerialize["mapall_user"] = o.MapallUser.Get()
 	}
-	if !isNil(o.MapallGroup) {
-		toSerialize["mapall_group"] = o.MapallGroup
+	if o.MapallGroup.IsSet() {
+		toSerialize["mapall_group"] = o.MapallGroup.Get()
 	}
 	if !isNil(o.Security) {
 		toSerialize["security"] = o.Security
 	}
 	if !isNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.Locked) {
-		toSerialize["locked"] = o.Locked
-	}
-	if true {
-		toSerialize["paths"] = o.Paths
-	}
-	if !isNil(o.Networks) {
-		toSerialize["networks"] = o.Networks
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -585,7 +655,10 @@ func (o *ShareNFS) UnmarshalJSON(bytes []byte) (err error) {
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
+		delete(additionalProperties, "path")
+		delete(additionalProperties, "aliases")
 		delete(additionalProperties, "comment")
+		delete(additionalProperties, "networks")
 		delete(additionalProperties, "hosts")
 		delete(additionalProperties, "alldirs")
 		delete(additionalProperties, "ro")
@@ -596,9 +669,6 @@ func (o *ShareNFS) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "mapall_group")
 		delete(additionalProperties, "security")
 		delete(additionalProperties, "enabled")
-		delete(additionalProperties, "locked")
-		delete(additionalProperties, "paths")
-		delete(additionalProperties, "networks")
 		o.AdditionalProperties = additionalProperties
 	}
 
