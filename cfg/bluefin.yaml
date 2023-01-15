@@ -1472,6 +1472,10 @@ components:
     CreateVMParams:
       type: object
       properties:
+        command_line_args:
+          title: command_line_args
+          default: ""
+          type: string
         cpu_mode:
           default: CUSTOM
           type: string
@@ -1511,22 +1515,40 @@ components:
             separate package. Multiple cores can be configured per CPU by specifying `cores` attributes.
             `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads`
             specifies number of threads per core.
+        cpuset:
+          default: null
+          type: string
+          nullable: true
+        nodeset:
+          default: null
+          type: string
+          nullable: true
+        pin_vcpus:
+          type: boolean
+          default: false
+        suspend_on_snapshot:
+          type: boolean
+          default: false
         memory:
           type: integer
           format: int64
+        min_memory:
+          type: integer
+          format: int64
+          default: null
+          nullable: true
+        hyperv_enlightenments:
+          type: boolean
+          default: false
+          description: |-
+            `hyperv_enlightenments` can be used to enable subset of predefined Hyper-V enlightenments for Windows guests.
+            These enlightenments improve performance and enable otherwise missing features.
         bootloader:
           default: UEFI
           type: string
           enum:
             - UEFI
             - UEFI_CSM
-        devices:
-          type: array
-          items:
-            $ref: '#/components/schemas/VMDevice'
-          description: |-
-            `devices` is a list of virtualized hardware to add to the newly created Virtual Machine.
-            Failure to attach a device destroys the VM and any resources allocated by the VM devices.
         autostart:
           type: boolean
           default: true
@@ -2322,8 +2344,31 @@ components:
       properties:
         id:
           type: integer
+        path:
+          title: path
+          type: string
+          description: '`path` local path to be exported.'
+        aliases:
+          title: aliases
+          default: [ ]
+          type: array
+          items:
+            title: path
+            type: string
+          description: '`aliases` IGNORED, for now.'
         comment:
           type: string
+          default: ""
+        networks:
+          title: networks
+          default: [ ]
+          type: array
+          items:
+            title: network
+            type: string
+          description: |-
+            `networks` is a list of authorized networks that are allowed to access the share having format
+            "network/mask" CIDR notation. If empty, all networks are allowed.
         hosts:
           type: array
           items:
@@ -2332,32 +2377,38 @@ components:
           type: boolean
         ro:
           type: boolean
+          default: false
         quiet:
           type: boolean
+          default: false
         maproot_user:
           type: string
+          default: null
+          nullable: true
         maproot_group:
           type: string
+          default: null
+          nullable: true
         mapall_user:
           type: string
+          default: null
+          nullable: true
         mapall_group:
           type: string
+          default: null
+          nullable: true
         security:
           type: array
           items:
             type: string
+            enum:
+              - SYS
+              - KRB5
+              - KRB5I
+              - KRB5P
         enabled:
           type: boolean
-        locked:
-          type: boolean
-        paths:
-          type: array
-          items:
-            type: string
-        networks:
-          type: array
-          items:
-            type: string
+          default: true
     ShareSMB:
       type: object
       required:
@@ -2558,6 +2609,10 @@ components:
           type: integer
         memory:
           type: integer
+          format: int64
+        min_memory:
+          type: integer
+          format: int64
         autostart:
           type: boolean
         time:
@@ -2568,8 +2623,34 @@ components:
           type: integer
         threads:
           type: integer
+        hyperv_enlightenments:
+          type: boolean
         shutdown_timeout:
           type: integer
+        cpu_mode:
+          type: string
+        cpu_model:
+          type: string
+        cpuset:
+          type: string
+        nodeset:
+          type: string
+        pin_vcpus:
+          type: boolean
+        hide_from_msr:
+          type: boolean
+        suspend_on_snapshot:
+          type: boolean
+        ensure_display_device:
+          type: boolean
+        arch_type:
+          type: string
+        machine_type:
+          type: string
+        uuid:
+          type: string
+        command_line_args:
+          type: string
         devices:
           type: array
           items:

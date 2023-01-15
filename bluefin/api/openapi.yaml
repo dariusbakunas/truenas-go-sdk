@@ -1511,18 +1511,18 @@ components:
         machine_type: machine_type
         memory: 5
         devices:
-        - vm: 3
+        - vm: 2
           dtype: NIC
           attributes:
             key: ""
-          id: 7
-          order: 9
-        - vm: 3
+          id: 9
+          order: 3
+        - vm: 2
           dtype: NIC
           attributes:
             key: ""
-          id: 7
-          order: 9
+          id: 9
+          order: 3
         arch_type: arch_type
         shutdown_timeout: 5
         description: description
@@ -1650,28 +1650,22 @@ components:
       example:
         machine_type: machine_type
         memory: 5
-        devices:
-        - vm: 3
-          dtype: NIC
-          attributes:
-            key: ""
-          id: 7
-          order: 9
-        - vm: 3
-          dtype: NIC
-          attributes:
-            key: ""
-          id: 7
-          order: 9
+        min_memory: 5
+        hyperv_enlightenments: false
         arch_type: arch_type
-        shutdown_timeout: 5
+        shutdown_timeout: 2
+        suspend_on_snapshot: false
+        nodeset: nodeset
         description: description
         threads: 1
+        cpuset: cpuset
         vcpus: 0
         autostart: true
         uuid: uuid
+        command_line_args: command_line_args
         ensure_display_device: true
         cores: 6
+        pin_vcpus: false
         hide_from_msr: false
         cpu_model: cpu_model
         bootloader: UEFI
@@ -1679,6 +1673,10 @@ components:
         cpu_mode: CUSTOM
         time: LOCAL
       properties:
+        command_line_args:
+          default: ""
+          title: command_line_args
+          type: string
         cpu_mode:
           default: CUSTOM
           enum:
@@ -1717,22 +1715,37 @@ components:
             `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads`
             specifies number of threads per core.
           type: integer
+        cpuset:
+          nullable: true
+          type: string
+        nodeset:
+          nullable: true
+          type: string
+        pin_vcpus:
+          default: false
+          type: boolean
+        suspend_on_snapshot:
+          default: false
+          type: boolean
         memory:
           format: int64
           type: integer
+        min_memory:
+          format: int64
+          nullable: true
+          type: integer
+        hyperv_enlightenments:
+          default: false
+          description: |-
+            `hyperv_enlightenments` can be used to enable subset of predefined Hyper-V enlightenments for Windows guests.
+            These enlightenments improve performance and enable otherwise missing features.
+          type: boolean
         bootloader:
           default: UEFI
           enum:
           - UEFI
           - UEFI_CSM
           type: string
-        devices:
-          description: |-
-            `devices` is a list of virtualized hardware to add to the newly created Virtual Machine.
-            Failure to attach a device destroys the VM and any resources allocated by the VM devices.
-          items:
-            $ref: '#/components/schemas/VMDevice'
-          type: array
         autostart:
           default: true
           type: boolean
@@ -2795,34 +2808,57 @@ components:
       type: object
     ShareNFS:
       example:
+        aliases:
+        - aliases
+        - aliases
         maproot_group: maproot_group
         hosts:
         - hosts
         - hosts
-        maproot_user: maproot_user
         networks:
         - networks
         - networks
+        maproot_user: maproot_user
         enabled: true
         alldirs: true
+        path: path
         mapall_user: mapall_user
         mapall_group: mapall_group
         security:
-        - security
-        - security
-        paths:
-        - paths
-        - paths
+        - SYS
+        - SYS
         comment: comment
         id: 0
-        quiet: true
-        locked: true
-        ro: true
+        quiet: false
+        ro: false
       properties:
         id:
           type: integer
-        comment:
+        path:
+          description: '`path` local path to be exported.'
+          title: path
           type: string
+        aliases:
+          default: []
+          description: "`aliases` IGNORED, for now."
+          items:
+            title: path
+            type: string
+          title: aliases
+          type: array
+        comment:
+          default: ""
+          type: string
+        networks:
+          default: []
+          description: |-
+            `networks` is a list of authorized networks that are allowed to access the share having format
+            "network/mask" CIDR notation. If empty, all networks are allowed.
+          items:
+            title: network
+            type: string
+          title: networks
+          type: array
         hosts:
           items:
             type: string
@@ -2830,33 +2866,35 @@ components:
         alldirs:
           type: boolean
         ro:
+          default: false
           type: boolean
         quiet:
+          default: false
           type: boolean
         maproot_user:
+          nullable: true
           type: string
         maproot_group:
+          nullable: true
           type: string
         mapall_user:
+          nullable: true
           type: string
         mapall_group:
+          nullable: true
           type: string
         security:
           items:
+            enum:
+            - SYS
+            - KRB5
+            - KRB5I
+            - KRB5P
             type: string
           type: array
         enabled:
+          default: true
           type: boolean
-        locked:
-          type: boolean
-        paths:
-          items:
-            type: string
-          type: array
-        networks:
-          items:
-            type: string
-          type: array
       required:
       - id
       - paths
@@ -3061,12 +3099,12 @@ components:
       type: object
     VMDevice:
       example:
-        vm: 3
+        vm: 2
         dtype: NIC
         attributes:
           key: ""
-        id: 7
-        order: 9
+        id: 9
+        order: 3
       properties:
         id:
           type: integer
@@ -3104,32 +3142,46 @@ components:
     VM:
       example:
         memory: 1
-        devices:
-        - vm: 3
-          dtype: NIC
-          attributes:
-            key: ""
-          id: 7
-          order: 9
-        - vm: 3
-          dtype: NIC
-          attributes:
-            key: ""
-          id: 7
-          order: 9
-        shutdown_timeout: 2
+        min_memory: 5
+        hyperv_enlightenments: true
+        shutdown_timeout: 7
+        suspend_on_snapshot: true
         description: description
-        threads: 5
-        vcpus: 6
         autostart: true
+        uuid: uuid
+        command_line_args: command_line_args
         cores: 5
+        pin_vcpus: true
         bootloader: bootloader
-        name: name
+        cpu_model: cpu_model
         id: 0
+        machine_type: machine_type
+        arch_type: arch_type
+        devices:
+        - vm: 2
+          dtype: NIC
+          attributes:
+            key: ""
+          id: 9
+          order: 3
+        - vm: 2
+          dtype: NIC
+          attributes:
+            key: ""
+          id: 9
+          order: 3
+        nodeset: nodeset
+        threads: 2
+        cpuset: cpuset
+        vcpus: 6
+        ensure_display_device: true
+        hide_from_msr: true
+        name: name
+        cpu_mode: cpu_mode
         time: time
         status:
           domain_state: domain_state
-          pid: 2
+          pid: 4
           state: state
       properties:
         id:
@@ -3141,6 +3193,10 @@ components:
         vcpus:
           type: integer
         memory:
+          format: int64
+          type: integer
+        min_memory:
+          format: int64
           type: integer
         autostart:
           type: boolean
@@ -3152,8 +3208,34 @@ components:
           type: integer
         threads:
           type: integer
+        hyperv_enlightenments:
+          type: boolean
         shutdown_timeout:
           type: integer
+        cpu_mode:
+          type: string
+        cpu_model:
+          type: string
+        cpuset:
+          type: string
+        nodeset:
+          type: string
+        pin_vcpus:
+          type: boolean
+        hide_from_msr:
+          type: boolean
+        suspend_on_snapshot:
+          type: boolean
+        ensure_display_device:
+          type: boolean
+        arch_type:
+          type: string
+        machine_type:
+          type: string
+        uuid:
+          type: string
+        command_line_args:
+          type: string
         devices:
           items:
             $ref: '#/components/schemas/VMDevice'
@@ -3250,7 +3332,7 @@ components:
     VM_status:
       example:
         domain_state: domain_state
-        pid: 2
+        pid: 4
         state: state
       properties:
         state:

@@ -16,21 +16,27 @@ import (
 
 // CreateVMParams struct for CreateVMParams
 type CreateVMParams struct {
-	CpuMode     *string        `json:"cpu_mode,omitempty"`
-	CpuModel    NullableString `json:"cpu_model,omitempty"`
-	Name        *string        `json:"name,omitempty"`
-	Description *string        `json:"description,omitempty"`
+	CommandLineArgs *string        `json:"command_line_args,omitempty"`
+	CpuMode         *string        `json:"cpu_mode,omitempty"`
+	CpuModel        NullableString `json:"cpu_model,omitempty"`
+	Name            *string        `json:"name,omitempty"`
+	Description     *string        `json:"description,omitempty"`
 	// Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a separate package. Multiple cores can be configured per CPU by specifying `cores` attributes. `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads` specifies number of threads per core.
 	Vcpus *int32 `json:"vcpus,omitempty"`
 	// Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a separate package. Multiple cores can be configured per CPU by specifying `cores` attributes. `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads` specifies number of threads per core.
 	Cores *int32 `json:"cores,omitempty"`
 	// Maximum of 16 guest virtual CPUs are allowed. By default, every virtual CPU is configured as a separate package. Multiple cores can be configured per CPU by specifying `cores` attributes. `vcpus` specifies total number of CPU sockets. `cores` specifies number of cores per socket. `threads` specifies number of threads per core.
-	Threads    *int32  `json:"threads,omitempty"`
-	Memory     *int64  `json:"memory,omitempty"`
-	Bootloader *string `json:"bootloader,omitempty"`
-	// `devices` is a list of virtualized hardware to add to the newly created Virtual Machine. Failure to attach a device destroys the VM and any resources allocated by the VM devices.
-	Devices   []VMDevice `json:"devices,omitempty"`
-	Autostart *bool      `json:"autostart,omitempty"`
+	Threads           *int32         `json:"threads,omitempty"`
+	Cpuset            NullableString `json:"cpuset,omitempty"`
+	Nodeset           NullableString `json:"nodeset,omitempty"`
+	PinVcpus          *bool          `json:"pin_vcpus,omitempty"`
+	SuspendOnSnapshot *bool          `json:"suspend_on_snapshot,omitempty"`
+	Memory            *int64         `json:"memory,omitempty"`
+	MinMemory         NullableInt64  `json:"min_memory,omitempty"`
+	// `hyperv_enlightenments` can be used to enable subset of predefined Hyper-V enlightenments for Windows guests. These enlightenments improve performance and enable otherwise missing features.
+	HypervEnlightenments *bool   `json:"hyperv_enlightenments,omitempty"`
+	Bootloader           *string `json:"bootloader,omitempty"`
+	Autostart            *bool   `json:"autostart,omitempty"`
 	// `hide_from_msr` is a boolean which when set will hide the KVM hypervisor from standard MSR based discovery and is useful to enable when doing GPU passthrough.
 	HideFromMsr *bool `json:"hide_from_msr,omitempty"`
 	// `ensure_display_device` when set ( the default ) will ensure that the guest always has access to a video device. For headless installations like ubuntu server this is required for the guest to operate properly. However for cases where consumer would like to use GPU passthrough and does not want a display device added should set this to `false`.
@@ -51,6 +57,8 @@ type CreateVMParams struct {
 // will change when the set of required properties is changed
 func NewCreateVMParams() *CreateVMParams {
 	this := CreateVMParams{}
+	var commandLineArgs string = ""
+	this.CommandLineArgs = &commandLineArgs
 	var cpuMode string = "CUSTOM"
 	this.CpuMode = &cpuMode
 	var vcpus int32 = 1
@@ -59,6 +67,12 @@ func NewCreateVMParams() *CreateVMParams {
 	this.Cores = &cores
 	var threads int32 = 1
 	this.Threads = &threads
+	var pinVcpus bool = false
+	this.PinVcpus = &pinVcpus
+	var suspendOnSnapshot bool = false
+	this.SuspendOnSnapshot = &suspendOnSnapshot
+	var hypervEnlightenments bool = false
+	this.HypervEnlightenments = &hypervEnlightenments
 	var bootloader string = "UEFI"
 	this.Bootloader = &bootloader
 	var autostart bool = true
@@ -79,6 +93,8 @@ func NewCreateVMParams() *CreateVMParams {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateVMParamsWithDefaults() *CreateVMParams {
 	this := CreateVMParams{}
+	var commandLineArgs string = ""
+	this.CommandLineArgs = &commandLineArgs
 	var cpuMode string = "CUSTOM"
 	this.CpuMode = &cpuMode
 	var vcpus int32 = 1
@@ -87,6 +103,12 @@ func NewCreateVMParamsWithDefaults() *CreateVMParams {
 	this.Cores = &cores
 	var threads int32 = 1
 	this.Threads = &threads
+	var pinVcpus bool = false
+	this.PinVcpus = &pinVcpus
+	var suspendOnSnapshot bool = false
+	this.SuspendOnSnapshot = &suspendOnSnapshot
+	var hypervEnlightenments bool = false
+	this.HypervEnlightenments = &hypervEnlightenments
 	var bootloader string = "UEFI"
 	this.Bootloader = &bootloader
 	var autostart bool = true
@@ -100,6 +122,38 @@ func NewCreateVMParamsWithDefaults() *CreateVMParams {
 	var shutdownTimeout int32 = 90
 	this.ShutdownTimeout = &shutdownTimeout
 	return &this
+}
+
+// GetCommandLineArgs returns the CommandLineArgs field value if set, zero value otherwise.
+func (o *CreateVMParams) GetCommandLineArgs() string {
+	if o == nil || isNil(o.CommandLineArgs) {
+		var ret string
+		return ret
+	}
+	return *o.CommandLineArgs
+}
+
+// GetCommandLineArgsOk returns a tuple with the CommandLineArgs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVMParams) GetCommandLineArgsOk() (*string, bool) {
+	if o == nil || isNil(o.CommandLineArgs) {
+		return nil, false
+	}
+	return o.CommandLineArgs, true
+}
+
+// HasCommandLineArgs returns a boolean if a field has been set.
+func (o *CreateVMParams) HasCommandLineArgs() bool {
+	if o != nil && !isNil(o.CommandLineArgs) {
+		return true
+	}
+
+	return false
+}
+
+// SetCommandLineArgs gets a reference to the given string and assigns it to the CommandLineArgs field.
+func (o *CreateVMParams) SetCommandLineArgs(v string) {
+	o.CommandLineArgs = &v
 }
 
 // GetCpuMode returns the CpuMode field value if set, zero value otherwise.
@@ -337,6 +391,156 @@ func (o *CreateVMParams) SetThreads(v int32) {
 	o.Threads = &v
 }
 
+// GetCpuset returns the Cpuset field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateVMParams) GetCpuset() string {
+	if o == nil || isNil(o.Cpuset.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Cpuset.Get()
+}
+
+// GetCpusetOk returns a tuple with the Cpuset field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateVMParams) GetCpusetOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Cpuset.Get(), o.Cpuset.IsSet()
+}
+
+// HasCpuset returns a boolean if a field has been set.
+func (o *CreateVMParams) HasCpuset() bool {
+	if o != nil && o.Cpuset.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCpuset gets a reference to the given NullableString and assigns it to the Cpuset field.
+func (o *CreateVMParams) SetCpuset(v string) {
+	o.Cpuset.Set(&v)
+}
+
+// SetCpusetNil sets the value for Cpuset to be an explicit nil
+func (o *CreateVMParams) SetCpusetNil() {
+	o.Cpuset.Set(nil)
+}
+
+// UnsetCpuset ensures that no value is present for Cpuset, not even an explicit nil
+func (o *CreateVMParams) UnsetCpuset() {
+	o.Cpuset.Unset()
+}
+
+// GetNodeset returns the Nodeset field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateVMParams) GetNodeset() string {
+	if o == nil || isNil(o.Nodeset.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Nodeset.Get()
+}
+
+// GetNodesetOk returns a tuple with the Nodeset field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateVMParams) GetNodesetOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Nodeset.Get(), o.Nodeset.IsSet()
+}
+
+// HasNodeset returns a boolean if a field has been set.
+func (o *CreateVMParams) HasNodeset() bool {
+	if o != nil && o.Nodeset.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNodeset gets a reference to the given NullableString and assigns it to the Nodeset field.
+func (o *CreateVMParams) SetNodeset(v string) {
+	o.Nodeset.Set(&v)
+}
+
+// SetNodesetNil sets the value for Nodeset to be an explicit nil
+func (o *CreateVMParams) SetNodesetNil() {
+	o.Nodeset.Set(nil)
+}
+
+// UnsetNodeset ensures that no value is present for Nodeset, not even an explicit nil
+func (o *CreateVMParams) UnsetNodeset() {
+	o.Nodeset.Unset()
+}
+
+// GetPinVcpus returns the PinVcpus field value if set, zero value otherwise.
+func (o *CreateVMParams) GetPinVcpus() bool {
+	if o == nil || isNil(o.PinVcpus) {
+		var ret bool
+		return ret
+	}
+	return *o.PinVcpus
+}
+
+// GetPinVcpusOk returns a tuple with the PinVcpus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVMParams) GetPinVcpusOk() (*bool, bool) {
+	if o == nil || isNil(o.PinVcpus) {
+		return nil, false
+	}
+	return o.PinVcpus, true
+}
+
+// HasPinVcpus returns a boolean if a field has been set.
+func (o *CreateVMParams) HasPinVcpus() bool {
+	if o != nil && !isNil(o.PinVcpus) {
+		return true
+	}
+
+	return false
+}
+
+// SetPinVcpus gets a reference to the given bool and assigns it to the PinVcpus field.
+func (o *CreateVMParams) SetPinVcpus(v bool) {
+	o.PinVcpus = &v
+}
+
+// GetSuspendOnSnapshot returns the SuspendOnSnapshot field value if set, zero value otherwise.
+func (o *CreateVMParams) GetSuspendOnSnapshot() bool {
+	if o == nil || isNil(o.SuspendOnSnapshot) {
+		var ret bool
+		return ret
+	}
+	return *o.SuspendOnSnapshot
+}
+
+// GetSuspendOnSnapshotOk returns a tuple with the SuspendOnSnapshot field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVMParams) GetSuspendOnSnapshotOk() (*bool, bool) {
+	if o == nil || isNil(o.SuspendOnSnapshot) {
+		return nil, false
+	}
+	return o.SuspendOnSnapshot, true
+}
+
+// HasSuspendOnSnapshot returns a boolean if a field has been set.
+func (o *CreateVMParams) HasSuspendOnSnapshot() bool {
+	if o != nil && !isNil(o.SuspendOnSnapshot) {
+		return true
+	}
+
+	return false
+}
+
+// SetSuspendOnSnapshot gets a reference to the given bool and assigns it to the SuspendOnSnapshot field.
+func (o *CreateVMParams) SetSuspendOnSnapshot(v bool) {
+	o.SuspendOnSnapshot = &v
+}
+
 // GetMemory returns the Memory field value if set, zero value otherwise.
 func (o *CreateVMParams) GetMemory() int64 {
 	if o == nil || isNil(o.Memory) {
@@ -369,6 +573,81 @@ func (o *CreateVMParams) SetMemory(v int64) {
 	o.Memory = &v
 }
 
+// GetMinMemory returns the MinMemory field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateVMParams) GetMinMemory() int64 {
+	if o == nil || isNil(o.MinMemory.Get()) {
+		var ret int64
+		return ret
+	}
+	return *o.MinMemory.Get()
+}
+
+// GetMinMemoryOk returns a tuple with the MinMemory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateVMParams) GetMinMemoryOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MinMemory.Get(), o.MinMemory.IsSet()
+}
+
+// HasMinMemory returns a boolean if a field has been set.
+func (o *CreateVMParams) HasMinMemory() bool {
+	if o != nil && o.MinMemory.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMinMemory gets a reference to the given NullableInt64 and assigns it to the MinMemory field.
+func (o *CreateVMParams) SetMinMemory(v int64) {
+	o.MinMemory.Set(&v)
+}
+
+// SetMinMemoryNil sets the value for MinMemory to be an explicit nil
+func (o *CreateVMParams) SetMinMemoryNil() {
+	o.MinMemory.Set(nil)
+}
+
+// UnsetMinMemory ensures that no value is present for MinMemory, not even an explicit nil
+func (o *CreateVMParams) UnsetMinMemory() {
+	o.MinMemory.Unset()
+}
+
+// GetHypervEnlightenments returns the HypervEnlightenments field value if set, zero value otherwise.
+func (o *CreateVMParams) GetHypervEnlightenments() bool {
+	if o == nil || isNil(o.HypervEnlightenments) {
+		var ret bool
+		return ret
+	}
+	return *o.HypervEnlightenments
+}
+
+// GetHypervEnlightenmentsOk returns a tuple with the HypervEnlightenments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVMParams) GetHypervEnlightenmentsOk() (*bool, bool) {
+	if o == nil || isNil(o.HypervEnlightenments) {
+		return nil, false
+	}
+	return o.HypervEnlightenments, true
+}
+
+// HasHypervEnlightenments returns a boolean if a field has been set.
+func (o *CreateVMParams) HasHypervEnlightenments() bool {
+	if o != nil && !isNil(o.HypervEnlightenments) {
+		return true
+	}
+
+	return false
+}
+
+// SetHypervEnlightenments gets a reference to the given bool and assigns it to the HypervEnlightenments field.
+func (o *CreateVMParams) SetHypervEnlightenments(v bool) {
+	o.HypervEnlightenments = &v
+}
+
 // GetBootloader returns the Bootloader field value if set, zero value otherwise.
 func (o *CreateVMParams) GetBootloader() string {
 	if o == nil || isNil(o.Bootloader) {
@@ -399,38 +678,6 @@ func (o *CreateVMParams) HasBootloader() bool {
 // SetBootloader gets a reference to the given string and assigns it to the Bootloader field.
 func (o *CreateVMParams) SetBootloader(v string) {
 	o.Bootloader = &v
-}
-
-// GetDevices returns the Devices field value if set, zero value otherwise.
-func (o *CreateVMParams) GetDevices() []VMDevice {
-	if o == nil || isNil(o.Devices) {
-		var ret []VMDevice
-		return ret
-	}
-	return o.Devices
-}
-
-// GetDevicesOk returns a tuple with the Devices field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateVMParams) GetDevicesOk() ([]VMDevice, bool) {
-	if o == nil || isNil(o.Devices) {
-		return nil, false
-	}
-	return o.Devices, true
-}
-
-// HasDevices returns a boolean if a field has been set.
-func (o *CreateVMParams) HasDevices() bool {
-	if o != nil && !isNil(o.Devices) {
-		return true
-	}
-
-	return false
-}
-
-// SetDevices gets a reference to the given []VMDevice and assigns it to the Devices field.
-func (o *CreateVMParams) SetDevices(v []VMDevice) {
-	o.Devices = v
 }
 
 // GetAutostart returns the Autostart field value if set, zero value otherwise.
@@ -724,6 +971,9 @@ func (o *CreateVMParams) UnsetUuid() {
 
 func (o CreateVMParams) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if !isNil(o.CommandLineArgs) {
+		toSerialize["command_line_args"] = o.CommandLineArgs
+	}
 	if !isNil(o.CpuMode) {
 		toSerialize["cpu_mode"] = o.CpuMode
 	}
@@ -745,14 +995,29 @@ func (o CreateVMParams) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Threads) {
 		toSerialize["threads"] = o.Threads
 	}
+	if o.Cpuset.IsSet() {
+		toSerialize["cpuset"] = o.Cpuset.Get()
+	}
+	if o.Nodeset.IsSet() {
+		toSerialize["nodeset"] = o.Nodeset.Get()
+	}
+	if !isNil(o.PinVcpus) {
+		toSerialize["pin_vcpus"] = o.PinVcpus
+	}
+	if !isNil(o.SuspendOnSnapshot) {
+		toSerialize["suspend_on_snapshot"] = o.SuspendOnSnapshot
+	}
 	if !isNil(o.Memory) {
 		toSerialize["memory"] = o.Memory
 	}
+	if o.MinMemory.IsSet() {
+		toSerialize["min_memory"] = o.MinMemory.Get()
+	}
+	if !isNil(o.HypervEnlightenments) {
+		toSerialize["hyperv_enlightenments"] = o.HypervEnlightenments
+	}
 	if !isNil(o.Bootloader) {
 		toSerialize["bootloader"] = o.Bootloader
-	}
-	if !isNil(o.Devices) {
-		toSerialize["devices"] = o.Devices
 	}
 	if !isNil(o.Autostart) {
 		toSerialize["autostart"] = o.Autostart

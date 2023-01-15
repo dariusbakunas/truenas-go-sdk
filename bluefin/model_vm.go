@@ -20,13 +20,27 @@ type VM struct {
 	Name                 string     `json:"name"`
 	Description          *string    `json:"description,omitempty"`
 	Vcpus                *int32     `json:"vcpus,omitempty"`
-	Memory               *int32     `json:"memory,omitempty"`
+	Memory               *int64     `json:"memory,omitempty"`
+	MinMemory            *int64     `json:"min_memory,omitempty"`
 	Autostart            *bool      `json:"autostart,omitempty"`
 	Time                 *string    `json:"time,omitempty"`
 	Bootloader           *string    `json:"bootloader,omitempty"`
 	Cores                *int32     `json:"cores,omitempty"`
 	Threads              *int32     `json:"threads,omitempty"`
+	HypervEnlightenments *bool      `json:"hyperv_enlightenments,omitempty"`
 	ShutdownTimeout      *int32     `json:"shutdown_timeout,omitempty"`
+	CpuMode              *string    `json:"cpu_mode,omitempty"`
+	CpuModel             *string    `json:"cpu_model,omitempty"`
+	Cpuset               *string    `json:"cpuset,omitempty"`
+	Nodeset              *string    `json:"nodeset,omitempty"`
+	PinVcpus             *bool      `json:"pin_vcpus,omitempty"`
+	HideFromMsr          *bool      `json:"hide_from_msr,omitempty"`
+	SuspendOnSnapshot    *bool      `json:"suspend_on_snapshot,omitempty"`
+	EnsureDisplayDevice  *bool      `json:"ensure_display_device,omitempty"`
+	ArchType             *string    `json:"arch_type,omitempty"`
+	MachineType          *string    `json:"machine_type,omitempty"`
+	Uuid                 *string    `json:"uuid,omitempty"`
+	CommandLineArgs      *string    `json:"command_line_args,omitempty"`
 	Devices              []VMDevice `json:"devices,omitempty"`
 	Status               *VMStatus  `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -166,9 +180,9 @@ func (o *VM) SetVcpus(v int32) {
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *VM) GetMemory() int32 {
+func (o *VM) GetMemory() int64 {
 	if o == nil || isNil(o.Memory) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Memory
@@ -176,7 +190,7 @@ func (o *VM) GetMemory() int32 {
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VM) GetMemoryOk() (*int32, bool) {
+func (o *VM) GetMemoryOk() (*int64, bool) {
 	if o == nil || isNil(o.Memory) {
 		return nil, false
 	}
@@ -192,9 +206,41 @@ func (o *VM) HasMemory() bool {
 	return false
 }
 
-// SetMemory gets a reference to the given int32 and assigns it to the Memory field.
-func (o *VM) SetMemory(v int32) {
+// SetMemory gets a reference to the given int64 and assigns it to the Memory field.
+func (o *VM) SetMemory(v int64) {
 	o.Memory = &v
+}
+
+// GetMinMemory returns the MinMemory field value if set, zero value otherwise.
+func (o *VM) GetMinMemory() int64 {
+	if o == nil || isNil(o.MinMemory) {
+		var ret int64
+		return ret
+	}
+	return *o.MinMemory
+}
+
+// GetMinMemoryOk returns a tuple with the MinMemory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VM) GetMinMemoryOk() (*int64, bool) {
+	if o == nil || isNil(o.MinMemory) {
+		return nil, false
+	}
+	return o.MinMemory, true
+}
+
+// HasMinMemory returns a boolean if a field has been set.
+func (o *VM) HasMinMemory() bool {
+	if o != nil && !isNil(o.MinMemory) {
+		return true
+	}
+
+	return false
+}
+
+// SetMinMemory gets a reference to the given int64 and assigns it to the MinMemory field.
+func (o *VM) SetMinMemory(v int64) {
+	o.MinMemory = &v
 }
 
 // GetAutostart returns the Autostart field value if set, zero value otherwise.
@@ -357,6 +403,38 @@ func (o *VM) SetThreads(v int32) {
 	o.Threads = &v
 }
 
+// GetHypervEnlightenments returns the HypervEnlightenments field value if set, zero value otherwise.
+func (o *VM) GetHypervEnlightenments() bool {
+	if o == nil || isNil(o.HypervEnlightenments) {
+		var ret bool
+		return ret
+	}
+	return *o.HypervEnlightenments
+}
+
+// GetHypervEnlightenmentsOk returns a tuple with the HypervEnlightenments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VM) GetHypervEnlightenmentsOk() (*bool, bool) {
+	if o == nil || isNil(o.HypervEnlightenments) {
+		return nil, false
+	}
+	return o.HypervEnlightenments, true
+}
+
+// HasHypervEnlightenments returns a boolean if a field has been set.
+func (o *VM) HasHypervEnlightenments() bool {
+	if o != nil && !isNil(o.HypervEnlightenments) {
+		return true
+	}
+
+	return false
+}
+
+// SetHypervEnlightenments gets a reference to the given bool and assigns it to the HypervEnlightenments field.
+func (o *VM) SetHypervEnlightenments(v bool) {
+	o.HypervEnlightenments = &v
+}
+
 // GetShutdownTimeout returns the ShutdownTimeout field value if set, zero value otherwise.
 func (o *VM) GetShutdownTimeout() int32 {
 	if o == nil || isNil(o.ShutdownTimeout) {
@@ -387,6 +465,390 @@ func (o *VM) HasShutdownTimeout() bool {
 // SetShutdownTimeout gets a reference to the given int32 and assigns it to the ShutdownTimeout field.
 func (o *VM) SetShutdownTimeout(v int32) {
 	o.ShutdownTimeout = &v
+}
+
+// GetCpuMode returns the CpuMode field value if set, zero value otherwise.
+func (o *VM) GetCpuMode() string {
+	if o == nil || isNil(o.CpuMode) {
+		var ret string
+		return ret
+	}
+	return *o.CpuMode
+}
+
+// GetCpuModeOk returns a tuple with the CpuMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VM) GetCpuModeOk() (*string, bool) {
+	if o == nil || isNil(o.CpuMode) {
+		return nil, false
+	}
+	return o.CpuMode, true
+}
+
+// HasCpuMode returns a boolean if a field has been set.
+func (o *VM) HasCpuMode() bool {
+	if o != nil && !isNil(o.CpuMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetCpuMode gets a reference to the given string and assigns it to the CpuMode field.
+func (o *VM) SetCpuMode(v string) {
+	o.CpuMode = &v
+}
+
+// GetCpuModel returns the CpuModel field value if set, zero value otherwise.
+func (o *VM) GetCpuModel() string {
+	if o == nil || isNil(o.CpuModel) {
+		var ret string
+		return ret
+	}
+	return *o.CpuModel
+}
+
+// GetCpuModelOk returns a tuple with the CpuModel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VM) GetCpuModelOk() (*string, bool) {
+	if o == nil || isNil(o.CpuModel) {
+		return nil, false
+	}
+	return o.CpuModel, true
+}
+
+// HasCpuModel returns a boolean if a field has been set.
+func (o *VM) HasCpuModel() bool {
+	if o != nil && !isNil(o.CpuModel) {
+		return true
+	}
+
+	return false
+}
+
+// SetCpuModel gets a reference to the given string and assigns it to the CpuModel field.
+func (o *VM) SetCpuModel(v string) {
+	o.CpuModel = &v
+}
+
+// GetCpuset returns the Cpuset field value if set, zero value otherwise.
+func (o *VM) GetCpuset() string {
+	if o == nil || isNil(o.Cpuset) {
+		var ret string
+		return ret
+	}
+	return *o.Cpuset
+}
+
+// GetCpusetOk returns a tuple with the Cpuset field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VM) GetCpusetOk() (*string, bool) {
+	if o == nil || isNil(o.Cpuset) {
+		return nil, false
+	}
+	return o.Cpuset, true
+}
+
+// HasCpuset returns a boolean if a field has been set.
+func (o *VM) HasCpuset() bool {
+	if o != nil && !isNil(o.Cpuset) {
+		return true
+	}
+
+	return false
+}
+
+// SetCpuset gets a reference to the given string and assigns it to the Cpuset field.
+func (o *VM) SetCpuset(v string) {
+	o.Cpuset = &v
+}
+
+// GetNodeset returns the Nodeset field value if set, zero value otherwise.
+func (o *VM) GetNodeset() string {
+	if o == nil || isNil(o.Nodeset) {
+		var ret string
+		return ret
+	}
+	return *o.Nodeset
+}
+
+// GetNodesetOk returns a tuple with the Nodeset field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VM) GetNodesetOk() (*string, bool) {
+	if o == nil || isNil(o.Nodeset) {
+		return nil, false
+	}
+	return o.Nodeset, true
+}
+
+// HasNodeset returns a boolean if a field has been set.
+func (o *VM) HasNodeset() bool {
+	if o != nil && !isNil(o.Nodeset) {
+		return true
+	}
+
+	return false
+}
+
+// SetNodeset gets a reference to the given string and assigns it to the Nodeset field.
+func (o *VM) SetNodeset(v string) {
+	o.Nodeset = &v
+}
+
+// GetPinVcpus returns the PinVcpus field value if set, zero value otherwise.
+func (o *VM) GetPinVcpus() bool {
+	if o == nil || isNil(o.PinVcpus) {
+		var ret bool
+		return ret
+	}
+	return *o.PinVcpus
+}
+
+// GetPinVcpusOk returns a tuple with the PinVcpus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VM) GetPinVcpusOk() (*bool, bool) {
+	if o == nil || isNil(o.PinVcpus) {
+		return nil, false
+	}
+	return o.PinVcpus, true
+}
+
+// HasPinVcpus returns a boolean if a field has been set.
+func (o *VM) HasPinVcpus() bool {
+	if o != nil && !isNil(o.PinVcpus) {
+		return true
+	}
+
+	return false
+}
+
+// SetPinVcpus gets a reference to the given bool and assigns it to the PinVcpus field.
+func (o *VM) SetPinVcpus(v bool) {
+	o.PinVcpus = &v
+}
+
+// GetHideFromMsr returns the HideFromMsr field value if set, zero value otherwise.
+func (o *VM) GetHideFromMsr() bool {
+	if o == nil || isNil(o.HideFromMsr) {
+		var ret bool
+		return ret
+	}
+	return *o.HideFromMsr
+}
+
+// GetHideFromMsrOk returns a tuple with the HideFromMsr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VM) GetHideFromMsrOk() (*bool, bool) {
+	if o == nil || isNil(o.HideFromMsr) {
+		return nil, false
+	}
+	return o.HideFromMsr, true
+}
+
+// HasHideFromMsr returns a boolean if a field has been set.
+func (o *VM) HasHideFromMsr() bool {
+	if o != nil && !isNil(o.HideFromMsr) {
+		return true
+	}
+
+	return false
+}
+
+// SetHideFromMsr gets a reference to the given bool and assigns it to the HideFromMsr field.
+func (o *VM) SetHideFromMsr(v bool) {
+	o.HideFromMsr = &v
+}
+
+// GetSuspendOnSnapshot returns the SuspendOnSnapshot field value if set, zero value otherwise.
+func (o *VM) GetSuspendOnSnapshot() bool {
+	if o == nil || isNil(o.SuspendOnSnapshot) {
+		var ret bool
+		return ret
+	}
+	return *o.SuspendOnSnapshot
+}
+
+// GetSuspendOnSnapshotOk returns a tuple with the SuspendOnSnapshot field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VM) GetSuspendOnSnapshotOk() (*bool, bool) {
+	if o == nil || isNil(o.SuspendOnSnapshot) {
+		return nil, false
+	}
+	return o.SuspendOnSnapshot, true
+}
+
+// HasSuspendOnSnapshot returns a boolean if a field has been set.
+func (o *VM) HasSuspendOnSnapshot() bool {
+	if o != nil && !isNil(o.SuspendOnSnapshot) {
+		return true
+	}
+
+	return false
+}
+
+// SetSuspendOnSnapshot gets a reference to the given bool and assigns it to the SuspendOnSnapshot field.
+func (o *VM) SetSuspendOnSnapshot(v bool) {
+	o.SuspendOnSnapshot = &v
+}
+
+// GetEnsureDisplayDevice returns the EnsureDisplayDevice field value if set, zero value otherwise.
+func (o *VM) GetEnsureDisplayDevice() bool {
+	if o == nil || isNil(o.EnsureDisplayDevice) {
+		var ret bool
+		return ret
+	}
+	return *o.EnsureDisplayDevice
+}
+
+// GetEnsureDisplayDeviceOk returns a tuple with the EnsureDisplayDevice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VM) GetEnsureDisplayDeviceOk() (*bool, bool) {
+	if o == nil || isNil(o.EnsureDisplayDevice) {
+		return nil, false
+	}
+	return o.EnsureDisplayDevice, true
+}
+
+// HasEnsureDisplayDevice returns a boolean if a field has been set.
+func (o *VM) HasEnsureDisplayDevice() bool {
+	if o != nil && !isNil(o.EnsureDisplayDevice) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnsureDisplayDevice gets a reference to the given bool and assigns it to the EnsureDisplayDevice field.
+func (o *VM) SetEnsureDisplayDevice(v bool) {
+	o.EnsureDisplayDevice = &v
+}
+
+// GetArchType returns the ArchType field value if set, zero value otherwise.
+func (o *VM) GetArchType() string {
+	if o == nil || isNil(o.ArchType) {
+		var ret string
+		return ret
+	}
+	return *o.ArchType
+}
+
+// GetArchTypeOk returns a tuple with the ArchType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VM) GetArchTypeOk() (*string, bool) {
+	if o == nil || isNil(o.ArchType) {
+		return nil, false
+	}
+	return o.ArchType, true
+}
+
+// HasArchType returns a boolean if a field has been set.
+func (o *VM) HasArchType() bool {
+	if o != nil && !isNil(o.ArchType) {
+		return true
+	}
+
+	return false
+}
+
+// SetArchType gets a reference to the given string and assigns it to the ArchType field.
+func (o *VM) SetArchType(v string) {
+	o.ArchType = &v
+}
+
+// GetMachineType returns the MachineType field value if set, zero value otherwise.
+func (o *VM) GetMachineType() string {
+	if o == nil || isNil(o.MachineType) {
+		var ret string
+		return ret
+	}
+	return *o.MachineType
+}
+
+// GetMachineTypeOk returns a tuple with the MachineType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VM) GetMachineTypeOk() (*string, bool) {
+	if o == nil || isNil(o.MachineType) {
+		return nil, false
+	}
+	return o.MachineType, true
+}
+
+// HasMachineType returns a boolean if a field has been set.
+func (o *VM) HasMachineType() bool {
+	if o != nil && !isNil(o.MachineType) {
+		return true
+	}
+
+	return false
+}
+
+// SetMachineType gets a reference to the given string and assigns it to the MachineType field.
+func (o *VM) SetMachineType(v string) {
+	o.MachineType = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *VM) GetUuid() string {
+	if o == nil || isNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VM) GetUuidOk() (*string, bool) {
+	if o == nil || isNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *VM) HasUuid() bool {
+	if o != nil && !isNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *VM) SetUuid(v string) {
+	o.Uuid = &v
+}
+
+// GetCommandLineArgs returns the CommandLineArgs field value if set, zero value otherwise.
+func (o *VM) GetCommandLineArgs() string {
+	if o == nil || isNil(o.CommandLineArgs) {
+		var ret string
+		return ret
+	}
+	return *o.CommandLineArgs
+}
+
+// GetCommandLineArgsOk returns a tuple with the CommandLineArgs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VM) GetCommandLineArgsOk() (*string, bool) {
+	if o == nil || isNil(o.CommandLineArgs) {
+		return nil, false
+	}
+	return o.CommandLineArgs, true
+}
+
+// HasCommandLineArgs returns a boolean if a field has been set.
+func (o *VM) HasCommandLineArgs() bool {
+	if o != nil && !isNil(o.CommandLineArgs) {
+		return true
+	}
+
+	return false
+}
+
+// SetCommandLineArgs gets a reference to the given string and assigns it to the CommandLineArgs field.
+func (o *VM) SetCommandLineArgs(v string) {
+	o.CommandLineArgs = &v
 }
 
 // GetDevices returns the Devices field value if set, zero value otherwise.
@@ -470,6 +932,9 @@ func (o VM) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Memory) {
 		toSerialize["memory"] = o.Memory
 	}
+	if !isNil(o.MinMemory) {
+		toSerialize["min_memory"] = o.MinMemory
+	}
 	if !isNil(o.Autostart) {
 		toSerialize["autostart"] = o.Autostart
 	}
@@ -485,8 +950,47 @@ func (o VM) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Threads) {
 		toSerialize["threads"] = o.Threads
 	}
+	if !isNil(o.HypervEnlightenments) {
+		toSerialize["hyperv_enlightenments"] = o.HypervEnlightenments
+	}
 	if !isNil(o.ShutdownTimeout) {
 		toSerialize["shutdown_timeout"] = o.ShutdownTimeout
+	}
+	if !isNil(o.CpuMode) {
+		toSerialize["cpu_mode"] = o.CpuMode
+	}
+	if !isNil(o.CpuModel) {
+		toSerialize["cpu_model"] = o.CpuModel
+	}
+	if !isNil(o.Cpuset) {
+		toSerialize["cpuset"] = o.Cpuset
+	}
+	if !isNil(o.Nodeset) {
+		toSerialize["nodeset"] = o.Nodeset
+	}
+	if !isNil(o.PinVcpus) {
+		toSerialize["pin_vcpus"] = o.PinVcpus
+	}
+	if !isNil(o.HideFromMsr) {
+		toSerialize["hide_from_msr"] = o.HideFromMsr
+	}
+	if !isNil(o.SuspendOnSnapshot) {
+		toSerialize["suspend_on_snapshot"] = o.SuspendOnSnapshot
+	}
+	if !isNil(o.EnsureDisplayDevice) {
+		toSerialize["ensure_display_device"] = o.EnsureDisplayDevice
+	}
+	if !isNil(o.ArchType) {
+		toSerialize["arch_type"] = o.ArchType
+	}
+	if !isNil(o.MachineType) {
+		toSerialize["machine_type"] = o.MachineType
+	}
+	if !isNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
+	if !isNil(o.CommandLineArgs) {
+		toSerialize["command_line_args"] = o.CommandLineArgs
 	}
 	if !isNil(o.Devices) {
 		toSerialize["devices"] = o.Devices
@@ -517,12 +1021,26 @@ func (o *VM) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "vcpus")
 		delete(additionalProperties, "memory")
+		delete(additionalProperties, "min_memory")
 		delete(additionalProperties, "autostart")
 		delete(additionalProperties, "time")
 		delete(additionalProperties, "bootloader")
 		delete(additionalProperties, "cores")
 		delete(additionalProperties, "threads")
+		delete(additionalProperties, "hyperv_enlightenments")
 		delete(additionalProperties, "shutdown_timeout")
+		delete(additionalProperties, "cpu_mode")
+		delete(additionalProperties, "cpu_model")
+		delete(additionalProperties, "cpuset")
+		delete(additionalProperties, "nodeset")
+		delete(additionalProperties, "pin_vcpus")
+		delete(additionalProperties, "hide_from_msr")
+		delete(additionalProperties, "suspend_on_snapshot")
+		delete(additionalProperties, "ensure_display_device")
+		delete(additionalProperties, "arch_type")
+		delete(additionalProperties, "machine_type")
+		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "command_line_args")
 		delete(additionalProperties, "devices")
 		delete(additionalProperties, "status")
 		o.AdditionalProperties = additionalProperties
