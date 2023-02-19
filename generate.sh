@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 RELEASE=$1
 
 rm -rf "${RELEASE}"
