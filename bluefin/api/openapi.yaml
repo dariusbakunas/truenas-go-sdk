@@ -98,7 +98,7 @@ paths:
       tags:
       - dataset
     post:
-      description: |
+      description: |-
         Creates a dataset/zvol.
 
         `volsize` is required for type=VOLUME and is supposed to be a multiple of the block size.
@@ -142,7 +142,7 @@ paths:
       - dataset
   /pool/dataset/id/{id}:
     delete:
-      description: |
+      description: |-
         Delete dataset/zvol
 
         `recursive` will also delete/destroy all children datasets.
@@ -361,7 +361,9 @@ paths:
     post:
       description: |-
         Create a new cron job.
-        `stderr` and `stdout` are boolean values which if `true`, represent that we would like to suppress standard error / standard output respectively.
+
+        `stderr` and `stdout` are boolean values which if `true`, represent that we would like to suppress
+        standard error / standard output respectively.
       operationId: createCronJob
       parameters: []
       requestBody:
