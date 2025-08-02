@@ -3141,6 +3141,7 @@ components:
         vcpus:
           type: integer
         memory:
+          format: int64
           type: integer
         autostart:
           type: boolean

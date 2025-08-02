@@ -1332,6 +1332,63 @@ paths:
           description: List of VMs
         "401":
           description: No authorization for this endpoint
+  /vm/device:
+    post:
+      tags:
+        - vm.device
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      parameters: []
+      description: |-
+        Create a new device for the VM of id `vm`.
+        
+        If `dtype` is the `RAW` type and a new raw file is to be created, `attributes.exists` will be passed as false.
+        This means the API handles creating the raw file and raises the appropriate exception if file creation fails.
+        
+        If `dtype` is of `DISK` type and a new Zvol is to be created, `attributes.create_zvol` will be passed as
+        true with valid `attributes.zvol_name` and `attributes.zvol_volsize` values.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VMDeviceCreate'
+  /vm/device/id/{id}:
+    delete:
+      tags:
+        - vm.device
+      responses:
+        "200":
+          $ref: '#/components/responses/Success'
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      description: Delete a VM device of `id`.
+    put:
+      tags:
+        - vm.device
+      responses:
+        "200":
+          $ref: '#/components/responses/Success'
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      description: |-
+        Update a VM device of `id`.
+
+        Pass `attributes.size` to resize a `dtype` `RAW` device. The raw file will be resized.
 components:
   securitySchemes:
     bearerAuth:
@@ -2574,6 +2631,7 @@ components:
           - PCI
           - DISPLAY
           - RAW
+          - USB
         attributes:
           type: object
           properties: {}
@@ -2582,6 +2640,36 @@ components:
           type: integer
         vm:
           type: integer
+    VMDeviceCreate:
+      type: object
+      properties:
+        dtype:
+          title: dtype
+          type: string
+          enum:
+            - NIC
+            - DISK
+            - CDROM
+            - PCI
+            - DISPLAY
+            - RAW
+            - USB
+          description: |-
+            If `dtype` is the `RAW` type and a new raw file is to be created, `attributes.exists` will be passed as false.
+            This means the API handles creating the raw file and raises the appropriate exception if file creation fails.
+        vm:
+          type: integer
+          description: Create a new device for the VM of id `vm`.
+        attributes:
+          type: object
+          properties: { }
+          additionalProperties: true
+          title: attributes
+          default: null
+        order:
+          type: integer
+          default: null
+          nullable: true
     UsersResponse:
       type: array
       items:
