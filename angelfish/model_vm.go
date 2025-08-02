@@ -20,7 +20,7 @@ type VM struct {
 	Name                 string     `json:"name"`
 	Description          *string    `json:"description,omitempty"`
 	Vcpus                *int32     `json:"vcpus,omitempty"`
-	Memory               *int32     `json:"memory,omitempty"`
+	Memory               *int64     `json:"memory,omitempty"`
 	Autostart            *bool      `json:"autostart,omitempty"`
 	Time                 *string    `json:"time,omitempty"`
 	Bootloader           *string    `json:"bootloader,omitempty"`
@@ -166,9 +166,9 @@ func (o *VM) SetVcpus(v int32) {
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *VM) GetMemory() int32 {
+func (o *VM) GetMemory() int64 {
 	if o == nil || isNil(o.Memory) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Memory
@@ -176,7 +176,7 @@ func (o *VM) GetMemory() int32 {
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VM) GetMemoryOk() (*int32, bool) {
+func (o *VM) GetMemoryOk() (*int64, bool) {
 	if o == nil || isNil(o.Memory) {
 		return nil, false
 	}
@@ -192,8 +192,8 @@ func (o *VM) HasMemory() bool {
 	return false
 }
 
-// SetMemory gets a reference to the given int32 and assigns it to the Memory field.
-func (o *VM) SetMemory(v int32) {
+// SetMemory gets a reference to the given int64 and assigns it to the Memory field.
+func (o *VM) SetMemory(v int64) {
 	o.Memory = &v
 }
 

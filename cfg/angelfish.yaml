@@ -2558,6 +2558,7 @@ components:
           type: integer
         memory:
           type: integer
+          format: int64
         autostart:
           type: boolean
         time:

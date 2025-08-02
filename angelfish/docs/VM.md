@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Vcpus** | Pointer to **int32** |  | [optional] 
-**Memory** | Pointer to **int32** |  | [optional] 
+**Memory** | Pointer to **int64** |  | [optional] 
 **Autostart** | Pointer to **bool** |  | [optional] 
 **Time** | Pointer to **string** |  | [optional] 
 **Bootloader** | Pointer to **string** |  | [optional] 
@@ -129,20 +129,20 @@ HasVcpus returns a boolean if a field has been set.
 
 ### GetMemory
 
-`func (o *VM) GetMemory() int32`
+`func (o *VM) GetMemory() int64`
 
 GetMemory returns the Memory field if non-nil, zero value otherwise.
 
 ### GetMemoryOk
 
-`func (o *VM) GetMemoryOk() (*int32, bool)`
+`func (o *VM) GetMemoryOk() (*int64, bool)`
 
 GetMemoryOk returns a tuple with the Memory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemory
 
-`func (o *VM) SetMemory(v int32)`
+`func (o *VM) SetMemory(v int64)`
 
 SetMemory sets Memory field to given value.
 
