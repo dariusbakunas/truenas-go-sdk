@@ -41,7 +41,9 @@ func (r ApiCreateCronJobRequest) Execute() (*CronJob, *http.Response, error) {
 CreateCronJob Method for CreateCronJob
 
 Create a new cron job.
-`stderr` and `stdout` are boolean values which if `true`, represent that we would like to suppress standard error / standard output respectively.
+
+`stderr` and `stdout` are boolean values which if `true`, represent that we would like to suppress
+standard error / standard output respectively.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreateCronJobRequest
