@@ -59,21 +59,47 @@ def main() -> None:
       ./cfg/translate.py bluefin /interface /pool
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument('release', choices=["angelfish", "bluefin"], help="Release name: 'angelfish' or 'bluefin'")
+    parser.add_argument('release', choices=["angelfish", "bluefin", "fangtooth"], help="Release name: 'angelfish', 'bluefin' or 'fangtooth'")
     parser.add_argument('routes', nargs='*', help="Routes to replace using original schema")
     args = parser.parse_args()
 
-    with open(f"cfg/{args.release}.yaml", "r") as file:
-        cfg = yaml.load(file)
+    translated_file = f"cfg/{args.release}.yaml"
+    original_file = f"cfg/{args.release}_original.yaml"
+
+    if not os.path.exists(original_file):
+        raise FileNotFoundError(f"Original file not found: {original_file}")
 
     with open(f"cfg/{args.release}_original.yaml", "r") as file:
         cfg_orig = yaml.load(file)
 
+    if os.path.exists(translated_file):
+        with open(translated_file, "r") as file:
+            cfg = yaml.load(file)
+    else:
+        # Create a new base structure with minimum required OpenAPI fields
+        cfg = {
+            "openapi": cfg_orig.get("openapi", "3.0.0"),
+            "info": cfg_orig.get("info", {"title": "", "version": ""}),
+            "paths": {},
+            "components": {
+                "schemas": {},
+                "responses": {},
+                "parameters": {},
+                "examples": {},
+                "requestBodies": {},
+                "headers": {},
+                "securitySchemes": {},
+                "links": {},
+                "callbacks": {}
+            }
+        }
+
     for route in args.routes:
         translate_route_inplace(cfg, cfg_orig, route)
 
-    with open(f"cfg/{args.release}.yaml", "w") as file:
+    with open(translated_file, "w") as file:
         yaml.dump(cfg, file)
+
 
 if __name__ == "__main__":
     main()
