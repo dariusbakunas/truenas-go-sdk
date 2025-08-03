@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.0.0](https://github.com/dariusbakunas/truenas-go-sdk/compare/v0.9.0...v1.0.0) (2025-08-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* Go module location is changed
+
+### Features
+
+* add initial bluefin sdk ([d9a7009](https://github.com/dariusbakunas/truenas-go-sdk/commit/d9a7009c486a31544a446bc60072f99783da8b37))
+
+
+### Bug Fixes
+
+* update nfs share api for bluefin ([c7f0b5e](https://github.com/dariusbakunas/truenas-go-sdk/commit/c7f0b5e1fb25d093ac945884306f5d5fc59c2664))
+* update vm parameters for bluefin sdk ([b81872f](https://github.com/dariusbakunas/truenas-go-sdk/commit/b81872f8ba7416a7f99cb6876e7d2741329364a1))
+
+
+### Code Refactoring
+
+* create subfolder for TrueNAS Angelfish release ([330e867](https://github.com/dariusbakunas/truenas-go-sdk/commit/330e867a05d65cd703e8a29799d3025d208e3708))
+
 ## [0.9.0](https://github.com/dariusbakunas/truenas-go-sdk/compare/v0.8.1...v0.9.0) (2022-11-15)
 
 
